@@ -1,0 +1,13 @@
+﻿<UserControl x:Class="Radio_Leech.View.UserControls.SongControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Radio_Leech.View.UserControls"
+             mc:Ignorable="d" >
+    <StackPanel>
+        <Label Content="{Binding Title}" FontWeight="Bold"/>
+        <Label Content="{Binding Game}" Margin="15,-10,0,0" FontStyle="Italic"/>
+        <Label Content="{Binding Url}" Margin="15,-10,0,-8" FontStyle="Italic"/>
+    </StackPanel>
+</UserControl>
