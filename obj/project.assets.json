@@ -254,11 +254,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Users\\djgoo\\source\\repos\\Radio Leech\\Radio Leech\\Radio Leech.csproj",
+      "projectUniqueName": "D:\\Users\\djgoo\\source\\repos\\RPGGamers-Radio-Premium\\Radio Leech.csproj",
       "projectName": "Radio Leech",
-      "projectPath": "D:\\Users\\djgoo\\source\\repos\\Radio Leech\\Radio Leech\\Radio Leech.csproj",
+      "projectPath": "D:\\Users\\djgoo\\source\\repos\\RPGGamers-Radio-Premium\\Radio Leech.csproj",
       "packagesPath": "C:\\Users\\djgoo\\.nuget\\packages\\",
-      "outputPath": "D:\\Users\\djgoo\\source\\repos\\Radio Leech\\Radio Leech\\obj\\",
+      "outputPath": "D:\\Users\\djgoo\\source\\repos\\RPGGamers-Radio-Premium\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\djgoo\\AppData\\Roaming\\NuGet\\NuGet.Config",
