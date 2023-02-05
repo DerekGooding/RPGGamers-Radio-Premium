@@ -16,4 +16,5 @@ Also includes pause and next functions as well as a more reliable volume control
 * Settings tab for saving option preferences
 * Dark Mode
 * A visual representation of the music being played (wave form) 
+* Getting Started tutorial pop-ups for first time users | For now, just click the next button and enjoy!
 * And hopefully much more! Please send me ideas
