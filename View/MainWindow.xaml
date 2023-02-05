@@ -21,6 +21,18 @@
                 <Separator/>
                 <MenuItem Header="Exit" Click="Exit_Click"/>
             </MenuItem>
+            <MenuItem Header="View" IsEnabled="False">
+                
+            </MenuItem>
+            <MenuItem Header="About">
+                <MenuItem Header="About this application"
+                          Click="About_Click"/>
+                <Separator/>
+                <MenuItem Header="GitHub"
+                          Click="Github_Click"/>
+                <MenuItem Header="Original Radio Site"
+                          Click="RadioSite_Click"/>
+            </MenuItem>
         </Menu>
         <StatusBar DockPanel.Dock="Bottom">
             <StatusBarItem>
@@ -55,6 +67,14 @@
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
+                </DockPanel>
+            </TabItem>
+            <TabItem Header="Custom Playlists" IsEnabled="False">
+                <DockPanel>
+                </DockPanel>
+            </TabItem>
+            <TabItem Header="Settings" IsEnabled="False">
+                <DockPanel>
                 </DockPanel>
             </TabItem>
         </TabControl>
