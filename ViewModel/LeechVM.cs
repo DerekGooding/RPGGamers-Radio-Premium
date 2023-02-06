@@ -236,7 +236,7 @@ namespace Radio_Leech.ViewModel
 		private void SetVolume()
 		{
             if (((MainWindow)Application.Current.MainWindow).MyPlayer is MediaElement element)
-				element.Volume = Volume;
+				element.Volume = Volume / 2;
 
         }
 
