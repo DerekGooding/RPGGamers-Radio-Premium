@@ -10,7 +10,7 @@ Also includes pause and next functions as well as a more reliable volume control
 
 # RoadMap
 
-* Add Icons to replace buttons and the default application icon. 
+* Add Icons to replace buttons 	~~and the default application icon.~~
 * A custom playlist tab that lets you choose songs to shuffle through
 * A timestamp scrubber bar so you can skip to parts of a song you like
 * Settings tab for saving option preferences
