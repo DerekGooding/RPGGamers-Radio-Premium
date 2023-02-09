@@ -10,10 +10,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="mvvmDb.db" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Content Include="View\Icons\radio.ico" />
   </ItemGroup>
 
@@ -22,9 +18,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="mvvmDb.db">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    <None Update="mvvmDb.db">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

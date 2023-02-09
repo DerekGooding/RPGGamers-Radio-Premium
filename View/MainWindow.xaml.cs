@@ -1,5 +1,4 @@
 ﻿using System.Diagnostics;
-using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows;
 
@@ -17,6 +16,7 @@ namespace Radio_Leech
                              $"Created by: Derek Gooding\n" +
                              $"©2023\n" +
                              $"Version 0.9.0 | beta";
+            
             MessageBox.Show(message);
         }
 

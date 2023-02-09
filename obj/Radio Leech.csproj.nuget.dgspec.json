@@ -13,8 +13,12 @@
         "packagesPath": "C:\\Users\\DGooding\\.nuget\\packages\\",
         "outputPath": "E:\\repos\\RPGGamers-Radio-Premium\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "E:\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
           "C:\\Users\\DGooding\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

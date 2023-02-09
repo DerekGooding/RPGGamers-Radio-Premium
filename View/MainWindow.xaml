@@ -21,10 +21,13 @@
                 <Separator/>
                 <MenuItem Header="Exit" Click="Exit_Click"/>
             </MenuItem>
+            <MenuItem Header="Edit" IsEnabled="False">
+                
+            </MenuItem>
             <MenuItem Header="View" IsEnabled="False">
                 
             </MenuItem>
-            <MenuItem Header="About">
+            <MenuItem Header="Help">
                 <MenuItem Header="About this application"
                           Click="About_Click"/>
                 <Separator/>

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace Radio_Leech.ViewModel.Helpers
 {
@@ -38,23 +39,27 @@ namespace Radio_Leech.ViewModel.Helpers
             using SQLiteConnection connection = new(dbFile);
             connection.CreateTable<T>();
             List<T> items = connection.Table<T>().ToList();
-            if (items.Count == 0)
-                items = ImportFromOnline<T>();
             return items;
         }
 
-        private static List<T> ImportFromOnline<T>() where T : new()
+        public static async Task ImportFromOnlineAsync()
         {
-            if (System.IO.File.Exists(dbFile)) System.IO.File.Delete(dbFile);
+            //if (File.Exists(dbFile)) File.Delete(dbFile);
             using var client = new HttpClient();
-            using var response = client.GetStreamAsync(importUrl);
-            using var stream = new FileStream(dbFile, FileMode.CreateNew);
-            response.Result.CopyToAsync(stream);
+            {
+                using var response = client.GetStreamAsync(importUrl);
+                {
+                    using var stream = new FileStream(dbFile, FileMode.CreateNew);
+                    {
+                        await response.Result.CopyToAsync(stream);
 
-            using SQLiteConnection connection = new(dbFile);
-            connection.CreateTable<T>();
-            List<T> items = connection.Table<T>().ToList();
-            return items;
+                    }
+                }
+            }
+
+            //using SQLiteConnection connection = new(dbFile);
+            //connection.CreateTable<T>();
+            //List<T> items = connection.Table<T>().ToList();
         }
 
     }
