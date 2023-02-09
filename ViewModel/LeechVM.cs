@@ -9,7 +9,6 @@ using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Runtime.CompilerServices;
-using System.Security.Policy;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -168,7 +167,7 @@ namespace Radio_Leech.ViewModel
             HttpResponseMessage response = await client.GetAsync(url);
             Stream streamToReadFrom = await response.Content.ReadAsStreamAsync();
 			using StreamReader sr = new(streamToReadFrom, Encoding.UTF8);
-			string line = sr.ReadLine();
+			string line = sr.ReadLine() ?? "";
 			line = Decode(line);
 
 			//GetSpacers(line, out string x, out string y, out string w, out string z);
@@ -202,15 +201,15 @@ namespace Radio_Leech.ViewModel
 			ReadSongs();
         }
 
-		private void GetSpacers(string input, out string gameSpacerFirst, out string gameSpacerSecond,
-								out string titleSpaceFirst, out string titleSpacerSecond)
-		{
-            gameSpacerFirst = string.Empty;
-            gameSpacerSecond = string.Empty;
-            titleSpaceFirst = string.Empty;
-            titleSpacerSecond = string.Empty;
+		//private static void GetSpacers(string input, out string gameSpacerFirst, out string gameSpacerSecond,
+		//						out string titleSpaceFirst, out string titleSpacerSecond)
+		//{
+  //          gameSpacerFirst = string.Empty;
+  //          gameSpacerSecond = string.Empty;
+  //          titleSpaceFirst = string.Empty;
+  //          titleSpacerSecond = string.Empty;
 
-        }
+  //      }
 
 		private static string Decode(string input) => Regex.Replace(input, @"[^\u0020-\u007E]", string.Empty);
 
