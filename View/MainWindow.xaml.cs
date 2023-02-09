@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows;
 
@@ -15,7 +16,7 @@ namespace Radio_Leech
             string message = $"{Application.Current.MainWindow.Title}\n" +
                              $"Created by: Derek Gooding\n" +
                              $"©2023\n" +
-                             $"Version 0.9.0 beta";
+                             $"Version {Assembly.GetExecutingAssembly().GetName().Version}";
             MessageBox.Show(message);
         }
 
