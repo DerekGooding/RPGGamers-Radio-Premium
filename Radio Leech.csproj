@@ -23,7 +23,7 @@
 
   <ItemGroup>
     <Resource Include="mvvmDb.db">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
 
