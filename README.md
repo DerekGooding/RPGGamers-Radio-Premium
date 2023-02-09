@@ -1,4 +1,4 @@
-# RPGGamers-Radio-Premium
+## RPGGamers-Radio-Premium
 
 http://www.rpgamers.net/radio/
 
@@ -8,7 +8,13 @@ This stand alone application gives you some extra functionality without download
 
 Also includes pause and next functions as well as a more reliable volume control. 
 
-# RoadMap
+## ClickOnce Functionality
+
+If you would like to install this application for personal use: [Setup Link](https://github.com/DerekGooding/RPGGamers-Radio-Premium/raw/main/bin/publish/setup.exe)
+
+Installing with ClickOnce will check for future updates automatically every time you startup the application
+
+## RoadMap
 
 * Add Icons to replace buttons 	~~and the default application icon.~~
 * A custom playlist tab that lets you choose songs to shuffle through
