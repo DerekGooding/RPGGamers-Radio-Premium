@@ -1,5 +1,6 @@
 # Auto detect text files and perform LF normalization
 * text=auto
 *.deploy binary
-*.manifest binary
+# *.manifest binary
+*.db binary
 *.runtimeconfig.json binary
