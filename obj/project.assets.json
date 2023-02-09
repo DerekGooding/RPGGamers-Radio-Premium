@@ -249,19 +249,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\djgoo\\.nuget\\packages\\": {}
+    "C:\\Users\\DGooding\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Users\\djgoo\\source\\repos\\RPGGamers-Radio-Premium\\Radio Leech.csproj",
+      "projectUniqueName": "E:\\repos\\RPGGamers-Radio-Premium\\Radio Leech.csproj",
       "projectName": "Radio Leech",
-      "projectPath": "D:\\Users\\djgoo\\source\\repos\\RPGGamers-Radio-Premium\\Radio Leech.csproj",
-      "packagesPath": "C:\\Users\\djgoo\\.nuget\\packages\\",
-      "outputPath": "D:\\Users\\djgoo\\source\\repos\\RPGGamers-Radio-Premium\\obj\\",
+      "projectPath": "E:\\repos\\RPGGamers-Radio-Premium\\Radio Leech.csproj",
+      "packagesPath": "C:\\Users\\DGooding\\.nuget\\packages\\",
+      "outputPath": "E:\\repos\\RPGGamers-Radio-Premium\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\djgoo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\DGooding\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
