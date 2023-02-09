@@ -85,4 +85,3 @@ D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\obj\Debug\net6.0-windows\Rad
 D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\obj\Debug\net6.0-windows\Radio Leech.genruntimeconfig.cache
 D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\obj\Debug\net6.0-windows\ref\Radio Leech.dll
 D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\obj\Debug\net6.0-windows\Radio Leech_Content.g.cs
-D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\bin\Debug\net6.0-windows\mvvmDb.db

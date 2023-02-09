@@ -1,5 +1,4 @@
 D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\app.publish\Radio Leech.exe
-D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\app.publish\mvvmDb.db
 D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\app.publish\Radio Leech.dll
 D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\app.publish\Radio Leech.deps.json
 D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\app.publish\Radio Leech.runtimeconfig.json
