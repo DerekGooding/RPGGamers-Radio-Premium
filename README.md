@@ -10,7 +10,7 @@ Also includes pause and next functions as well as a more reliable volume control
 
 ## ClickOnce Functionality
 
-If you would like to install this application for personal use: [Setup Link](https://github.com/DerekGooding/RPGGamers-Radio-Premium/raw/main/bin/publish/setup.exe)
+If you would like to install this application for personal use: Currently Not working
 
 Installing with ClickOnce will check for future updates automatically every time you startup the application
 
