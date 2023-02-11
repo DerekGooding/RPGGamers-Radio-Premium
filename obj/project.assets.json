@@ -249,24 +249,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\DGooding\\.nuget\\packages\\": {},
-    "E:\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\djgoo\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\repos\\RPGGamers-Radio-Premium\\Radio Leech.csproj",
+      "projectUniqueName": "D:\\Users\\djgoo\\source\\repos\\RPGGamers-Radio-Premium\\Radio Leech.csproj",
       "projectName": "Radio Leech",
-      "projectPath": "E:\\repos\\RPGGamers-Radio-Premium\\Radio Leech.csproj",
-      "packagesPath": "C:\\Users\\DGooding\\.nuget\\packages\\",
-      "outputPath": "E:\\repos\\RPGGamers-Radio-Premium\\obj\\",
+      "projectPath": "D:\\Users\\djgoo\\source\\repos\\RPGGamers-Radio-Premium\\Radio Leech.csproj",
+      "packagesPath": "C:\\Users\\djgoo\\.nuget\\packages\\",
+      "outputPath": "D:\\Users\\djgoo\\source\\repos\\RPGGamers-Radio-Premium\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "E:\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\DGooding\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\djgoo\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
