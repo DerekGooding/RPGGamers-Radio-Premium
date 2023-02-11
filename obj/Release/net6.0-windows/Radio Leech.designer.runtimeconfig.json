@@ -12,9 +12,8 @@
       }
     ],
     "additionalProbingPaths": [
-      "C:\\Users\\DGooding\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\DGooding\\.nuget\\packages",
-      "E:\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      "C:\\Users\\djgoo\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\djgoo\\.nuget\\packages"
     ],
     "configProperties": {
       "System.Reflection.Metadata.MetadataUpdater.IsSupported": false,
