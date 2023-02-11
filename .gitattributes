@@ -3,4 +3,4 @@
 *.deploy binary
 *.manifest binary
 *.db binary
-*.runtimeconfig.json binary
+*.json binary
