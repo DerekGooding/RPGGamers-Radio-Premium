@@ -14,7 +14,7 @@ namespace Radio_Leech.ViewModel.Commands
         readonly LeechVM VM;
         public DownloadCommand(LeechVM vm) => VM = vm;
 
-        public bool CanExecute(object? parameter) => VM.SelectedSong != null && false;
+        public bool CanExecute(object? parameter) => VM.SelectedSong != null;
         public void Execute(object? parameter) => LeechVM.SaveSong(VM.SelectedSong);
     }
 }

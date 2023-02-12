@@ -254,11 +254,11 @@ namespace Radio_Leech.ViewModel
 
         void Timer_Tick(object? sender, EventArgs e)
         {
-            if (((MainWindow)Application.Current.MainWindow).MyPlayer is MediaElement element)
-                if (element.Source != null)
-					if (element.NaturalDuration.HasTimeSpan)
-						Duration = string.Format("{0} / {1}", element.Position.ToString(@"mm\:ss"), element.NaturalDuration.TimeSpan.ToString(@"mm\:ss"));
-
+			if(Application.Current.MainWindow != null)
+				if (((MainWindow)Application.Current.MainWindow).MyPlayer is MediaElement element)
+					if (element.Source != null)
+						if (element.NaturalDuration.HasTimeSpan)
+							Duration = string.Format("{0} / {1}", element.Position.ToString(@"mm\:ss"), element.NaturalDuration.TimeSpan.ToString(@"mm\:ss"));
         }
 
 		private void Element_MediaEnded(object sender, RoutedEventArgs e) => PlayRandomSong();
@@ -271,9 +271,14 @@ namespace Radio_Leech.ViewModel
 
 		public static async Task SaveSong(Song song)
 		{
+            // This returns something like C:\Users\Username:
+            string userRoot = System.Environment.GetEnvironmentVariable("USERPROFILE");
+            // Now let's get C:\Users\Username\Downloads:
+            string downloadFolder = Path.Combine(userRoot, "Downloads", $"{ song.Title}.mpeg");
+            MessageBox.Show($"Downloading to:\n{downloadFolder}");
             HttpClient client = new();
             using var stream = await client.GetStreamAsync(song.Url);
-			using var fileStream = new FileStream($"C:\\Users\\djgoo\\Desktop\\Songs\\{song.Title}01.mpeg", FileMode.CreateNew);
+			using var fileStream = new FileStream(downloadFolder, FileMode.CreateNew);
 			await stream.CopyToAsync(fileStream);
 		}
 

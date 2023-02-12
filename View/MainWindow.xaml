@@ -15,26 +15,34 @@
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="File">
                 <MenuItem Header="Scan for Songs Online"
-                          Command="{Binding SearchLinksCommand}"/>
+                          Command="{Binding SearchLinksCommand}"
+                          ToolTip="Looks for working URL links one at a time. Will not add duplicate entries"/>
                 <MenuItem Header="Download"
-                          Command="{Binding DownloadCommand}"/>
+                          Command="{Binding DownloadCommand}"
+                          ToolTip="Download the currently selected song"/>
+                <MenuItem Header="Show Downloads Path"
+                          Click="ShowDownloadPath_Click"
+                          ToolTip="Tells you the path files are downloaded to"/>
                 <Separator/>
                 <MenuItem Header="Exit" Click="Exit_Click"/>
             </MenuItem>
-            <MenuItem Header="Edit" IsEnabled="False">
+            <MenuItem Header="Edit" IsEnabled="False" ToolTip="Coming soon!">
                 
             </MenuItem>
-            <MenuItem Header="View" IsEnabled="False">
+            <MenuItem Header="View" IsEnabled="False" ToolTip="Coming soon!">
                 
             </MenuItem>
             <MenuItem Header="Help">
-                <MenuItem Header="About this application"
-                          Click="About_Click"/>
+                <MenuItem Header="About"
+                          Click="About_Click"
+                          ToolTip="Information about this application"/>
                 <Separator/>
                 <MenuItem Header="GitHub"
-                          Click="Github_Click"/>
+                          Click="Github_Click"
+                          ToolTip="Navigate to this applications git repo"/>
                 <MenuItem Header="Original Radio Site"
-                          Click="RadioSite_Click"/>
+                          Click="RadioSite_Click"
+                          ToolTip="Navigate to the original RPG Radio web site"/>
             </MenuItem>
         </Menu>
         <StatusBar DockPanel.Dock="Bottom">
@@ -50,13 +58,15 @@
             <TabItem Header="Main">
                 <DockPanel Background="WhiteSmoke">
                     <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="3">
-                        <TextBox Width="300" VerticalContentAlignment="Center"
+                        <TextBox Width="300" VerticalContentAlignment="Center" ToolTip="Filter songs by typing here"
                              Text="{Binding Search, UpdateSourceTrigger=PropertyChanged}"/>
                         <Label  Width="100" Content="{Binding SongCount}"/>
                         <Button Content="Pause" 
-                                Command="{Binding PauseCommand}"/>
+                                Command="{Binding PauseCommand}"
+                                ToolTip="Pauses or unpauses the current song"/>
                         <Button Content="Next" Margin="10,0,0,0"
-                                Command="{Binding NextCommand}"/>
+                                Command="{Binding NextCommand}"
+                                ToolTip="Begins shuffling songs or skips to the next song"/>
                         <Label Content="Volume"/>
                         <Slider Minimum="0" Maximum="1" Width="100" Value="{Binding Volume}"/>
                     </StackPanel>
@@ -72,11 +82,11 @@
                     </ListView>
                 </DockPanel>
             </TabItem>
-            <TabItem Header="Custom Playlists" IsEnabled="False">
+            <TabItem Header="Custom Playlists" IsEnabled="False" ToolTip="Coming soon!">
                 <DockPanel>
                 </DockPanel>
             </TabItem>
-            <TabItem Header="Settings" IsEnabled="False">
+            <TabItem Header="Settings" IsEnabled="False" ToolTip="Coming soon!">
                 <DockPanel>
                 </DockPanel>
             </TabItem>

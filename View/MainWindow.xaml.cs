@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows;
 
@@ -15,6 +16,7 @@ namespace Radio_Leech
             string message = $"{Application.Current.MainWindow.Title}\n" +
                              $"Created by: Derek Gooding\n" +
                              $"©2023\n" +
+                             $"Libertas Infinitum" +
                              $"Version 0.9.0 | beta";
             
             MessageBox.Show(message);
@@ -53,6 +55,11 @@ namespace Radio_Leech
             }
         }
 
-        
+        private void ShowDownloadPath_Click(object sender, RoutedEventArgs e)
+        {
+            string userRoot = System.Environment.GetEnvironmentVariable("USERPROFILE");
+            string downloadFolder = Path.Combine(userRoot, "Downloads");
+            MessageBox.Show(downloadFolder);
+        }
     }
 }

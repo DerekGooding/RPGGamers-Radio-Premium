@@ -10,7 +10,7 @@ namespace Radio_Leech.ViewModel.Helpers
     public class DatabaseHelper
     {
         private static readonly string dbFile = Path.Combine(Environment.CurrentDirectory, "mvvmDb.db");
-        private static readonly string importUrl = "https://github.com/DerekGooding/RPGGamers-Radio-Premium/raw/main/mvvmDb.db";
+        private static readonly string importUrl = "https://github.com/DerekGooding/RPGGamers-Radio-Premium/raw/main/mvvmDb.db?raw=true";
 
         public static bool Insert<T>(T item)
         {
