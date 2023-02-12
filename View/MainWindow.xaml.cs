@@ -16,7 +16,7 @@ namespace Radio_Leech
             string message = $"{Application.Current.MainWindow.Title}\n" +
                              $"Created by: Derek Gooding\n" +
                              $"©2023\n" +
-                             $"Libertas Infinitum" +
+                             $"Libertas Infinitum\n" +
                              $"Version 0.9.0 | beta";
             
             MessageBox.Show(message);
