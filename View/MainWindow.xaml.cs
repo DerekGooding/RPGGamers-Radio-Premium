@@ -17,7 +17,7 @@ namespace Radio_Leech
                              $"Created by: Derek Gooding\n" +
                              $"©2023\n" +
                              $"Libertas Infinitum\n" +
-                             $"Version 0.9.0 | beta";
+                             $"Version 0.9.1 | beta";
             
             MessageBox.Show(message);
         }
@@ -64,7 +64,7 @@ namespace Radio_Leech
 
         private void Test_Click(object sender, RoutedEventArgs e)
         {
-            string message = $"Nothing important right now";
+            string message = $"I've been updated at least 1 time.";
 
             MessageBox.Show(message);
         }
