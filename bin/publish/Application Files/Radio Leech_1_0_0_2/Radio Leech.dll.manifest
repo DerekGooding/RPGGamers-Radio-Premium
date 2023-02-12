@@ -63,22 +63,22 @@
       <dsig:DigestValue>NLuS1pV0C9W2Gv2muuFs+sspHThExOdb2WiplQQPhQM=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Radio Leech.dll" size="47104">
+  <file name="Radio Leech.dll" size="46592">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>p2af37n5EaYb4SYvdDMoQT7Wt3ASAgMl40l6tpu0QkE=</dsig:DigestValue>
+      <dsig:DigestValue>3iz24mWJIrhRjR1VlCKlD/d895YOGHDWFesd3NvVehM=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Radio Leech.exe" size="165888">
+  <file name="Radio Leech.exe" size="165376">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>W+WDuDZiNPShI8XW9p16OcAzpHOkRI1qy56DNjpXY7A=</dsig:DigestValue>
+      <dsig:DigestValue>7TiOmC8UtOyI7Y8t7+TWdYcbRi7if19F0lSj9b/7hbU=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Radio Leech.runtimeconfig.json" size="372">
