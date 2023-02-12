@@ -132,9 +132,9 @@ namespace Radio_Leech.ViewModel
 		{
 			FoundLinks.Clear();
 			var allSongs = DatabaseHelper.Read<Song>();
-			if (allSongs.Count == 0)
-				DatabaseHelper.ImportFromOnlineAsync();
-            allSongs = DatabaseHelper.Read<Song>();
+			//if (allSongs.Count == 0)
+			//	DatabaseHelper.ImportFromOnlineAsync();
+            //allSongs = DatabaseHelper.Read<Song>();
             foreach (var item in allSongs)
 				FoundLinks.Add(item);
 			Query();
@@ -163,7 +163,6 @@ namespace Radio_Leech.ViewModel
 			//var task = ReadSongInfoAsync(url, 2819);
             return Task.CompletedTask;
 		}
-
 		private async Task ReadSongInfoAsync(string url, int id)
 		{
             using HttpClient client = new();
@@ -204,16 +203,6 @@ namespace Radio_Leech.ViewModel
 			ReadSongs();
         }
 
-		//private static void GetSpacers(string input, out string gameSpacerFirst, out string gameSpacerSecond,
-		//						out string titleSpaceFirst, out string titleSpacerSecond)
-		//{
-  //          gameSpacerFirst = string.Empty;
-  //          gameSpacerSecond = string.Empty;
-  //          titleSpaceFirst = string.Empty;
-  //          titleSpacerSecond = string.Empty;
-
-  //      }
-
 		private static string Decode(string input) => Regex.Replace(input, @"[^\u0020-\u007E]", string.Empty);
 
 		private bool subscribed = false;
@@ -239,7 +228,6 @@ namespace Radio_Leech.ViewModel
 		{
             if (((MainWindow)Application.Current.MainWindow).MyPlayer is MediaElement element)
 				element.Volume = Volume / 2;
-
         }
 
 		private void StartTimer()
@@ -271,10 +259,9 @@ namespace Radio_Leech.ViewModel
 
 		public static async Task SaveSong(Song song)
 		{
-            // This returns something like C:\Users\Username:
-            string userRoot = System.Environment.GetEnvironmentVariable("USERPROFILE");
-            // Now let's get C:\Users\Username\Downloads:
+            string userRoot = Environment.GetEnvironmentVariable("USERPROFILE")?? "C:\\";
             string downloadFolder = Path.Combine(userRoot, "Downloads", $"{ song.Title}.mpeg");
+
             MessageBox.Show($"Downloading to:\n{downloadFolder}");
             HttpClient client = new();
             using var stream = await client.GetStreamAsync(song.Url);
