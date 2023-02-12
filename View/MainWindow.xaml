@@ -43,6 +43,9 @@
                 <MenuItem Header="Original Radio Site"
                           Click="RadioSite_Click"
                           ToolTip="Navigate to the original RPG Radio web site"/>
+                <MenuItem Header="TestMe"
+                          Click="Test_Click"
+                          ToolTip="This is just something for dev testing."/>
             </MenuItem>
         </Menu>
         <StatusBar DockPanel.Dock="Bottom">

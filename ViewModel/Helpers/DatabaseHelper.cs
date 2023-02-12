@@ -51,7 +51,7 @@ namespace Radio_Leech.ViewModel.Helpers
             {
                 using var response = client.GetStreamAsync(importUrl);
                 {
-                    using var stream = new FileStream(dbFile, FileMode.CreateNew);
+                    using var stream = new FileStream(dbFile, FileMode.Create);
                     {
                         await response.Result.CopyToAsync(stream);
 

@@ -61,5 +61,12 @@ namespace Radio_Leech
             string downloadFolder = Path.Combine(userRoot, "Downloads");
             MessageBox.Show(downloadFolder);
         }
+
+        private void Test_Click(object sender, RoutedEventArgs e)
+        {
+            string message = $"Nothing important right now";
+
+            MessageBox.Show(message);
+        }
     }
 }
