@@ -39,6 +39,8 @@ namespace Radio_Leech.ViewModel.Helpers
             using SQLiteConnection connection = new(dbFile);
             connection.CreateTable<T>();
             List<T> items = connection.Table<T>().ToList();
+            if(items.Count > 0) ImportFromOnlineAsync();
+            
             return items;
         }
 
