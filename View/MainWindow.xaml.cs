@@ -57,7 +57,7 @@ namespace Radio_Leech
 
         private void ShowDownloadPath_Click(object sender, RoutedEventArgs e)
         {
-            string userRoot = System.Environment.GetEnvironmentVariable("USERPROFILE");
+            string userRoot = System.Environment.GetEnvironmentVariable("USERPROFILE")?? "C:\\";
             string downloadFolder = Path.Combine(userRoot, "Downloads");
             MessageBox.Show(downloadFolder);
         }
