@@ -132,9 +132,11 @@ namespace Radio_Leech.ViewModel
 		{
 			FoundLinks.Clear();
 			var allSongs = DatabaseHelper.Read<Song>();
-			//if (allSongs.Count == 0)
-			//	DatabaseHelper.ImportFromOnlineAsync();
-            //allSongs = DatabaseHelper.Read<Song>();
+			if (allSongs.Count == 0)
+				DatabaseHelper.ImportFromOnlineAsync();
+			allSongs = DatabaseHelper.Read<Song>();
+			if (allSongs.Count == 0)
+				return;
             foreach (var item in allSongs)
 				FoundLinks.Add(item);
 			Query();
