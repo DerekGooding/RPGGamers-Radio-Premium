@@ -53,8 +53,11 @@ namespace Radio_Leech.ViewModel.Helpers
                 {
                     using var stream = new FileStream(dbFile, FileMode.Create);
                     {
-                        await response.Result.CopyToAsync(stream);
-
+                        try
+                        {
+                            await response.Result.CopyToAsync(stream);
+                        }
+                        catch { }
                     }
                 }
             }

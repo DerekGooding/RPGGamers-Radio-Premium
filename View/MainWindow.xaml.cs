@@ -64,7 +64,7 @@ namespace Radio_Leech
 
         private void Test_Click(object sender, RoutedEventArgs e)
         {
-            string message = $"I've been updated at least 1 time.";
+            string message = $"I've been updated at least 2 times.";
 
             MessageBox.Show(message);
         }
