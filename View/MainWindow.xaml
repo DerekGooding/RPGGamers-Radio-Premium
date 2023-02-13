@@ -19,7 +19,7 @@
                           ToolTip="Looks for working URL links one at a time. Will not add duplicate entries"/>
                 <MenuItem Header="Download"
                           Command="{Binding DownloadCommand}"
-                          ToolTip="Download the currently selected song"/>
+                          ToolTip="Download the currently playing song"/>
                 <MenuItem Header="Show Downloads Path"
                           Click="ShowDownloadPath_Click"
                           ToolTip="Tells you the path files are downloaded to"/>

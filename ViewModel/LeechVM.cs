@@ -256,7 +256,8 @@ namespace Radio_Leech.ViewModel
 		public void PlayRandomSong()
 		{
             Random rand = new();
-            PlaySong(FilteredSongs[rand.Next(FilteredSongs.Count)]);
+			SelectedSong = FilteredSongs[rand.Next(FilteredSongs.Count)];
+            PlaySong(SelectedSong);
         }
 
 		public static async Task SaveSong(Song song)
