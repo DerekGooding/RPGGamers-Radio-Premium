@@ -98,6 +98,7 @@ namespace Radio_Leech.ViewModel
 
 		public SearchLinksCommand SearchLinksCommand { get; set; }
         public DownloadCommand DownloadCommand { get; set; }
+        public PreviousCommand PreviousCommand { get; set; }
         public NextCommand NextCommand { get; set; }
         public PauseCommand PauseCommand { get; set; }
         public ObservableCollection<Song> FoundLinks { get; set; }
@@ -111,6 +112,8 @@ namespace Radio_Leech.ViewModel
 			set { filteredSongs = value; OnPropertyChanged(); }
 		}
 
+		public Stack<Song> previousSongs = new();
+
 
 		public LeechVM()
 		{
@@ -121,6 +124,7 @@ namespace Radio_Leech.ViewModel
 
             SearchLinksCommand = new(this);
 			DownloadCommand = new(this);
+			PreviousCommand = new(this);
             NextCommand = new(this);
 			PauseCommand = new(this);
 
@@ -208,13 +212,16 @@ namespace Radio_Leech.ViewModel
 		private static string Decode(string input) => Regex.Replace(input, @"[^\u0020-\u007E]", string.Empty);
 
 		private bool subscribed = false;
-        private void PlaySong(Song song)
+		private void PlaySong(Song song) => PlaySong(song, false);
+        private void PlaySong(Song song, bool isPrevious)
 		{
 
             if (((MainWindow)Application.Current.MainWindow).MyPlayer is MediaElement element)
             {
                 element.Source = new Uri(song.Url);
 				element.Play();
+				if(!isPrevious)
+					previousSongs.Push(song);
 				Status = $"{song.Title}";
                 
 				IsPlaying = true;
@@ -259,6 +266,11 @@ namespace Radio_Leech.ViewModel
 			SelectedSong = FilteredSongs[rand.Next(FilteredSongs.Count)];
             PlaySong(SelectedSong);
         }
+		public void PlayPrevious()
+		{
+			if (previousSongs.Count == 0) return;
+			PlaySong(previousSongs.Pop(), true);
+		}
 
 		public static async Task SaveSong(Song song)
 		{

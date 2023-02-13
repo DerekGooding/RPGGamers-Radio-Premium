@@ -46,11 +46,50 @@
             </MenuItem>
         </Menu>
         <StatusBar DockPanel.Dock="Bottom">
-            <StatusBarItem>
+            <StatusBarItem Background="Gray">
                 <StackPanel Orientation="Horizontal">
+                    <StackPanel.Resources>
+                        <Style TargetType="Label">
+                            <Setter Property="Foreground" Value="White"/>
+                        </Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Margin" Value="10,0,0,0"/>
+                            <Setter Property="Width" Value="35"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                            <Setter Property="VerticalContentAlignment" Value="Center"/>
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="BorderThickness" Value="0"/>
+                            <Setter Property="FontSize" Value="20"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border x:Name="Border" Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Background" Value="#7FFFFFFF" TargetName="Border" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </StackPanel.Resources>
+                    <Button Content="|◀"
+                            Command="{Binding PreviousCommand}"/>
+                    <Button Content="▶"
+                            Command="{Binding PauseCommand}"/>
+                    <Button Content="▶|"
+                            Command="{Binding NextCommand}"/>
+                    <Border Margin="15,0,5,0" BorderBrush="White" BorderThickness="2"/>
+                    
                     <Label Content="{Binding Status}"/>
                     <Separator Width="10"/>
                     <Label Content="{Binding Duration}"/>
+                    
+                    <Button Content="🔈🔉🔊" Visibility="Hidden"/>
                 </StackPanel>
             </StatusBarItem>
         </StatusBar>
@@ -58,17 +97,27 @@
             <TabItem Header="Main">
                 <DockPanel Background="WhiteSmoke">
                     <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="3">
-                        <TextBox Width="300" VerticalContentAlignment="Center" ToolTip="Filter songs by typing here"
-                             Text="{Binding Search, UpdateSourceTrigger=PropertyChanged}"/>
+                        <Grid>
+                            <TextBox x:Name="SearchText" Width="300" VerticalContentAlignment="Center" ToolTip="Filter songs by typing here"
+                                Text="{Binding Search, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBlock IsHitTestVisible="False" Text="🔍 Search Songs" VerticalAlignment="Center" 
+                                   HorizontalAlignment="Left" Margin="2,2,0,0" FontWeight="Bold" Foreground="DarkGray" FontSize="11" Opacity="0.5">
+                                <TextBlock.Style>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Text, ElementName=SearchText}" Value="">
+                                                <Setter Property="Visibility" Value="Visible"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </Grid>
+
                         <Label  Width="100" Content="{Binding SongCount}"/>
-                        <Button Content="Pause" 
-                                Command="{Binding PauseCommand}"
-                                ToolTip="Pauses or unpauses the current song"/>
-                        <Button Content="Next" Margin="10,0,0,0"
-                                Command="{Binding NextCommand}"
-                                ToolTip="Begins shuffling songs or skips to the next song"/>
-                        <Label Content="Volume"/>
-                        <Slider Minimum="0" Maximum="1" Width="100" Value="{Binding Volume}"/>
+                        <Label Content="🔊" FontSize="16"/>
+                        <Slider Minimum="0" Maximum="1" Width="100" Value="{Binding Volume}" VerticalAlignment="Center"/>
                     </StackPanel>
                     <MediaElement x:Name="MyPlayer" DockPanel.Dock="Left" LoadedBehavior="Manual"/>
                     <ListView Margin="5" SelectionMode="Single"
