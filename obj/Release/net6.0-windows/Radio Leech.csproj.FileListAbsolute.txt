@@ -90,7 +90,3 @@ D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\R
 D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\Radio Leech.application
 D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\obj\Release\net6.0-windows\Radio Leech.dll.manifest
 D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\obj\Release\net6.0-windows\Radio Leech.application
-E:\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\Radio Leech.dll.manifest
-E:\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\Radio Leech.application
-E:\repos\RPGGamers-Radio-Premium\obj\Release\net6.0-windows\Radio Leech.dll.manifest
-E:\repos\RPGGamers-Radio-Premium\obj\Release\net6.0-windows\Radio Leech.application

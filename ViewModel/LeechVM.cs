@@ -222,7 +222,8 @@ namespace Radio_Leech.ViewModel
 				element.Play();
 				if(!isPrevious)
 					previousSongs.Push(song);
-				Status = $"{song.Title}";
+				CheckHistory();
+                Status = $"{song.Title}";
                 
 				IsPlaying = true;
 				if(!subscribed)
@@ -231,6 +232,17 @@ namespace Radio_Leech.ViewModel
 					subscribed = true;
                 }
             }
+        }
+
+		private void CheckHistory()
+		{
+			if (previousSongs.Count < 50) return;
+			Stack<Song> temp = new();
+			for (int i = 0; i < 10; i++)
+				temp.Push(previousSongs.Pop());
+			previousSongs.Clear();
+            for (int i = 0; i < 10; i++)
+                previousSongs.Push(temp.Pop());
         }
 
 		private void SetVolume()
