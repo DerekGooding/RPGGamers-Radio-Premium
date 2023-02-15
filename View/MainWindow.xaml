@@ -120,6 +120,24 @@
                         <Slider Minimum="0" Maximum="1" Width="100" Value="{Binding Volume}" VerticalAlignment="Center"/>
                     </StackPanel>
                     <MediaElement x:Name="MyPlayer" DockPanel.Dock="Left" LoadedBehavior="Manual"/>
+                    <DockPanel DockPanel.Dock="Left" Width="150">
+                        <DockPanel DockPanel.Dock="Top">
+                            <Label DockPanel.Dock="Left" Content="Playlists" FontSize="20"/>
+                            <Button Background="Transparent" Foreground="Green" Content="+"
+                                    FontSize="26" FontWeight="Bold" BorderThickness="0"
+                                    Command="{Binding CreatePlaylistCommand}"/>
+                        </DockPanel>
+                        
+                        <ListView  Margin="5" SelectionMode="Single" d:ItemsSource="{d:SampleData}"
+                                   ItemsSource="{Binding Playlists}" SelectedItem="{Binding SelectedPlaylist}">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <uc:PlaylistControl Playlist="{Binding}"/>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </DockPanel>
+                    
                     <ListView Margin="5" SelectionMode="Single"
                               ItemsSource="{Binding FilteredSongs}" d:ItemsSource="{d:SampleData}" 
                               SelectedItem="{Binding SelectedSong}">

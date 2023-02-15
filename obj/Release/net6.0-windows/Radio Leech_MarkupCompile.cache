@@ -10,11 +10,11 @@ none
 false
 TRACE;RELEASE;NET;NET6_0;NETCOREAPP
 E:\repos\RPGGamers-Radio-Premium\App.xaml
-21146003226
+31492402167
 1-1101342812
-12-1190636156
-199-1777544528
-View\MainWindow.xaml;View\UserControls\SongControl.xaml;
+16-1650479145
+199-1913233519
+View\MainWindow.xaml;View\UserControls\PlaylistControl.xaml;View\UserControls\SongControl.xaml;
 
 False
 

@@ -87,24 +87,32 @@ namespace Radio_Leech.ViewModel
         }
 
         private Song? selectedSong = null;
-
 		public Song? SelectedSong
 		{
 			get => selectedSong;
 			set { selectedSong = value; if(value != null)PlaySong(value); }
 		}
 
-		public bool IsPlaying = false;
+        private Playlist? selectedPlaylist = null;
+        public Playlist? SelectedPlaylist
+        {
+            get => selectedPlaylist;
+            set { selectedPlaylist = value; }
+        }
+
+        public bool IsPlaying = false;
 
 		public SearchLinksCommand SearchLinksCommand { get; set; }
         public DownloadCommand DownloadCommand { get; set; }
         public PreviousCommand PreviousCommand { get; set; }
         public NextCommand NextCommand { get; set; }
         public PauseCommand PauseCommand { get; set; }
-        public ObservableCollection<Song> FoundLinks { get; set; }
+		public CreatePlaylistCommand CreatePlaylistCommand { get; set; }
+		public ObservableCollection<Song> FoundLinks { get; set; }
+        public ObservableCollection<Playlist> Playlists { get; set; }
 
 
-		private List<Song> filteredSongs = new();
+        private List<Song> filteredSongs = new();
 
 		public List<Song> FilteredSongs
         {
@@ -120,16 +128,29 @@ namespace Radio_Leech.ViewModel
 			Status = string.Empty;
 
 			FoundLinks = new();
-			
+			Playlists = new();
+
 
             SearchLinksCommand = new(this);
 			DownloadCommand = new(this);
 			PreviousCommand = new(this);
             NextCommand = new(this);
 			PauseCommand = new(this);
+            CreatePlaylistCommand = new(this);
 
             ReadSongs();
+			ReadPlaylists();
 			StartTimer();
+        }
+
+		private void ReadPlaylists()
+		{
+			Playlists.Clear();
+            var allPlaylists = DatabaseHelper.Read<Playlist>(true);
+            if (allPlaylists.Count == 0)
+                return;
+            foreach (var item in allPlaylists)
+                Playlists.Add(item);
         }
 
 		private void ReadSongs()
@@ -149,7 +170,7 @@ namespace Radio_Leech.ViewModel
 		public void Query()
 		{
             FilteredSongs = FoundLinks.OrderBy(s => s.Url).
-				Where(x=> x.Game.ToLower().Contains(Search.ToLower())).ToList();
+			Where(x=> x.Game.ToLower().Contains(Search.ToLower())).ToList();
 			SongCount = $"{FilteredSongs.Count} songs";
         }
 
@@ -162,11 +183,9 @@ namespace Radio_Leech.ViewModel
 				char dataNumber = digit.First();
 				while(digit.Length < 4)
 					digit = "0" + digit;
-				string url = dataUrl + dataNumber + "/" + digit + ".dat";
+				string url = string.Concat( dataUrl, dataNumber, "/", digit, ".dat");
 				_ = ReadSongInfoAsync(url, i);
             }
-			//string url = "http://www.rpgamers.net/radio/data/data_2/2819.dat";
-			//var task = ReadSongInfoAsync(url, 2819);
             return Task.CompletedTask;
 		}
 		private async Task ReadSongInfoAsync(string url, int id)
@@ -313,5 +332,11 @@ namespace Radio_Leech.ViewModel
 				
 			}
         }
+
+		public void CreatePlaylist()
+		{
+			DatabaseHelper.Insert(new Playlist { Name = "New playlist" }, true);
+			ReadPlaylists();
+		}
 	}
 }

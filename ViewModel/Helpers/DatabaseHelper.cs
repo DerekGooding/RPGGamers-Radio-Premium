@@ -10,36 +10,39 @@ namespace Radio_Leech.ViewModel.Helpers
     public class DatabaseHelper
     {
         private static readonly string dbFile = Path.Combine(Environment.CurrentDirectory, "mvvmDb.db");
+        private static readonly string preferences = Path.Combine(Environment.CurrentDirectory, "preferences.db");
         private static readonly string importUrl = "https://github.com/DerekGooding/RPGGamers-Radio-Premium/raw/main/mvvmDb.db?raw=true";
 
-        public static bool Insert<T>(T item)
+        public static bool Insert<T>(T item) => Insert<T>(item, false);
+        public static bool Insert<T>(T item, bool playerPref)
         {
-            using SQLiteConnection connection = new(dbFile);
+            using SQLiteConnection connection = new(playerPref? preferences : dbFile);
             connection.CreateTable<T>();
             int rows = connection.Insert(item);
             return rows > 0;
         }
-        public static bool Update<T>(T item)
+        public static bool Update<T>(T item) => Update<T>(item, false);
+        public static bool Update<T>(T item, bool playerPref)
         {
-            using SQLiteConnection connection = new(dbFile);
+            using SQLiteConnection connection = new(playerPref ? preferences : dbFile);
             connection.CreateTable<T>();
             int rows = connection.Update(item);
             return rows > 0;
         }
-        public static bool Delete<T>(T item)
+        public static bool Delete<T>(T item) => Delete<T>(item, false);
+        public static bool Delete<T>(T item, bool playerPref)
         {
-            using SQLiteConnection connection = new(dbFile);
+            using SQLiteConnection connection = new(playerPref ? preferences : dbFile);
             connection.CreateTable<T>();
             int rows = connection.Delete(item);
             return rows > 0;
         }
-
-        public static List<T> Read<T>() where T : new()
+        public static List<T> Read<T>() where T : new() => Read<T>(false);
+        public static List<T> Read<T>(bool playerPref) where T : new()
         {
-            using SQLiteConnection connection = new(dbFile);
+            using SQLiteConnection connection = new(playerPref ? preferences : dbFile);
             connection.CreateTable<T>();
             List<T> items = connection.Table<T>().ToList();
-            //if(items.Count > 0) ImportFromOnlineAsync();
             
             return items;
         }

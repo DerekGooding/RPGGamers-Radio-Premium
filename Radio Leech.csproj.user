@@ -14,6 +14,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="View\UserControls\PlaylistControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="View\UserControls\SongControl.xaml">
       <SubType>Designer</SubType>
     </Page>

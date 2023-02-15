@@ -18,6 +18,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="View\UserControls\PlaylistControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="mvvmDb.db">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
