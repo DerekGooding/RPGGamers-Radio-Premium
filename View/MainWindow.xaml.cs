@@ -1,7 +1,10 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows;
+using System.Windows.Data;
 
 namespace Radio_Leech
 {
@@ -17,7 +20,7 @@ namespace Radio_Leech
                              $"Created by: Derek Gooding\n" +
                              $"©2023\n" +
                              $"Libertas Infinitum\n" +
-                             $"Version 0.9.1 | beta";
+                             $"Version 0.9.2 | beta";
             
             MessageBox.Show(message);
         }
@@ -60,11 +63,6 @@ namespace Radio_Leech
             string userRoot = System.Environment.GetEnvironmentVariable("USERPROFILE")?? "C:\\";
             string downloadFolder = Path.Combine(userRoot, "Downloads");
             MessageBox.Show(downloadFolder);
-        }
-
-        private void ListView_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
-        {
-
         }
     }
 }

@@ -18,6 +18,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Model\Settings\SettingNames.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>SettingNames.resx</DependentUpon>
+    </Compile>
     <Compile Update="View\UserControls\PlaylistControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -27,6 +32,13 @@
     <None Update="mvvmDb.db">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Model\Settings\SettingNames.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>SettingNames.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>

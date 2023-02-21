@@ -11,152 +11,177 @@
     <Window.Resources>
         <vm:LeechVM x:Key="vm"/>
     </Window.Resources>
-    <DockPanel DataContext="{StaticResource vm}">
-        <Menu DockPanel.Dock="Top">
-            <MenuItem Header="File">
-                <MenuItem Header="Scan for Songs Online"
-                          Command="{Binding SearchLinksCommand}"
-                          ToolTip="Looks for working URL links one at a time. Will not add duplicate entries"/>
-                <MenuItem Header="Download"
-                          Command="{Binding DownloadCommand}"
-                          ToolTip="Download the currently playing song"/>
-                <MenuItem Header="Show Downloads Path"
-                          Click="ShowDownloadPath_Click"
-                          ToolTip="Tells you the path files are downloaded to"/>
-                <Separator/>
-                <MenuItem Header="Exit" Click="Exit_Click"/>
-            </MenuItem>
-            <MenuItem Header="Edit" IsEnabled="False" ToolTip="Coming soon!">
-                
-            </MenuItem>
-            <MenuItem Header="View" IsEnabled="False" ToolTip="Coming soon!">
-                
-            </MenuItem>
-            <MenuItem Header="Help">
-                <MenuItem Header="About"
-                          Click="About_Click"
-                          ToolTip="Information about this application"/>
-                <Separator/>
-                <MenuItem Header="GitHub"
-                          Click="Github_Click"
-                          ToolTip="Navigate to this applications git repo"/>
-                <MenuItem Header="Original Radio Site"
-                          Click="RadioSite_Click"
-                          ToolTip="Navigate to the original RPG Radio web site"/>
-            </MenuItem>
-        </Menu>
-        <StatusBar DockPanel.Dock="Bottom">
-            <StatusBarItem Background="Gray">
-                <StackPanel Orientation="Horizontal">
-                    <StackPanel.Resources>
-                        <Style TargetType="Label">
-                            <Setter Property="Foreground" Value="White"/>
-                        </Style>
-                        <Style TargetType="Button">
-                            <Setter Property="Margin" Value="10,0,0,0"/>
-                            <Setter Property="Width" Value="35"/>
-                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                            <Setter Property="VerticalContentAlignment" Value="Center"/>
-                            <Setter Property="Foreground" Value="White"/>
-                            <Setter Property="Background" Value="Transparent"/>
-                            <Setter Property="BorderThickness" Value="0"/>
-                            <Setter Property="FontSize" Value="20"/>
-                            <Setter Property="Template">
-                                <Setter.Value>
-                                    <ControlTemplate TargetType="{x:Type Button}">
-                                        <Border x:Name="Border" Background="{TemplateBinding Background}">
-                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
-                                        </Border>
-                                        <ControlTemplate.Triggers>
-                                            <Trigger Property="IsMouseOver" Value="True">
-                                                <Setter Property="Background" Value="#7FFFFFFF" TargetName="Border" />
-                                            </Trigger>
-                                        </ControlTemplate.Triggers>
-                                    </ControlTemplate>
-                                </Setter.Value>
-                            </Setter>
-                        </Style>
-                    </StackPanel.Resources>
-                    <Button Content="|◀"
-                            Command="{Binding PreviousCommand}"/>
-                    <Button Content="▶"
-                            Command="{Binding PauseCommand}"/>
-                    <Button Content="▶|"
-                            Command="{Binding NextCommand}"/>
-                    <Border Margin="15,0,5,0" BorderBrush="White" BorderThickness="2"/>
-                    
-                    <Label Content="{Binding Status}"/>
-                    <Separator Width="10"/>
-                    <Label Content="{Binding Duration}"/>
-                    
-                    <Button Content="🔈🔉🔊" Visibility="Hidden"/>
-                </StackPanel>
-            </StatusBarItem>
-        </StatusBar>
-        <TabControl DockPanel.Dock="Top">
-            <TabItem Header="Main">
-                <DockPanel Background="WhiteSmoke">
-                    <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="3">
-                        <Grid>
-                            <TextBox x:Name="SearchText" Width="300" VerticalContentAlignment="Center" ToolTip="Filter songs by typing here"
-                                Text="{Binding Search, UpdateSourceTrigger=PropertyChanged}"/>
-                            <TextBlock IsHitTestVisible="False" Text="🔍 Search Songs" VerticalAlignment="Center" 
-                                   HorizontalAlignment="Left" Margin="2,2,0,0" FontWeight="Bold" Foreground="DarkGray" FontSize="11" Opacity="0.5">
-                                <TextBlock.Style>
-                                    <Style TargetType="{x:Type TextBlock}">
-                                        <Setter Property="Visibility" Value="Collapsed"/>
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding Text, ElementName=SearchText}" Value="">
-                                                <Setter Property="Visibility" Value="Visible"/>
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </TextBlock.Style>
-                            </TextBlock>
-                        </Grid>
+    <Canvas Background="Transparent" x:Name="MyCanvas" DataContext="{StaticResource vm}">
+        <DockPanel Width="{Binding ActualWidth, ElementName=MyCanvas}"
+                   Height="{Binding ActualHeight, ElementName=MyCanvas}">
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="File">
+                    <MenuItem Header="Scan for Songs Online"
+                              Command="{Binding SearchLinksCommand}"
+                              ToolTip="Looks for working URL links one at a time. Will not add duplicate entries"/>
+                    <MenuItem Header="Download"
+                              Command="{Binding DownloadCommand}"
+                              ToolTip="Download the currently playing song"/>
+                    <MenuItem Header="Show Downloads Path"
+                              Click="ShowDownloadPath_Click"
+                              ToolTip="Tells you the path files are downloaded to"/>
+                    <Separator/>
+                    <MenuItem Header="Exit" Click="Exit_Click"/>
+                </MenuItem>
+                <MenuItem Header="Edit" IsEnabled="False" ToolTip="Coming soon!">
 
-                        <Label  Width="100" Content="{Binding SongCount}"/>
-                        <Label Content="🔊" FontSize="16"/>
-                        <Slider Minimum="0" Maximum="1" Width="100" Value="{Binding Volume}" VerticalAlignment="Center"/>
+                </MenuItem>
+                <MenuItem Header="View" IsEnabled="False" ToolTip="Coming soon!">
+
+                </MenuItem>
+                <MenuItem Header="Help">
+                    <MenuItem Header="About"
+                              Click="About_Click"
+                              ToolTip="Information about this application"/>
+                    <Separator/>
+                    <MenuItem Header="GitHub"
+                              Click="Github_Click"
+                              ToolTip="Navigate to this applications git repo"/>
+                    <MenuItem Header="Original Radio Site"
+                              Click="RadioSite_Click"
+                              ToolTip="Navigate to the original RPG Radio web site"/>
+                </MenuItem>
+            </Menu>
+            <StatusBar DockPanel.Dock="Bottom">
+                <StatusBarItem Background="Gray">
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel.Resources>
+                            <Style TargetType="Label">
+                                <Setter Property="Foreground" Value="White"/>
+                            </Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Margin" Value="10,0,0,0"/>
+                                <Setter Property="Width" Value="35"/>
+                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                                <Setter Property="Foreground" Value="White"/>
+                                <Setter Property="Background" Value="Transparent"/>
+                                <Setter Property="BorderThickness" Value="0"/>
+                                <Setter Property="FontSize" Value="20"/>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type Button}">
+                                            <Border x:Name="Border" Background="{TemplateBinding Background}">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                            </Border>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Background" Value="#7FFFFFFF" TargetName="Border" />
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </StackPanel.Resources>
+                        <Button Content="|◀"
+                                Command="{Binding PreviousCommand}"/>
+                        <Button Content="▶"
+                                Command="{Binding PauseCommand}"/>
+                        <Button Content="▶|"
+                                Command="{Binding NextCommand}"/>
+                        <Border Margin="15,0,5,0" BorderBrush="White" BorderThickness="2"/>
+
+                        <Label Content="{Binding Status}"/>
+                        <Separator Width="10"/>
+                        <Label Content="{Binding Duration}"/>
+
+                        <Button Content="🔈🔉🔊" Visibility="Hidden"/>
                     </StackPanel>
-                    <MediaElement x:Name="MyPlayer" DockPanel.Dock="Left" LoadedBehavior="Manual"/>
-                    <DockPanel DockPanel.Dock="Left" Width="150">
-                        <DockPanel DockPanel.Dock="Top">
-                            <Label DockPanel.Dock="Left" Content="Playlists" FontSize="20"/>
-                            <Button Background="Transparent" Foreground="Green" Content="+"
-                                    FontSize="26" FontWeight="Bold" BorderThickness="0"
-                                    Command="{Binding CreatePlaylistCommand}"/>
-                        </DockPanel>
+                </StatusBarItem>
+            </StatusBar>
+            <TabControl DockPanel.Dock="Top">
+                <TabItem Header="Main">
+                    <DockPanel Background="WhiteSmoke">
+                        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="3">
+                            <Grid>
+                                <TextBox x:Name="SearchText" Width="300" VerticalContentAlignment="Center" ToolTip="Filter songs by typing here"
+                                    Text="{Binding Search, UpdateSourceTrigger=PropertyChanged}"/>
+                                <TextBlock IsHitTestVisible="False" Text="🔍 Search Songs" VerticalAlignment="Center" 
+                                       HorizontalAlignment="Left" Margin="2,2,0,0" FontWeight="Bold" Foreground="DarkGray" FontSize="11" Opacity="0.5">
+                                    <TextBlock.Style>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding Text, ElementName=SearchText}" Value="">
+                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
+                            </Grid>
+
+                            <Label  Width="100" Content="{Binding SongCount}"/>
+                            <Label Content="🔊" FontSize="16"/>
+                            <Slider Minimum="0" Maximum="0.5" Width="100" Value="{Binding Volume}" VerticalAlignment="Center" 
+                                    IsSnapToTickEnabled="True" TickFrequency="0.005"/>
+                            <Button Content="💾" Width="30" Background="Transparent" BorderThickness="0"
+                                    Command="{Binding SaveVolumeCommand}"/>
+                        </StackPanel>
+                        <MediaElement x:Name="MyPlayer" DockPanel.Dock="Left" LoadedBehavior="Manual"/>
+
+                        <!--
+                        <DockPanel DockPanel.Dock="Left" Width="150">
+                            <DockPanel DockPanel.Dock="Top">
+                                <Label DockPanel.Dock="Left" Content="Playlists" FontSize="20"/>
+                                <Button Background="Transparent" Foreground="Green" Content="+"
+                                        FontSize="26" FontWeight="Bold" BorderThickness="0"
+                                        Command="{Binding CreatePlaylistCommand}"/>
+                            </DockPanel>
                         
-                        <ListView  Margin="5" SelectionMode="Single" d:ItemsSource="{d:SampleData}"
-                                   ItemsSource="{Binding Playlists}" SelectedItem="{Binding SelectedPlaylist}">
+                            <ListView  Margin="5" SelectionMode="Single" d:ItemsSource="{d:SampleData}"
+                                       ItemsSource="{Binding Playlists}" SelectedItem="{Binding SelectedPlaylist}">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <uc:PlaylistControl Playlist="{Binding}"/>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </DockPanel>
+                        -->
+
+                        <ListView Margin="5" SelectionMode="Single"
+                                  ItemsSource="{Binding FilteredSongs}" d:ItemsSource="{d:SampleData}" 
+                                  SelectedItem="{Binding SelectedSong}">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
-                                    <uc:PlaylistControl Playlist="{Binding}"/>
+                                    <uc:SongControl Song="{Binding}"/>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
                     </DockPanel>
-                    
-                    <ListView Margin="5" SelectionMode="Single"
-                              ItemsSource="{Binding FilteredSongs}" d:ItemsSource="{d:SampleData}" 
-                              SelectedItem="{Binding SelectedSong}">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <uc:SongControl Song="{Binding}"/>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-                </DockPanel>
-            </TabItem>
-            <TabItem Header="Custom Playlists" IsEnabled="False" ToolTip="Coming soon!">
-                <DockPanel>
-                </DockPanel>
-            </TabItem>
-            <TabItem Header="Settings" IsEnabled="False" ToolTip="Coming soon!">
-                <DockPanel>
-                </DockPanel>
-            </TabItem>
-        </TabControl>
-    </DockPanel>
+                </TabItem>
+                <TabItem Header="Custom Playlists" IsEnabled="False" ToolTip="Coming soon!">
+                    <DockPanel>
+                    </DockPanel>
+                </TabItem>
+                <TabItem Header="Settings" IsEnabled="False" ToolTip="Coming soon!">
+                    <DockPanel>
+                    </DockPanel>
+                </TabItem>
+            </TabControl>
+        </DockPanel>
+
+        <Border BorderThickness="2,0,2,2" BorderBrush="Black" Background="AliceBlue" CornerRadius="0,0,10,10"
+                Canvas.Top="{Binding PopupHeight}" Name="MyBorder">
+            <Border.Resources>
+                <local:HalfValueConverter x:Key="HalfValue"/>
+            </Border.Resources>
+            <Canvas.Left>
+                <MultiBinding Converter="{StaticResource HalfValue}">
+                    <Binding ElementName="MyCanvas" Path="ActualWidth"/>
+                    <Binding ElementName="MyBorder" Path="ActualWidth"/>
+                </MultiBinding>
+            </Canvas.Left>
+            <Grid Width="200">
+                <Label Content="{Binding PopupText}" HorizontalAlignment="Center" FontSize="{Binding PopupFontSize}"/>
+            </Grid>
+        </Border>
+    </Canvas>
 </Window>

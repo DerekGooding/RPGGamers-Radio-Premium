@@ -53,7 +53,7 @@ namespace Radio_Leech.View.UserControls {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Radio Leech;V1.0.0.0;component/view/usercontrols/playlistcontrol.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Radio Leech;component/view/usercontrols/playlistcontrol.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\View\UserControls\PlaylistControl.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

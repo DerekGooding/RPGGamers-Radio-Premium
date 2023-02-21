@@ -1,4 +1,4 @@
-﻿using Radio_Leech.Model;
+﻿using Radio_Leech.Model.Database;
 using System.Windows;
 using System.Windows.Controls;
 
