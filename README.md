@@ -16,11 +16,19 @@ Installing with ClickOnce will check for future updates automatically every time
 
 ## RoadMap
 
-* Add Icons to replace buttons 	~~and the default application icon.~~
+* ~~Add Icons to replace buttons 	and the default application icon.~~
 * A custom playlist tab that lets you choose songs to shuffle through
 * A timestamp scrubber bar so you can skip to parts of a song you like
-* Settings tab for saving option preferences
+* Settings tab for saving option preferences | ~~framework~~
 * Dark Mode
 * A visual representation of the music being played (wave form) 
-* Getting Started tutorial pop-ups for first time users | For now, just click the next button and enjoy!
+* Getting Started tutorial pop-ups for first time users | ~~framework~~
+* List the previously played songs for the back button
 * And hopefully much more! Please send me ideas
+
+
+# known bugs
+
+* After update, doesn't automatically open
+* Some song text is jumbled/mistranslated
+* Play/pause button has no visual to show the music is paused
