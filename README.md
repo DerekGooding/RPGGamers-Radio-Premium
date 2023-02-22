@@ -33,3 +33,4 @@ Installing with ClickOnce will check for future updates automatically every time
 * Some song text is jumbled/mistranslated
 * Play/pause button has no visual to show the music is paused
 * The manifest is currently unsigned which prompts a windows warning when installing for the first time
+* Updating resets user preferences
