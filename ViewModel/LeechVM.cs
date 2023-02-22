@@ -142,17 +142,18 @@ namespace Radio_Leech.ViewModel
             PauseCommand = new(this);
             CreatePlaylistCommand = new(this);
 
-            ReadPreferences();
+            
             ReadSongs();
             ReadPlaylists();
             StartTimer();
+            ReadPreferences();
         }
 
         private void ReadPreferences()
         {
             var preferences = DatabaseHelper.Read<UserPreference>(DatabaseHelper.Target.UserPrefs);
             double? volume = preferences.FirstOrDefault(x => x?.Name == SettingNames.Volume, null)?.Percent;
-            Volume = volume != null ? (double)volume : 0.5;
+            Volume = volume != null ? (double)volume : 0.25;
         }
 
         private void ReadPlaylists()
@@ -252,6 +253,7 @@ namespace Radio_Leech.ViewModel
             {
                 element.Source = new Uri(song.Url);
                 element.Play();
+                SetVolume();
                 if (!isPrevious)
                     previousSongs.Push(song);
                 CheckHistory();

@@ -86,11 +86,15 @@ E:\repos\RPGGamers-Radio-Premium\obj\Release\net6.0-windows\refint\Radio Leech.d
 E:\repos\RPGGamers-Radio-Premium\obj\Release\net6.0-windows\Radio Leech.pdb
 E:\repos\RPGGamers-Radio-Premium\obj\Release\net6.0-windows\Radio Leech.genruntimeconfig.cache
 E:\repos\RPGGamers-Radio-Premium\obj\Release\net6.0-windows\ref\Radio Leech.dll
-D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\Radio Leech.dll.manifest
-D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\Radio Leech.application
-D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\obj\Release\net6.0-windows\Radio Leech.dll.manifest
-D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\obj\Release\net6.0-windows\Radio Leech.application
 E:\repos\RPGGamers-Radio-Premium\obj\Release\net6.0-windows\View\UserControls\PlaylistControl.g.cs
 E:\repos\RPGGamers-Radio-Premium\obj\Release\net6.0-windows\View\UserControls\PlaylistControl.baml
 E:\repos\RPGGamers-Radio-Premium\obj\Release\net6.0-windows\Radio_Leech.Model.Settings.SettingNames.resources
 E:\repos\RPGGamers-Radio-Premium\obj\Release\net6.0-windows\Radio Leech.csproj.GenerateResource.cache
+D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\obj\Release\net6.0-windows\View\UserControls\PlaylistControl.g.cs
+D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\obj\Release\net6.0-windows\View\UserControls\PlaylistControl.baml
+D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\obj\Release\net6.0-windows\Radio_Leech.Model.Settings.SettingNames.resources
+D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\obj\Release\net6.0-windows\Radio Leech.csproj.GenerateResource.cache
+D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\Radio Leech.dll.manifest
+D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\Radio Leech.application
+D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\obj\Release\net6.0-windows\Radio Leech.dll.manifest
+D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\obj\Release\net6.0-windows\Radio Leech.application
