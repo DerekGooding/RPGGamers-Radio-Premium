@@ -42,11 +42,26 @@ D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\obj\Release\net6.0-windows\r
 D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\obj\Release\net6.0-windows\Radio Leech.pdb
 D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\obj\Release\net6.0-windows\Radio Leech.genruntimeconfig.cache
 D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\obj\Release\net6.0-windows\ref\Radio Leech.dll
+D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\obj\Release\net6.0-windows\View\UserControls\PlaylistControl.g.cs
+D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\obj\Release\net6.0-windows\View\UserControls\PlaylistControl.baml
+D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\obj\Release\net6.0-windows\Radio_Leech.Model.Settings.SettingNames.resources
+D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\obj\Release\net6.0-windows\Radio Leech.csproj.GenerateResource.cache
+D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\Radio Leech.dll.manifest
+D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\Radio Leech.application
+D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\obj\Release\net6.0-windows\Radio Leech.dll.manifest
+D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\obj\Release\net6.0-windows\Radio Leech.application
 E:\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\Radio Leech.exe
 E:\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\Radio Leech.deps.json
 E:\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\Radio Leech.runtimeconfig.json
 E:\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\Radio Leech.dll
 E:\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\Radio Leech.pdb
+E:\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\NAudio.dll
+E:\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\NAudio.Asio.dll
+E:\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\NAudio.Core.dll
+E:\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\NAudio.Midi.dll
+E:\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\NAudio.Wasapi.dll
+E:\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\NAudio.WinForms.dll
+E:\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\NAudio.WinMM.dll
 E:\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\SQLite-net.dll
 E:\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\SQLitePCLRaw.batteries_v2.dll
 E:\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\SQLitePCLRaw.nativelibrary.dll
@@ -67,6 +82,7 @@ E:\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\runtimes\win-x64\nat
 E:\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\runtimes\win-x86\native\e_sqlite3.dll
 E:\repos\RPGGamers-Radio-Premium\obj\Release\net6.0-windows\Radio Leech.csproj.AssemblyReference.cache
 E:\repos\RPGGamers-Radio-Premium\obj\Release\net6.0-windows\View\MainWindow.g.cs
+E:\repos\RPGGamers-Radio-Premium\obj\Release\net6.0-windows\View\UserControls\PlaylistControl.g.cs
 E:\repos\RPGGamers-Radio-Premium\obj\Release\net6.0-windows\View\UserControls\SongControl.g.cs
 E:\repos\RPGGamers-Radio-Premium\obj\Release\net6.0-windows\App.g.cs
 E:\repos\RPGGamers-Radio-Premium\obj\Release\net6.0-windows\Radio Leech_Content.g.cs
@@ -74,8 +90,11 @@ E:\repos\RPGGamers-Radio-Premium\obj\Release\net6.0-windows\GeneratedInternalTyp
 E:\repos\RPGGamers-Radio-Premium\obj\Release\net6.0-windows\Radio Leech_MarkupCompile.cache
 E:\repos\RPGGamers-Radio-Premium\obj\Release\net6.0-windows\Radio Leech_MarkupCompile.lref
 E:\repos\RPGGamers-Radio-Premium\obj\Release\net6.0-windows\View\MainWindow.baml
+E:\repos\RPGGamers-Radio-Premium\obj\Release\net6.0-windows\View\UserControls\PlaylistControl.baml
 E:\repos\RPGGamers-Radio-Premium\obj\Release\net6.0-windows\View\UserControls\SongControl.baml
 E:\repos\RPGGamers-Radio-Premium\obj\Release\net6.0-windows\Radio Leech.g.resources
+E:\repos\RPGGamers-Radio-Premium\obj\Release\net6.0-windows\Radio_Leech.Model.Settings.SettingNames.resources
+E:\repos\RPGGamers-Radio-Premium\obj\Release\net6.0-windows\Radio Leech.csproj.GenerateResource.cache
 E:\repos\RPGGamers-Radio-Premium\obj\Release\net6.0-windows\Radio Leech.GeneratedMSBuildEditorConfig.editorconfig
 E:\repos\RPGGamers-Radio-Premium\obj\Release\net6.0-windows\Radio Leech.AssemblyInfoInputs.cache
 E:\repos\RPGGamers-Radio-Premium\obj\Release\net6.0-windows\Radio Leech.AssemblyInfo.cs
@@ -86,15 +105,5 @@ E:\repos\RPGGamers-Radio-Premium\obj\Release\net6.0-windows\refint\Radio Leech.d
 E:\repos\RPGGamers-Radio-Premium\obj\Release\net6.0-windows\Radio Leech.pdb
 E:\repos\RPGGamers-Radio-Premium\obj\Release\net6.0-windows\Radio Leech.genruntimeconfig.cache
 E:\repos\RPGGamers-Radio-Premium\obj\Release\net6.0-windows\ref\Radio Leech.dll
-E:\repos\RPGGamers-Radio-Premium\obj\Release\net6.0-windows\View\UserControls\PlaylistControl.g.cs
-E:\repos\RPGGamers-Radio-Premium\obj\Release\net6.0-windows\View\UserControls\PlaylistControl.baml
-E:\repos\RPGGamers-Radio-Premium\obj\Release\net6.0-windows\Radio_Leech.Model.Settings.SettingNames.resources
-E:\repos\RPGGamers-Radio-Premium\obj\Release\net6.0-windows\Radio Leech.csproj.GenerateResource.cache
-D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\obj\Release\net6.0-windows\View\UserControls\PlaylistControl.g.cs
-D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\obj\Release\net6.0-windows\View\UserControls\PlaylistControl.baml
-D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\obj\Release\net6.0-windows\Radio_Leech.Model.Settings.SettingNames.resources
-D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\obj\Release\net6.0-windows\Radio Leech.csproj.GenerateResource.cache
-D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\Radio Leech.dll.manifest
-D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\Radio Leech.application
-D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\obj\Release\net6.0-windows\Radio Leech.dll.manifest
-D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\obj\Release\net6.0-windows\Radio Leech.application
+E:\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\View\Sample\sample-3s.mp3
+E:\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\NAudio.WaveFormRenderer.dll

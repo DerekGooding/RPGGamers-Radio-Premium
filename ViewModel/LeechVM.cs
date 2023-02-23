@@ -16,6 +16,7 @@ using System.Threading.Tasks;
 using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Threading;
 
@@ -142,7 +143,7 @@ namespace Radio_Leech.ViewModel
             PauseCommand = new(this);
             CreatePlaylistCommand = new(this);
 
-            
+
             ReadSongs();
             ReadPlaylists();
             StartTimer();
@@ -265,6 +266,7 @@ namespace Radio_Leech.ViewModel
                     element.MediaEnded += Element_MediaEnded;
                     subscribed = true;
                 }
+                WaveFormSource = AudioHelper.UpdateGraphic();
             }
         }
 
@@ -294,7 +296,7 @@ namespace Radio_Leech.ViewModel
         {
             DispatcherTimer timer = new()
             {
-                Interval = TimeSpan.FromSeconds(1)
+                Interval = TimeSpan.FromMilliseconds(20)
             };
             timer.Tick += TimerTick;
             timer.Start();
@@ -306,13 +308,19 @@ namespace Radio_Leech.ViewModel
             updater.Start();
         }
 
+        public ImageSource? WaveFormSource { get; set; }
+        public double FillWidth { get => fillWidth; set { fillWidth = value; OnPropertyChanged(); } }
+
         void TimerTick(object? sender, EventArgs e)
         {
             if (Application.Current.MainWindow != null)
                 if (((MainWindow)Application.Current.MainWindow).MyPlayer is MediaElement element)
                     if (element.Source != null)
                         if (element.NaturalDuration.HasTimeSpan)
+                        {
                             Duration = string.Format("{0} / {1}", element.Position.ToString(@"mm\:ss"), element.NaturalDuration.TimeSpan.ToString(@"mm\:ss"));
+                            FillWidth = (element.Position.TotalMilliseconds / element.NaturalDuration.TimeSpan.TotalMilliseconds) * 800;
+                        }
         }
 
         private void Element_MediaEnded(object sender, RoutedEventArgs e) => PlayRandomSong();
@@ -411,9 +419,10 @@ namespace Radio_Leech.ViewModel
         }
         private popupState PopupState = popupState.Waiting;
         private double popupHeight = -40;
-        private double popupFontSize = 0;
+        private double popupFontSize = 1;
         private string popupText = string.Empty;
         private int popupDisplayTick = 0;
+        private double fillWidth;
 
         private void Update(object? sender, EventArgs e)
         {

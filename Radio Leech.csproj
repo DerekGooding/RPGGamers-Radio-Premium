@@ -10,11 +10,23 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="View\Sample\sample-3s.mp3" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="View\Icons\radio.ico" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="NAudio" Version="2.1.0" />
+    <PackageReference Include="NAudio.WaveFormRenderer" Version="2.0.0" />
     <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="View\Sample\sample-3s.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>

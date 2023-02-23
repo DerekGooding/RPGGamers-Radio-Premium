@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\obj\Release\net6.0-windows\
+E:\repos\RPGGamers-Radio-Premium\obj\Release\net6.0-windows\
 Radio_Leech
 none
 false
 TRACE;RELEASE;NET;NET6_0;NETCOREAPP
-D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\App.xaml
+E:\repos\RPGGamers-Radio-Premium\App.xaml
 31492402167
-1-1101342812
-22298153555
-199-830574754
+22063415134
+23-1700568870
+215-979966595
 View\MainWindow.xaml;View\UserControls\PlaylistControl.xaml;View\UserControls\SongControl.xaml;
 
 False

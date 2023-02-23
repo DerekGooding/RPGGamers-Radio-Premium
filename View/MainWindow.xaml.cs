@@ -1,10 +1,18 @@
-﻿using System;
+﻿using NAudio.Wave;
+using NAudio.WaveFormRenderer;
+using Radio_Leech.Model.Database;
+using Radio_Leech.ViewModel.Helpers;
+using System;
 using System.Diagnostics;
+using System.Drawing;
+using System.Drawing.Imaging;
 using System.Globalization;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Data;
+using System.Windows.Media.Imaging;
 
 namespace Radio_Leech
 {
@@ -60,9 +68,37 @@ namespace Radio_Leech
 
         private void ShowDownloadPath_Click(object sender, RoutedEventArgs e)
         {
-            string userRoot = System.Environment.GetEnvironmentVariable("USERPROFILE")?? "C:\\";
+            string userRoot = Environment.GetEnvironmentVariable("USERPROFILE")?? "C:\\";
             string downloadFolder = Path.Combine(userRoot, "Downloads");
             MessageBox.Show(downloadFolder);
         }
+
+        WaveFormRenderer waveFormRenderer = new WaveFormRenderer();
+        private void Sample_Click(object sender, RoutedEventArgs e)
+        {
+            if (((MainWindow)Application.Current.MainWindow).MyPlayer is MediaElement element)
+            {
+                element.Source = new Uri(AudioHelper.SamplePath);
+                element.Play();
+                
+                using var waveStream = new AudioFileReader(AudioHelper.SamplePath);
+                var image = waveFormRenderer.Render(waveStream, new MaxPeakProvider(), new StandardWaveFormRendererSettings() { Width = 1600 });
+                if (image == null) return;
+                using var ms = new MemoryStream();
+                image.Save(ms, ImageFormat.Bmp);
+                ms.Seek(0, SeekOrigin.Begin);
+
+                var bitmapImage = new BitmapImage();
+                bitmapImage.BeginInit();
+                bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+                bitmapImage.StreamSource = ms;
+                bitmapImage.EndInit();
+
+                MyWaveImage.Source = bitmapImage;
+            }
+        }
+
+        
+        
     }
 }

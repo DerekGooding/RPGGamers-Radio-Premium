@@ -45,6 +45,8 @@
                     <MenuItem Header="Original Radio Site"
                               Click="RadioSite_Click"
                               ToolTip="Navigate to the original RPG Radio web site"/>
+                    <MenuItem Header="Play Sample mp3"
+                              Click="Sample_Click"/>
                 </MenuItem>
             </Menu>
             <StatusBar DockPanel.Dock="Bottom">
@@ -95,6 +97,10 @@
                     </StackPanel>
                 </StatusBarItem>
             </StatusBar>
+            <Grid DockPanel.Dock="Bottom" Height="50">
+                <Image x:Name="MyWaveImage"   Source="{Binding WaveFormSource}" HorizontalAlignment="Stretch"/>
+                <Rectangle Fill="#7FFFFFFF" HorizontalAlignment="Left" Width="{Binding FillWidth}"/>
+            </Grid>
             <TabControl DockPanel.Dock="Top">
                 <TabItem Header="Main">
                     <DockPanel Background="WhiteSmoke">

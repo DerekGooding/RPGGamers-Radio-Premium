@@ -9,5 +9,6 @@
 //------------------------------------------------------------------------------
 
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("view/icons/radio.ico")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("view/sample/sample-3s.mp3")]
 
 
