@@ -7,7 +7,7 @@
         xmlns:uc="clr-namespace:Radio_Leech.View.UserControls"
         xmlns:local="clr-namespace:Radio_Leech"
         mc:Ignorable="d"
-        Title="RPG Radio Premium" Height="450" Width="800">
+        Title="RPG Radio Premium" Height="650" Width="810">
     <Window.Resources>
         <vm:LeechVM x:Key="vm"/>
     </Window.Resources>
@@ -45,8 +45,8 @@
                     <MenuItem Header="Original Radio Site"
                               Click="RadioSite_Click"
                               ToolTip="Navigate to the original RPG Radio web site"/>
-                    <MenuItem Header="Play Sample mp3"
-                              Click="Sample_Click"/>
+                    <!--<MenuItem Header="Play Sample mp3"
+                              Click="Sample_Click"/>-->
                 </MenuItem>
             </Menu>
             <StatusBar DockPanel.Dock="Bottom">
@@ -97,9 +97,10 @@
                     </StackPanel>
                 </StatusBarItem>
             </StatusBar>
-            <Grid DockPanel.Dock="Bottom" Height="50">
-                <Image x:Name="MyWaveImage"   Source="{Binding WaveFormSource}" HorizontalAlignment="Stretch"/>
-                <Rectangle Fill="#7FFFFFFF" HorizontalAlignment="Left" Width="{Binding FillWidth}"/>
+            <Grid DockPanel.Dock="Bottom" Height="50" Background="Gray">
+                <Image x:Name="MyWaveImage"   Source="{Binding WaveFormSource}" HorizontalAlignment="Left" Width="800"
+                       MouseDown="Rectangle_MouseDown"/>
+                <Rectangle Fill="#7F000000" HorizontalAlignment="Left" Width="{Binding FillWidth}" IsHitTestVisible="False"/>
             </Grid>
             <TabControl DockPanel.Dock="Top">
                 <TabItem Header="Main">

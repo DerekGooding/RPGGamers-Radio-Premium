@@ -73,32 +73,40 @@ namespace Radio_Leech
             MessageBox.Show(downloadFolder);
         }
 
-        WaveFormRenderer waveFormRenderer = new WaveFormRenderer();
-        private void Sample_Click(object sender, RoutedEventArgs e)
-        {
-            if (((MainWindow)Application.Current.MainWindow).MyPlayer is MediaElement element)
-            {
-                element.Source = new Uri(AudioHelper.SamplePath);
-                element.Play();
+        readonly WaveFormRenderer waveFormRenderer = new ();
+        //private void Sample_Click(object sender, RoutedEventArgs e)
+        //{
+        //    if (((MainWindow)Application.Current.MainWindow).MyPlayer is MediaElement element)
+        //    {
+        //        element.Source = new Uri(AudioHelper.SamplePath);
+        //        element.Play();
                 
-                using var waveStream = new AudioFileReader(AudioHelper.SamplePath);
-                var image = waveFormRenderer.Render(waveStream, new MaxPeakProvider(), new StandardWaveFormRendererSettings() { Width = 1600 });
-                if (image == null) return;
-                using var ms = new MemoryStream();
-                image.Save(ms, ImageFormat.Bmp);
-                ms.Seek(0, SeekOrigin.Begin);
+        //        using var waveStream = new AudioFileReader(AudioHelper.SamplePath);
+        //        var image = waveFormRenderer.Render(waveStream, new MaxPeakProvider(), new StandardWaveFormRendererSettings() { Width = 1600 });
+        //        if (image == null) return;
+        //        using var ms = new MemoryStream();
+        //        image.Save(ms, ImageFormat.Bmp);
+        //        ms.Seek(0, SeekOrigin.Begin);
 
-                var bitmapImage = new BitmapImage();
-                bitmapImage.BeginInit();
-                bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
-                bitmapImage.StreamSource = ms;
-                bitmapImage.EndInit();
+        //        var bitmapImage = new BitmapImage();
+        //        bitmapImage.BeginInit();
+        //        bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+        //        bitmapImage.StreamSource = ms;
+        //        bitmapImage.EndInit();
 
-                MyWaveImage.Source = bitmapImage;
+        //        MyWaveImage.Source = bitmapImage;
+        //    }
+        //}
+
+        private void Rectangle_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if(sender is UIElement rectangle)
+            {
+                var mousePosition = e.MouseDevice.GetPosition(rectangle);
+                if (((MainWindow)Application.Current.MainWindow).MyPlayer is MediaElement element)
+                    element.Position = element.NaturalDuration.TimeSpan / (800 / mousePosition.X);
             }
+            
         }
-
-        
-        
     }
 }

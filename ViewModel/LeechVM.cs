@@ -1,4 +1,6 @@
-﻿using Radio_Leech.Model.Database;
+﻿using NAudio.Wave;
+using NAudio.WaveFormRenderer;
+using Radio_Leech.Model.Database;
 using Radio_Leech.Model.Settings;
 using Radio_Leech.ViewModel.Commands;
 using Radio_Leech.ViewModel.Helpers;
@@ -6,18 +8,19 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
-using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using System.Windows.Media.Animation;
+using System.Windows.Media.Imaging;
 using System.Windows.Threading;
 
 namespace Radio_Leech.ViewModel
@@ -31,6 +34,10 @@ namespace Radio_Leech.ViewModel
         }
 
         private readonly string ROOT = @"http://www.rpgamers.net/radio/data/"; //  + data_# + / +  4 digit number .dat
+
+        private readonly WaveFormRenderer waveFormRenderer = new();
+        public ImageSource? WaveFormSource { get => waveFormSource; set { waveFormSource = value; OnPropertyChanged(); } }
+        public double FillWidth { get => fillWidth; set { fillWidth = value; OnPropertyChanged(); } }
 
         private string status = string.Empty;
         public string Status
@@ -142,7 +149,6 @@ namespace Radio_Leech.ViewModel
             NextCommand = new(this);
             PauseCommand = new(this);
             CreatePlaylistCommand = new(this);
-
 
             ReadSongs();
             ReadPlaylists();
@@ -266,7 +272,29 @@ namespace Radio_Leech.ViewModel
                     element.MediaEnded += Element_MediaEnded;
                     subscribed = true;
                 }
-                WaveFormSource = AudioHelper.UpdateGraphic();
+                WaveFormSource = new BitmapImage();
+                new Thread(() =>
+                {
+                    using var waveStream = new AudioFileReader(song.Url);
+                    var image = waveFormRenderer.Render(waveStream, new MaxPeakProvider(), new StandardWaveFormRendererSettings() { Width = 1650 });
+                    if (image == null) return;
+                    using var ms = new MemoryStream();
+                    image.Save(ms, ImageFormat.Bmp);
+                    ms.Seek(0, SeekOrigin.Begin);
+
+                    var bitmapImage = new BitmapImage();
+                    bitmapImage.BeginInit();
+                    bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+                    bitmapImage.StreamSource = ms;
+                    bitmapImage.EndInit();
+                    bitmapImage.Freeze();
+
+                    Dispatcher.CurrentDispatcher.Invoke(() =>
+                    {
+                        WaveFormSource = bitmapImage;
+                    });
+                    
+                }).Start();
             }
         }
 
@@ -308,8 +336,7 @@ namespace Radio_Leech.ViewModel
             updater.Start();
         }
 
-        public ImageSource? WaveFormSource { get; set; }
-        public double FillWidth { get => fillWidth; set { fillWidth = value; OnPropertyChanged(); } }
+        
 
         void TimerTick(object? sender, EventArgs e)
         {
@@ -423,6 +450,7 @@ namespace Radio_Leech.ViewModel
         private string popupText = string.Empty;
         private int popupDisplayTick = 0;
         private double fillWidth;
+        private ImageSource? waveFormSource;
 
         private void Update(object? sender, EventArgs e)
         {

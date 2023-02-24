@@ -46,10 +46,6 @@ D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\obj\Release\net6.0-windows\V
 D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\obj\Release\net6.0-windows\View\UserControls\PlaylistControl.baml
 D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\obj\Release\net6.0-windows\Radio_Leech.Model.Settings.SettingNames.resources
 D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\obj\Release\net6.0-windows\Radio Leech.csproj.GenerateResource.cache
-D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\Radio Leech.dll.manifest
-D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\Radio Leech.application
-D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\obj\Release\net6.0-windows\Radio Leech.dll.manifest
-D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\obj\Release\net6.0-windows\Radio Leech.application
 E:\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\Radio Leech.exe
 E:\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\Radio Leech.deps.json
 E:\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\Radio Leech.runtimeconfig.json
@@ -107,3 +103,16 @@ E:\repos\RPGGamers-Radio-Premium\obj\Release\net6.0-windows\Radio Leech.genrunti
 E:\repos\RPGGamers-Radio-Premium\obj\Release\net6.0-windows\ref\Radio Leech.dll
 E:\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\View\Sample\sample-3s.mp3
 E:\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\NAudio.WaveFormRenderer.dll
+D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\View\Sample\sample-3s.mp3
+D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\NAudio.dll
+D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\NAudio.Asio.dll
+D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\NAudio.Core.dll
+D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\NAudio.Midi.dll
+D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\NAudio.Wasapi.dll
+D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\NAudio.WaveFormRenderer.dll
+D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\NAudio.WinForms.dll
+D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\NAudio.WinMM.dll
+D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\Radio Leech.dll.manifest
+D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\Radio Leech.application
+D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\obj\Release\net6.0-windows\Radio Leech.dll.manifest
+D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\obj\Release\net6.0-windows\Radio Leech.application
