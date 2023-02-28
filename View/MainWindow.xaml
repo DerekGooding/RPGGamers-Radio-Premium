@@ -25,6 +25,10 @@
                     <MenuItem Header="Show Downloads Path"
                               Click="ShowDownloadPath_Click"
                               ToolTip="Tells you the path files are downloaded to"/>
+                    <MenuItem Header="Download All"
+                              Command="{Binding DownloadAllCommand}"/>
+                    <!--<MenuItem Header="Fix Title"
+                              Command="{Binding FixTitleCommand}"/>-->
                     <Separator/>
                     <MenuItem Header="Exit" Click="Exit_Click"/>
                 </MenuItem>
@@ -155,7 +159,7 @@
 
                         <ListView Margin="5" SelectionMode="Single"
                                   ItemsSource="{Binding FilteredSongs}" d:ItemsSource="{d:SampleData}" 
-                                  SelectedItem="{Binding SelectedSong}">
+                                  SelectedItem="{Binding SelectedSong}" MouseDoubleClick="Fix_DoubleClick">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <uc:SongControl Song="{Binding}"/>

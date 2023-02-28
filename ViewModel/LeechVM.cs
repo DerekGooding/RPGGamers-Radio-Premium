@@ -116,10 +116,12 @@ namespace Radio_Leech.ViewModel
         public SaveVolumeCommand SaveVolumeCommand { get; set; }
         public SearchLinksCommand SearchLinksCommand { get; set; }
         public DownloadCommand DownloadCommand { get; set; }
+        public DownloadAllCommand DownloadAllCommand { get; set; }
         public PreviousCommand PreviousCommand { get; set; }
         public NextCommand NextCommand { get; set; }
         public PauseCommand PauseCommand { get; set; }
         public CreatePlaylistCommand CreatePlaylistCommand { get; set; }
+        public FixTitleCommand FixTitleCommand { get; set; }
         public ObservableCollection<Song> FoundLinks { get; set; }
         public ObservableCollection<Playlist> Playlists { get; set; }
 
@@ -149,11 +151,107 @@ namespace Radio_Leech.ViewModel
             NextCommand = new(this);
             PauseCommand = new(this);
             CreatePlaylistCommand = new(this);
+            DownloadAllCommand = new(this);
+            FixTitleCommand = new(this);
 
             ReadSongs();
             ReadPlaylists();
             StartTimer();
             ReadPreferences();
+            //LogAll();
+            //FixAll();
+        }
+        public void FixAll()
+        {
+            
+                new Thread(async () =>
+                {
+                    foreach (Song song in FoundLinks)
+                    {
+                        //Dispatcher.CurrentDispatcher.Invoke(() => { Status = song.Title ?? string.Empty; });
+                        await FixSongInfo(song);
+                    }
+                }).Start();
+        }
+
+        private void LogAll()
+        {
+            new Thread(async () =>
+            {
+                using HttpClient client = new();
+                using StreamWriter sw = new(@"D:\Log.txt", true);
+                foreach (var song in FoundLinks)
+                {
+                    HttpResponseMessage response = await client.GetAsync(song.Url);
+                    Stream streamToReadFrom = await response.Content.ReadAsStreamAsync();
+                    using StreamReader sr = new(streamToReadFrom, Encoding.UTF8);
+                    string info = sr.ReadLine();
+                    info += sr.ReadLine();
+                    info = Decode(info);
+                    info = info.Replace("\n", "");
+                    sw.WriteLine(info);
+                }
+            }).Start();
+        }
+
+        public void FixTitle()
+        {
+            new Thread ( async ()  => 
+            {
+                await FixSongInfo(SelectedSong);
+            }).Start();
+        }
+
+        public static async Task FixSongInfo(Song? song)
+        {
+            if (song == null) return;
+            using HttpClient client = new();
+            HttpResponseMessage response = await client.GetAsync(song.Url);
+            Stream streamToReadFrom = await response.Content.ReadAsStreamAsync();
+            using StreamReader sr = new(streamToReadFrom, Encoding.UTF8);
+            string info = sr.ReadLine();
+            info += sr.ReadLine();
+            info = Decode(info);
+            //MessageBox.Show(info);
+
+            var gameSplit = info.Split("TALB", StringSplitOptions.None);
+            string game = string.Empty;
+            if (gameSplit.Length < 2)
+                game = gameSplit[0];
+            else
+                game = gameSplit[1].Split("TPE1", StringSplitOptions.None)[0];
+
+            var titleSplit = info.Split("TIT2", StringSplitOptions.None);
+            string title = string.Empty;
+            if (titleSplit.Length < 2)
+                title = titleSplit[0];
+            else
+                title = titleSplit[1].Split("TRCK", StringSplitOptions.None)[0];
+
+            string removeAtStart = "ID3vTALB";
+            if (title.Contains(removeAtStart))
+                title = title.Replace(removeAtStart, "");
+            if (game.Contains(removeAtStart))
+                game = game.Replace(removeAtStart, "");
+
+            string[] cut = { "TALB", "TXXX", "TRCK", "TPE1", "TYER", "OS", "Xing", "WXXX", "TCON", "TDRC", "COMM" };
+            foreach(var item in cut)
+            {
+                if(title.Contains(item))
+                    title = title.Split(item, StringSplitOptions.None)[0];
+                if (game.Contains(item))
+                    game = game.Split(item, StringSplitOptions.None)[0];
+            }
+
+            //var message = $"Game = {game}\n" +
+            //              $"Title = {title}";
+            //if (MessageBox.Show(message, "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+            //{
+                song.Title = title;
+                song.Game = game;
+                DatabaseHelper.Update(song, DatabaseHelper.Target.Database);
+                //ReadSongs();
+            //}
         }
 
         private void ReadPreferences()
@@ -178,8 +276,10 @@ namespace Radio_Leech.ViewModel
             FoundLinks.Clear();
             var allSongs = DatabaseHelper.Read<Song>(DatabaseHelper.Target.Database);
             if (allSongs.Count == 0)
+            {
                 DatabaseHelper.ImportFromOnlineAsync();
-            allSongs = DatabaseHelper.Read<Song>(DatabaseHelper.Target.Database);
+                allSongs = DatabaseHelper.Read<Song>(DatabaseHelper.Target.Database);
+            }
             if (allSongs.Count == 0)
                 return;
             foreach (var item in allSongs)
@@ -214,10 +314,10 @@ namespace Radio_Leech.ViewModel
             HttpResponseMessage response = await client.GetAsync(url);
             Stream streamToReadFrom = await response.Content.ReadAsStreamAsync();
             using StreamReader sr = new(streamToReadFrom, Encoding.UTF8);
-            string line = sr.ReadLine() ?? "";
+            string line = sr.ReadLine()?? "";
+
             line = Decode(line);
 
-            //GetSpacers(line, out string x, out string y, out string w, out string z);
             if (line.Contains("DOCTYPE"))
                 return;
 
@@ -255,6 +355,11 @@ namespace Radio_Leech.ViewModel
         private void PlaySong(Song? song) => PlaySong(song, false);
         private void PlaySong(Song? song, bool isPrevious)
         {
+            new Thread(async () =>
+            {
+                await LogSongInfoAsync(song);
+            }).Start();
+
             if (song == null || song.Url == null) return;
             if (((MainWindow)Application.Current.MainWindow).MyPlayer is MediaElement element)
             {
@@ -296,6 +401,26 @@ namespace Radio_Leech.ViewModel
                     
                 }).Start();
             }
+        }
+
+        
+
+        private static async Task LogSongInfoAsync(Song? song)
+        {
+            if(song == null) return;
+            using HttpClient client = new();
+            HttpResponseMessage response = await client.GetAsync(song.Url);
+            Stream streamToReadFrom = await response.Content.ReadAsStreamAsync();
+            using StreamReader sr = new(streamToReadFrom, Encoding.UTF8);
+            string info = sr.ReadLine();
+            info += sr.ReadLine();
+            //info += sr.ReadLine();
+            info = Decode(info);
+            using StreamWriter sw = new (@"D:\\log.txt", true);
+            sw.WriteLine("NEW");
+            sw.WriteLine(info);
+
+
         }
 
         private void CheckHistory()
@@ -482,6 +607,31 @@ namespace Radio_Leech.ViewModel
                     popupDisplayTick = 0;
                 }
             }
+        }
+
+        public void DownloadAll()
+        {
+            Status = "Download all songs....";
+            new Thread(async () =>
+            {
+                HttpClient client = new();
+                string userRoot = @"D:\\";
+                int count = 0;
+                foreach (var song in FoundLinks)
+                {
+                    
+                    if (song == null) return;
+                    
+                    string downloadFolder = Path.Combine(userRoot, "Radio", $"song_{count++}.mpeg");
+
+                    //MessageBox.Show($"Downloading to:\n{downloadFolder}");
+                    
+                    using var stream = await client.GetStreamAsync(song.Url);
+                    using var fileStream = new FileStream(downloadFolder, FileMode.CreateNew);
+                    await stream.CopyToAsync(fileStream);
+                }
+            }).Start();
+            Status = string.Empty;
         }
     }
 }

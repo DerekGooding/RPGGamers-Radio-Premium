@@ -1,6 +1,8 @@
 ﻿using NAudio.Wave;
 using NAudio.WaveFormRenderer;
 using Radio_Leech.Model.Database;
+using Radio_Leech.View.UserControls;
+using Radio_Leech.ViewModel;
 using Radio_Leech.ViewModel.Helpers;
 using System;
 using System.Diagnostics;
@@ -9,6 +11,7 @@ using System.Drawing.Imaging;
 using System.Globalization;
 using System.IO;
 using System.Runtime.InteropServices;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -107,6 +110,16 @@ namespace Radio_Leech
                     element.Position = element.NaturalDuration.TimeSpan / (800 / mousePosition.X);
             }
             
+        }
+
+        private void Fix_DoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            foreach (var item in Resources.Values)
+                if (item is LeechVM vm)
+                    new Thread(async () =>
+                    {
+                        await LeechVM.FixSongInfo(vm.SelectedSong);
+                    }).Start();
         }
     }
 }
