@@ -18,12 +18,13 @@ Installing with ClickOnce will check for future updates automatically every time
 
 * ~~Add Icons to replace buttons 	and the default application icon.~~
 * A custom playlist tab that lets you choose songs to shuffle through
-* A timestamp scrubber bar so you can skip to parts of a song you like
+* ~~A timestamp scrubber bar so you can skip to parts of a song you like~~
 * Settings tab for saving option preferences | ~~framework~~
 * Dark Mode
-* A visual representation of the music being played (wave form) 
+* ~~A visual representation of the music being played (wave form)~~
 * Getting Started tutorial pop-ups for first time users | ~~framework~~
 * List the previously played songs for the back button
+* Favourites
 * And hopefully much more! Please send me ideas
 
 
@@ -34,3 +35,5 @@ Installing with ClickOnce will check for future updates automatically every time
 * Play/pause button has no visual to show the music is paused
 * The manifest is currently unsigned which prompts a windows warning when installing for the first time
 * Updating resets user preferences
+* waveform doesn't resize with the window
+* Waveform doesn't have mouse held functionality
