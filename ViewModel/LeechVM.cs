@@ -174,25 +174,25 @@ namespace Radio_Leech.ViewModel
                 }).Start();
         }
 
-        private void LogAll()
-        {
-            new Thread(async () =>
-            {
-                using HttpClient client = new();
-                using StreamWriter sw = new(@"D:\Log.txt", true);
-                foreach (var song in FoundLinks)
-                {
-                    HttpResponseMessage response = await client.GetAsync(song.Url);
-                    Stream streamToReadFrom = await response.Content.ReadAsStreamAsync();
-                    using StreamReader sr = new(streamToReadFrom, Encoding.UTF8);
-                    string info = sr.ReadLine();
-                    info += sr.ReadLine();
-                    info = Decode(info);
-                    info = info.Replace("\n", "");
-                    sw.WriteLine(info);
-                }
-            }).Start();
-        }
+        //private void LogAll()
+        //{
+        //    new Thread(async () =>
+        //    {
+        //        using HttpClient client = new();
+        //        using StreamWriter sw = new(@"D:\Log.txt", true);
+        //        foreach (var song in FoundLinks)
+        //        {
+        //            HttpResponseMessage response = await client.GetAsync(song.Url);
+        //            Stream streamToReadFrom = await response.Content.ReadAsStreamAsync();
+        //            using StreamReader sr = new(streamToReadFrom, Encoding.UTF8);
+        //            string info = sr.ReadLine();
+        //            info += sr.ReadLine();
+        //            info = Decode(info);
+        //            info = info.Replace("\n", "");
+        //            sw.WriteLine(info);
+        //        }
+        //    }).Start();
+        //}
 
         public void FixTitle()
         {
@@ -355,10 +355,10 @@ namespace Radio_Leech.ViewModel
         private void PlaySong(Song? song) => PlaySong(song, false);
         private void PlaySong(Song? song, bool isPrevious)
         {
-            new Thread(async () =>
-            {
-                await LogSongInfoAsync(song);
-            }).Start();
+            //new Thread(async () =>
+            //{
+            //    await LogSongInfoAsync(song);
+            //}).Start();
 
             if (song == null || song.Url == null) return;
             if (((MainWindow)Application.Current.MainWindow).MyPlayer is MediaElement element)
