@@ -369,7 +369,7 @@ namespace Radio_Leech.ViewModel
                 if (!isPrevious)
                     previousSongs.Push(song);
                 CheckHistory();
-                Status = $"{song.Title}";
+                Status = $"{song.Game} | {song.Title}";
 
                 IsPlaying = true;
                 if (!subscribed)
