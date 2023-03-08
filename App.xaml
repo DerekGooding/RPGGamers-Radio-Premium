@@ -4,6 +4,14 @@
              xmlns:local="clr-namespace:Radio_Leech"
              StartupUri="View/MainWindow.xaml">
     <Application.Resources>
-         
+        <Style TargetType="Label" x:Key="DarkLabel">
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+        <Style TargetType="Label" x:Key="LightLabel">
+            <Setter Property="Foreground" Value="Black"/>
+        </Style>
+        <Style TargetType="ListView" x:Key="DarklistView">
+            <Setter Property="Background" Value="DarkGray"/>
+        </Style>
     </Application.Resources>
 </Application>

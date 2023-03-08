@@ -9,15 +9,25 @@ namespace Radio_Leech.ViewModel.Helpers
 {
     public class DatabaseHelper
     {
+
         public enum Target
         {
             Database,
             UserPrefs
         }
+        private static readonly string localAppData = Environment.GetFolderPath(
+                                  Environment.SpecialFolder.LocalApplicationData);
+        private static readonly string userFilePath = Path.Combine(localAppData, "LibertasInfinitum");
 
-        private static readonly string dbFile = Path.Combine(Environment.CurrentDirectory, "mvvmDb.db");
-        private static readonly string preferences = Path.Combine(Environment.CurrentDirectory, "preferences.db");
+        private static readonly string dbFile = Path.Combine(userFilePath, "mvvmDb.db");
+        private static readonly string preferences = Path.Combine(userFilePath, "preferences.db");
         private static readonly string importUrl = "https://github.com/DerekGooding/RPGGamers-Radio-Premium/raw/main/mvvmDb.db?raw=true";
+
+        public static void InitializeFolder()
+        {
+            if (!Directory.Exists(userFilePath))
+                Directory.CreateDirectory(userFilePath);
+        }
 
         public static bool Insert<T>(T item, Target target)
         {

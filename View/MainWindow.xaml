@@ -13,8 +13,9 @@
     </Window.Resources>
     <Canvas Background="Transparent" x:Name="MyCanvas" DataContext="{StaticResource vm}">
         <DockPanel Width="{Binding ActualWidth, ElementName=MyCanvas}"
-                   Height="{Binding ActualHeight, ElementName=MyCanvas}">
-            <Menu DockPanel.Dock="Top">
+                   Height="{Binding ActualHeight, ElementName=MyCanvas}"
+                   Background="WhiteSmoke">
+            <Menu DockPanel.Dock="Top" >
                 <MenuItem Header="File">
                     <MenuItem Header="Scan for Songs Online"
                               Command="{Binding SearchLinksCommand}"
@@ -32,12 +33,12 @@
                     <Separator/>
                     <MenuItem Header="Exit" Click="Exit_Click"/>
                 </MenuItem>
-                <MenuItem Header="Edit" IsEnabled="False" ToolTip="Coming soon!">
+                <!--<MenuItem Header="Edit" IsEnabled="False" ToolTip="Coming soon!">
 
                 </MenuItem>
                 <MenuItem Header="View" IsEnabled="False" ToolTip="Coming soon!">
 
-                </MenuItem>
+                </MenuItem>-->
                 <MenuItem Header="Help">
                     <MenuItem Header="About"
                               Click="About_Click"
@@ -54,7 +55,7 @@
                 </MenuItem>
             </Menu>
             <StatusBar DockPanel.Dock="Bottom">
-                <StatusBarItem Background="Gray">
+                <StatusBarItem Background="#FF424242">
                     <StackPanel Orientation="Horizontal">
                         <StackPanel.Resources>
                             <Style TargetType="Label">
@@ -101,15 +102,23 @@
                     </StackPanel>
                 </StatusBarItem>
             </StatusBar>
-            <Grid DockPanel.Dock="Bottom" Height="50" Background="Gray">
+            <Grid DockPanel.Dock="Bottom" Height="50" Background="#FF424242">
                 <Image x:Name="MyWaveImage"   Source="{Binding WaveFormSource}" HorizontalAlignment="Left" Width="800"
                        MouseDown="Rectangle_MouseDown"/>
                 <Rectangle Fill="#7F000000" HorizontalAlignment="Left" Width="{Binding FillWidth}" IsHitTestVisible="False"/>
             </Grid>
-            <TabControl DockPanel.Dock="Top">
-                <TabItem Header="Main">
-                    <DockPanel Background="WhiteSmoke">
+            <TabControl DockPanel.Dock="Top" Background="#FF424242">
+                <TabItem Header="Main" >
+                    <DockPanel >
                         <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="3">
+                            <StackPanel.Resources>
+                                <Style TargetType="Label">
+                                    <Setter Property="Foreground" Value="White"/>
+                                </Style>
+                                <Style TargetType="Button">
+                                    <Setter Property="Foreground" Value="White"/>
+                                </Style>
+                            </StackPanel.Resources>
                             <Grid>
                                 <TextBox x:Name="SearchText" Width="300" VerticalContentAlignment="Center" ToolTip="Filter songs by typing here"
                                     Text="{Binding Search, UpdateSourceTrigger=PropertyChanged}"/>
@@ -157,9 +166,14 @@
                         </DockPanel>
                         -->
 
-                        <ListView Margin="5" SelectionMode="Single"
+                        <ListView SelectionMode="Single" Background="#FF1A1A1A"
                                   ItemsSource="{Binding FilteredSongs}" d:ItemsSource="{d:SampleData}" 
                                   SelectedItem="{Binding SelectedSong}" MouseDoubleClick="Fix_DoubleClick">
+                            <ListView.Resources>
+                                <Style TargetType="ScrollBar">
+                                    <Setter Property="Background" Value="#FF2E2E2E"/>
+                                </Style>
+                            </ListView.Resources>
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <uc:SongControl Song="{Binding}"/>
@@ -168,14 +182,14 @@
                         </ListView>
                     </DockPanel>
                 </TabItem>
-                <TabItem Header="Custom Playlists" IsEnabled="False" ToolTip="Coming soon!">
+                <!--<TabItem Header="Custom Playlists" IsEnabled="False" ToolTip="Coming soon!">
                     <DockPanel>
                     </DockPanel>
                 </TabItem>
                 <TabItem Header="Settings" IsEnabled="False" ToolTip="Coming soon!">
                     <DockPanel>
                     </DockPanel>
-                </TabItem>
+                </TabItem>-->
             </TabControl>
         </DockPanel>
 

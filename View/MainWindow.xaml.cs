@@ -31,7 +31,7 @@ namespace Radio_Leech
                              $"Created by: Derek Gooding\n" +
                              $"©2023\n" +
                              $"Libertas Infinitum\n" +
-                             $"Version 0.9.2 | beta";
+                             $"Version 0.9.4 | beta";
             
             MessageBox.Show(message);
         }

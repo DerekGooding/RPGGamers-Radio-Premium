@@ -154,12 +154,16 @@ namespace Radio_Leech.ViewModel
             DownloadAllCommand = new(this);
             FixTitleCommand = new(this);
 
+
+            DatabaseHelper.InitializeFolder();
+
             ReadSongs();
             ReadPlaylists();
             StartTimer();
             ReadPreferences();
             //LogAll();
             //FixAll();
+            
         }
         public void FixAll()
         {
@@ -493,7 +497,7 @@ namespace Radio_Leech.ViewModel
         {
             if (song == null) return;
             string userRoot = Environment.GetEnvironmentVariable("USERPROFILE") ?? "C:\\";
-            string downloadFolder = Path.Combine(userRoot, "Downloads", $"{song.Title}.mpeg");
+            string downloadFolder = Path.Combine(userRoot, "Downloads", $"{song.Title}.mp3");
 
             MessageBox.Show($"Downloading to:\n{downloadFolder}");
             HttpClient client = new();

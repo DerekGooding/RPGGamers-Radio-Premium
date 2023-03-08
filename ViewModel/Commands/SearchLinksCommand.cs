@@ -14,7 +14,7 @@ namespace Radio_Leech.ViewModel.Commands
         readonly LeechVM VM;
         public SearchLinksCommand(LeechVM vm) => VM = vm;
 
-        public bool CanExecute(object? parameter) => true;
+        public bool CanExecute(object? parameter) => false;
         public void Execute(object? parameter) => VM.LookForLinksAsync();
     }
 }

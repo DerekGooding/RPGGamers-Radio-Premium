@@ -6,8 +6,13 @@
              xmlns:local="clr-namespace:Radio_Leech.View.UserControls"
              mc:Ignorable="d" >
     <StackPanel>
+        <StackPanel.Resources>
+            <Style TargetType="Label">
+                <Setter Property="Foreground" Value="White"/>
+            </Style>
+        </StackPanel.Resources>
         <Label Content="{Binding Title}" FontWeight="Bold"/>
         <Label Content="{Binding Game}" Margin="15,-10,0,0" FontStyle="Italic"/>
-        <Label Content="{Binding Url}" Margin="15,-10,0,-8" FontStyle="Italic"/>
+        <!--<Label Content="{Binding Url}" Margin="15,-10,0,-8" FontStyle="Italic"/>-->
     </StackPanel>
 </UserControl>
