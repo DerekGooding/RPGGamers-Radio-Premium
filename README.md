@@ -30,10 +30,10 @@ Installing with ClickOnce will check for future updates automatically every time
 
 # known bugs planned to be fixed
 
-* After update, doesn't automatically open
+* ~~After update, doesn't automatically open~~
 * Some song text is jumbled/mistranslated
 * Play/pause button has no visual to show the music is paused
 * The manifest is currently unsigned which prompts a windows warning when installing for the first time
-* Updating resets user preferences
+* ~~Updating resets user preferences~~
 * waveform doesn't resize with the window
 * Waveform doesn't have mouse held functionality
