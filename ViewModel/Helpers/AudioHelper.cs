@@ -1,15 +1,11 @@
-﻿using Microsoft.Win32;
-using NAudio.WaveFormRenderer;
-using Radio_Leech.Model.Database;
+﻿using NAudio.WaveFormRenderer;
 using System;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
-using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
-//using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
@@ -27,7 +23,7 @@ namespace Radio_Leech.ViewModel.Helpers
         }
 
         private static ImageSource source;
-        private static string selectedFile = SamplePath;
+        private static readonly string selectedFile = SamplePath;
         private static string imageFile;
         private static readonly WaveFormRenderer waveFormRenderer = new();
         private static readonly WaveFormRendererSettings standardSettings = new StandardWaveFormRendererSettings();

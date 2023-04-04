@@ -6,15 +6,17 @@
         xmlns:vm="clr-namespace:Radio_Leech.ViewModel"
         xmlns:uc="clr-namespace:Radio_Leech.View.UserControls"
         xmlns:local="clr-namespace:Radio_Leech"
+        xmlns:c="clr-namespace:Radio_Leech.View.Converters"
         mc:Ignorable="d"
         Title="RPG Radio Premium" Height="650" Width="810">
     <Window.Resources>
         <vm:LeechVM x:Key="vm"/>
+        <c:PausePlayConvert x:Key="boolToPlayConvert"/>
     </Window.Resources>
     <Canvas Background="Transparent" x:Name="MyCanvas" DataContext="{StaticResource vm}">
         <DockPanel Width="{Binding ActualWidth, ElementName=MyCanvas}"
                    Height="{Binding ActualHeight, ElementName=MyCanvas}"
-                   Background="WhiteSmoke">
+                   Background="#FF424242">
             <Menu DockPanel.Dock="Top" >
                 <MenuItem Header="File">
                     <MenuItem Header="Scan for Songs Online"
@@ -88,8 +90,8 @@
                         </StackPanel.Resources>
                         <Button Content="|◀"
                                 Command="{Binding PreviousCommand}"/>
-                        <Button Content="▶"
-                                Command="{Binding PauseCommand}"/>
+                        <Button Content="{Binding IsPlaying, Converter={StaticResource boolToPlayConvert}}"
+                                Command="{Binding PauseCommand}" d:Content ="▶"/>
                         <Button Content="▶|"
                                 Command="{Binding NextCommand}"/>
                         <Border Margin="15,0,5,0" BorderBrush="White" BorderThickness="2"/>
@@ -107,44 +109,51 @@
                        MouseDown="Rectangle_MouseDown"/>
                 <Rectangle Fill="#7F000000" HorizontalAlignment="Left" Width="{Binding FillWidth}" IsHitTestVisible="False"/>
             </Grid>
+            <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="3" Background="#FF424242">
+                <StackPanel.Resources>
+                    <Style TargetType="Label">
+                        <Setter Property="Foreground" Value="White"/>
+                    </Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Foreground" Value="White"/>
+                    </Style>
+                </StackPanel.Resources>
+                <Grid>
+                    <TextBox x:Name="SearchText" Width="300" VerticalContentAlignment="Center" ToolTip="Filter songs by typing here"
+                                    Text="{Binding Search, UpdateSourceTrigger=PropertyChanged}" 
+                             Background="#FF383838" Foreground="White" FontSize="20"/>
+                    <TextBlock IsHitTestVisible="False" Text="🔍 Search Songs" VerticalAlignment="Center" 
+                                       HorizontalAlignment="Left" Margin="2,2,0,0" FontWeight="Bold" Foreground="DarkGray" FontSize="11" Opacity="0.5">
+                        <TextBlock.Style>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="Visibility" Value="Collapsed"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Text, ElementName=SearchText}" Value="">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                </Grid>
+
+                <Label  Width="100" Content="{Binding SongCount}"/>
+                <Label Content="🔊" FontSize="16"/>
+                <Slider Minimum="0" Maximum="0.5" Width="100" Value="{Binding Volume}" VerticalAlignment="Center" 
+                                    IsSnapToTickEnabled="True" TickFrequency="0.005"/>
+                <Button Content="💾" Width="30" Background="Transparent" BorderThickness="0"
+                                    Command="{Binding SaveVolumeCommand}"/>
+            </StackPanel>
+            <MediaElement x:Name="MyPlayer" DockPanel.Dock="Left" LoadedBehavior="Manual"/>
             <TabControl DockPanel.Dock="Top" Background="#FF424242">
+                <TabControl.Resources>
+                    <Style TargetType="ScrollBar">
+                        <Setter Property="Background" Value="#FF2E2E2E"/>
+                    </Style>
+                </TabControl.Resources>
                 <TabItem Header="Main" >
                     <DockPanel >
-                        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="3">
-                            <StackPanel.Resources>
-                                <Style TargetType="Label">
-                                    <Setter Property="Foreground" Value="White"/>
-                                </Style>
-                                <Style TargetType="Button">
-                                    <Setter Property="Foreground" Value="White"/>
-                                </Style>
-                            </StackPanel.Resources>
-                            <Grid>
-                                <TextBox x:Name="SearchText" Width="300" VerticalContentAlignment="Center" ToolTip="Filter songs by typing here"
-                                    Text="{Binding Search, UpdateSourceTrigger=PropertyChanged}"/>
-                                <TextBlock IsHitTestVisible="False" Text="🔍 Search Songs" VerticalAlignment="Center" 
-                                       HorizontalAlignment="Left" Margin="2,2,0,0" FontWeight="Bold" Foreground="DarkGray" FontSize="11" Opacity="0.5">
-                                    <TextBlock.Style>
-                                        <Style TargetType="{x:Type TextBlock}">
-                                            <Setter Property="Visibility" Value="Collapsed"/>
-                                            <Style.Triggers>
-                                                <DataTrigger Binding="{Binding Text, ElementName=SearchText}" Value="">
-                                                    <Setter Property="Visibility" Value="Visible"/>
-                                                </DataTrigger>
-                                            </Style.Triggers>
-                                        </Style>
-                                    </TextBlock.Style>
-                                </TextBlock>
-                            </Grid>
-
-                            <Label  Width="100" Content="{Binding SongCount}"/>
-                            <Label Content="🔊" FontSize="16"/>
-                            <Slider Minimum="0" Maximum="0.5" Width="100" Value="{Binding Volume}" VerticalAlignment="Center" 
-                                    IsSnapToTickEnabled="True" TickFrequency="0.005"/>
-                            <Button Content="💾" Width="30" Background="Transparent" BorderThickness="0"
-                                    Command="{Binding SaveVolumeCommand}"/>
-                        </StackPanel>
-                        <MediaElement x:Name="MyPlayer" DockPanel.Dock="Left" LoadedBehavior="Manual"/>
+                        
 
                         <!--
                         <DockPanel DockPanel.Dock="Left" Width="150">
@@ -169,11 +178,6 @@
                         <ListView SelectionMode="Single" Background="#FF1A1A1A"
                                   ItemsSource="{Binding FilteredSongs}" d:ItemsSource="{d:SampleData}" 
                                   SelectedItem="{Binding SelectedSong}" MouseDoubleClick="Fix_DoubleClick">
-                            <ListView.Resources>
-                                <Style TargetType="ScrollBar">
-                                    <Setter Property="Background" Value="#FF2E2E2E"/>
-                                </Style>
-                            </ListView.Resources>
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <uc:SongControl Song="{Binding}"/>
@@ -182,11 +186,33 @@
                         </ListView>
                     </DockPanel>
                 </TabItem>
-                <!--<TabItem Header="Custom Playlists" IsEnabled="False" ToolTip="Coming soon!">
-                    <DockPanel>
+                <TabItem Header="Custom Playlists">
+                    <DockPanel Background="DimGray">
+                        <Grid>
+                            
+                            <ListView DockPanel.Dock="Left" Background="#FF1A1A1A" Margin="2" Width="300" SelectionMode="Single"
+                                      ItemsSource="{Binding Playlists}" d:ItemsSource="{d:SampleData}"
+                                      SelectedItem="{Binding SelectedPlaylist}">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <uc:PlaylistControl Playlist="{Binding}"/>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                            <Label Content="Coming soon" Foreground="White" FontSize="32"/>
+                        </Grid>
+                        <ListView Background="#FF1A1A1A" Margin="2" SelectionMode="Single"
+                                  ItemsSource="{Binding FilteredSongs}" d:ItemsSource="{d:SampleData}"
+                                  SelectedItem="{Binding SelectedSong}">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <uc:SongControl Song="{Binding}"/>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
                     </DockPanel>
                 </TabItem>
-                <TabItem Header="Settings" IsEnabled="False" ToolTip="Coming soon!">
+                <!--<TabItem Header="Settings" IsEnabled="False" ToolTip="Coming soon!">
                     <DockPanel>
                     </DockPanel>
                 </TabItem>-->

@@ -6,6 +6,11 @@
              xmlns:local="clr-namespace:Radio_Leech.View.UserControls"
              mc:Ignorable="d" >
     <StackPanel>
+        <StackPanel.Resources>
+            <Style TargetType="Label">
+                <Setter Property="Foreground" Value="White"/>
+            </Style>
+        </StackPanel.Resources>
         <Label Content="{Binding Name}"/>
     </StackPanel>
 </UserControl>

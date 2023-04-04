@@ -843,7 +843,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\djgoo\\.nuget\\packages\\": {},
+    "D:\\Nuget": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
@@ -852,7 +852,7 @@
       "projectUniqueName": "D:\\Users\\djgoo\\source\\repos\\RPGGamers-Radio-Premium\\Radio Leech.csproj",
       "projectName": "Radio Leech",
       "projectPath": "D:\\Users\\djgoo\\source\\repos\\RPGGamers-Radio-Premium\\Radio Leech.csproj",
-      "packagesPath": "C:\\Users\\djgoo\\.nuget\\packages\\",
+      "packagesPath": "D:\\Nuget",
       "outputPath": "D:\\Users\\djgoo\\source\\repos\\RPGGamers-Radio-Premium\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [

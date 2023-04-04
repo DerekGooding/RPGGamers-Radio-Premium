@@ -111,7 +111,12 @@ namespace Radio_Leech.ViewModel
             set { selectedPlaylist = value; }
         }
 
-        public bool IsPlaying = false;
+        private bool isPlaying = false;
+        public bool IsPlaying
+        {
+            get => isPlaying;
+            set { isPlaying = value; OnPropertyChanged(); }
+        }
 
         public SaveVolumeCommand SaveVolumeCommand { get; set; }
         public SearchLinksCommand SearchLinksCommand { get; set; }
@@ -409,23 +414,21 @@ namespace Radio_Leech.ViewModel
 
         
 
-        private static async Task LogSongInfoAsync(Song? song)
-        {
-            if(song == null) return;
-            using HttpClient client = new();
-            HttpResponseMessage response = await client.GetAsync(song.Url);
-            Stream streamToReadFrom = await response.Content.ReadAsStreamAsync();
-            using StreamReader sr = new(streamToReadFrom, Encoding.UTF8);
-            string info = sr.ReadLine();
-            info += sr.ReadLine();
-            //info += sr.ReadLine();
-            info = Decode(info);
-            using StreamWriter sw = new (@"D:\\log.txt", true);
-            sw.WriteLine("NEW");
-            sw.WriteLine(info);
-
-
-        }
+        //private static async Task LogSongInfoAsync(Song? song)
+        //{
+        //    if(song == null) return;
+        //    using HttpClient client = new();
+        //    HttpResponseMessage response = await client.GetAsync(song.Url);
+        //    Stream streamToReadFrom = await response.Content.ReadAsStreamAsync();
+        //    using StreamReader sr = new(streamToReadFrom, Encoding.UTF8);
+        //    string info = sr.ReadLine();
+        //    info += sr.ReadLine();
+        //    //info += sr.ReadLine();
+        //    info = Decode(info);
+        //    using StreamWriter sw = new (@"D:\\log.txt", true);
+        //    sw.WriteLine("NEW");
+        //    sw.WriteLine(info);
+        //}
 
         private void CheckHistory()
         {
@@ -464,8 +467,6 @@ namespace Radio_Leech.ViewModel
             updater.Tick += Update;
             updater.Start();
         }
-
-        
 
         void TimerTick(object? sender, EventArgs e)
         {
@@ -517,6 +518,7 @@ namespace Radio_Leech.ViewModel
                 }
                 else
                 {
+                    if(SelectedSong == null) PlayRandomSong();
                     element.Play();
                     IsPlaying = true;
                 }
