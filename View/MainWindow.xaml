@@ -37,10 +37,11 @@
                 </MenuItem>
                 <!--<MenuItem Header="Edit" IsEnabled="False" ToolTip="Coming soon!">
 
-                </MenuItem>
-                <MenuItem Header="View" IsEnabled="False" ToolTip="Coming soon!">
-
                 </MenuItem>-->
+                <MenuItem Header="View" Name="ViewMenu">
+                    
+                </MenuItem>
+                
                 <MenuItem Header="Help">
                     <MenuItem Header="About"
                               Click="About_Click"
@@ -145,7 +146,7 @@
                                     Command="{Binding SaveVolumeCommand}"/>
             </StackPanel>
             <MediaElement x:Name="MyPlayer" DockPanel.Dock="Left" LoadedBehavior="Manual"/>
-            <TabControl DockPanel.Dock="Top" Background="#FF424242">
+            <TabControl DockPanel.Dock="Top" Background="#FF424242" x:Name="MainTabControl">
                 <TabControl.Resources>
                     <Style TargetType="ScrollBar">
                         <Setter Property="Background" Value="#FF2E2E2E"/>

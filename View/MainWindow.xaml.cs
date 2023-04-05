@@ -21,7 +21,32 @@ namespace Radio_Leech
 {
     public partial class MainWindow : Window
     {
-        public MainWindow() => InitializeComponent();
+        public MainWindow()
+        {
+            InitializeComponent();
+            PrepareViewMenu();
+        }
+
+        private void PrepareViewMenu()
+        {
+            foreach (TabItem item in MainTabControl.Items)
+            {
+                MenuItem menuItem = new()
+                {
+                    Header = item.Header
+                };
+                menuItem.Click += SelectView_Click;
+                ViewMenu.Items.Add(menuItem);
+            }
+        }
+
+        private void SelectView_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is MenuItem menuItem)
+                foreach (TabItem item in MainTabControl.Items)
+                    if (menuItem.Header == item.Header)
+                        MainTabControl.SelectedItem = item;
+        }
 
         private void Exit_Click(object sender, RoutedEventArgs e) => Application.Current.Shutdown();
 
