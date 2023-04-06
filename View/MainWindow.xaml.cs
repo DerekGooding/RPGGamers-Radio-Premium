@@ -1,30 +1,26 @@
-﻿using NAudio.Wave;
-using NAudio.WaveFormRenderer;
-using Radio_Leech.Model.Database;
-using Radio_Leech.View.UserControls;
+﻿using NAudio.WaveFormRenderer;
 using Radio_Leech.ViewModel;
-using Radio_Leech.ViewModel.Helpers;
 using System;
 using System.Diagnostics;
-using System.Drawing;
-using System.Drawing.Imaging;
-using System.Globalization;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Media.Imaging;
 
 namespace Radio_Leech
 {
     public partial class MainWindow : Window
     {
+        public LeechVM LeechVM
+        {
+            set { DataContext = value; }
+        }
         public MainWindow()
         {
             InitializeComponent();
             PrepareViewMenu();
+            LeechVM = new();
         }
 
         private void PrepareViewMenu()
@@ -101,7 +97,7 @@ namespace Radio_Leech
             MessageBox.Show(downloadFolder);
         }
 
-        readonly WaveFormRenderer waveFormRenderer = new ();
+        //readonly WaveFormRenderer waveFormRenderer = new ();
         //private void Sample_Click(object sender, RoutedEventArgs e)
         //{
         //    if (((MainWindow)Application.Current.MainWindow).MyPlayer is MediaElement element)
