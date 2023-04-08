@@ -4,6 +4,7 @@ D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\a
 D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\app.publish\Radio Leech.deps.json
 D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\app.publish\Radio Leech.runtimeconfig.json
 D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\app.publish\Radio Leech.pdb
+D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\app.publish\Microsoft.Extensions.Logging.Abstractions.dll
 D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\app.publish\NAudio.dll
 D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\app.publish\NAudio.Asio.dll
 D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\app.publish\NAudio.Core.dll
@@ -12,11 +13,20 @@ D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\a
 D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\app.publish\NAudio.WaveFormRenderer.dll
 D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\app.publish\NAudio.WinForms.dll
 D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\app.publish\NAudio.WinMM.dll
+D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\app.publish\Newtonsoft.Json.dll
 D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\app.publish\SQLite-net.dll
 D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\app.publish\SQLitePCLRaw.batteries_v2.dll
 D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\app.publish\SQLitePCLRaw.nativelibrary.dll
 D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\app.publish\SQLitePCLRaw.core.dll
 D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\app.publish\SQLitePCLRaw.provider.dynamic_cdecl.dll
+D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\app.publish\TwitchLib.Api.Core.dll
+D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\app.publish\TwitchLib.Api.Core.Enums.dll
+D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\app.publish\TwitchLib.Api.Core.Interfaces.dll
+D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\app.publish\TwitchLib.Api.Core.Models.dll
+D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\app.publish\TwitchLib.Client.dll
+D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\app.publish\TwitchLib.Client.Enums.dll
+D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\app.publish\TwitchLib.Client.Models.dll
+D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\app.publish\TwitchLib.Communication.dll
 D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\app.publish\runtimes\alpine-x64\native\libe_sqlite3.so
 D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\app.publish\runtimes\linux-arm\native\libe_sqlite3.so
 D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\bin\Release\net6.0-windows\app.publish\runtimes\linux-arm64\native\libe_sqlite3.so

@@ -23,6 +23,8 @@
     <PackageReference Include="NAudio" Version="2.1.0" />
     <PackageReference Include="NAudio.WaveFormRenderer" Version="2.0.0" />
     <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
+    <PackageReference Include="TwitchLib.Api.Core" Version="3.9.0" />
+    <PackageReference Include="TwitchLib.Client" Version="3.3.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -36,6 +38,11 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>SettingNames.resx</DependentUpon>
+    </Compile>
+    <Compile Update="TwitchInfo.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>TwitchInfo.resx</DependentUpon>
     </Compile>
     <Compile Update="View\UserControls\PlaylistControl.xaml.cs">
       <SubType>Code</SubType>
@@ -52,6 +59,10 @@
     <EmbeddedResource Update="Model\Settings\SettingNames.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>SettingNames.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="TwitchInfo.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>TwitchInfo.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
 

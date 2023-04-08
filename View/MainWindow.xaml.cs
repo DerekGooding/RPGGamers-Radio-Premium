@@ -1,5 +1,7 @@
 ﻿using NAudio.WaveFormRenderer;
+using Radio_Leech.Model.Database;
 using Radio_Leech.ViewModel;
+using Radio_Leech.ViewModel.Helpers;
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -32,7 +34,9 @@ namespace Radio_Leech
                     Header = item.Header
                 };
                 menuItem.Click += SelectView_Click;
+                menuItem.IsEnabled = item.IsEnabled;
                 ViewMenu.Items.Add(menuItem);
+                
             }
         }
 
@@ -52,7 +56,7 @@ namespace Radio_Leech
                              $"Created by: Derek Gooding\n" +
                              $"©2023\n" +
                              $"Libertas Infinitum\n" +
-                             $"Version 0.9.4 | beta";
+                             $"Version 0.9.5";
             
             MessageBox.Show(message);
         }

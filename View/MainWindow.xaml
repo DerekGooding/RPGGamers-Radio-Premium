@@ -6,12 +6,14 @@
         xmlns:uc="clr-namespace:Radio_Leech.View.UserControls"
         xmlns:local="clr-namespace:Radio_Leech"
         xmlns:c="clr-namespace:Radio_Leech.View.Converters"
+        xmlns:vm="clr-namespace:Radio_Leech.ViewModel"
         mc:Ignorable="d"
         Title="RPG Radio Premium" Height="650" Width="810">
     <Window.Resources>
         <c:PausePlayConvert x:Key="boolToPlayConvert"/>
+        <vm:LeechVM x:Key="vm"/>
     </Window.Resources>
-    <Canvas Background="Transparent" x:Name="MyCanvas">
+    <Canvas Background="Transparent" x:Name="MyCanvas" d:DataContext="{StaticResource vm}">
         <DockPanel Width="{Binding ActualWidth, ElementName=MyCanvas}"
                    Height="{Binding ActualHeight, ElementName=MyCanvas}"
                    Background="#FF424242">
@@ -86,6 +88,7 @@
                                     </Setter.Value>
                                 </Setter>
                             </Style>
+                            
                         </StackPanel.Resources>
                         <Button Content="|◀"
                                 Command="{Binding PreviousCommand}"/>
@@ -149,6 +152,13 @@
                     <Style TargetType="ScrollBar">
                         <Setter Property="Background" Value="#FF2E2E2E"/>
                     </Style>
+                    <Style TargetType="Label">
+                        <Setter Property="Foreground" Value="White"/>
+                    </Style>
+                    <Style TargetType="TextBox">
+                        <Setter Property="Background" Value="#FF383838"/>
+                        <Setter Property="Foreground" Value="White"/>
+                    </Style>
                 </TabControl.Resources>
                 <TabItem Header="Main" >
                     <DockPanel >
@@ -198,7 +208,7 @@
                                     </DataTemplate>
                                 </ListView.ItemTemplate>
                             </ListView>
-                            <Label Content="Coming soon" Foreground="White" FontSize="32"/>
+                            <Label Content="Coming soon" FontSize="32"/>
                         </Grid>
                         <ListView Background="#FF1A1A1A" Margin="2" SelectionMode="Single"
                                   ItemsSource="{Binding FilteredSongs}" d:ItemsSource="{d:SampleData}"
@@ -211,10 +221,62 @@
                         </ListView>
                     </DockPanel>
                 </TabItem>
-                <!--<TabItem Header="Settings" IsEnabled="False" ToolTip="Coming soon!">
-                    <DockPanel>
+                <TabItem Header="Twitch">
+                    <DockPanel Background="#FF1A1A1A">
+                        <StackPanel  DockPanel.Dock="Top">
+                            <StackPanel.Resources>
+                                <Style TargetType="Button">
+                                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                    <Setter Property="VerticalContentAlignment" Value="Center"/>
+                                    <Setter Property="Foreground" Value="White"/>
+                                    <Setter Property="Background" Value="Transparent"/>
+                                    <Setter Property="BorderThickness" Value="0"/>
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="{x:Type Button}">
+                                                <Border x:Name="Border" Background="{TemplateBinding Background}">
+                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                                </Border>
+                                                <ControlTemplate.Triggers>
+                                                    <Trigger Property="IsMouseOver" Value="True">
+                                                        <Setter Property="Background" Value="#7FFFFFFF" TargetName="Border" />
+                                                    </Trigger>
+                                                </ControlTemplate.Triggers>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </StackPanel.Resources>
+                            <StackPanel Orientation="Horizontal" Margin="10">
+                                <CheckBox VerticalAlignment="Center" IsChecked="{Binding IsRequesting}"/>
+                                <Label Content="Enable Twitch Interactivity"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="Pending Song Requests" Margin="0,20,0,0"/>
+                                <Button Content="Clear" Margin="10,0,0,0" Width="100" Height="20" VerticalAlignment="Bottom"
+                                        FontSize="15" Command="{Binding ClearRequestsCommand}"/>
+                            </StackPanel>
+                        </StackPanel>
+                        <ListView Background="#FF1A1A1A" SelectionMode="Single"
+                                  ItemsSource="{Binding RequestedSongs}" d:ItemsSource="{d:SampleData}" >
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <uc:SongControl Song="{Binding}"/>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
                     </DockPanel>
-                </TabItem>-->
+                </TabItem>
+                <TabItem Header="Settings" IsEnabled="False">
+                    <DockPanel Background="#FF1A1A1A">
+                        <StackPanel>
+                            <Label Content="Dark Mode"/>
+                            <Slider DockPanel.Dock="Top" IsSnapToTickEnabled="True" TickFrequency="1"
+                                    Minimum="0" Maximum="1"/>
+                        </StackPanel>
+                        <DockPanel/>
+                    </DockPanel>
+                </TabItem>
             </TabControl>
         </DockPanel>
 

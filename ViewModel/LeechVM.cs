@@ -1,5 +1,6 @@
 ﻿using NAudio.Wave;
 using NAudio.WaveFormRenderer;
+using Radio_Leech.Model;
 using Radio_Leech.Model.Database;
 using Radio_Leech.Model.Settings;
 using Radio_Leech.ViewModel.Commands;
@@ -117,6 +118,12 @@ namespace Radio_Leech.ViewModel
             get => isPlaying;
             set { isPlaying = value; OnPropertyChanged(); }
         }
+        private bool isRequesting = true;
+        public bool IsRequesting
+        {
+            get => isRequesting;
+            set { isRequesting = value; OnPropertyChanged(); }
+        }
 
         public SaveVolumeCommand SaveVolumeCommand { get; set; }
         public SearchLinksCommand SearchLinksCommand { get; set; }
@@ -127,18 +134,24 @@ namespace Radio_Leech.ViewModel
         public PauseCommand PauseCommand { get; set; }
         public CreatePlaylistCommand CreatePlaylistCommand { get; set; }
         public FixTitleCommand FixTitleCommand { get; set; }
+        public ClearRequestsCommand ClearRequestsCommand { get; set; }
         public ObservableCollection<Song> FoundLinks { get; set; }
         public ObservableCollection<Playlist> Playlists { get; set; }
 
 
         private List<Song> filteredSongs = new();
-
         public List<Song> FilteredSongs
         {
             get => filteredSongs;
             set { filteredSongs = value; OnPropertyChanged(); }
         }
-
+        //private List<Song> requestedSongs = new();
+        //public List<Song> RequestedSongs
+        //{
+        //    get => requestedSongs;
+        //    set { requestedSongs = value; OnPropertyChanged(); }
+        //}
+        public ObservableCollection<Song> RequestedSongs { get; set; }
         public Stack<Song> previousSongs = new();
 
 
@@ -147,6 +160,7 @@ namespace Radio_Leech.ViewModel
             Status = string.Empty;
 
             FoundLinks = new();
+            RequestedSongs = new();
             Playlists = new();
 
             SaveVolumeCommand = new(this);
@@ -158,7 +172,7 @@ namespace Radio_Leech.ViewModel
             CreatePlaylistCommand = new(this);
             DownloadAllCommand = new(this);
             FixTitleCommand = new(this);
-
+            ClearRequestsCommand = new(this);
 
             DatabaseHelper.InitializeFolder();
 
@@ -166,42 +180,28 @@ namespace Radio_Leech.ViewModel
             ReadPlaylists();
             StartTimer();
             ReadPreferences();
-            //LogAll();
-            //FixAll();
-            
-        }
-        public void FixAll()
-        {
-            
-                new Thread(async () =>
-                {
-                    foreach (Song song in FoundLinks)
-                    {
-                        //Dispatcher.CurrentDispatcher.Invoke(() => { Status = song.Title ?? string.Empty; });
-                        await FixSongInfo(song);
-                    }
-                }).Start();
-        }
 
-        //private void LogAll()
-        //{
-        //    new Thread(async () =>
-        //    {
-        //        using HttpClient client = new();
-        //        using StreamWriter sw = new(@"D:\Log.txt", true);
-        //        foreach (var song in FoundLinks)
-        //        {
-        //            HttpResponseMessage response = await client.GetAsync(song.Url);
-        //            Stream streamToReadFrom = await response.Content.ReadAsStreamAsync();
-        //            using StreamReader sr = new(streamToReadFrom, Encoding.UTF8);
-        //            string info = sr.ReadLine();
-        //            info += sr.ReadLine();
-        //            info = Decode(info);
-        //            info = info.Replace("\n", "");
-        //            sw.WriteLine(info);
-        //        }
-        //    }).Start();
-        //}
+            //Connect to twitch
+            BotManager.Init(TwitchInfo.Token, TwitchInfo.Name, this, TwitchInfo.Channel);
+        }
+        
+
+        public void SongRequest(string request)
+        {
+            if(!IsRequesting) return;
+            var possibleSongs = FoundLinks.Where(x => x.Title != null && x.Title.ToLower().Contains(request.ToLower()));
+            if (possibleSongs.Any())
+                AddSongRequest(possibleSongs.First());
+        }
+        private void AddSongRequest(Song song)
+        {
+            popups.Push("Song added to requests");
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                RequestedSongs.Add(song);
+            });
+        }
+        public void ClearRequests() => RequestedSongs.Clear();
 
         public void FixTitle()
         {
@@ -218,7 +218,7 @@ namespace Radio_Leech.ViewModel
             HttpResponseMessage response = await client.GetAsync(song.Url);
             Stream streamToReadFrom = await response.Content.ReadAsStreamAsync();
             using StreamReader sr = new(streamToReadFrom, Encoding.UTF8);
-            string info = sr.ReadLine();
+            string? info = sr.ReadLine();
             info += sr.ReadLine();
             info = Decode(info);
             //MessageBox.Show(info);
@@ -299,7 +299,7 @@ namespace Radio_Leech.ViewModel
         public void Query()
         {
             FilteredSongs = FoundLinks.OrderBy(s => s.Url).
-            Where(x => x.Game != null && x.Game.ToLower().Contains(Search.ToLower())).ToList();
+                    Where(x => x.Game != null && x.Game.ToLower().Contains(Search.ToLower())).ToList();
             SongCount = $"{FilteredSongs.Count} songs";
         }
 
@@ -484,8 +484,21 @@ namespace Radio_Leech.ViewModel
 
         public void PlayRandomSong()
         {
-            Random rand = new();
-            SelectedSong = FilteredSongs[rand.Next(FilteredSongs.Count)];
+            if (RequestedSongs.Count > 0)
+            {
+                var song = RequestedSongs.First();
+
+                if (FilteredSongs.Any(s => s.Id == song.Id))
+                {
+                    SelectedSong = FilteredSongs.Where(s => s.Id == song.Id).First(); ;
+                    RequestedSongs.Remove(RequestedSongs.First());
+                }
+            }
+            else
+            {
+                Random rand = new();
+                SelectedSong = FilteredSongs[rand.Next(FilteredSongs.Count)];
+            }
             PlaySong(SelectedSong);
         }
         public void PlayPrevious()
