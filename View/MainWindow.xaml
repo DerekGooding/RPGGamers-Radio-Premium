@@ -30,10 +30,10 @@
                               ToolTip="Tells you the path files are downloaded to"/>
                     <MenuItem Header="Reload Database"
                               Command="{Binding DownloadAllCommand}"/>
-                    <MenuItem Header="Fix Title"
+                    <!--<MenuItem Header="Fix Title"
                               Click="MenuItem_Click" IsEnabled="False"/>
                     <MenuItem Header="Download song log"
-                              Click="MenuItem_Click"/>
+                              Click="MenuItem_Click"/>-->
                     <Separator/>
                     <MenuItem Header="Exit" Click="Exit_Click"/>
                 </MenuItem>

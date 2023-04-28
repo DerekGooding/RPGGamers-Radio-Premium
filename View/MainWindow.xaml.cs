@@ -146,18 +146,18 @@ namespace Radio_Leech
                     }).Start();
         }
 
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
-        {
-            string LOG = @"D:\Log.csv";
-            var songs = DatabaseHelper.Read<Song>(DatabaseHelper.Target.Database);
-            using StreamWriter sw = new(LOG);
-            foreach(var song in songs)
-            {
-                sw.WriteLine(string.Join(',', '"' + $"{song.Id}" + '"',
-                                              '"' + $"{song.Game}" + '"',
-                                              '"' + $"{song.Title}" + '"',
-                                              '"' + $"{song.Url}" + '"'));
-            }
-        }
+        //private void MenuItem_Click(object sender, RoutedEventArgs e)
+        //{
+        //    string LOG = @"D:\Log.csv";
+        //    var songs = DatabaseHelper.Read<Song>(DatabaseHelper.Target.Database);
+        //    using StreamWriter sw = new(LOG);
+        //    foreach(var song in songs)
+        //    {
+        //        sw.WriteLine(string.Join(',', '"' + $"{song.Id}" + '"',
+        //                                      '"' + $"{song.Game}" + '"',
+        //                                      '"' + $"{song.Title}" + '"',
+        //                                      '"' + $"{song.Url}" + '"'));
+        //    }
+        //}
     }
 }

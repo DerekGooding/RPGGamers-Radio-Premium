@@ -10,7 +10,6 @@
   </PropertyGroup>
 
 
-
   <ItemGroup>
     <None Remove="View\Sample\sample-3s.mp3" />
   </ItemGroup>
