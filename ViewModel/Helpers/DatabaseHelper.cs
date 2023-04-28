@@ -77,5 +77,11 @@ namespace Radio_Leech.ViewModel.Helpers
             }
         }
 
+        public static async Task Refresh()
+        {
+            File.Delete(dbFile);
+            await ImportFromOnlineAsync();
+        }
+
     }
 }

@@ -28,10 +28,12 @@
                     <MenuItem Header="Show Downloads Path"
                               Click="ShowDownloadPath_Click"
                               ToolTip="Tells you the path files are downloaded to"/>
-                    <!--<MenuItem Header="Download All"
+                    <MenuItem Header="Reload Database"
                               Command="{Binding DownloadAllCommand}"/>
                     <MenuItem Header="Fix Title"
-                              Command="{Binding FixTitleCommand}"/>-->
+                              Click="MenuItem_Click" IsEnabled="False"/>
+                    <MenuItem Header="Download song log"
+                              Click="MenuItem_Click"/>
                     <Separator/>
                     <MenuItem Header="Exit" Click="Exit_Click"/>
                 </MenuItem>

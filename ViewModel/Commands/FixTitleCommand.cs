@@ -14,7 +14,7 @@ namespace Radio_Leech.ViewModel.Commands
         readonly LeechVM VM;
         public FixTitleCommand(LeechVM vm) => VM = vm;
 
-        public bool CanExecute(object? parameter) => VM.SelectedSong != null;
+        public bool CanExecute(object? parameter) => false;
         public void Execute(object? parameter) => VM.FixTitle();
     }
 }

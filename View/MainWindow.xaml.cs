@@ -55,8 +55,7 @@ namespace Radio_Leech
             string message = $"{Application.Current.MainWindow.Title}\n" +
                              $"Created by: Derek Gooding\n" +
                              $"©2023\n" +
-                             $"Libertas Infinitum\n" +
-                             $"Version 0.9.5";
+                             $"Libertas Infinitum";
             
             MessageBox.Show(message);
         }
@@ -145,6 +144,20 @@ namespace Radio_Leech
                     {
                         await LeechVM.FixSongInfo(vm.SelectedSong);
                     }).Start();
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            string LOG = @"D:\Log.csv";
+            var songs = DatabaseHelper.Read<Song>(DatabaseHelper.Target.Database);
+            using StreamWriter sw = new(LOG);
+            foreach(var song in songs)
+            {
+                sw.WriteLine(string.Join(',', '"' + $"{song.Id}" + '"',
+                                              '"' + $"{song.Game}" + '"',
+                                              '"' + $"{song.Title}" + '"',
+                                              '"' + $"{song.Url}" + '"'));
+            }
         }
     }
 }

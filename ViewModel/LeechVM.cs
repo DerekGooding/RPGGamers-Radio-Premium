@@ -26,7 +26,7 @@ using System.Windows.Threading;
 
 namespace Radio_Leech.ViewModel
 {
-    public class LeechVM : INotifyPropertyChanged
+    public partial class LeechVM : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string? name = null)
@@ -207,60 +207,80 @@ namespace Radio_Leech.ViewModel
         {
             new Thread ( async ()  => 
             {
-                await FixSongInfo(SelectedSong);
+                var songs = DatabaseHelper.Read<Song>(DatabaseHelper.Target.Database);
+                foreach(var song in songs)
+                    await FixSongInfo(song);
+                ReadSongs();
             }).Start();
         }
 
         public static async Task FixSongInfo(Song? song)
         {
             if (song == null) return;
-            using HttpClient client = new();
-            HttpResponseMessage response = await client.GetAsync(song.Url);
-            Stream streamToReadFrom = await response.Content.ReadAsStreamAsync();
-            using StreamReader sr = new(streamToReadFrom, Encoding.UTF8);
-            string? info = sr.ReadLine();
-            info += sr.ReadLine();
-            info = Decode(info);
-            //MessageBox.Show(info);
 
-            var gameSplit = info.Split("TALB", StringSplitOptions.None);
-            string game = string.Empty;
-            if (gameSplit.Length < 2)
-                game = gameSplit[0];
-            else
-                game = gameSplit[1].Split("TPE1", StringSplitOptions.None)[0];
+            string filePath = @"D:\temp.mp3";
+            File.Delete(filePath);
+            HttpClient client = new();
+            using var stream = await client.GetStreamAsync(song.Url);
+            using var fileStream = new FileStream(filePath, FileMode.CreateNew);
+            await stream.CopyToAsync(fileStream);
+            fileStream.Close();
+            var tfile = TagLib.File.Create(filePath);
+            string title = tfile.Tag.Title;
+            string game = tfile.Tag.Album;
+            //MessageBox.Show($"{title}\n" +
+            //                $"{game}");
+            song.Title = title;
+            song.Game = game;
+            DatabaseHelper.Update(song, DatabaseHelper.Target.Database);
 
-            var titleSplit = info.Split("TIT2", StringSplitOptions.None);
-            string title = string.Empty;
-            if (titleSplit.Length < 2)
-                title = titleSplit[0];
-            else
-                title = titleSplit[1].Split("TRCK", StringSplitOptions.None)[0];
+            //using HttpClient client = new();
+            //HttpResponseMessage response = await client.GetAsync(song.Url);
+            //Stream streamToReadFrom = await response.Content.ReadAsStreamAsync();
+            //using StreamReader sr = new(streamToReadFrom, Encoding.UTF8);
+            //string? info = sr.ReadLine();
+            //info += sr.ReadLine();
+            //info = Decode(info);
+            ////MessageBox.Show(info);
 
-            string removeAtStart = "ID3vTALB";
-            if (title.Contains(removeAtStart))
-                title = title.Replace(removeAtStart, "");
-            if (game.Contains(removeAtStart))
-                game = game.Replace(removeAtStart, "");
+            //var gameSplit = info.Split("TALB", StringSplitOptions.None);
+            //string game = string.Empty;
+            //if (gameSplit.Length < 2)
+            //    game = gameSplit[0];
+            //else
+            //    game = gameSplit[1].Split("TPE1", StringSplitOptions.None)[0];
 
-            string[] cut = { "TALB", "TXXX", "TRCK", "TPE1", "TYER", "OS", "Xing", "WXXX", "TCON", "TDRC", "COMM" };
-            foreach(var item in cut)
-            {
-                if(title.Contains(item))
-                    title = title.Split(item, StringSplitOptions.None)[0];
-                if (game.Contains(item))
-                    game = game.Split(item, StringSplitOptions.None)[0];
-            }
+            //var titleSplit = info.Split("TIT2", StringSplitOptions.None);
+            //string title = string.Empty;
+            //if (titleSplit.Length < 2)
+            //    title = titleSplit[0];
+            //else
+            //    title = titleSplit[1].Split("TRCK", StringSplitOptions.None)[0];
 
-            //var message = $"Game = {game}\n" +
-            //              $"Title = {title}";
-            //if (MessageBox.Show(message, "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+            //string removeAtStart = "ID3vTALB";
+            //if (title.Contains(removeAtStart))
+            //    title = title.Replace(removeAtStart, "");
+            //if (game.Contains(removeAtStart))
+            //    game = game.Replace(removeAtStart, "");
+
+            //string[] cut = { "TALB", "TXXX", "TRCK", "TPE1", "TYER", "OS", "Xing", "WXXX", "TCON", "TDRC", "COMM" };
+            //foreach(var item in cut)
             //{
-                song.Title = title;
-                song.Game = game;
-                DatabaseHelper.Update(song, DatabaseHelper.Target.Database);
-                //ReadSongs();
+            //    if(title.Contains(item))
+            //        title = title.Split(item, StringSplitOptions.None)[0];
+            //    if (game.Contains(item))
+            //        game = game.Split(item, StringSplitOptions.None)[0];
             //}
+
+            ////var message = $"Game = {game}\n" +
+            ////              $"Title = {title}";
+            ////if (MessageBox.Show(message, "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+            ////{
+            //    song.Title = title;
+            //    song.Game = game;
+            //    DatabaseHelper.Update(song, DatabaseHelper.Target.Database);
+            //    //ReadSongs();
+            ////}
         }
 
         private void ReadPreferences()
@@ -358,7 +378,7 @@ namespace Radio_Leech.ViewModel
             ReadSongs();
         }
 
-        private static string Decode(string input) => Regex.Replace(input, @"[^\u0020-\u007E]", string.Empty);
+        private static string Decode(string input) => MyRegex().Replace(input, string.Empty);
 
         private bool subscribed = false;
         private void PlaySong(Song? song) => PlaySong(song, false);
@@ -476,7 +496,7 @@ namespace Radio_Leech.ViewModel
                         if (element.NaturalDuration.HasTimeSpan)
                         {
                             Duration = string.Format("{0} / {1}", element.Position.ToString(@"mm\:ss"), element.NaturalDuration.TimeSpan.ToString(@"mm\:ss"));
-                            FillWidth = (element.Position.TotalMilliseconds / element.NaturalDuration.TimeSpan.TotalMilliseconds) * 800;
+                            FillWidth = element.Position.TotalMilliseconds / element.NaturalDuration.TimeSpan.TotalMilliseconds * 800;
                         }
         }
 
@@ -580,7 +600,7 @@ namespace Radio_Leech.ViewModel
         public double PopupHeight { get => popupHeight; set { popupHeight = value; OnPropertyChanged(); } }
         public double PopupFontSize { get => popupFontSize; set { popupFontSize = value; OnPropertyChanged(); } }
         public string PopupText { get => popupText; set { popupText = value; OnPropertyChanged(); } }
-        private Stack<string> popups = new();
+        private readonly Stack<string> popups = new();
         private enum popupState
         {
             Waiting,
@@ -628,29 +648,42 @@ namespace Radio_Leech.ViewModel
             }
         }
 
+
         public void DownloadAll()
         {
-            Status = "Download all songs....";
             new Thread(async () =>
             {
-                HttpClient client = new();
-                string userRoot = @"D:\\";
-                int count = 0;
-                foreach (var song in FoundLinks)
-                {
-                    
-                    if (song == null) return;
-                    
-                    string downloadFolder = Path.Combine(userRoot, "Radio", $"song_{count++}.mpeg");
-
-                    //MessageBox.Show($"Downloading to:\n{downloadFolder}");
-                    
-                    using var stream = await client.GetStreamAsync(song.Url);
-                    using var fileStream = new FileStream(downloadFolder, FileMode.CreateNew);
-                    await stream.CopyToAsync(fileStream);
-                }
+                await DatabaseHelper.Refresh();
+                ReadSongs();
             }).Start();
-            Status = string.Empty;
         }
+
+        //public void DownloadAll()
+        //{
+        //    Status = "Download all songs....";
+        //    new Thread(async () =>
+        //    {
+        //        HttpClient client = new();
+        //        string userRoot = @"D:\\";
+        //        int count = 0;
+        //        foreach (var song in FoundLinks)
+        //        {
+
+        //            if (song == null) return;
+
+        //            string downloadFolder = Path.Combine(userRoot, "Radio", $"song_{count++}.mpeg");
+
+        //            //MessageBox.Show($"Downloading to:\n{downloadFolder}");
+
+        //            using var stream = await client.GetStreamAsync(song.Url);
+        //            using var fileStream = new FileStream(downloadFolder, FileMode.CreateNew);
+        //            await stream.CopyToAsync(fileStream);
+        //        }
+        //    }).Start();
+        //    Status = string.Empty;
+        //}
+
+        [GeneratedRegex("[^\\u0020-\\u007E]")]
+        private static partial Regex MyRegex();
     }
 }
