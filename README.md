@@ -16,28 +16,4 @@ If you would like to install this application for personal use: [Setup Link](htt
 
 Installing with ClickOnce will check for future updates automatically every time you startup the application
 
-## RoadMap
-
-* ~~Add Icons to replace buttons 	and the default application icon.~~
-* A custom playlist tab that lets you choose songs to shuffle through
-* ~~A timestamp scrubber bar so you can skip to parts of a song you like~~
-* Settings tab for saving option preferences | ~~framework~~
-* ~~Dark Mode~~
-* ~~A visual representation of the music being played (wave form)~~
-* Getting Started tutorial pop-ups for first time users | ~~framework~~
-* List the previously played songs for the back button
-* Favourites
-* ~~Link to twitch chat so you can do Song requests.~~ Only currently works for one specific stream. I can develop this to work genericly if any other stream is interested.
-* Allow song requests by ID number instead of song title
-* And hopefully much more! Please send me ideas
-
-
-# known bugs planned to be fixed
-
-* ~~After update, doesn't automatically open~~
-* Some song text is jumbled/mistranslated
-* ~~Play/pause button has no visual to show the music is paused~~
-* ~~The manifest is currently unsigned which prompts a windows warning when installing for the first time~~
-* ~~Updating resets user preferences~~
-* waveform doesn't resize with the window
-* Waveform doesn't have mouse held functionality
+Moves Roadmap to a project! Easy viewing and issues!!  [Take a look](https://github.com/users/DerekGooding/projects/3)
