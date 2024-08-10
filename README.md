@@ -3,7 +3,7 @@
 <a style="text-decoration:none" href="https://github.com/DerekGooding/RPGGamers-Radio-Premium/raw/main/bin/publish/setup.exe">
     <img src="https://img.shields.io/badge/Download%20Installer-blue.svg?style=flat-round" alt="Download link" />
 </a>
-<a style="text-decoration:none" href="https://github.com/DerekGooding/RPGGamers-Radio-Premium/blob/main/Radio.PNG">
+<a style="text-decoration:none" href="http://www.rpgamers.net/radio/">
     <img src="https://img.shields.io/badge/Original%20Site-8A2BE2" alt="Documentation link" />
 </a>
 
