@@ -393,3 +393,6 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+# vsFolders
+obj/*
