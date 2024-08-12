@@ -395,4 +395,5 @@ FodyWeavers.xsd
 *.sln.iml
 
 # vsFolders
-obj/*
+obj
+bin
