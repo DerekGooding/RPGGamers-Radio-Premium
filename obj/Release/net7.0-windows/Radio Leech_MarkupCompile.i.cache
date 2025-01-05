@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\obj\Release\net7.0-windows\
+C:\Users\Derek\Source\Repos\RPGGamers-Radio-Premium\obj\Release\net7.0-windows\
 Radio_Leech
 none
 false
 TRACE;RELEASE;NET;NET7_0;NETCOREAPP
-D:\Users\djgoo\source\repos\RPGGamers-Radio-Premium\App.xaml
+C:\Users\Derek\Source\Repos\RPGGamers-Radio-Premium\App.xaml
 31492402167
 22063415134
 29337886797
-230-1215607534
+2301976483299
 View\MainWindow.xaml;View\UserControls\PlaylistControl.xaml;View\UserControls\SongControl.xaml;
 
-False
+True
 

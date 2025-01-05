@@ -1,36 +1,37 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Users\\djgoo\\source\\repos\\RPGGamers-Radio-Premium\\Radio Leech.csproj": {}
+    "C:\\Users\\Derek\\Source\\Repos\\RPGGamers-Radio-Premium\\Radio Leech.csproj": {}
   },
   "projects": {
-    "D:\\Users\\djgoo\\source\\repos\\RPGGamers-Radio-Premium\\Radio Leech.csproj": {
+    "C:\\Users\\Derek\\Source\\Repos\\RPGGamers-Radio-Premium\\Radio Leech.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Users\\djgoo\\source\\repos\\RPGGamers-Radio-Premium\\Radio Leech.csproj",
+        "projectUniqueName": "C:\\Users\\Derek\\Source\\Repos\\RPGGamers-Radio-Premium\\Radio Leech.csproj",
         "projectName": "Radio Leech",
-        "projectPath": "D:\\Users\\djgoo\\source\\repos\\RPGGamers-Radio-Premium\\Radio Leech.csproj",
-        "packagesPath": "D:\\Nuget",
-        "outputPath": "D:\\Users\\djgoo\\source\\repos\\RPGGamers-Radio-Premium\\obj\\",
+        "projectPath": "C:\\Users\\Derek\\Source\\Repos\\RPGGamers-Radio-Premium\\Radio Leech.csproj",
+        "packagesPath": "C:\\Users\\Derek\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Derek\\Source\\Repos\\RPGGamers-Radio-Premium\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\djgoo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Derek\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net7.0-windows"
+          "net8.0-windows"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net7.0-windows7.0": {
-            "targetAlias": "net7.0-windows",
+          "net8.0-windows7.0": {
+            "targetAlias": "net8.0-windows",
             "projectReferences": {}
           }
         },
@@ -38,35 +39,29 @@
           "warnAsError": [
             "NU1605"
           ]
-        }
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
-        "net7.0-windows7.0": {
-          "targetAlias": "net7.0-windows",
+        "net8.0-windows7.0": {
+          "targetAlias": "net8.0-windows",
           "dependencies": {
-            "NAudio": {
+            "CommunityToolkit.Mvvm": {
               "target": "Package",
-              "version": "[2.1.0, )"
+              "version": "[8.4.0, )"
             },
-            "NAudio.WaveFormRenderer": {
+            "Microsoft.Extensions.Hosting": {
               "target": "Package",
-              "version": "[2.0.0, )"
+              "version": "[9.0.0, )"
             },
-            "TwitchLib.Api.Core": {
+            "WPF-UI": {
               "target": "Package",
-              "version": "[3.9.0, )"
-            },
-            "TwitchLib.Client": {
-              "target": "Package",
-              "version": "[3.3.1, )"
-            },
-            "sqlite-net-pcl": {
-              "target": "Package",
-              "version": "[1.8.116, )"
-            },
-            "taglib-sharp-netstandard2.0": {
-              "target": "Package",
-              "version": "[2.1.0, )"
+              "version": "[3.0.5, )"
             }
           },
           "imports": [
@@ -88,7 +83,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
