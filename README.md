@@ -7,6 +7,7 @@
     <img src="https://img.shields.io/badge/Original%20Site-8A2BE2" alt="Documentation link" />
 </a>
 
+![GitHub issues](https://img.shields.io/github/issues/DerekGooding/RPGGamers-Radio-Premium?logo=github)
 
 ![alt text](https://github.com/DerekGooding/RPGGamers-Radio-Premium/blob/main/Radio.PNG)
 
