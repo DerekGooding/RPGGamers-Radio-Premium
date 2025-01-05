@@ -1,11 +1,17 @@
-﻿using Wpf.Ui.Appearance;
+﻿using GamerRadio.Services;
+using Wpf.Ui.Appearance;
 using Wpf.Ui.Controls;
 
 namespace GamerRadio.ViewModel.Pages
 {
-    public partial class SettingsViewModel : ObservableObject, INavigationAware
+    public partial class SettingsViewModel(NotificationService notificationService) : ObservableObject, INavigationAware
     {
+        private NotificationService _notificationService = notificationService;
         private bool _isInitialized = false;
+
+        [ObservableProperty]
+        private bool _isNotificationEnabled = true;
+        partial void OnIsNotificationEnabledChanged(bool value) => _notificationService.IsEnabled = value;
 
         [ObservableProperty]
         private string _appVersion = string.Empty;

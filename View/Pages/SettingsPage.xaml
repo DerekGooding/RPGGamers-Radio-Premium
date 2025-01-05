@@ -40,7 +40,11 @@
             Content="Dark"
             GroupName="themeSelect"
             IsChecked="{Binding ViewModel.CurrentTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Dark, Mode=OneWay}" />
-
+        <StackPanel Orientation="Horizontal" Margin="0 10 0 0">
+            <ui:ToggleSwitch IsChecked="{Binding ViewModel.IsNotificationEnabled}" Content="Notification when Song change"
+                             ToolTip="Notifications popup in the top right of your screen and display on top of other application."/>
+        </StackPanel>
+        
         <TextBlock
             Margin="0,24,0,0"
             FontSize="20"
