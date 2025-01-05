@@ -8,12 +8,18 @@
 </a>
 
 ![GitHub issues](https://img.shields.io/github/issues/DerekGooding/RPGGamers-Radio-Premium?logo=github)
+[![CodeQL](https://github.com/DerekGooding/RPGGamers-Radio-Premium/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/DerekGooding/RPGGamers-Radio-Premium/actions/workflows/github-code-scanning/codeql)
 
-![alt text](https://github.com/DerekGooding/RPGGamers-Radio-Premium/blob/main/Radio.PNG)
+![alt text](https://github.com/DerekGooding/RPGGamers-Radio-Premium/blob/main/Screenshot_1.png)
+![alt text](https://github.com/DerekGooding/RPGGamers-Radio-Premium/blob/main/Screenshot_2.png)
 
 RPGGamer-Radio.com is nice for listening to your favourite game music but, like a radio, you have limited control over what you can do. 
 
-This stand alone application gives you some extra functionality without downloading a library of songs. It uses known URLs to make a SQLlite database so at a click, you can play any song. 
+This stand alone application gives you some extra functionality without downloading a library of songs. It uses known URLs and a simple csv file to target and stream the music. 
 
 Also includes pause and next functions as well as a more reliable volume control. 
 
+More features planned to come! Once installed, click once should keep you up to date with most most recent automatically. 
+
+### Known issue
+If you pin the application while it's running to your taskbar, it'll skip the updater. If you want updates, you'll have to run it from your start menu or the shortcut it generates on your desktop.
