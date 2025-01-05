@@ -10,15 +10,25 @@ namespace GamerRadio.ViewModel.Pages
 
         [ObservableProperty]
         private string _search = string.Empty;
-        partial void OnSearchChanged(string value)
-            => SongImages = string.IsNullOrEmpty(value)
-            ? _mediaElementService.SongImages
-            : [.. _mediaElementService.SongImages.Where(MatchesSearch)];
+        partial void OnSearchChanged(string value) => Query();
 
         [ObservableProperty]
         private List<SongImage> _songImages = [];
 
-        public void OnNavigatedTo() { SongImages = _mediaElementService.SongImages; }
+        [ObservableProperty]
+        private List<GroupedSongImage> _groupedSongImages = [];
+
+        [ObservableProperty]
+        private bool _isSorted;
+        partial void OnIsSortedChanged(bool value) => Query();
+
+        public void OnNavigatedTo()
+        {
+            if (IsSorted)
+                GroupedSongImages = Grouped(_mediaElementService.SongImages);
+            else
+                SongImages = _mediaElementService.SongImages;
+        }
         public void OnNavigatedFrom() { }
 
         [RelayCommand]
@@ -34,8 +44,34 @@ namespace GamerRadio.ViewModel.Pages
         [RelayCommand]
         public void Pause() => _mediaElementService.Pause();
 
+        private void Query()
+        {
+            if (IsSorted)
+            {
+                GroupedSongImages = Grouped(SearchResults);
+            }
+            else
+            {
+                SongImages = SearchResults;
+            }
+        }
+
         private bool MatchesSearch(SongImage songImage)
             => songImage.Song.Game.Contains(Search, StringComparison.CurrentCultureIgnoreCase)
             || songImage.Song.Title.Contains(Search, StringComparison.CurrentCultureIgnoreCase);
+
+        private List<SongImage> SearchResults
+            => string.IsNullOrEmpty(Search)
+                ? _mediaElementService.SongImages
+                : [.. _mediaElementService.SongImages.Where(MatchesSearch)];
+
+        private List<GroupedSongImage> Grouped(List<SongImage> songImages)
+                => songImages.GroupBy(si => si.Song.Game)
+                .OrderBy(g => g.Key)
+                .Select(g => new GroupedSongImage
+                {
+                    Game = g.Key,
+                    SongImages = new List<SongImage>(g.OrderBy(si => si.Song.Title))
+                }).ToList();
     }
 }

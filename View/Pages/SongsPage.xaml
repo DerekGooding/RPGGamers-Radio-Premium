@@ -21,15 +21,20 @@
     x:Name="ParentPage">
     <Page.Resources>
         <helpers:RectConverter x:Key="RectConverter" />
+        <helpers:BooleanToVisibilityConverter x:Key="BoolToVis" />
     </Page.Resources>
 
     <DockPanel>
         <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
             <ui:TextBlock Text="Search" FontSize="20" VerticalAlignment="Center" Margin="0 0 15 0"/>
-            <ui:TextBox Text="{Binding ViewModel.Search, UpdateSourceTrigger=PropertyChanged}" PlaceholderText="eg: Final Fantasy" Width="500" />
+            <ui:TextBox Text="{Binding ViewModel.Search, UpdateSourceTrigger=PropertyChanged}" 
+                        PlaceholderText="eg: Final Fantasy" Width="500" />
+            <CheckBox Margin="10 0 0 0" IsChecked="{Binding ViewModel.IsSorted, Mode=TwoWay}"/>
+            <ui:TextBlock Text="Sort By Game" VerticalAlignment="Center"/>
         </StackPanel>
         <Grid >
             <ui:VirtualizingItemsControl 
+                Visibility="{Binding ViewModel.IsSorted, Converter={StaticResource BoolToVis}, ConverterParameter=Invert}"
                 Foreground="{DynamicResource TextFillColorSecondaryBrush}"
                 ItemsSource="{Binding ViewModel.SongImages, Mode=OneWay}"
                 VirtualizingPanel.CacheLengthUnit="Item" >
@@ -77,6 +82,73 @@
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ui:VirtualizingItemsControl >
+
+            <ui:VirtualizingItemsControl 
+                Visibility="{Binding ViewModel.IsSorted, Converter={StaticResource BoolToVis}}"
+                Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                ItemsSource="{Binding ViewModel.GroupedSongImages}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <VirtualizingStackPanel Orientation="Vertical" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <DockPanel>
+                            <!-- Group Header -->
+                            <TextBlock DockPanel.Dock="Top" Text="{Binding Game}" 
+                                       FontWeight="Bold" Margin="0,5" FontSize="20" />
+                            <!-- Horizontal List of SongImages -->
+                            <ui:VirtualizingItemsControl Foreground="{DynamicResource TextFillColorSecondaryBrush}" 
+                                                         ItemsSource="{Binding SongImages}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate DataType="{x:Type models:SongImage}">
+                                        <Border CornerRadius="20" Background="Transparent" Margin="5 0 0 5">
+                                            <Border.Clip>
+                                                <RectangleGeometry RadiusX="20" RadiusY="20">
+                                                    <RectangleGeometry.Rect>
+                                                        <MultiBinding Converter="{StaticResource RectConverter}">
+                                                            <Binding Path="ActualWidth" RelativeSource="{RelativeSource AncestorType=Border}"/>
+                                                            <Binding Path="ActualHeight" RelativeSource="{RelativeSource AncestorType=Border}"/>
+                                                        </MultiBinding>
+                                                    </RectangleGeometry.Rect>
+                                                </RectangleGeometry>
+                                            </Border.Clip>
+                                            <ui:Button Command="{Binding DataContext.ViewModel.PlayByButtonCommand, ElementName=ParentPage}" 
+                                                   CommandParameter="{Binding}"
+                                                   IsHitTestVisible="True"
+                                                   Focusable="False"
+                                                   Width="180" Height="225">
+                                                <ui:Button.Content>
+                                                    <DockPanel>
+                                                        <TextBlock Text="{Binding Song.Title, Mode=OneWay}" 
+                                                                       DockPanel.Dock="Bottom"
+                                                                       TextWrapping="WrapWithOverflow"
+                                                                       VerticalAlignment="Bottom"/>
+                                                        <Border CornerRadius="20" Background="Transparent" >
+                                                            <Border.Clip>
+                                                                <RectangleGeometry RadiusX="20" RadiusY="20">
+                                                                    <RectangleGeometry.Rect>
+                                                                        <MultiBinding Converter="{StaticResource RectConverter}">
+                                                                            <Binding Path="ActualWidth" RelativeSource="{RelativeSource AncestorType=Border}"/>
+                                                                            <Binding Path="ActualHeight" RelativeSource="{RelativeSource AncestorType=Border}"/>
+                                                                        </MultiBinding>
+                                                                    </RectangleGeometry.Rect>
+                                                                </RectangleGeometry>
+                                                            </Border.Clip>
+                                                            <Image Source="{Binding Source}" Stretch="UniformToFill"/>
+                                                        </Border>
+                                                    </DockPanel>
+                                                </ui:Button.Content>
+                                            </ui:Button>
+                                        </Border>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ui:VirtualizingItemsControl>
+                        </DockPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ui:VirtualizingItemsControl>
         </Grid>
 
     </DockPanel>
