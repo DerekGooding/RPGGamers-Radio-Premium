@@ -1,0 +1,34 @@
+﻿<Window x:Class="GamerRadio.View.Windows.NotificationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+        WindowStyle="None" AllowsTransparency="True" Background="Transparent" Topmost="True"
+        ResizeMode="NoResize" ShowInTaskbar="False">
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="Window.Loaded">
+            <BeginStoryboard>
+                <Storyboard>
+                    <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:0.5" />
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="Window.Unloaded">
+            <BeginStoryboard>
+                <Storyboard>
+                    <DoubleAnimation Storyboard.TargetProperty="Opacity" From="1" To="0" Duration="0:0:0.5" />
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Window.Triggers>
+
+    <Border CornerRadius="10" Background="{DynamicResource ApplicationBackgroundBrush}" Padding="10">
+
+        <StackPanel>
+            <TextBlock x:Name="TitleTextBlock" FontWeight="Bold" 
+                       FontSize="18" Margin="0,0,0,5" TextWrapping="Wrap" 
+                       Foreground="{DynamicResource TextFillColorPrimaryBrush}"/>
+            <TextBlock x:Name="MessageTextBlock" TextWrapping="Wrap" 
+                       Foreground="{DynamicResource TextFillColorPrimaryBrush}"/>
+        </StackPanel>
+    </Border>
+</Window>
