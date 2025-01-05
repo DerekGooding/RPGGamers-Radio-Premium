@@ -13,6 +13,7 @@
 
 
   <ItemGroup>
+	<None Remove="Assets\Backgrounds\ComingSoon.jpg" />
     <None Remove="Assets\Backgrounds\10000000.jpg" />
     <None Remove="Assets\Backgrounds\3D Dot Game Heroes.jpg" />
     <None Remove="Assets\Backgrounds\7th Dragon.jpg" />
@@ -79,7 +80,6 @@
     <None Remove="Assets\Backgrounds\Chocobo%27s Dungeon 2.jpg" />
     <None Remove="Assets\Backgrounds\Chrono Cross.jpg" />
     <None Remove="Assets\Backgrounds\Chrono Trigger.jpg" />
-    <None Remove="Assets\Backgrounds\ComingSoon.jpg" />
     <None Remove="Assets\Backgrounds\Command &amp; Conquer.jpg" />
     <None Remove="Assets\Backgrounds\Contra.jpg" />
     <None Remove="Assets\Backgrounds\Crayon Physics Deluxe.jpg" />
@@ -386,6 +386,7 @@
   </ItemGroup>
 
   <ItemGroup>
+	<EmbeddedResource Include="Assets\Backgrounds\ComingSoon.jpg" />
     <EmbeddedResource Include="Assets\Backgrounds\10000000.jpg" />
     <EmbeddedResource Include="Assets\Backgrounds\3D Dot Game Heroes.jpg" />
     <EmbeddedResource Include="Assets\Backgrounds\7th Dragon.jpg" />
@@ -452,7 +453,6 @@
     <EmbeddedResource Include="Assets\Backgrounds\Chocobo's Dungeon 2.jpg" />
     <EmbeddedResource Include="Assets\Backgrounds\Chrono Cross.jpg" />
     <EmbeddedResource Include="Assets\Backgrounds\Chrono Trigger.jpg" />
-    <EmbeddedResource Include="Assets\Backgrounds\ComingSoon.jpg" />
     <EmbeddedResource Include="Assets\Backgrounds\Command &amp; Conquer.jpg" />
     <EmbeddedResource Include="Assets\Backgrounds\Contra.jpg" />
     <EmbeddedResource Include="Assets\Backgrounds\Crayon Physics Deluxe.jpg" />
