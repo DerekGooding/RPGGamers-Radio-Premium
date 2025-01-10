@@ -73,12 +73,7 @@ public partial class App
     /// <summary>
     /// Occurs when the application is loading.
     /// </summary>
-    private void OnStartup(object sender, StartupEventArgs e)
-    {
-        //await Updater.CheckForUpdatesAsync();
-
-        _host.Start();
-    }
+    private void OnStartup(object sender, StartupEventArgs e) => _host.Start();
 
     /// <summary>
     /// Occurs when the application is closing.

@@ -1,7 +1,6 @@
-﻿using GamerRadio.ViewModel.Windows;
-using GamerRadio.Services;
+﻿using GamerRadio.Services;
+using GamerRadio.ViewModel.Windows;
 using Wpf.Ui;
-using Wpf.Ui.Appearance;
 using Wpf.Ui.Controls;
 
 namespace GamerRadio.View.Windows;
@@ -19,8 +18,6 @@ public partial class MainWindow : INavigationWindow
     {
         ViewModel = viewModel;
         DataContext = this;
-
-        SystemThemeWatcher.Watch(this);
 
         InitializeComponent();
         SetPageService(pageService);

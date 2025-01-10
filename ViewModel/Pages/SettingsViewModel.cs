@@ -1,13 +1,20 @@
 ﻿using GamerRadio.Services;
+using System.Collections.ObjectModel;
+using System.Windows.Media;
+using Wpf.Ui;
 using Wpf.Ui.Appearance;
 using Wpf.Ui.Controls;
+using Wpf.Ui.Extensions;
 
 namespace GamerRadio.ViewModel.Pages
 {
     public partial class SettingsViewModel(NotificationService notificationService) : ObservableObject, INavigationAware
     {
-        private NotificationService _notificationService = notificationService;
-        private bool _isInitialized = false;
+        private readonly NotificationService _notificationService = notificationService;
+        private bool _isInitialized;
+
+        internal const string LibraryNamespace = "wpf.ui;";
+        internal const string ThemesDictionaryPath = "pack://application:,,,/Wpf.Ui;component/Resources/Theme/";
 
         [ObservableProperty]
         private bool _isNotificationEnabled = true;
@@ -17,7 +24,7 @@ namespace GamerRadio.ViewModel.Pages
         private string _appVersion = string.Empty;
 
         [ObservableProperty]
-        private ApplicationTheme _currentTheme = ApplicationTheme.Unknown;
+        private ApplicationTheme _currentTheme = ApplicationTheme.Dark;
 
         public void OnNavigatedTo()
         {
@@ -66,7 +73,7 @@ namespace GamerRadio.ViewModel.Pages
             }
         }
 
-                public void Apply(
+        public void Apply(
         ApplicationTheme applicationTheme,
         WindowBackdropType backgroundEffect = WindowBackdropType.Mica,
         bool updateAccent = true)
@@ -87,17 +94,11 @@ namespace GamerRadio.ViewModel.Pages
 
             var themeDictionaryName = applicationTheme == ApplicationTheme.Dark ? "Dark" : "Light";
 
+            bool isUpdated = UpdateDictionary("theme", new Uri(ThemesDictionaryPath + themeDictionaryName + ".xaml", UriKind.Absolute));
 
-            bool isUpdated = UpdateDictionary("theme",
-                new Uri(ThemesDictionaryPath + themeDictionaryName + ".xaml", UriKind.Absolute)
-            );
-
-            if (UiApplication.Current.MainWindow is Window mainWindow)
-            {
+            if (isUpdated && UiApplication.Current.MainWindow is Window mainWindow)
                 WindowBackgroundManager.UpdateBackground(mainWindow, applicationTheme, backgroundEffect);
-            }
         }
-
 
         public void ApplyAccent(
         Color systemAccent,
