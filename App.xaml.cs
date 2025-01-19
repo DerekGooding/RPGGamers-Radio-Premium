@@ -60,6 +60,12 @@ public partial class App
 
             services.AddSingleton<SongsPage>();
             services.AddSingleton<SongsViewModel>();
+
+            services.AddSingleton<FavoritesPage>();
+            services.AddSingleton<FavoritesViewModel>();
+
+            services.AddSingleton<TwitchPage>();
+            services.AddSingleton<TwitchViewModel>();
         }).Build();
 
     /// <summary>

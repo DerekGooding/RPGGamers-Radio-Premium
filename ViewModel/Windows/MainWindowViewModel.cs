@@ -14,7 +14,7 @@ namespace GamerRadio.ViewModel.Windows
         [
             new NavigationViewItem()
             {
-                Content = "Media Player",
+                Content = "Media",
                 Icon = new SymbolIcon { Symbol = SymbolRegular.Home24 },
                 TargetPageType = typeof(DashboardPage)
             },
@@ -23,7 +23,19 @@ namespace GamerRadio.ViewModel.Windows
                 Content = "Songs",
                 Icon = new SymbolIcon { Symbol = SymbolRegular.MusicNote224 },
                 TargetPageType = typeof(SongsPage)
-            }
+            },
+            new NavigationViewItem()
+            {
+                Content = "Favorites",
+                Icon = new SymbolIcon { Symbol = SymbolRegular.Star24 },
+                TargetPageType = typeof(FavoritesPage)
+            },
+            new NavigationViewItem()
+            {
+                Content = "Twitch",
+                Icon = new SymbolIcon { Symbol = SymbolRegular.Chat24 },
+                TargetPageType = typeof(TwitchPage)
+            },
         ];
 
         [ObservableProperty]

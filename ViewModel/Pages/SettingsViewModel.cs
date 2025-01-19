@@ -26,6 +26,8 @@ namespace GamerRadio.ViewModel.Pages
         [ObservableProperty]
         private ApplicationTheme _currentTheme = ApplicationTheme.Dark;
 
+        public List<string> LocationOptions = [ "Top Right", "Bottom Right", "Bottom Left", "Top Left"];
+
         public void OnNavigatedTo()
         {
             if (!_isInitialized)
