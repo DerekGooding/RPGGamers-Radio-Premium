@@ -121,7 +121,7 @@ public class MediaElementService
 
     private ImageSource GetCachedImage(Song song, HashSet<string> imageSourceSet, Assembly assembly, string[] fallbackSources)
     {
-        string resourceName = imageSourceSet.FirstOrDefault(name => name.Contains($"{song.Game}.jpg"))
+        string resourceName = imageSourceSet.FirstOrDefault(name => name.Contains($"{song.Game.Replace(":","")}.jpg"))
                               ?? fallbackSources[1];
 
         // Return from cache if already loaded

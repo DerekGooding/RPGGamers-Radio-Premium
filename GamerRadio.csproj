@@ -504,7 +504,7 @@
     <EmbeddedResource Include="Assets\Backgrounds\Final Fantasy 1.jpg" />
     <EmbeddedResource Include="Assets\Backgrounds\Final Fantasy 2.jpg" />
     <EmbeddedResource Include="Assets\Backgrounds\Final Fantasy 3.jpg" />
-    <EmbeddedResource Include="Assets\Backgrounds\FINAL FANTASY CRYSTAL CHRONICLES.jpg" />
+    <EmbeddedResource Include="Assets\Backgrounds\Final Fantasy Crystal Chronicles.jpg" />
     <EmbeddedResource Include="Assets\Backgrounds\Final Fantasy Explorers.jpg" />
     <EmbeddedResource Include="Assets\Backgrounds\Final Fantasy IV.jpg" />
     <EmbeddedResource Include="Assets\Backgrounds\Final Fantasy IX.jpg" />
@@ -753,7 +753,7 @@
 
   <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
-    <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.1" />
     <PackageReference Include="WPF-UI" Version="3.0.5" />
   </ItemGroup>
 

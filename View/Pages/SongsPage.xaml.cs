@@ -14,4 +14,9 @@ public partial class SongsPage : INavigableView<SongsViewModel>
 
         InitializeComponent();
     }
+
+    private void VirtualizingStackPanel_Scroll(object sender, System.Windows.Controls.Primitives.ScrollEventArgs e)
+    {
+
+    }
 }

@@ -84,24 +84,28 @@
             </ui:VirtualizingItemsControl >
 
             <ui:VirtualizingItemsControl 
+                ScrollViewer.PanningMode="VerticalOnly"
+                ScrollViewer.PanningRatio="0.2"
                 Visibility="{Binding ViewModel.IsSorted, Converter={StaticResource BoolToVis}}"
                 Foreground="{DynamicResource TextFillColorSecondaryBrush}"
                 ItemsSource="{Binding ViewModel.GroupedSongImages}">
-                <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <VirtualizingStackPanel Orientation="Vertical" />
-                    </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <DockPanel>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
                             <!-- Group Header -->
-                            <TextBlock DockPanel.Dock="Top" Text="{Binding Game}" 
+                            <TextBlock Grid.Row="0" Text="{Binding Game}" 
                                        FontWeight="Bold" Margin="0,5" FontSize="20" />
                             <!-- Horizontal List of SongImages -->
-                            <ui:VirtualizingItemsControl Foreground="{DynamicResource TextFillColorSecondaryBrush}" 
+                            <ui:VirtualizingItemsControl ScrollViewer.PanningMode="HorizontalOnly"
+                                                         ScrollViewer.CanContentScroll="False"
+                                                         Grid.Row="1"
+                                                         Foreground="{DynamicResource TextFillColorSecondaryBrush}" 
                                                          ItemsSource="{Binding SongImages}">
-                                <ItemsControl.ItemTemplate>
+                                <ItemsControl.ItemTemplate >
                                     <DataTemplate DataType="{x:Type models:SongImage}">
                                         <Border CornerRadius="20" Background="Transparent" Margin="5 0 0 5">
                                             <Border.Clip>
@@ -145,7 +149,7 @@
                                     </DataTemplate>
                                 </ItemsControl.ItemTemplate>
                             </ui:VirtualizingItemsControl>
-                        </DockPanel>
+                        </Grid>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ui:VirtualizingItemsControl>

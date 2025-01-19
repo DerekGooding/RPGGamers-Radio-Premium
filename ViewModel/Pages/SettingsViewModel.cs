@@ -1,5 +1,6 @@
 ﻿using GamerRadio.Services;
 using System.Collections.ObjectModel;
+using System.Reflection;
 using System.Windows.Media;
 using Wpf.Ui;
 using Wpf.Ui.Appearance;
@@ -46,8 +47,9 @@ namespace GamerRadio.ViewModel.Pages
 
         private string GetAssemblyVersion()
         {
-            return System.Reflection.Assembly.GetExecutingAssembly().GetName().Version?.ToString()
-                ?? string.Empty;
+            return "1.0.0.1";
+            //return System.Reflection.Assembly.GetExecutingAssembly().GetName().Version?.ToString()
+            //    ?? string.Empty;
         }
 
         [RelayCommand]
