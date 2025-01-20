@@ -14,10 +14,27 @@ public partial class NotificationWindow : Window
         MessageTextBlock.Text = message;
     }
 
-    public async Task ShowNotificationAsync(int duration = 3000)
+    public async Task ShowNotificationAsync(int cornerIndex, int duration = 3000)
     {
-        Top = SystemParameters.WorkArea.Top + 10;
-        Left = SystemParameters.WorkArea.Right - Width - 10;
+        switch(cornerIndex)
+        {
+            case 0: //Top Right Corner
+                Top = SystemParameters.WorkArea.Top + 10;
+                Left = SystemParameters.WorkArea.Right - Width - 10;
+                break;
+            case 1: //Top Left Corner
+                Top = SystemParameters.WorkArea.Top + 10;
+                Left = SystemParameters.WorkArea.Left + 10;
+                break;
+            case 2: //Bottom Right Corner
+                Top = SystemParameters.WorkArea.Bottom - Height - 10;
+                Left = SystemParameters.WorkArea.Right - Width - 10;
+                break;
+            default: //Bottom Left Corner
+                Top = SystemParameters.WorkArea.Bottom - Height - 10;
+                Left = SystemParameters.WorkArea.Left + 10;
+                break;
+        }
 
         Show();
 

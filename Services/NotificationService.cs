@@ -19,9 +19,11 @@ public class NotificationService
                         Width = 300,
                         Height = 100
                     };
-                    await notification.ShowNotificationAsync(duration);
+                    await notification.ShowNotificationAsync(NotificationCorner, duration);
                 });
     }
 
     public Action? HandleChange;
+
+    public int NotificationCorner { get; set; } = 0;
 }

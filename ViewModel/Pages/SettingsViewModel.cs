@@ -13,6 +13,10 @@ namespace GamerRadio.ViewModel.Pages
         internal const string ThemesDictionaryPath = "pack://application:,,,/Wpf.Ui;component/Resources/Theme/";
 
         [ObservableProperty]
+        private int _notificationCorner = 0;
+        partial void OnNotificationCornerChanged(int value) => _notificationService.NotificationCorner = value;
+
+        [ObservableProperty]
         private bool _isNotificationEnabled = true;
         partial void OnIsNotificationEnabledChanged(bool value) => _notificationService.IsEnabled = value;
 
