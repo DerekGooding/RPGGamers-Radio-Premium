@@ -454,6 +454,9 @@
     <EmbeddedResource Include="Assets\Backgrounds\Chrono Cross.jpg" />
     <EmbeddedResource Include="Assets\Backgrounds\Chrono Trigger.jpg" />
     <EmbeddedResource Include="Assets\Backgrounds\Command &amp; Conquer.jpg" />
+    <EmbeddedResource Include="Assets\Backgrounds\Command &amp; Conquer Red Alert 2.jpg" />
+    <EmbeddedResource Include="Assets\Backgrounds\Command &amp; Conquer Red Alert 3.jpg" />
+    <EmbeddedResource Include="Assets\Backgrounds\Command &amp; Conquer Tiberian Sun.jpg" />
     <EmbeddedResource Include="Assets\Backgrounds\Contra.jpg" />
     <EmbeddedResource Include="Assets\Backgrounds\Crayon Physics Deluxe.jpg" />
     <EmbeddedResource Include="Assets\Backgrounds\Crisis Force.jpg" />

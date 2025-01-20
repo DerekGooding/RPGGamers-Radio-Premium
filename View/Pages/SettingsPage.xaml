@@ -54,7 +54,7 @@
             Margin="0,24,0,0"
             FontSize="20"
             FontWeight="Medium"
-            Text="About RPGGamer_Radio_Desktop" />
+            Text="About" />
         <TextBlock Margin="0,12,0,0" Text="{Binding ViewModel.AppVersion, Mode=OneWay}" />
         <TextBlock Text="All rights go to RPGGamers Network. Visit and show your support!" />
         <TextBlock>
