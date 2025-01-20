@@ -8,6 +8,7 @@
     xmlns:models="clr-namespace:GamerRadio.Model"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+    xmlns:uc="clr-namespace:GamerRadio.View.UserControls"
     Title="SongsPage"
     d:DataContext="{d:DesignInstance local:SongsPage,
                                      IsDesignTimeCreatable=False}"
@@ -40,55 +41,21 @@
                 VirtualizingPanel.CacheLengthUnit="Item" >
                 <ItemsControl.ItemTemplate>
                     <DataTemplate DataType="{x:Type models:SongImage}">
-                        <Border CornerRadius="20" Background="Transparent" Margin="5 0 0 5">
-                            <Border.Clip>
-                                <RectangleGeometry RadiusX="20" RadiusY="20">
-                                    <RectangleGeometry.Rect>
-                                        <MultiBinding Converter="{StaticResource RectConverter}">
-                                            <Binding Path="ActualWidth" RelativeSource="{RelativeSource AncestorType=Border}"/>
-                                            <Binding Path="ActualHeight" RelativeSource="{RelativeSource AncestorType=Border}"/>
-                                        </MultiBinding>
-                                    </RectangleGeometry.Rect>
-                                </RectangleGeometry>
-                            </Border.Clip>
-                            <ui:Button Command="{Binding DataContext.ViewModel.PlayByButtonCommand, ElementName=ParentPage}" 
-                                       CommandParameter="{Binding}"
-                                       IsHitTestVisible="True"
-                                       Focusable="False"
-                                       Width="150" Height="250">
-                                <ui:Button.Content>
-                                    <DockPanel>
-                                        <StackPanel DockPanel.Dock="Bottom" VerticalAlignment="Bottom">
-                                            <TextBlock Text="{Binding Song.Title, Mode=OneWay}" TextWrapping="WrapWithOverflow"/>
-                                            <TextBlock Text="{Binding Song.Game, Mode=OneWay}" TextWrapping="WrapWithOverflow"/>
-                                        </StackPanel>
-                                        <Border CornerRadius="20" Background="Transparent" >
-                                            <Border.Clip>
-                                                <RectangleGeometry RadiusX="20" RadiusY="20">
-                                                    <RectangleGeometry.Rect>
-                                                        <MultiBinding Converter="{StaticResource RectConverter}">
-                                                            <Binding Path="ActualWidth" RelativeSource="{RelativeSource AncestorType=Border}"/>
-                                                            <Binding Path="ActualHeight" RelativeSource="{RelativeSource AncestorType=Border}"/>
-                                                        </MultiBinding>
-                                                    </RectangleGeometry.Rect>
-                                                </RectangleGeometry>
-                                            </Border.Clip>
-                                            <Image Source="{Binding Source}" Stretch="UniformToFill"/>
-                                        </Border>
-                                    </DockPanel>
-                                </ui:Button.Content>
-                            </ui:Button>
-                        </Border>
+                        <uc:SongButton/>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ui:VirtualizingItemsControl >
 
             <ui:VirtualizingItemsControl 
-                ScrollViewer.PanningMode="VerticalOnly"
-                ScrollViewer.PanningRatio="0.2"
                 Visibility="{Binding ViewModel.IsSorted, Converter={StaticResource BoolToVis}}"
                 Foreground="{DynamicResource TextFillColorSecondaryBrush}"
                 ItemsSource="{Binding ViewModel.GroupedSongImages}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <VirtualizingStackPanel Orientation="Vertical"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <Grid>
@@ -100,55 +67,21 @@
                             <TextBlock Grid.Row="0" Text="{Binding Game}" 
                                        FontWeight="Bold" Margin="0,5" FontSize="20" />
                             <!-- Horizontal List of SongImages -->
-                            <ui:VirtualizingItemsControl ScrollViewer.PanningMode="HorizontalOnly"
-                                                         ScrollViewer.CanContentScroll="False"
-                                                         Grid.Row="1"
-                                                         Foreground="{DynamicResource TextFillColorSecondaryBrush}" 
-                                                         ItemsSource="{Binding SongImages}">
+                            <ui:ListView HorizontalAlignment="Left"
+                                         Grid.Row="1"
+                                         Foreground="{DynamicResource TextFillColorSecondaryBrush}" 
+                                         ItemsSource="{Binding SongImages}">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel Orientation="Horizontal"/>
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
                                 <ItemsControl.ItemTemplate >
                                     <DataTemplate DataType="{x:Type models:SongImage}">
-                                        <Border CornerRadius="20" Background="Transparent" Margin="5 0 0 5">
-                                            <Border.Clip>
-                                                <RectangleGeometry RadiusX="20" RadiusY="20">
-                                                    <RectangleGeometry.Rect>
-                                                        <MultiBinding Converter="{StaticResource RectConverter}">
-                                                            <Binding Path="ActualWidth" RelativeSource="{RelativeSource AncestorType=Border}"/>
-                                                            <Binding Path="ActualHeight" RelativeSource="{RelativeSource AncestorType=Border}"/>
-                                                        </MultiBinding>
-                                                    </RectangleGeometry.Rect>
-                                                </RectangleGeometry>
-                                            </Border.Clip>
-                                            <ui:Button Command="{Binding DataContext.ViewModel.PlayByButtonCommand, ElementName=ParentPage}" 
-                                                   CommandParameter="{Binding}"
-                                                   IsHitTestVisible="True"
-                                                   Focusable="False"
-                                                   Width="180" Height="225">
-                                                <ui:Button.Content>
-                                                    <DockPanel>
-                                                        <TextBlock Text="{Binding Song.Title, Mode=OneWay}" 
-                                                                       DockPanel.Dock="Bottom"
-                                                                       TextWrapping="WrapWithOverflow"
-                                                                       VerticalAlignment="Bottom"/>
-                                                        <Border CornerRadius="20" Background="Transparent" >
-                                                            <Border.Clip>
-                                                                <RectangleGeometry RadiusX="20" RadiusY="20">
-                                                                    <RectangleGeometry.Rect>
-                                                                        <MultiBinding Converter="{StaticResource RectConverter}">
-                                                                            <Binding Path="ActualWidth" RelativeSource="{RelativeSource AncestorType=Border}"/>
-                                                                            <Binding Path="ActualHeight" RelativeSource="{RelativeSource AncestorType=Border}"/>
-                                                                        </MultiBinding>
-                                                                    </RectangleGeometry.Rect>
-                                                                </RectangleGeometry>
-                                                            </Border.Clip>
-                                                            <Image Source="{Binding Source}" Stretch="UniformToFill"/>
-                                                        </Border>
-                                                    </DockPanel>
-                                                </ui:Button.Content>
-                                            </ui:Button>
-                                        </Border>
+                                        <uc:SongButton/>
                                     </DataTemplate>
                                 </ItemsControl.ItemTemplate>
-                            </ui:VirtualizingItemsControl>
+                            </ui:ListView>
                         </Grid>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>

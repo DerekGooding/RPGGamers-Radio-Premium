@@ -14,7 +14,8 @@ public partial class MainWindow : INavigationWindow
         MainWindowViewModel viewModel,
         IPageService pageService,
         INavigationService navigationService,
-        MediaElementService mediaElementService
+        MediaElementService mediaElementService,
+        SnackbarService snackbarService
     )
     {
         ViewModel = viewModel;
@@ -27,6 +28,7 @@ public partial class MainWindow : INavigationWindow
 
         mediaElementService.MediaElement = MyPlayer;
         navigationService.SetNavigationControl(RootNavigation);
+        snackbarService.SetSnackbarPresenter(SnackbarPresenter);
     }
 
     #region INavigationWindow methods

@@ -1,12 +1,14 @@
 ﻿using GamerRadio.Model;
 using GamerRadio.Services;
+using Wpf.Ui;
 using Wpf.Ui.Controls;
 
 namespace GamerRadio.ViewModel.Pages
 {
-    public partial class SongsViewModel(MediaElementService mediaElementService) : ObservableObject, INavigationAware
+    public partial class SongsViewModel(MediaElementService mediaElementService, SnackbarService snackbarService) : ObservableObject, INavigationAware
     {
         private readonly MediaElementService _mediaElementService = mediaElementService;
+        private readonly SnackbarService _snackbarService = snackbarService;
 
         [ObservableProperty]
         private string _search = string.Empty;
@@ -36,6 +38,15 @@ namespace GamerRadio.ViewModel.Pages
         {
             if (songImage is not SongImage s) return;
             _mediaElementService.PlayMedia(s);
+        }
+
+        [RelayCommand]
+        public void Favorite(SongImage? songImage)
+        {
+            if (songImage is not SongImage s) return;
+            s.IsFavorite = !s.IsFavorite;
+            string message = s.IsFavorite ? "Saved to Favorites!" : "Removed from Favorites";
+            _snackbarService.Show(s.Song.Title, message, ControlAppearance.Success, null, TimeSpan.FromSeconds(1.5));
         }
 
         [RelayCommand]

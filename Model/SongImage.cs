@@ -2,4 +2,23 @@
 
 namespace GamerRadio.Model;
 
-public record struct SongImage(Song Song, ImageSource Source);
+public partial class SongImage : ObservableObject
+{
+    public Song Song { get; set; }
+    public ImageSource Source { get; set; }
+
+    [ObservableProperty]
+    private bool _isFavorite;
+    [ObservableProperty]
+    private bool _isIgnored;
+
+    public SongImage(Song song, ImageSource source, bool isFavorite, bool isIgnored)
+    {
+        Song = song;
+        Source = source;
+        IsFavorite = isFavorite;
+        IsIgnored = isIgnored;
+    }
+
+    public SongImage() { }
+}

@@ -43,11 +43,11 @@
         <ui:TextBlock Text="Notifications" FontSize="18" Margin="0 12 0 0"/>
         <ui:ToggleSwitch IsChecked="{Binding ViewModel.IsNotificationEnabled}" Content="Notification when Song change"
                              ToolTip="Notifications popup in the top right of your screen and display on top of other application."/>
-        <ComboBox Width="150" HorizontalAlignment="Left">
-            <ComboBoxItem Tag="Top Left"/>
-            <ComboBoxItem Tag="Top Right"/>
-            <ComboBoxItem Tag="Bottom Left"/>
-            <ComboBoxItem Tag="Bottom Right"/>
+        <ComboBox HorizontalAlignment="Left" SelectedIndex="0">
+            <ComboBoxItem Content="Top Left"/>
+            <ComboBoxItem Content="Top Right"/>
+            <ComboBoxItem Content="Bottom Left"/>
+            <ComboBoxItem Content="Bottom Right"/>
         </ComboBox>
         
         <TextBlock

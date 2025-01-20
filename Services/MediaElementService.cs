@@ -23,7 +23,7 @@ public class MediaElementService
         HashSet<string> imageSourceSet = new(_imageSources);
 
         SongImages = _databaseService.Read()
-                .ConvertAll(song => new SongImage(song, GetCachedImage(song, imageSourceSet, assembly, _imageSources)));
+                .ConvertAll(song => new SongImage(song, GetCachedImage(song, imageSourceSet, assembly, _imageSources), false, false));
     }
 
     public MediaElement? MediaElement { get; set; }
