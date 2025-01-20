@@ -75,5 +75,27 @@ namespace GamerRadio.ViewModel.Pages
                     break;
             }
         }
+
+        public static string GetVersion()
+        {
+            RegistryKey? registryKey = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Uninstall\");
+            if (registryKey == null) return "1.0.0.0";
+        
+            foreach (string keyName in registryKey.GetSubKeyNames())
+            {
+                RegistryKey? programKey = registryKey.OpenSubKey(keyName);
+        
+                object? displayName = programKey?.GetValue("DisplayName");
+                object? version = programKey?.GetValue("DisplayVersion");
+        
+                if (displayName != null && $"{displayName}" == "RPGGamer")
+                    return $"{version}";
+        
+                programKey?.Close();
+            }
+        
+            registryKey.Close();
+            return "1.0.0.0";
+        }
     }
 }
