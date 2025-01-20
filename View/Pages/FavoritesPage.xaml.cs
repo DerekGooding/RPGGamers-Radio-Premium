@@ -14,6 +14,4 @@ public partial class FavoritesPage : INavigableView<FavoritesViewModel>
 
         InitializeComponent();
     }
-
-   
 }

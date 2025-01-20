@@ -5,10 +5,13 @@ using Wpf.Ui.Controls;
 
 namespace GamerRadio.ViewModel.Pages
 {
-    public partial class SongsViewModel(MediaElementService mediaElementService, SnackbarService snackbarService) : ObservableObject, INavigationAware
+    public partial class SongsViewModel(MediaElementService mediaElementService,
+                                        SnackbarService snackbarService,
+                                        FavoritesViewModel favoritesViewModel) : ObservableObject, INavigationAware
     {
         private readonly MediaElementService _mediaElementService = mediaElementService;
         private readonly SnackbarService _snackbarService = snackbarService;
+        private readonly FavoritesViewModel _favoritesViewModel = favoritesViewModel;
 
         [ObservableProperty]
         private string _search = string.Empty;
@@ -47,6 +50,14 @@ namespace GamerRadio.ViewModel.Pages
             s.IsFavorite = !s.IsFavorite;
             string message = s.IsFavorite ? "Saved to Favorites!" : "Removed from Favorites";
             _snackbarService.Show(s.Song.Title, message, ControlAppearance.Success, null, TimeSpan.FromSeconds(1.5));
+            if(s.IsFavorite)
+            {
+                _favoritesViewModel.Add(s);
+            }
+            else
+            {
+                _favoritesViewModel.Remove(s);
+            }
         }
 
         [RelayCommand]

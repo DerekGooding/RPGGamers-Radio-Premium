@@ -5,24 +5,35 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:helpers="clr-namespace:GamerRadio.Helpers"
     xmlns:local="clr-namespace:GamerRadio.View.Pages"
+    xmlns:models="clr-namespace:GamerRadio.Model"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
-    Title="DashboardPage"
-    d:DataContext="{d:DesignInstance local:DashboardPage,
+    xmlns:uc="clr-namespace:GamerRadio.View.UserControls"
+    Title="FavoritesPage"
+    d:DataContext="{d:DesignInstance local:FavoritesPage,
                                      IsDesignTimeCreatable=False}"
     d:DesignHeight="450"
     d:DesignWidth="800"
     ui:Design.Background="{DynamicResource ApplicationBackgroundBrush}"
     ui:Design.Foreground="{DynamicResource TextFillColorPrimaryBrush}"
     Foreground="{DynamicResource TextFillColorPrimaryBrush}"
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+    x:Name="ParentPage">
     <Page.Resources>
         <helpers:RectConverter x:Key="RectConverter" />
-        <helpers:PausePlayConverter x:Key="PausePlayConverter" />
     </Page.Resources>
 
-    <Grid>
-
-
+    <Grid >
+        <ui:VirtualizingItemsControl 
+        Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+        ItemsSource="{Binding ViewModel.Favorites, Mode=OneWay}"
+        VirtualizingPanel.CacheLengthUnit="Item" >
+            <ItemsControl.ItemTemplate>
+                <DataTemplate DataType="{x:Type models:SongImage}">
+                    <uc:SongButton/>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ui:VirtualizingItemsControl >
     </Grid>
+
 </Page>
