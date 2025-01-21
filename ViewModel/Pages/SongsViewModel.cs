@@ -27,13 +27,7 @@ namespace GamerRadio.ViewModel.Pages
         private bool _isSorted;
         partial void OnIsSortedChanged(bool value) => Query();
 
-        public void OnNavigatedTo()
-        {
-            if (IsSorted)
-                GroupedSongImages = Grouped(_mediaElementService.SongImages);
-            else
-                SongImages = _mediaElementService.SongImages;
-        }
+        public void OnNavigatedTo() => Query();
         public void OnNavigatedFrom() { }
 
         [RelayCommand]
@@ -58,6 +52,15 @@ namespace GamerRadio.ViewModel.Pages
             {
                 _favoritesViewModel.Remove(s);
             }
+        }
+
+        [RelayCommand]
+        public void Ignore(SongImage? songImage)
+        {
+            if (songImage is not SongImage s) return;
+            s.IsIgnored = !s.IsIgnored;
+            string message = s.IsIgnored ? "is disabled!" : "Enabled again";
+            _snackbarService.Show(s.Song.Title, message, ControlAppearance.Caution, null, TimeSpan.FromSeconds(1.5));
         }
 
         [RelayCommand]
