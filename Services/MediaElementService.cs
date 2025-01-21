@@ -52,7 +52,7 @@ public class MediaElementService
         }
     }
 
-    private SongImage currentlyPlaying = new() { Song = new() { Game = "None", Title = "None" } };
+    private SongImage currentlyPlaying = new();
 
     public EventHandler? SongChange;
 
@@ -89,7 +89,12 @@ public class MediaElementService
 
     private void Element_MediaEnded(object sender, RoutedEventArgs e) => PlayRandomSong();
 
-    public void PlayRandomSong() => PlayMedia(SongImages[Random.Shared.Next(SongImages.Count - 1)]);
+    public void PlayRandomSong()
+    {
+        var playable = SongImages.Where(songImage => !songImage.IsIgnored).ToList();
+
+        PlayMedia(playable[Random.Shared.Next(playable.Count - 1)]);
+    }
 
     public void Pause()
     {

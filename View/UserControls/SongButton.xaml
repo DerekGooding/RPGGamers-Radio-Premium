@@ -53,8 +53,10 @@
                 </ui:Button.Content>
             </ui:Button>
 
-            <ui:Button HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="Yellow"
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <ui:Button  Foreground="Yellow"
                        BorderThickness="0"
+                       CornerRadius="20"
                        Margin="10" FontSize="30"
                        Command="{Binding DataContext.ViewModel.FavoriteCommand , ElementName=ParentPage}"
                        CommandParameter="{Binding}">
@@ -62,6 +64,18 @@
                     <ui:SymbolIcon Symbol="Star24" Filled="{Binding IsFavorite}" />
                 </ui:Button.Icon>
             </ui:Button>
+
+            <ui:Button Foreground="Red"
+                       BorderThickness="0"
+                       CornerRadius="20"
+                       Margin="10" FontSize="30"
+                       Command="{Binding DataContext.ViewModel.IgnoreCommand , ElementName=ParentPage}"
+                       CommandParameter="{Binding}">
+                            <ui:Button.Icon>
+                                <ui:SymbolIcon Symbol="DismissCircle24" Filled="{Binding IsIgnored}" />
+                            </ui:Button.Icon>
+                        </ui:Button>
+            </StackPanel>
         </Grid>
     </Border>
 </UserControl>

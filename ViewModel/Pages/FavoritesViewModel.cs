@@ -41,4 +41,13 @@ public partial class FavoritesViewModel(MediaElementService mediaElementService,
             Remove(s);
         }
     }
+
+    [RelayCommand]
+    public void Ignore(SongImage? songImage)
+    {
+        if (songImage is not SongImage s) return;
+        s.IsIgnored = !s.IsIgnored;
+        string message = s.IsIgnored ? "Disabled! But why are you disabling your favorites?" : "Enabled again";
+        _snackbarService.Show(s.Song.Title, message, ControlAppearance.Caution, null, TimeSpan.FromSeconds(1.5));
+    }
 }

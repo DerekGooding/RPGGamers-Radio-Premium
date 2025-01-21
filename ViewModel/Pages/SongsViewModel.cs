@@ -59,7 +59,7 @@ namespace GamerRadio.ViewModel.Pages
         {
             if (songImage is not SongImage s) return;
             s.IsIgnored = !s.IsIgnored;
-            string message = s.IsIgnored ? "is disabled!" : "Enabled again";
+            string message = s.IsIgnored ? "Disabled!" : "Enabled again";
             _snackbarService.Show(s.Song.Title, message, ControlAppearance.Caution, null, TimeSpan.FromSeconds(1.5));
         }
 

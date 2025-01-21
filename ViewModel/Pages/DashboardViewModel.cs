@@ -26,7 +26,7 @@ namespace GamerRadio.ViewModel.Pages
         private double _progress;
 
         [ObservableProperty]
-        private SongImage _currentlyPlaying = new() { Song = new() { Game = "None", Title = "None" } };
+        private SongImage _currentlyPlaying = new();
 
         [ObservableProperty]
         private ImageSource? _wavRender;

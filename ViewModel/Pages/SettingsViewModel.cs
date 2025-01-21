@@ -1,4 +1,5 @@
 ﻿using GamerRadio.Services;
+using Microsoft.Win32;
 using Wpf.Ui.Appearance;
 using Wpf.Ui.Controls;
 
@@ -13,7 +14,7 @@ namespace GamerRadio.ViewModel.Pages
         internal const string ThemesDictionaryPath = "pack://application:,,,/Wpf.Ui;component/Resources/Theme/";
 
         [ObservableProperty]
-        private int _notificationCorner = 0;
+        private int _notificationCorner;
         partial void OnNotificationCornerChanged(int value) => _notificationService.NotificationCorner = value;
 
         [ObservableProperty]
@@ -39,16 +40,9 @@ namespace GamerRadio.ViewModel.Pages
         private void InitializeViewModel()
         {
             CurrentTheme = ApplicationThemeManager.GetAppTheme();
-            AppVersion = $"RPGGamer Radio Desktop - {GetAssemblyVersion()}";
+            AppVersion = $"RPGGamer Radio Desktop - {GetVersion()}";
 
             _isInitialized = true;
-        }
-
-        private string GetAssemblyVersion()
-        {
-            return "1.0.0.1";
-            //return System.Reflection.Assembly.GetExecutingAssembly().GetName().Version?.ToString()
-            //    ?? string.Empty;
         }
 
         [RelayCommand]
@@ -76,7 +70,7 @@ namespace GamerRadio.ViewModel.Pages
             }
         }
 
-        public static string GetVersion()
+        public string GetVersion()
         {
             RegistryKey? registryKey = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Uninstall\");
             if (registryKey == null) return "1.0.0.0";
@@ -88,7 +82,7 @@ namespace GamerRadio.ViewModel.Pages
                 object? displayName = programKey?.GetValue("DisplayName");
                 object? version = programKey?.GetValue("DisplayVersion");
         
-                if (displayName != null && $"{displayName}" == "RPGGamer")
+                if (displayName != null && $"{displayName}" == "RPG Radio Premium")
                     return $"{version}";
         
                 programKey?.Close();

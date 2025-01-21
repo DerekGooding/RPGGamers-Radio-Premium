@@ -49,6 +49,7 @@ public partial class App
 
             services.AddSingleton<DatabaseService>();
             services.AddSingleton<NotificationService>();
+            services.AddSingleton<PreferencesService>();
 
             services.AddSingleton<MediaElementService>();
 
