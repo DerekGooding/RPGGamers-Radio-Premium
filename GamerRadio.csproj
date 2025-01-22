@@ -19,12 +19,14 @@
 	<None Remove="Assets\Backgrounds\Ace Combat 5 The Unsung War.jpg" />
 	<None Remove="Assets\Backgrounds\Ace Combat 6 Fires of Liberation.jpg" />
 	<None Remove="Assets\Backgrounds\Ace Combat Zero The Belkan War.jpg" />
+	<None Remove="Assets\Backgrounds\Act Raiser.jpg" />
 	<None Remove="Assets\Backgrounds\Advance Wars 2 Black Hole Rising.jpg" />
 	<None Remove="Assets\Backgrounds\Afrika.jpg" />
 	<None Remove="Assets\Backgrounds\Age of Empires II.jpg" />
 	<None Remove="Assets\Backgrounds\Aground.jpg" />
 	<None Remove="Assets\Backgrounds\Aladdin.jpg" />
 	<None Remove="Assets\Backgrounds\Albert Odyssey Gaiden Legend of Eldean.jpg" />
+	<None Remove="Assets\Backgrounds\Alundra 2.jpg" />
 	<None Remove="Assets\Backgrounds\Ape Escape Pumped &amp; Primed.jpg" />
 	<None Remove="Assets\Backgrounds\Aquaria.jpg" />
 	<None Remove="Assets\Backgrounds\Ar tonelico Melody of Elemia.jpg" />
@@ -41,6 +43,7 @@
 	<None Remove="Assets\Backgrounds\Breath of Fire V Dragon Quarter.jpg" />
 	<None Remove="Assets\Backgrounds\Breath of Fire.jpg" />
 	<None Remove="Assets\Backgrounds\Bugdom.jpg" />
+	<None Remove="Assets\Backgrounds\Capcom Music Generation Rockman X.jpg" />
 	<None Remove="Assets\Backgrounds\Castle Crashers.jpg" />
 	<None Remove="Assets\Backgrounds\Castle in the Darkness.jpg" />
 	<None Remove="Assets\Backgrounds\Castlevania Bloodlines.jpg" />
@@ -262,6 +265,7 @@
     <None Remove="Assets\Backgrounds\Guild Wars Eye of the North.jpg" />
     <None Remove="Assets\Backgrounds\Guild Wars Nightfall.jpg" />
     <None Remove="Assets\Backgrounds\Guild Wars.jpg" />
+    <None Remove="Assets\Backgrounds\Guilty Gear XX.jpg" />
     <None Remove="Assets\Backgrounds\Gun Girl 2.jpg" />
     <None Remove="Assets\Backgrounds\GunGirl 2.jpg" />
     <None Remove="Assets\Backgrounds\Gunpoint.jpg" />
@@ -397,7 +401,6 @@
     <None Remove="Assets\Backgrounds\Okami.jpg" />
     <None Remove="Assets\Backgrounds\On the Peril of Parrots.jpg" />
     <None Remove="Assets\Backgrounds\OutRun.jpg" />
-    <None Remove="Assets\Backgrounds\Pac Man.jpg" />
     <None Remove="Assets\Backgrounds\Pac-Man.jpg" />
     <None Remove="Assets\Backgrounds\Paper Mario The Thousand-Year Door.jpg" />
     <None Remove="Assets\Backgrounds\Paradise Killer.jpg" />
@@ -628,12 +631,14 @@
 	<EmbeddedResource Include="Assets\Backgrounds\Ace Combat 5 The Unsung War.jpg" />
 	<EmbeddedResource Include="Assets\Backgrounds\Ace Combat 6 Fires of Liberation.jpg" />
 	<EmbeddedResource Include="Assets\Backgrounds\Ace Combat Zero The Belkan War.jpg" />
+	<EmbeddedResource Include="Assets\Backgrounds\Act Raiser.jpg" />
 	<EmbeddedResource Include="Assets\Backgrounds\Advance Wars 2 Black Hole Rising.jpg" />
 	<EmbeddedResource Include="Assets\Backgrounds\Afrika.jpg" />
 	<EmbeddedResource Include="Assets\Backgrounds\Age of Empires II.jpg" />
 	<EmbeddedResource Include="Assets\Backgrounds\Aground.jpg" />
 	<EmbeddedResource Include="Assets\Backgrounds\Aladdin.jpg" />
 	<EmbeddedResource Include="Assets\Backgrounds\Albert Odyssey Gaiden Legend of Eldean.jpg" />
+	<EmbeddedResource Include="Assets\Backgrounds\Alundra 2.jpg" />
 	<EmbeddedResource Include="Assets\Backgrounds\Ape Escape Pumped &amp; Primed.jpg" />
 	<EmbeddedResource Include="Assets\Backgrounds\Aquaria.jpg" />
 	<EmbeddedResource Include="Assets\Backgrounds\Ar tonelico Melody of Elemia.jpg" />
@@ -651,6 +656,7 @@
 	<EmbeddedResource Include="Assets\Backgrounds\Breath of Fire V Dragon Quarter.jpg" />
 	<EmbeddedResource Include="Assets\Backgrounds\Breath of Fire.jpg" />
 	<EmbeddedResource Include="Assets\Backgrounds\Bugdom.jpg" />
+	<EmbeddedResource Include="Assets\Backgrounds\Capcom Music Generation Rockman X.jpg" />
 	<EmbeddedResource Include="Assets\Backgrounds\Castle Crashers.jpg" />
 	<EmbeddedResource Include="Assets\Backgrounds\Castle in the Darkness.jpg" />
 	<EmbeddedResource Include="Assets\Backgrounds\Castlevania Bloodlines.jpg" />
@@ -873,6 +879,7 @@
     <EmbeddedResource Include="Assets\Backgrounds\Guild Wars Eye of the North.jpg" />
     <EmbeddedResource Include="Assets\Backgrounds\Guild Wars Nightfall.jpg" />
     <EmbeddedResource Include="Assets\Backgrounds\Guild Wars.jpg" />
+    <EmbeddedResource Include="Assets\Backgrounds\Guilty Gear XX.jpg" />
     <EmbeddedResource Include="Assets\Backgrounds\GunGirl 2.jpg" />
     <EmbeddedResource Include="Assets\Backgrounds\Gunpoint.jpg" />
     <EmbeddedResource Include="Assets\Backgrounds\Half-Life 2 Episode One.jpg" />
@@ -1008,7 +1015,6 @@
     <EmbeddedResource Include="Assets\Backgrounds\Okami.jpg" />
     <EmbeddedResource Include="Assets\Backgrounds\On the Peril of Parrots.jpg" />
     <EmbeddedResource Include="Assets\Backgrounds\OutRun.jpg" />
-    <EmbeddedResource Include="Assets\Backgrounds\Pac Man.jpg" />
     <EmbeddedResource Include="Assets\Backgrounds\Pac-Man.jpg" />
     <EmbeddedResource Include="Assets\Backgrounds\Paper Mario The Thousand-Year Door.jpg" />
     <EmbeddedResource Include="Assets\Backgrounds\Paradise Killer.jpg" />
