@@ -26,8 +26,8 @@
 26|http://www.rpgamers.net/radio/data/data_0/0026.dat|Chocobo Racing|Mithril Mines
 27|http://www.rpgamers.net/radio/data/data_0/0027.dat|Chrono Trigger|Frog's Theme (Arrange Version)
 28|http://www.rpgamers.net/radio/data/data_0/0028.dat|Doom|At Doom's Gate
-29|http://www.rpgamers.net/radio/data/data_0/0029.dat|Final Fantasy 1|Ahead on Our Way
-30|http://www.rpgamers.net/radio/data/data_0/0030.dat|Final Fantasy 1|Garland's Temple
+29|http://www.rpgamers.net/radio/data/data_0/0029.dat|Final Fantasy|Ahead on Our Way
+30|http://www.rpgamers.net/radio/data/data_0/0030.dat|Final Fantasy|Garland's Temple
 31|http://www.rpgamers.net/radio/data/data_0/0031.dat|Final Fantasy IV|Fight 2
 32|http://www.rpgamers.net/radio/data/data_0/0032.dat|Final Fantasy IV|Long Way to Go
 33|http://www.rpgamers.net/radio/data/data_0/0033.dat|Final Fantasy IV|Red Wings
@@ -130,7 +130,7 @@
 130|http://www.rpgamers.net/radio/data/data_0/0130.dat|Assassin's Creed: Revelations|Galata Tower
 131|http://www.rpgamers.net/radio/data/data_0/0131.dat|Assassin's Creed: Revelations|Fight or Flight
 132|http://www.rpgamers.net/radio/data/data_0/0132.dat|Portal|Still Alive
-133|http://www.rpgamers.net/radio/data/data_0/0133.dat|Final Fantasy Potion, Relaxin'|Rydia
+133|http://www.rpgamers.net/radio/data/data_0/0133.dat|Final Fantasy|Rydia (Potion, Relaxin')
 134|http://www.rpgamers.net/radio/data/data_0/0134.dat|Age of Empires III|Major Rewrite ~ General Chunks
 135|http://www.rpgamers.net/radio/data/data_0/0135.dat|Age of Empires III|LastName CraneIchabod
 136|http://www.rpgamers.net/radio/data/data_0/0136.dat|Albert Odyssey Gaiden: Legend of Eldean|Main Theme 1
@@ -525,9 +525,9 @@
 525|http://www.rpgamers.net/radio/data/data_0/0525.dat|Half-Life 2|CP Violation
 526|http://www.rpgamers.net/radio/data/data_0/0526.dat|Half-Life 2|Kaon
 527|http://www.rpgamers.net/radio/data/data_0/0527.dat|Suikoden V|Oboro Detective Agency
-528|http://www.rpgamers.net/radio/data/data_0/0528.dat|Half-Life 2: Episode Two|Hunting Party
-529|http://www.rpgamers.net/radio/data/data_0/0529.dat|Half-Life 2: Episode Two|Vortal Combat
-530|http://www.rpgamers.net/radio/data/data_0/0530.dat|Half-Life 2: Episode One|Penultimatum
+528|http://www.rpgamers.net/radio/data/data_0/0528.dat|Half-Life 2:isode Two|Hunting Party
+529|http://www.rpgamers.net/radio/data/data_0/0529.dat|Half-Life 2:isode Two|Vortal Combat
+530|http://www.rpgamers.net/radio/data/data_0/0530.dat|Half-Life 2:isode One|Penultimatum
 531|http://www.rpgamers.net/radio/data/data_0/0531.dat|La Pucelle Tactics|Magical Holic
 532|http://www.rpgamers.net/radio/data/data_0/0532.dat|Phantom Brave|Violent Emotion
 533|http://www.rpgamers.net/radio/data/data_0/0533.dat|Phantom Brave|Endless Parade
@@ -563,7 +563,7 @@
 563|http://www.rpgamers.net/radio/data/data_0/0563.dat|Final Fantasy: Mystic Quest|Mystic Quest
 564|http://www.rpgamers.net/radio/data/data_0/0564.dat|Final Fantasy: Mystic Quest|Middle Tower
 565|http://www.rpgamers.net/radio/data/data_0/0565.dat|Final Fantasy: Mystic Quest|Last Castle
-566|http://www.rpgamers.net/radio/data/data_0/0566.dat|Radical Dreamers -|The Girl Who Stole The Stars
+566|http://www.rpgamers.net/radio/data/data_0/0566.dat|Radical Dreamers|The Girl Who Stole The Stars
 567|http://www.rpgamers.net/radio/data/data_0/0567.dat|Sonic the Hedgehog 3 & Knuckles|Final Boss
 568|http://www.rpgamers.net/radio/data/data_0/0568.dat|Unknown|Unknown
 569|http://www.rpgamers.net/radio/data/data_0/0569.dat|Final Fantasy V|The Evil Lord Exdeath
@@ -661,12 +661,12 @@
 661|http://www.rpgamers.net/radio/data/data_0/0661.dat|Street Fighter IV|Drive-in at Night
 662|http://www.rpgamers.net/radio/data/data_0/0662.dat|Street Fighter IV|Crowded Downtown
 663|http://www.rpgamers.net/radio/data/data_0/0663.dat|Street Fighter IV|Old Temple
-664|http://www.rpgamers.net/radio/data/data_0/0664.dat|Guilty Gear XX #Reload Korean Version|Options
-665|http://www.rpgamers.net/radio/data/data_0/0665.dat|Guilty Gear XX #Reload Korean Version|Redemption (Character Select)
-666|http://www.rpgamers.net/radio/data/data_0/0666.dat|Guilty Gear XX #Reload Korean Version|Sticks and Stones (Jam's Theme)
-667|http://www.rpgamers.net/radio/data/data_0/0667.dat|Guilty Gear XX #Reload Korean Version|Dogs On the Run (Axl's Theme)
-668|http://www.rpgamers.net/radio/data/data_0/0668.dat|Guilty Gear XX #Reload Korean Version|Take the Pain (Faust's Theme)
-669|http://www.rpgamers.net/radio/data/data_0/0669.dat|Guilty Gear XX #Reload Korean Version|The Great Empress (Millia's Theme)
+664|http://www.rpgamers.net/radio/data/data_0/0664.dat|Guilty Gear XX|Options
+665|http://www.rpgamers.net/radio/data/data_0/0665.dat|Guilty Gear XX|Redemption (Character Select)
+666|http://www.rpgamers.net/radio/data/data_0/0666.dat|Guilty Gear XX|Sticks and Stones (Jam's Theme)
+667|http://www.rpgamers.net/radio/data/data_0/0667.dat|Guilty Gear XX|Dogs On the Run (Axl's Theme)
+668|http://www.rpgamers.net/radio/data/data_0/0668.dat|Guilty Gear XX|Take the Pain (Faust's Theme)
+669|http://www.rpgamers.net/radio/data/data_0/0669.dat|Guilty Gear XX|The Great Empress (Millia's Theme)
 670|http://www.rpgamers.net/radio/data/data_0/0670.dat|Shatter|Amethyst Caverns
 671|http://www.rpgamers.net/radio/data/data_0/0671.dat|Shatter|Granular Extractor
 672|http://www.rpgamers.net/radio/data/data_0/0672.dat|Shatter|Kinetic Harvest
@@ -861,11 +861,11 @@
 861|http://www.rpgamers.net/radio/data/data_0/0861.dat|Assassin's Creed: Brotherhood|Ezio Confronts Lucrezia
 862|http://www.rpgamers.net/radio/data/data_0/0862.dat|Assassin's Creed: Brotherhood|Desmond Miles
 863|http://www.rpgamers.net/radio/data/data_0/0863.dat|Arcanum: Of Steamworks & Magick Obscura|Mines
-864|http://www.rpgamers.net/radio/data/data_0/0864.dat|Castlevania III (Japanese)|Beginning
-865|http://www.rpgamers.net/radio/data/data_0/0865.dat|Castlevania III (Japanese)|Clockwork
-866|http://www.rpgamers.net/radio/data/data_0/0866.dat|Castlevania III (Japanese)|Aquarius
-867|http://www.rpgamers.net/radio/data/data_0/0867.dat|Castlevania III (Japanese)|Vampire Killer
-868|http://www.rpgamers.net/radio/data/data_0/0868.dat|Castlevania III (Japanese)|Riddle
+864|http://www.rpgamers.net/radio/data/data_0/0864.dat|Castlevania III|Beginning
+865|http://www.rpgamers.net/radio/data/data_0/0865.dat|Castlevania III|Clockwork
+866|http://www.rpgamers.net/radio/data/data_0/0866.dat|Castlevania III|Aquarius
+867|http://www.rpgamers.net/radio/data/data_0/0867.dat|Castlevania III|Vampire Killer
+868|http://www.rpgamers.net/radio/data/data_0/0868.dat|Castlevania III|Riddle
 869|http://www.rpgamers.net/radio/data/data_0/0869.dat|Assassin's Creed|City of Jerusalem
 870|http://www.rpgamers.net/radio/data/data_0/0870.dat|Assassin's Creed|Access the Animus
 871|http://www.rpgamers.net/radio/data/data_0/0871.dat|Age of Empires III|Noddinagushpa
@@ -1124,17 +1124,17 @@
 1124|http://www.rpgamers.net/radio/data/data_1/1124.dat|Unknown|Unknown
 1125|http://www.rpgamers.net/radio/data/data_1/1125.dat|Unknown|Unknown
 1126|http://www.rpgamers.net/radio/data/data_1/1126.dat|Unknown|Unknown
-1127|http://www.rpgamers.net/radio/data/data_1/1127.dat|Arc The Lad III Original Game Soundtrack|The Theme of Arc the Lad
-1128|http://www.rpgamers.net/radio/data/data_1/1128.dat|Arc The Lad III Original Game Soundtrack|Lutz's Theme
-1129|http://www.rpgamers.net/radio/data/data_1/1129.dat|Arc The Lad III Original Game Soundtrack|Alec's Theme
-1130|http://www.rpgamers.net/radio/data/data_1/1130.dat|Arc The Lad III Original Game Soundtrack|Idio
-1131|http://www.rpgamers.net/radio/data/data_1/1131.dat|Arc The Lad III Original Game Soundtrack|Decision
-1132|http://www.rpgamers.net/radio/data/data_1/1132.dat|Arc The Lad III Original Game Soundtrack|Battle 3
-1133|http://www.rpgamers.net/radio/data/data_1/1133.dat|Arc The Lad III Original Game Soundtrack|Academy
-1134|http://www.rpgamers.net/radio/data/data_1/1134.dat|Arc The Lad III Original Game Soundtrack|Pandira
-1135|http://www.rpgamers.net/radio/data/data_1/1135.dat|Arc The Lad III Original Game Soundtrack|Academy of Magical Sciences
-1136|http://www.rpgamers.net/radio/data/data_1/1136.dat|Arc The Lad III Original Game Soundtrack|Elk's Theme
-1137|http://www.rpgamers.net/radio/data/data_1/1137.dat|Arc The Lad III Original Game Soundtrack|WAY TO THE EARTH (English Version)
+1127|http://www.rpgamers.net/radio/data/data_1/1127.dat|Arc The Lad III Original Game|The Theme of Arc the Lad
+1128|http://www.rpgamers.net/radio/data/data_1/1128.dat|Arc The Lad III Original Game|Lutz's Theme
+1129|http://www.rpgamers.net/radio/data/data_1/1129.dat|Arc The Lad III Original Game|Alec's Theme
+1130|http://www.rpgamers.net/radio/data/data_1/1130.dat|Arc The Lad III Original Game|Idio
+1131|http://www.rpgamers.net/radio/data/data_1/1131.dat|Arc The Lad III Original Game|Decision
+1132|http://www.rpgamers.net/radio/data/data_1/1132.dat|Arc The Lad III Original Game|Battle 3
+1133|http://www.rpgamers.net/radio/data/data_1/1133.dat|Arc The Lad III Original Game|Academy
+1134|http://www.rpgamers.net/radio/data/data_1/1134.dat|Arc The Lad III Original Game|Pandira
+1135|http://www.rpgamers.net/radio/data/data_1/1135.dat|Arc The Lad III Original Game|Academy of Magical Sciences
+1136|http://www.rpgamers.net/radio/data/data_1/1136.dat|Arc The Lad III Original Game|Elk's Theme
+1137|http://www.rpgamers.net/radio/data/data_1/1137.dat|Arc The Lad III Original Game|WAY TO THE EARTH (English Version)
 1138|http://www.rpgamers.net/radio/data/data_1/1138.dat|Arc the Lad Twilight of the Spirits|Big Owl ~ Departure
 1139|http://www.rpgamers.net/radio/data/data_1/1139.dat|Arc the Lad Twilight of the Spirits|Invasion
 1140|http://www.rpgamers.net/radio/data/data_1/1140.dat|Bahamut Lagoon|Opening
@@ -1152,10 +1152,10 @@
 1152|http://www.rpgamers.net/radio/data/data_1/1152.dat|Breath of Fire|Strong Fortress
 1153|http://www.rpgamers.net/radio/data/data_1/1153.dat|Breath of Fire|Culvert
 1154|http://www.rpgamers.net/radio/data/data_1/1154.dat|Breath of Fire|A Brave General
-1155|http://www.rpgamers.net/radio/data/data_1/1155.dat|CHOCOBO NO FUSHIGINA DUNGEON 2|Searching for Treasure!
-1156|http://www.rpgamers.net/radio/data/data_1/1156.dat|CHOCOBO NO FUSHIGINA DUNGEON 2|Partner Moogle
-1157|http://www.rpgamers.net/radio/data/data_1/1157.dat|CHOCOBO NO FUSHIGINA DUNGEON 2|Mechanical World
-1158|http://www.rpgamers.net/radio/data/data_1/1158.dat|CHOCOBO NO FUSHIGINA DUNGEON 2|Phantom Dimension
+1155|http://www.rpgamers.net/radio/data/data_1/1155.dat|Chocobo's Dungeon 2|Searching for Treasure!
+1156|http://www.rpgamers.net/radio/data/data_1/1156.dat|Chocobo's Dungeon 2|Partner Moogle
+1157|http://www.rpgamers.net/radio/data/data_1/1157.dat|Chocobo's Dungeon 2|Mechanical World
+1158|http://www.rpgamers.net/radio/data/data_1/1158.dat|Chocobo's Dungeon 2|Phantom Dimension
 1159|http://www.rpgamers.net/radio/data/data_1/1159.dat|Dune II Original Game Rip|Rulers of Arrakis
 1160|http://www.rpgamers.net/radio/data/data_1/1160.dat|Dune II Original Game Rip|Spice Melange
 1161|http://www.rpgamers.net/radio/data/data_1/1161.dat|Dune II Original Game Rip|Into The Heat
@@ -1164,24 +1164,24 @@
 1164|http://www.rpgamers.net/radio/data/data_1/1164.dat|Dune II Original Game Rip|Only The Strongest Survives
 1165|http://www.rpgamers.net/radio/data/data_1/1165.dat|Dune II Original Game Rip|Marching Towards The End
 1166|http://www.rpgamers.net/radio/data/data_1/1166.dat|Dune II Original Game Rip|For Those Fallen
-1167|http://www.rpgamers.net/radio/data/data_1/1167.dat|Estpolis Biography|The Earth
-1168|http://www.rpgamers.net/radio/data/data_1/1168.dat|Estpolis Biography|Battle #1
-1169|http://www.rpgamers.net/radio/data/data_1/1169.dat|Estpolis Biography|Cave
-1170|http://www.rpgamers.net/radio/data/data_1/1170.dat|Estpolis Biography|Battle #2
-1171|http://www.rpgamers.net/radio/data/data_1/1171.dat|Estpolis Biography|Port City
-1172|http://www.rpgamers.net/radio/data/data_1/1172.dat|Estpolis Biography|Parting
-1173|http://www.rpgamers.net/radio/data/data_1/1173.dat|Estpolis Biography|Tower
-1174|http://www.rpgamers.net/radio/data/data_1/1174.dat|Estpolis Biography|Battle #3
-1175|http://www.rpgamers.net/radio/data/data_1/1175.dat|Estpolis Biography II)|Battle #1
-1176|http://www.rpgamers.net/radio/data/data_1/1176.dat|Estpolis Biography II)|Tranquility
-1177|http://www.rpgamers.net/radio/data/data_1/1177.dat|Estpolis Biography II)|Labyrinth
-1178|http://www.rpgamers.net/radio/data/data_1/1178.dat|Estpolis Biography II)|The Final Decisive Battle
+1167|http://www.rpgamers.net/radio/data/data_1/1167.dat|Lufia & The Fortress of Doom|The Earth
+1168|http://www.rpgamers.net/radio/data/data_1/1168.dat|Lufia & The Fortress of Doom|Battle #1
+1169|http://www.rpgamers.net/radio/data/data_1/1169.dat|Lufia & The Fortress of Doom|Cave
+1170|http://www.rpgamers.net/radio/data/data_1/1170.dat|Lufia & The Fortress of Doom|Battle #2
+1171|http://www.rpgamers.net/radio/data/data_1/1171.dat|Lufia & The Fortress of Doom|Port City
+1172|http://www.rpgamers.net/radio/data/data_1/1172.dat|Lufia & The Fortress of Doom|Parting
+1173|http://www.rpgamers.net/radio/data/data_1/1173.dat|Lufia & The Fortress of Doom|Tower
+1174|http://www.rpgamers.net/radio/data/data_1/1174.dat|Lufia & The Fortress of Doom|Battle #3
+1175|http://www.rpgamers.net/radio/data/data_1/1175.dat|Lufia II|Battle #1
+1176|http://www.rpgamers.net/radio/data/data_1/1176.dat|Lufia II|Tranquility
+1177|http://www.rpgamers.net/radio/data/data_1/1177.dat|Lufia II|Labyrinth
+1178|http://www.rpgamers.net/radio/data/data_1/1178.dat|Lufia II|The Final Decisive Battle
 1179|http://www.rpgamers.net/radio/data/data_1/1179.dat|Fable|Oakvale
 1180|http://www.rpgamers.net/radio/data/data_1/1180.dat|Fable|Witchwood
-1181|http://www.rpgamers.net/radio/data/data_1/1181.dat|Final Fantasy 1|Matoya's Cave
-1182|http://www.rpgamers.net/radio/data/data_1/1182.dat|Final Fantasy 1|Airship
-1183|http://www.rpgamers.net/radio/data/data_1/1183.dat|Final Fantasy 1|Gurgu Volcano
-1184|http://www.rpgamers.net/radio/data/data_1/1184.dat|Final Fantasy 1|Battle Scene
+1181|http://www.rpgamers.net/radio/data/data_1/1181.dat|Final Fantasy|Matoya's Cave
+1182|http://www.rpgamers.net/radio/data/data_1/1182.dat|Final Fantasy|Airship
+1183|http://www.rpgamers.net/radio/data/data_1/1183.dat|Final Fantasy|Gurgu Volcano
+1184|http://www.rpgamers.net/radio/data/data_1/1184.dat|Final Fantasy|Battle Scene
 1185|http://www.rpgamers.net/radio/data/data_1/1185.dat|Final Fantasy 2|Battle 1
 1186|http://www.rpgamers.net/radio/data/data_1/1186.dat|Final Fantasy 2|Main Theme
 1187|http://www.rpgamers.net/radio/data/data_1/1187.dat|Final Fantasy 2|Chocobo!
@@ -1380,7 +1380,7 @@
 1380|http://www.rpgamers.net/radio/data/data_1/1380.dat|Castlevania II: Simon's Quest|Dwelling of Doom
 1381|http://www.rpgamers.net/radio/data/data_1/1381.dat|Castlevania II: Simon's Quest|Monster Dance
 1382|http://www.rpgamers.net/radio/data/data_1/1382.dat|Castlevania II: Simon's Quest|The Silence of The Daylight
-1383|http://www.rpgamers.net/radio/data/data_1/1383.dat|Castlevania III (Japanese)|Mad Forest
+1383|http://www.rpgamers.net/radio/data/data_1/1383.dat|Castlevania III|Mad Forest
 1384|http://www.rpgamers.net/radio/data/data_1/1384.dat|Chip 'n Dale: Rescue Rangers|Zone J
 1385|http://www.rpgamers.net/radio/data/data_1/1385.dat|Contra|Area 1: Jungle / Area 7: Hanger
 1386|http://www.rpgamers.net/radio/data/data_1/1386.dat|Contra|Area 6: Energy Zone
@@ -1425,8 +1425,8 @@
 1425|http://www.rpgamers.net/radio/data/data_1/1425.dat|Star Ocean Till the End of Time|The Divine Spirit of Language
 1426|http://www.rpgamers.net/radio/data/data_1/1426.dat|Tales of Series Battle Arrange|Bare Its Fangs
 1427|http://www.rpgamers.net/radio/data/data_1/1427.dat|Tales of Series Piano Arrange|Last Battle ~ Decision
-1428|http://www.rpgamers.net/radio/data/data_1/1428.dat|Xenosaga Episode I|Kokoro
-1429|http://www.rpgamers.net/radio/data/data_1/1429.dat|Xenosaga Episode I|Shion ~ Emotion
+1428|http://www.rpgamers.net/radio/data/data_1/1428.dat|Xenosagaisode I|Kokoro
+1429|http://www.rpgamers.net/radio/data/data_1/1429.dat|Xenosagaisode I|Shion ~ Emotion
 1430|http://www.rpgamers.net/radio/data/data_1/1430.dat|Ys Seven|In the Busting Square
 1431|http://www.rpgamers.net/radio/data/data_1/1431.dat|Ys: The Oath in Felghana|Sealed Time
 1432|http://www.rpgamers.net/radio/data/data_1/1432.dat|Ys: The Oath in Felghana|Wanderers from Ys
@@ -1519,31 +1519,31 @@
 1519|http://www.rpgamers.net/radio/data/data_1/1519.dat|Dragon's Dogma|Cassardis
 1520|http://www.rpgamers.net/radio/data/data_1/1520.dat|Dragon's Dogma|One-Eyed Giant ~Cyclops Battle~
 1521|http://www.rpgamers.net/radio/data/data_1/1521.dat|Dragon's Dogma|Eternal Return ~Dragon’s Dogma Main Theme~
-1522|http://www.rpgamers.net/radio/data/data_1/1522.dat|Xenosaga Episode I|Battle
-1523|http://www.rpgamers.net/radio/data/data_1/1523.dat|Xenosaga Episode I|Gnosis
-1524|http://www.rpgamers.net/radio/data/data_1/1524.dat|Xenosaga Episode I|Warmth (New Recording)
-1525|http://www.rpgamers.net/radio/data/data_1/1525.dat|Xenosaga Episode I|Green Sleeves (New Recording)
-1526|http://www.rpgamers.net/radio/data/data_1/1526.dat|Xenosaga Episode I|Sorrow
-1527|http://www.rpgamers.net/radio/data/data_1/1527.dat|Xenosaga Episode I|Life or Death
-1528|http://www.rpgamers.net/radio/data/data_1/1528.dat|Xenosaga Episode I|Game Over
-1529|http://www.rpgamers.net/radio/data/data_1/1529.dat|Xenosaga Episode I|Durandal
-1530|http://www.rpgamers.net/radio/data/data_1/1530.dat|Xenosaga Episode I|Starting Test
-1531|http://www.rpgamers.net/radio/data/data_1/1531.dat|Xenosaga Episode I|Thoughts
-1532|http://www.rpgamers.net/radio/data/data_1/1532.dat|Xenosaga Episode I|Panic
-1533|http://www.rpgamers.net/radio/data/data_1/1533.dat|Xenosaga Episode I|Pain
-1534|http://www.rpgamers.net/radio/data/data_1/1534.dat|Xenosaga Episode I|Last Battle
+1522|http://www.rpgamers.net/radio/data/data_1/1522.dat|Xenosagaisode I|Battle
+1523|http://www.rpgamers.net/radio/data/data_1/1523.dat|Xenosagaisode I|Gnosis
+1524|http://www.rpgamers.net/radio/data/data_1/1524.dat|Xenosagaisode I|Warmth (New Recording)
+1525|http://www.rpgamers.net/radio/data/data_1/1525.dat|Xenosagaisode I|Green Sleeves (New Recording)
+1526|http://www.rpgamers.net/radio/data/data_1/1526.dat|Xenosagaisode I|Sorrow
+1527|http://www.rpgamers.net/radio/data/data_1/1527.dat|Xenosagaisode I|Life or Death
+1528|http://www.rpgamers.net/radio/data/data_1/1528.dat|Xenosagaisode I|Game Over
+1529|http://www.rpgamers.net/radio/data/data_1/1529.dat|Xenosagaisode I|Durandal
+1530|http://www.rpgamers.net/radio/data/data_1/1530.dat|Xenosagaisode I|Starting Test
+1531|http://www.rpgamers.net/radio/data/data_1/1531.dat|Xenosagaisode I|Thoughts
+1532|http://www.rpgamers.net/radio/data/data_1/1532.dat|Xenosagaisode I|Panic
+1533|http://www.rpgamers.net/radio/data/data_1/1533.dat|Xenosagaisode I|Pain
+1534|http://www.rpgamers.net/radio/data/data_1/1534.dat|Xenosagaisode I|Last Battle
 1535|http://www.rpgamers.net/radio/data/data_1/1535.dat|Unknown|Unknown
 1536|http://www.rpgamers.net/radio/data/data_1/1536.dat|Unknown|Unknown
 1537|http://www.rpgamers.net/radio/data/data_1/1537.dat|Unknown|Unknown
 1538|http://www.rpgamers.net/radio/data/data_1/1538.dat|Unknown|Unknown
 1539|http://www.rpgamers.net/radio/data/data_1/1539.dat|Unknown|Unknown
 1540|http://www.rpgamers.net/radio/data/data_1/1540.dat|Unknown|Unknown
-1541|http://www.rpgamers.net/radio/data/data_1/1541.dat|Xenosaga Episode III|we've got to believe in something
-1542|http://www.rpgamers.net/radio/data/data_1/1542.dat|Xenosaga Episode III|the battle of your soul
-1543|http://www.rpgamers.net/radio/data/data_1/1543.dat|Xenosaga Episode III|promised pain
-1544|http://www.rpgamers.net/radio/data/data_1/1544.dat|Xenosaga Episode III|survive
-1545|http://www.rpgamers.net/radio/data/data_1/1545.dat|Xenosaga Episode III|godsibb
-1546|http://www.rpgamers.net/radio/data/data_1/1546.dat|Xenosaga Episode III|maybe tomorrow ~ ending medley
+1541|http://www.rpgamers.net/radio/data/data_1/1541.dat|Xenosagaisode III|we've got to believe in something
+1542|http://www.rpgamers.net/radio/data/data_1/1542.dat|Xenosagaisode III|the battle of your soul
+1543|http://www.rpgamers.net/radio/data/data_1/1543.dat|Xenosagaisode III|promised pain
+1544|http://www.rpgamers.net/radio/data/data_1/1544.dat|Xenosagaisode III|survive
+1545|http://www.rpgamers.net/radio/data/data_1/1545.dat|Xenosagaisode III|godsibb
+1546|http://www.rpgamers.net/radio/data/data_1/1546.dat|Xenosagaisode III|maybe tomorrow ~ ending medley
 1547|http://www.rpgamers.net/radio/data/data_1/1547.dat|3D Dot Game Heroes|Escaping the Forest
 1548|http://www.rpgamers.net/radio/data/data_1/1548.dat|3D Dot Game Heroes|The Lost Forest
 1549|http://www.rpgamers.net/radio/data/data_1/1549.dat|3D Dot Game Heroes|The Temple of Water
@@ -2276,13 +2276,13 @@
 2276|http://www.rpgamers.net/radio/data/data_2/2276.dat|Unknown|Unknown
 2277|http://www.rpgamers.net/radio/data/data_2/2277.dat|Unknown|Unknown
 2278|http://www.rpgamers.net/radio/data/data_2/2278.dat|Unknown|Unknown
-2279|http://www.rpgamers.net/radio/data/data_2/2279.dat|Planescape: Torment The Soundtrack|Annah Theme
-2280|http://www.rpgamers.net/radio/data/data_2/2280.dat|Planescape: Torment The Soundtrack|Deionarra Theme
-2281|http://www.rpgamers.net/radio/data/data_2/2281.dat|Planescape: Torment The Soundtrack|Fortress Battle
-2282|http://www.rpgamers.net/radio/data/data_2/2282.dat|Planescape: Torment The Soundtrack|Fortress of Regrets
-2283|http://www.rpgamers.net/radio/data/data_2/2283.dat|Planescape: Torment The Soundtrack|Nameless One Theme
-2284|http://www.rpgamers.net/radio/data/data_2/2284.dat|Planescape: Torment The Soundtrack|Sigil Battle
-2285|http://www.rpgamers.net/radio/data/data_2/2285.dat|Planescape: Torment The Soundtrack|Transcendent One Theme
+2279|http://www.rpgamers.net/radio/data/data_2/2279.dat|Planescape: Torment The|Annah Theme
+2280|http://www.rpgamers.net/radio/data/data_2/2280.dat|Planescape: Torment The|Deionarra Theme
+2281|http://www.rpgamers.net/radio/data/data_2/2281.dat|Planescape: Torment The|Fortress Battle
+2282|http://www.rpgamers.net/radio/data/data_2/2282.dat|Planescape: Torment The|Fortress of Regrets
+2283|http://www.rpgamers.net/radio/data/data_2/2283.dat|Planescape: Torment The|Nameless One Theme
+2284|http://www.rpgamers.net/radio/data/data_2/2284.dat|Planescape: Torment The|Sigil Battle
+2285|http://www.rpgamers.net/radio/data/data_2/2285.dat|Planescape: Torment The|Transcendent One Theme
 2286|http://www.rpgamers.net/radio/data/data_2/2286.dat|Warcraft 2|Orc 2
 2287|http://www.rpgamers.net/radio/data/data_2/2287.dat|Warcraft 2|Human 1
 2288|http://www.rpgamers.net/radio/data/data_2/2288.dat|Warcraft 2|Human 2
@@ -2372,13 +2372,13 @@
 2372|http://www.rpgamers.net/radio/data/data_2/2372.dat|Shovel Knight|The Inner Struggle (Tower)
 2373|http://www.rpgamers.net/radio/data/data_2/2373.dat|Shovel Knight|The Betrayer (Enchantress Final Form)
 2374|http://www.rpgamers.net/radio/data/data_2/2374.dat|Borderlands 2: Tiny Tina's Assault on Dragon Keep|Flamerock Refuge
-2375|http://www.rpgamers.net/radio/data/data_2/2375.dat|Castle Crashers Soundtrack|Flooded Castle
+2375|http://www.rpgamers.net/radio/data/data_2/2375.dat|Castle Crashers|Flooded Castle
 2376|http://www.rpgamers.net/radio/data/data_2/2376.dat|Castle Crashers|Flutey (World Map)
 2377|http://www.rpgamers.net/radio/data/data_2/2377.dat|Castle Crashers|-Orr- 4 Brave Champions [FULL] (ID: 306544)
-2378|http://www.rpgamers.net/radio/data/data_2/2378.dat|Castle Crashers Soundtrack|Jumper
+2378|http://www.rpgamers.net/radio/data/data_2/2378.dat|Castle Crashers|Jumper
 2379|http://www.rpgamers.net/radio/data/data_2/2379.dat|Castle Crashers|_-={Rage of the Champions}=-_
-2380|http://www.rpgamers.net/radio/data/data_2/2380.dat|Castle Crashers Soundtrack|Space Pirates
-2381|http://www.rpgamers.net/radio/data/data_2/2381.dat|Castle Crashers Soundtrack|The Final Confrontation
+2380|http://www.rpgamers.net/radio/data/data_2/2380.dat|Castle Crashers|Space Pirates
+2381|http://www.rpgamers.net/radio/data/data_2/2381.dat|Castle Crashers|The Final Confrontation
 2382|http://www.rpgamers.net/radio/data/data_2/2382.dat|Castle Crashers|Winter Bliss
 2383|http://www.rpgamers.net/radio/data/data_2/2383.dat|Divinity II: Ego Draconis|Broken Valley Wakes
 2384|http://www.rpgamers.net/radio/data/data_2/2384.dat|Divinity II: Ego Draconis|Festival of Immortals
@@ -2400,7 +2400,7 @@
 2400|http://www.rpgamers.net/radio/data/data_2/2400.dat|Infinite Undiscovery|Pure Alabaster
 2401|http://www.rpgamers.net/radio/data/data_2/2401.dat|Infinite Undiscovery|Steadfast Spear
 2402|http://www.rpgamers.net/radio/data/data_2/2402.dat|Infinite Undiscovery|Step Into a New World
-2403|http://www.rpgamers.net/radio/data/data_2/2403.dat|Infinite Undiscovery|Supernal Epic
+2403|http://www.rpgamers.net/radio/data/data_2/2403.dat|Infinite Undiscovery|Supernalic
 2404|http://www.rpgamers.net/radio/data/data_2/2404.dat|Infinite Undiscovery|Swelling Madness
 2405|http://www.rpgamers.net/radio/data/data_2/2405.dat|Infinite Undiscovery|The Reaper Calls
 2406|http://www.rpgamers.net/radio/data/data_2/2406.dat|Infinite Undiscovery|Towering Behemoth
@@ -2526,9 +2526,9 @@
 2526|http://www.rpgamers.net/radio/data/data_2/2526.dat|Unknown|Unknown
 2527|http://www.rpgamers.net/radio/data/data_2/2527.dat|Unknown|Unknown
 2528|http://www.rpgamers.net/radio/data/data_2/2528.dat|Final Fantasy X|Yuna's Theme
-2529|http://www.rpgamers.net/radio/data/data_2/2529.dat|FTL: Advanced Edition|Lanius (Battle)
-2530|http://www.rpgamers.net/radio/data/data_2/2530.dat|FTL: Advanced Edition|Lost Ship (Battle)
-2531|http://www.rpgamers.net/radio/data/data_2/2531.dat|FTL: Advanced Edition|Hacking Malfunction (Battle)
+2529|http://www.rpgamers.net/radio/data/data_2/2529.dat|FTL: Faster Than Light|Lanius (Battle)
+2530|http://www.rpgamers.net/radio/data/data_2/2530.dat|FTL: Faster Than Light|Lost Ship (Battle)
+2531|http://www.rpgamers.net/radio/data/data_2/2531.dat|FTL: Faster Than Light|Hacking Malfunction (Battle)
 2532|http://www.rpgamers.net/radio/data/data_2/2532.dat|Guacamelee! Super Turbo Championship Edition|Canal de las Flores
 2533|http://www.rpgamers.net/radio/data/data_2/2533.dat|Payday 2|Master Plan
 2534|http://www.rpgamers.net/radio/data/data_2/2534.dat|Payday 2|Time Window
@@ -2546,8 +2546,8 @@
 2546|http://www.rpgamers.net/radio/data/data_2/2546.dat|GunGirl 2|Heartless Abyss (feat. Rachel Denlinger)
 2547|http://www.rpgamers.net/radio/data/data_2/2547.dat|GunGirl 2|Sanctus Inferno (feat. Rich Brilli)
 2548|http://www.rpgamers.net/radio/data/data_2/2548.dat|GunGirl 2|Game Over / Libera Me (feat. Rachel Denlinger)
-2549|http://www.rpgamers.net/radio/data/data_2/2549.dat|Seiken Densetsu / Legend of Mana Disc 1|Pain the Universe
-2550|http://www.rpgamers.net/radio/data/data_2/2550.dat|Seiken Densetsu / Legend of Mana Disc 2|Song of Mana ~Ending Theme~
+2549|http://www.rpgamers.net/radio/data/data_2/2549.dat|Legend of Mana|Pain the Universe
+2550|http://www.rpgamers.net/radio/data/data_2/2550.dat|Legend of Mana|Song of Mana ~Ending Theme~
 2551|http://www.rpgamers.net/radio/data/data_2/2551.dat|Risk of Rain|Dew Point
 2552|http://www.rpgamers.net/radio/data/data_2/2552.dat|Risk of Rain|Cyclogenesis
 2553|http://www.rpgamers.net/radio/data/data_2/2553.dat|Risk of Rain|Moisture Defecit
@@ -2560,9 +2560,9 @@
 2560|http://www.rpgamers.net/radio/data/data_2/2560.dat|Super Mario 64|Metallic Mario
 2561|http://www.rpgamers.net/radio/data/data_2/2561.dat|Unknown|Unknown
 2562|http://www.rpgamers.net/radio/data/data_2/2562.dat|Super Mario Galaxy 2|Square Timber
-2563|http://www.rpgamers.net/radio/data/data_2/2563.dat|The Showdown Effect Soundtrack|The Loadout Effect
-2564|http://www.rpgamers.net/radio/data/data_2/2564.dat|The Showdown Effect Soundtrack|Ye Olde Showdown
-2565|http://www.rpgamers.net/radio/data/data_2/2565.dat|The Showdown Effect Soundtrack|Siegebreaker Mash
+2563|http://www.rpgamers.net/radio/data/data_2/2563.dat|The Showdown Effect|The Loadout Effect
+2564|http://www.rpgamers.net/radio/data/data_2/2564.dat|The Showdown Effect|Ye Olde Showdown
+2565|http://www.rpgamers.net/radio/data/data_2/2565.dat|The Showdown Effect|Siegebreaker Mash
 2566|http://www.rpgamers.net/radio/data/data_2/2566.dat|Unknown|Unknown
 2567|http://www.rpgamers.net/radio/data/data_2/2567.dat|Unknown|Unknown
 2568|http://www.rpgamers.net/radio/data/data_2/2568.dat|Unknown|Unknown
@@ -2573,15 +2573,15 @@
 2573|http://www.rpgamers.net/radio/data/data_2/2573.dat|Rogue Legacy|Narwhal (Tower)
 2574|http://www.rpgamers.net/radio/data/data_2/2574.dat|Rogue Legacy|Lamprey (Tower Boss)
 2575|http://www.rpgamers.net/radio/data/data_2/2575.dat|Rogue Legacy|Trilobyte (Game Version)
-2576|http://www.rpgamers.net/radio/data/data_2/2576.dat|The Legend of Zelda: Link's Awakening DX (Original Soundtrack)|Koholint Island
-2577|http://www.rpgamers.net/radio/data/data_2/2577.dat|The Legend of Zelda: Link's Awakening DX (Original Soundtrack)|Overworld
-2578|http://www.rpgamers.net/radio/data/data_2/2578.dat|The Legend of Zelda: Link's Awakening DX (Original Soundtrack)|Tal Tal Mountain Range
-2579|http://www.rpgamers.net/radio/data/data_2/2579.dat|The Legend of Zelda: Link's Awakening DX (Original Soundtrack)|Title
+2576|http://www.rpgamers.net/radio/data/data_2/2576.dat|The Legend of Zelda: Link's Awakening|Koholint Island
+2577|http://www.rpgamers.net/radio/data/data_2/2577.dat|The Legend of Zelda: Link's Awakening|Overworld
+2578|http://www.rpgamers.net/radio/data/data_2/2578.dat|The Legend of Zelda: Link's Awakening|Tal Tal Mountain Range
+2579|http://www.rpgamers.net/radio/data/data_2/2579.dat|The Legend of Zelda: Link's Awakening|Title
 2580|http://www.rpgamers.net/radio/data/data_2/2580.dat|Final Fantasy VIII|SUCCESSION OF WITCHES
 2581|http://www.rpgamers.net/radio/data/data_2/2581.dat|Max Payne 2|Late Goodbye
 2582|http://www.rpgamers.net/radio/data/data_2/2582.dat|Final Fantasy VIII|Ride On
 2583|http://www.rpgamers.net/radio/data/data_2/2583.dat|Final Fantasy VIII|Maybe I'm a Lion
-2584|http://www.rpgamers.net/radio/data/data_2/2584.dat|Super Mario World (Disc-2)|Athletic BGM
+2584|http://www.rpgamers.net/radio/data/data_2/2584.dat|Super Mario World|Athletic BGM
 2585|http://www.rpgamers.net/radio/data/data_2/2585.dat|Unknown|Unknown
 2586|http://www.rpgamers.net/radio/data/data_2/2586.dat|Unknown|Unknown
 2587|http://www.rpgamers.net/radio/data/data_2/2587.dat|Unknown|Unknown
@@ -2683,8 +2683,8 @@
 2683|http://www.rpgamers.net/radio/data/data_2/2683.dat|Persona Q: Shadow of the Labyrinth|Tes Break
 2684|http://www.rpgamers.net/radio/data/data_2/2684.dat|Persona Q: Shadow of the Labyrinth|The Infinite
 2685|http://www.rpgamers.net/radio/data/data_2/2685.dat|Persona Q: Shadow of the Labyrinth|僕らは今ここにいる
-2686|http://www.rpgamers.net/radio/data/data_2/2686.dat|Bionic Commando (2009)|Enhanced Tunnel Vision
-2687|http://www.rpgamers.net/radio/data/data_2/2687.dat|Bionic Commando (2009)|The Mohole
+2686|http://www.rpgamers.net/radio/data/data_2/2686.dat|Bionic Commando|Enhanced Tunnel Vision
+2687|http://www.rpgamers.net/radio/data/data_2/2687.dat|Bionic Commando|The Mohole
 2688|http://www.rpgamers.net/radio/data/data_2/2688.dat|Valkyria Chronicles|Street Fighting
 2689|http://www.rpgamers.net/radio/data/data_2/2689.dat|Valkyria Chronicles 2 Gallian Royal Military Academy|Valkyria Chronicles 2 Main Theme
 2690|http://www.rpgamers.net/radio/data/data_2/2690.dat|Valkyria Chronicles 2 Gallian Royal Military Academy|Exciting Battle
@@ -2856,21 +2856,21 @@
 2856|http://www.rpgamers.net/radio/data/data_2/2856.dat|Hotline Miami|Hydrogen
 2857|http://www.rpgamers.net/radio/data/data_2/2857.dat|Hotline Miami|Hotline
 2858|http://www.rpgamers.net/radio/data/data_2/2858.dat|Hotline Miami|Daisuke
-2859|http://www.rpgamers.net/radio/data/data_2/2859.dat|Resonance of Fate (End of Eternity)|The beginning of eternity
-2860|http://www.rpgamers.net/radio/data/data_2/2860.dat|Resonance of Fate (End of Eternity)|Upper World
-2861|http://www.rpgamers.net/radio/data/data_2/2861.dat|Resonance of Fate (End of Eternity)|Cardinal's Manor
-2862|http://www.rpgamers.net/radio/data/data_2/2862.dat|Resonance of Fate (End of Eternity)|Cheerful and peaceful
-2863|http://www.rpgamers.net/radio/data/data_2/2863.dat|Resonance of Fate (End of Eternity)|Forest of Idols [B]
-2864|http://www.rpgamers.net/radio/data/data_2/2864.dat|Resonance of Fate (End of Eternity)|Lower World
-2865|http://www.rpgamers.net/radio/data/data_2/2865.dat|Resonance of Fate (End of Eternity)|Mine 24 [B]
-2866|http://www.rpgamers.net/radio/data/data_2/2866.dat|Resonance of Fate (End of Eternity)|Disillusion [A]
-2867|http://www.rpgamers.net/radio/data/data_2/2867.dat|Resonance of Fate (End of Eternity)|Freud Remnants [B]
-2868|http://www.rpgamers.net/radio/data/data_2/2868.dat|Resonance of Fate (End of Eternity)|Happy-go-lucky
-2869|http://www.rpgamers.net/radio/data/data_2/2869.dat|Resonance of Fate (End of Eternity)|I would be a CHAMP !?
-2870|http://www.rpgamers.net/radio/data/data_2/2870.dat|Resonance of Fate (End of Eternity)|a memento of...
-2871|http://www.rpgamers.net/radio/data/data_2/2871.dat|Resonance of Fate (End of Eternity)|Basilica [B]
-2872|http://www.rpgamers.net/radio/data/data_2/2872.dat|Resonance of Fate (End of Eternity)|In the frame [A]
-2873|http://www.rpgamers.net/radio/data/data_2/2873.dat|Resonance of Fate (End of Eternity)|Battle to pay the debt [A]
+2859|http://www.rpgamers.net/radio/data/data_2/2859.dat|Resonance of Fate|The beginning of eternity
+2860|http://www.rpgamers.net/radio/data/data_2/2860.dat|Resonance of Fate|Upper World
+2861|http://www.rpgamers.net/radio/data/data_2/2861.dat|Resonance of Fate|Cardinal's Manor
+2862|http://www.rpgamers.net/radio/data/data_2/2862.dat|Resonance of Fate|Cheerful and peaceful
+2863|http://www.rpgamers.net/radio/data/data_2/2863.dat|Resonance of Fate|Forest of Idols [B]
+2864|http://www.rpgamers.net/radio/data/data_2/2864.dat|Resonance of Fate|Lower World
+2865|http://www.rpgamers.net/radio/data/data_2/2865.dat|Resonance of Fate|Mine 24 [B]
+2866|http://www.rpgamers.net/radio/data/data_2/2866.dat|Resonance of Fate|Disillusion [A]
+2867|http://www.rpgamers.net/radio/data/data_2/2867.dat|Resonance of Fate|Freud Remnants [B]
+2868|http://www.rpgamers.net/radio/data/data_2/2868.dat|Resonance of Fate|Happy-go-lucky
+2869|http://www.rpgamers.net/radio/data/data_2/2869.dat|Resonance of Fate|I would be a CHAMP !?
+2870|http://www.rpgamers.net/radio/data/data_2/2870.dat|Resonance of Fate|a memento of...
+2871|http://www.rpgamers.net/radio/data/data_2/2871.dat|Resonance of Fate|Basilica [B]
+2872|http://www.rpgamers.net/radio/data/data_2/2872.dat|Resonance of Fate|In the frame [A]
+2873|http://www.rpgamers.net/radio/data/data_2/2873.dat|Resonance of Fate|Battle to pay the debt [A]
 2874|http://www.rpgamers.net/radio/data/data_2/2874.dat|Fire Emblem: Awakening|Omen / Main Theme
 2875|http://www.rpgamers.net/radio/data/data_2/2875.dat|Fire Emblem: Awakening|「Id」 ～ Serenity
 2876|http://www.rpgamers.net/radio/data/data_2/2876.dat|Fire Emblem: Awakening|Prelude ～ Ablaze
@@ -2926,36 +2926,36 @@
 2926|http://www.rpgamers.net/radio/data/data_2/2926.dat|TERA: The Exiled Realm of Arborea|Unknown
 2927|http://www.rpgamers.net/radio/data/data_2/2927.dat|TERA: The Exiled Realm of Arborea|Unknown
 2928|http://www.rpgamers.net/radio/data/data_2/2928.dat|TERA: The Exiled Realm of Arborea|Unknown
-2929|http://www.rpgamers.net/radio/data/data_2/2929.dat|Skies of Arcadia (Eternal Arcadia)|Opening Theme
-2930|http://www.rpgamers.net/radio/data/data_2/2930.dat|Skies of Arcadia (Eternal Arcadia)|Air Pirate Island
-2931|http://www.rpgamers.net/radio/data/data_2/2931.dat|Skies of Arcadia (Eternal Arcadia)|Blue Pirates' Theme
-2932|http://www.rpgamers.net/radio/data/data_2/2932.dat|Skies of Arcadia (Eternal Arcadia)|Battle 1
-2933|http://www.rpgamers.net/radio/data/data_2/2933.dat|Skies of Arcadia (Eternal Arcadia)|Vyse's Theme
-2934|http://www.rpgamers.net/radio/data/data_2/2934.dat|Skies of Arcadia (Eternal Arcadia)|Bombardment
-2935|http://www.rpgamers.net/radio/data/data_2/2935.dat|Skies of Arcadia (Eternal Arcadia)|Sailor Town
-2936|http://www.rpgamers.net/radio/data/data_2/2936.dat|Skies of Arcadia (Eternal Arcadia)|Drachma's Theme
-2937|http://www.rpgamers.net/radio/data/data_2/2937.dat|Skies of Arcadia (Eternal Arcadia)|Little Jack
-2938|http://www.rpgamers.net/radio/data/data_2/2938.dat|Skies of Arcadia (Eternal Arcadia)|Valua City
-2939|http://www.rpgamers.net/radio/data/data_2/2939.dat|Skies of Arcadia (Eternal Arcadia)|Military Facility Dungeon
-2940|http://www.rpgamers.net/radio/data/data_2/2940.dat|Skies of Arcadia (Eternal Arcadia)|Armada
-2941|http://www.rpgamers.net/radio/data/data_2/2941.dat|Skies of Arcadia (Eternal Arcadia)|Everyday Life
-2942|http://www.rpgamers.net/radio/data/data_2/2942.dat|Skies of Arcadia (Eternal Arcadia)|Delphinus
-2943|http://www.rpgamers.net/radio/data/data_2/2943.dat|Skies of Arcadia (Eternal Arcadia)|Gilder's Theme
-2944|http://www.rpgamers.net/radio/data/data_2/2944.dat|Skies of Arcadia (Eternal Arcadia)|Yafutoma Dawn
-2945|http://www.rpgamers.net/radio/data/data_2/2945.dat|Skies of Arcadia (Eternal Arcadia)|Eastern Air Pirates
-2946|http://www.rpgamers.net/radio/data/data_2/2946.dat|Skies of Arcadia (Eternal Arcadia)|Battle 2
-2947|http://www.rpgamers.net/radio/data/data_2/2947.dat|Skies of Arcadia (Eternal Arcadia)|Bombardment 2
-2948|http://www.rpgamers.net/radio/data/data_2/2948.dat|Skies of Arcadia (Eternal Arcadia)|Remote Town
-2949|http://www.rpgamers.net/radio/data/data_2/2949.dat|Skies of Arcadia (Eternal Arcadia)|Ramirez's Theme
-2950|http://www.rpgamers.net/radio/data/data_2/2950.dat|Skies of Arcadia (Eternal Arcadia)|Armada Battle
-2951|http://www.rpgamers.net/radio/data/data_2/2951.dat|Skies of Arcadia (Eternal Arcadia)|Last Battle (Opportunity)
-2952|http://www.rpgamers.net/radio/data/data_2/2952.dat|Skies of Arcadia (Eternal Arcadia)|Emotional
-2953|http://www.rpgamers.net/radio/data/data_2/2953.dat|Need for Speed: Most Wanted (2005)|Kick It Up a Notch
-2954|http://www.rpgamers.net/radio/data/data_2/2954.dat|Need for Speed: Most Wanted (2005)|Feels Good Donit
-2955|http://www.rpgamers.net/radio/data/data_2/2955.dat|Need for Speed: Most Wanted (2005)|Not Sure 'bout This T
-2956|http://www.rpgamers.net/radio/data/data_2/2956.dat|Need for Speed: Most Wanted (2005)|This Doesn't Look Good
-2957|http://www.rpgamers.net/radio/data/data_2/2957.dat|Need for Speed: Most Wanted (2005)|Layin' Low
-2958|http://www.rpgamers.net/radio/data/data_2/2958.dat|Need for Speed: Most Wanted (2005)|Take That Dawg
+2929|http://www.rpgamers.net/radio/data/data_2/2929.dat|Skies of Arcadia|Opening Theme
+2930|http://www.rpgamers.net/radio/data/data_2/2930.dat|Skies of Arcadia|Air Pirate Island
+2931|http://www.rpgamers.net/radio/data/data_2/2931.dat|Skies of Arcadia|Blue Pirates' Theme
+2932|http://www.rpgamers.net/radio/data/data_2/2932.dat|Skies of Arcadia|Battle 1
+2933|http://www.rpgamers.net/radio/data/data_2/2933.dat|Skies of Arcadia|Vyse's Theme
+2934|http://www.rpgamers.net/radio/data/data_2/2934.dat|Skies of Arcadia|Bombardment
+2935|http://www.rpgamers.net/radio/data/data_2/2935.dat|Skies of Arcadia|Sailor Town
+2936|http://www.rpgamers.net/radio/data/data_2/2936.dat|Skies of Arcadia|Drachma's Theme
+2937|http://www.rpgamers.net/radio/data/data_2/2937.dat|Skies of Arcadia|Little Jack
+2938|http://www.rpgamers.net/radio/data/data_2/2938.dat|Skies of Arcadia|Valua City
+2939|http://www.rpgamers.net/radio/data/data_2/2939.dat|Skies of Arcadia|Military Facility Dungeon
+2940|http://www.rpgamers.net/radio/data/data_2/2940.dat|Skies of Arcadia|Armada
+2941|http://www.rpgamers.net/radio/data/data_2/2941.dat|Skies of Arcadia|Everyday Life
+2942|http://www.rpgamers.net/radio/data/data_2/2942.dat|Skies of Arcadia|Delphinus
+2943|http://www.rpgamers.net/radio/data/data_2/2943.dat|Skies of Arcadia|Gilder's Theme
+2944|http://www.rpgamers.net/radio/data/data_2/2944.dat|Skies of Arcadia|Yafutoma Dawn
+2945|http://www.rpgamers.net/radio/data/data_2/2945.dat|Skies of Arcadia|Eastern Air Pirates
+2946|http://www.rpgamers.net/radio/data/data_2/2946.dat|Skies of Arcadia|Battle 2
+2947|http://www.rpgamers.net/radio/data/data_2/2947.dat|Skies of Arcadia|Bombardment 2
+2948|http://www.rpgamers.net/radio/data/data_2/2948.dat|Skies of Arcadia|Remote Town
+2949|http://www.rpgamers.net/radio/data/data_2/2949.dat|Skies of Arcadia|Ramirez's Theme
+2950|http://www.rpgamers.net/radio/data/data_2/2950.dat|Skies of Arcadia|Armada Battle
+2951|http://www.rpgamers.net/radio/data/data_2/2951.dat|Skies of Arcadia|Last Battle (Opportunity)
+2952|http://www.rpgamers.net/radio/data/data_2/2952.dat|Skies of Arcadia|Emotional
+2953|http://www.rpgamers.net/radio/data/data_2/2953.dat|Need for Speed: Most Wanted|Kick It Up a Notch
+2954|http://www.rpgamers.net/radio/data/data_2/2954.dat|Need for Speed: Most Wanted|Feels Good Donit
+2955|http://www.rpgamers.net/radio/data/data_2/2955.dat|Need for Speed: Most Wanted|Not Sure 'bout This T
+2956|http://www.rpgamers.net/radio/data/data_2/2956.dat|Need for Speed: Most Wanted|This Doesn't Look Good
+2957|http://www.rpgamers.net/radio/data/data_2/2957.dat|Need for Speed: Most Wanted|Layin' Low
+2958|http://www.rpgamers.net/radio/data/data_2/2958.dat|Need for Speed: Most Wanted|Take That Dawg
 2959|http://www.rpgamers.net/radio/data/data_2/2959.dat|Final Fantasy: Crystal Chronicles|Twilight in Dreamland
 2960|http://www.rpgamers.net/radio/data/data_2/2960.dat|Final Fantasy: Crystal Chronicles|Annual Festival
 2961|http://www.rpgamers.net/radio/data/data_2/2961.dat|Final Fantasy: Crystal Chronicles|The Time of Many Smiling Faces
@@ -2975,12 +2975,12 @@
 2975|http://www.rpgamers.net/radio/data/data_2/2975.dat|Metal Gear Solid 3: Snake Eater|Last Showdown
 2976|http://www.rpgamers.net/radio/data/data_2/2976.dat|Metal Gear Solid 3: Snake Eater|On The Ground ~ Battle In The Jungle (Alert)
 2977|http://www.rpgamers.net/radio/data/data_2/2977.dat|Metal Gear Solid 3: Snake Eater|Ocelot Youth ~ Confrontation
-2978|http://www.rpgamers.net/radio/data/data_2/2978.dat|Aladdin (Genesis)|Unknown
-2979|http://www.rpgamers.net/radio/data/data_2/2979.dat|Aladdin (Genesis)|Unknown
-2980|http://www.rpgamers.net/radio/data/data_2/2980.dat|Aladdin (Genesis)|Unknown
-2981|http://www.rpgamers.net/radio/data/data_2/2981.dat|Aladdin (Genesis)|Unknown
-2982|http://www.rpgamers.net/radio/data/data_2/2982.dat|Aladdin (Genesis)|Unknown
-2983|http://www.rpgamers.net/radio/data/data_2/2983.dat|Aladdin (Genesis)|Unknown
+2978|http://www.rpgamers.net/radio/data/data_2/2978.dat|Aladdin|Unknown
+2979|http://www.rpgamers.net/radio/data/data_2/2979.dat|Aladdin|Unknown
+2980|http://www.rpgamers.net/radio/data/data_2/2980.dat|Aladdin|Unknown
+2981|http://www.rpgamers.net/radio/data/data_2/2981.dat|Aladdin|Unknown
+2982|http://www.rpgamers.net/radio/data/data_2/2982.dat|Aladdin|Unknown
+2983|http://www.rpgamers.net/radio/data/data_2/2983.dat|Aladdin|Unknown
 2984|http://www.rpgamers.net/radio/data/data_2/2984.dat|Legend of Zelda: Majora's Mask|"Song of Healing" Demo
 2985|http://www.rpgamers.net/radio/data/data_2/2985.dat|Legend of Zelda: Majora's Mask|Clock Town Day 1
 2986|http://www.rpgamers.net/radio/data/data_2/2986.dat|Legend of Zelda: Majora's Mask|Fairy's Fountain
@@ -3108,12 +3108,12 @@
 3108|http://www.rpgamers.net/radio/data/data_3/3108.dat|Castlevania|Stalker
 3109|http://www.rpgamers.net/radio/data/data_3/3109.dat|Castlevania|Walking Edge
 3110|http://www.rpgamers.net/radio/data/data_3/3110.dat|Castlevania II: Simon's Quest|A Requiem
-3111|http://www.rpgamers.net/radio/data/data_3/3111.dat|Castlevania III (Japanese)|Big Battle 1
-3112|http://www.rpgamers.net/radio/data/data_3/3112.dat|Castlevania III (Japanese)|Boss Fight
-3113|http://www.rpgamers.net/radio/data/data_3/3113.dat|Castlevania III (Japanese)|Dead Beat
-3114|http://www.rpgamers.net/radio/data/data_3/3114.dat|Castlevania III (Japanese)|Demon Seed
-3115|http://www.rpgamers.net/radio/data/data_3/3115.dat|Castlevania III (Japanese)|Prelude
-3116|http://www.rpgamers.net/radio/data/data_3/3116.dat|Castlevania III (Japanese)|Stream
+3111|http://www.rpgamers.net/radio/data/data_3/3111.dat|Castlevania III|Big Battle 1
+3112|http://www.rpgamers.net/radio/data/data_3/3112.dat|Castlevania III|Boss Fight
+3113|http://www.rpgamers.net/radio/data/data_3/3113.dat|Castlevania III|Dead Beat
+3114|http://www.rpgamers.net/radio/data/data_3/3114.dat|Castlevania III|Demon Seed
+3115|http://www.rpgamers.net/radio/data/data_3/3115.dat|Castlevania III|Prelude
+3116|http://www.rpgamers.net/radio/data/data_3/3116.dat|Castlevania III|Stream
 3117|http://www.rpgamers.net/radio/data/data_3/3117.dat|Xenogears|My Village is Number One
 3118|http://www.rpgamers.net/radio/data/data_3/3118.dat|Xenogears|Dazil, City of Burning Sands
 3119|http://www.rpgamers.net/radio/data/data_3/3119.dat|Xenogears|Knight of Fire
@@ -3159,10 +3159,10 @@
 3159|http://www.rpgamers.net/radio/data/data_3/3159.dat|God of War|The Architect's Mysteries
 3160|http://www.rpgamers.net/radio/data/data_3/3160.dat|God of War|Zeus' Wrath Divine
 3161|http://www.rpgamers.net/radio/data/data_3/3161.dat|God of War|Minotaur Boss Battle
-3162|http://www.rpgamers.net/radio/data/data_3/3162.dat|FF I & II, All Sounds Of|Ending Theme
-3163|http://www.rpgamers.net/radio/data/data_3/3163.dat|FF I & II, All Sounds Of|Main Theme
-3164|http://www.rpgamers.net/radio/data/data_3/3164.dat|FF I & II, All Sounds Of|Marsh Cave
-3165|http://www.rpgamers.net/radio/data/data_3/3165.dat|FF I & II, All Sounds Of|Sorrow
+3162|http://www.rpgamers.net/radio/data/data_3/3162.dat|Final Fantasy|Ending Theme
+3163|http://www.rpgamers.net/radio/data/data_3/3163.dat|Final Fantasy|Main Theme
+3164|http://www.rpgamers.net/radio/data/data_3/3164.dat|Final Fantasy|Marsh Cave
+3165|http://www.rpgamers.net/radio/data/data_3/3165.dat|Final Fantasy|Sorrow
 3166|http://www.rpgamers.net/radio/data/data_3/3166.dat|Final Fantasy VII|Prelude
 3167|http://www.rpgamers.net/radio/data/data_3/3167.dat|Final Fantasy VIII|Find Your Way
 3168|http://www.rpgamers.net/radio/data/data_3/3168.dat|Final Fantasy VIII|The Landing
@@ -3194,7 +3194,7 @@
 3194|http://www.rpgamers.net/radio/data/data_3/3194.dat|Heroes of Might and Magic III|Secret Theme
 3195|http://www.rpgamers.net/radio/data/data_3/3195.dat|Heroes of Might and Magic III|Rampart Towns
 3196|http://www.rpgamers.net/radio/data/data_3/3196.dat|Heroes of Might and Magic III|Inferno Towns
-3197|http://www.rpgamers.net/radio/data/data_3/3197.dat|Nintendo Land|Nintendo Land Soundtrack Main (Daytime) (8-Bit)
+3197|http://www.rpgamers.net/radio/data/data_3/3197.dat|Nintendo Land|Nintendo Land Main (Daytime) (8-Bit)
 3198|http://www.rpgamers.net/radio/data/data_3/3198.dat|World of Warcraft|Main Title: Legends of Azeroth
 3199|http://www.rpgamers.net/radio/data/data_3/3199.dat|World of Warcraft|Exclusive Track: The Shaping of the World
 3200|http://www.rpgamers.net/radio/data/data_3/3200.dat|World of Warcraft|Exclusive Track: Legacy
@@ -3440,7 +3440,7 @@
 3440|http://www.rpgamers.net/radio/data/data_3/3440.dat|Final Fantasy VIII|The Castle
 3441|http://www.rpgamers.net/radio/data/data_3/3441.dat|Final Fantasy X|Someday the Dream Will End
 3442|http://www.rpgamers.net/radio/data/data_3/3442.dat|La Pucelle Tactics|Solitaire
-3443|http://www.rpgamers.net/radio/data/data_3/3443.dat|Estpolis Biography Sound Track (DISC 2 - Estpolis Biography II)|Prophet
+3443|http://www.rpgamers.net/radio/data/data_3/3443.dat|Lufia & The Fortress of Doom|Prophet
 3444|http://www.rpgamers.net/radio/data/data_3/3444.dat|Adventures in the Magic Kingdom|Overworld Map
 3445|http://www.rpgamers.net/radio/data/data_3/3445.dat|Adventures in the Magic Kingdom|Title Screen
 3446|http://www.rpgamers.net/radio/data/data_3/3446.dat|Area 88|Enemy Airforce
@@ -3843,16 +3843,16 @@
 3843|http://www.rpgamers.net/radio/data/data_3/3843.dat|The Legend of Zelda: Twilight Princess|The Hidden Village
 3844|http://www.rpgamers.net/radio/data/data_3/3844.dat|The Legend of Zelda: Twilight Princess|Zora's Domain
 3845|http://www.rpgamers.net/radio/data/data_3/3845.dat|The Legend of Zelda: Twilight Princess|Postman
-3846|http://www.rpgamers.net/radio/data/data_3/3846.dat|GoldenEye 007 (N64)|Aztec Complex
-3847|http://www.rpgamers.net/radio/data/data_3/3847.dat|GoldenEye 007 (N64)|Bunker 1 (Alarm Triggered)
-3848|http://www.rpgamers.net/radio/data/data_3/3848.dat|GoldenEye 007 (N64)|Antenna Cradle
-3849|http://www.rpgamers.net/radio/data/data_3/3849.dat|GoldenEye 007 (N64)|Byelomorye Dam
-3850|http://www.rpgamers.net/radio/data/data_3/3850.dat|GoldenEye 007 (N64)|Disused Military Depot
-3851|http://www.rpgamers.net/radio/data/data_3/3851.dat|GoldenEye 007 (N64)|Elevator B
-3852|http://www.rpgamers.net/radio/data/data_3/3852.dat|GoldenEye 007 (N64)|Escape from Arkangelsk
-3853|http://www.rpgamers.net/radio/data/data_3/3853.dat|GoldenEye 007 (N64)|Main Theme
-3854|http://www.rpgamers.net/radio/data/data_3/3854.dat|GoldenEye 007 (N64)|Runway
-3855|http://www.rpgamers.net/radio/data/data_3/3855.dat|GoldenEye 007 (N64)|Soviet Missile Silo
+3846|http://www.rpgamers.net/radio/data/data_3/3846.dat|GoldenEye 007|Aztec Complex
+3847|http://www.rpgamers.net/radio/data/data_3/3847.dat|GoldenEye 007|Bunker 1 (Alarm Triggered)
+3848|http://www.rpgamers.net/radio/data/data_3/3848.dat|GoldenEye 007|Antenna Cradle
+3849|http://www.rpgamers.net/radio/data/data_3/3849.dat|GoldenEye 007|Byelomorye Dam
+3850|http://www.rpgamers.net/radio/data/data_3/3850.dat|GoldenEye 007|Disused Military Depot
+3851|http://www.rpgamers.net/radio/data/data_3/3851.dat|GoldenEye 007|Elevator B
+3852|http://www.rpgamers.net/radio/data/data_3/3852.dat|GoldenEye 007|Escape from Arkangelsk
+3853|http://www.rpgamers.net/radio/data/data_3/3853.dat|GoldenEye 007|Main Theme
+3854|http://www.rpgamers.net/radio/data/data_3/3854.dat|GoldenEye 007|Runway
+3855|http://www.rpgamers.net/radio/data/data_3/3855.dat|GoldenEye 007|Soviet Missile Silo
 3856|http://www.rpgamers.net/radio/data/data_3/3856.dat|Ape Escape: Pumped & Primed|Dash Hoop
 3857|http://www.rpgamers.net/radio/data/data_3/3857.dat|Ape Escape: Pumped & Primed|Last Boss Theme
 3858|http://www.rpgamers.net/radio/data/data_3/3858.dat|Ape Escape: Pumped & Primed|Nano Grid
@@ -3993,10 +3993,10 @@
 3993|http://www.rpgamers.net/radio/data/data_3/3993.dat|XCOM: Enemy Unknown|Resilience of Man
 3994|http://www.rpgamers.net/radio/data/data_3/3994.dat|XCOM: Enemy Unknown|Snap Shot
 3995|http://www.rpgamers.net/radio/data/data_3/3995.dat|XCOM: Enemy Unknown|Vigilo Confido
-3996|http://www.rpgamers.net/radio/data/data_3/3996.dat|Superbrothers: Sword & Sworcery EP|Bones McCoy
-3997|http://www.rpgamers.net/radio/data/data_3/3997.dat|Superbrothers: Sword & Sworcery EP|Unknown
-3998|http://www.rpgamers.net/radio/data/data_3/3998.dat|Superbrothers: Sword & Sworcery EP|Unknown
-3999|http://www.rpgamers.net/radio/data/data_3/3999.dat|Superbrothers: Sword & Sworcery EP|Unknown
+3996|http://www.rpgamers.net/radio/data/data_3/3996.dat|Superbrothers: Sword & Sworcery|Bones McCoy
+3997|http://www.rpgamers.net/radio/data/data_3/3997.dat|Superbrothers: Sword & Sworcery|Unknown
+3998|http://www.rpgamers.net/radio/data/data_3/3998.dat|Superbrothers: Sword & Sworcery|Unknown
+3999|http://www.rpgamers.net/radio/data/data_3/3999.dat|Superbrothers: Sword & Sworcery|Unknown
 4000|http://www.rpgamers.net/radio/data/data_4/4000.dat|Makai Kingdom: Chronicles of the Sacred Tome|intermission
 4001|http://www.rpgamers.net/radio/data/data_4/4001.dat|Makai Kingdom: Chronicles of the Sacred Tome|Phantom Kingdom
 4002|http://www.rpgamers.net/radio/data/data_4/4002.dat|Makai Kingdom: Chronicles of the Sacred Tome|Darkness Darkness
@@ -4442,16 +4442,16 @@
 4442|http://www.rpgamers.net/radio/data/data_4/4442.dat|F-Zero|Unknown
 4443|http://www.rpgamers.net/radio/data/data_4/4443.dat|F-Zero|Unknown
 4444|http://www.rpgamers.net/radio/data/data_4/4444.dat|F-Zero|Unknown
-4445|http://www.rpgamers.net/radio/data/data_4/4445.dat|The Legend of Zelda: Link's Awakening (2019)|Exploration for the First Time
-4446|http://www.rpgamers.net/radio/data/data_4/4446.dat|The Legend of Zelda: Link's Awakening (2019)|Field (First Time)
-4447|http://www.rpgamers.net/radio/data/data_4/4447.dat|The Legend of Zelda: Link's Awakening (2019)|Game Shop
-4448|http://www.rpgamers.net/radio/data/data_4/4448.dat|The Legend of Zelda: Link's Awakening (2019)|Dungeon 2 Jar Cave
-4449|http://www.rpgamers.net/radio/data/data_4/4449.dat|The Legend of Zelda: Link's Awakening (2019)|Tal Tal Mountain Range
-4450|http://www.rpgamers.net/radio/data/data_4/4450.dat|The Legend of Zelda: Link's Awakening (2019)|House by the Cove
-4451|http://www.rpgamers.net/radio/data/data_4/4451.dat|The Legend of Zelda: Link's Awakening (2019)|Shadow Appears ~ Battle
-4452|http://www.rpgamers.net/radio/data/data_4/4452.dat|The Legend of Zelda: Link's Awakening (2019)|Koholint Island Disappears
-4453|http://www.rpgamers.net/radio/data/data_4/4453.dat|The Legend of Zelda: Link's Awakening (2019)|Ending ~ Staff Roll
-4454|http://www.rpgamers.net/radio/data/data_4/4454.dat|The Legend of Zelda: Link's Awakening (2019)|Title (With Intro Ver.)
+4445|http://www.rpgamers.net/radio/data/data_4/4445.dat|The Legend of Zelda: Link's Awakening|Exploration for the First Time
+4446|http://www.rpgamers.net/radio/data/data_4/4446.dat|The Legend of Zelda: Link's Awakening|Field (First Time)
+4447|http://www.rpgamers.net/radio/data/data_4/4447.dat|The Legend of Zelda: Link's Awakening|Game Shop
+4448|http://www.rpgamers.net/radio/data/data_4/4448.dat|The Legend of Zelda: Link's Awakening|Dungeon 2 Jar Cave
+4449|http://www.rpgamers.net/radio/data/data_4/4449.dat|The Legend of Zelda: Link's Awakening|Tal Tal Mountain Range
+4450|http://www.rpgamers.net/radio/data/data_4/4450.dat|The Legend of Zelda: Link's Awakening|House by the Cove
+4451|http://www.rpgamers.net/radio/data/data_4/4451.dat|The Legend of Zelda: Link's Awakening|Shadow Appears ~ Battle
+4452|http://www.rpgamers.net/radio/data/data_4/4452.dat|The Legend of Zelda: Link's Awakening|Koholint Island Disappears
+4453|http://www.rpgamers.net/radio/data/data_4/4453.dat|The Legend of Zelda: Link's Awakening|Ending ~ Staff Roll
+4454|http://www.rpgamers.net/radio/data/data_4/4454.dat|The Legend of Zelda: Link's Awakening|Title (With Intro Ver.)
 4455|http://www.rpgamers.net/radio/data/data_4/4455.dat|Lethal League|Scream
 4456|http://www.rpgamers.net/radio/data/data_4/4456.dat|Lethal League|Ordinary Days
 4457|http://www.rpgamers.net/radio/data/data_4/4457.dat|Lethal League|Unknown
