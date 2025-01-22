@@ -4,7 +4,7 @@ namespace GamerRadio.Model;
 
 public partial class SongImage : ObservableObject
 {
-    public Song Song { get; set; } = new Song() { Game = "None", Title = "None}" };
+    public Song Song { get; set; } = new Song() { Game = "None", Title = "None" };
     public ImageSource? Source { get; set; }
 
     [ObservableProperty]

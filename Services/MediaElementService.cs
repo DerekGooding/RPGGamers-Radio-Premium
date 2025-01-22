@@ -21,9 +21,9 @@ public class MediaElementService
         Assembly assembly = Assembly.GetExecutingAssembly();
         string[] _imageSources = assembly.GetManifestResourceNames();
         HashSet<string> imageSourceSet = new(_imageSources);
-
+        string fallbackSource = imageSourceSet.FirstOrDefault(name => name.Contains($"ComingSoon.jpg"))!;
         SongImages = _databaseService.Read()
-                .ConvertAll(song => new SongImage(song, GetCachedImage(song, imageSourceSet, assembly, _imageSources), false, false));
+                .ConvertAll(song => new SongImage(song, GetCachedImage(song, imageSourceSet, assembly, fallbackSource), false, false));
     }
 
     public MediaElement? MediaElement { get; set; }
@@ -124,10 +124,10 @@ public class MediaElementService
         PlayMedia(_songHistory.Pop(), true);
     }
 
-    private ImageSource GetCachedImage(Song song, HashSet<string> imageSourceSet, Assembly assembly, string[] fallbackSources)
+    private ImageSource GetCachedImage(Song song, HashSet<string> imageSourceSet, Assembly assembly, string fallbackSource)
     {
         string resourceName = imageSourceSet.FirstOrDefault(name => name.Contains($"{song.Game.Replace(":","")}.jpg"))
-                              ?? fallbackSources[1];
+                              ?? fallbackSource;
 
         // Return from cache if already loaded
         if (_imageCache.TryGetValue(resourceName, out BitmapImage? cachedImage))
