@@ -10,7 +10,6 @@ using System.IO;
 using System.Reflection;
 using System.Windows.Threading;
 using Wpf.Ui;
-using Wpf.Ui.Appearance;
 
 namespace GamerRadio;
 
@@ -83,16 +82,54 @@ public partial class App
     /// <summary>
     /// Occurs when the application is loading.
     /// </summary>
-    private void OnStartup(object sender, StartupEventArgs e) => _host.Start();
+    private void OnStartup(object sender, StartupEventArgs e)
+    {
+        _host.Start();
+        LoadPreferences();
+    }
 
     /// <summary>
     /// Occurs when the application is closing.
     /// </summary>
     private async void OnExit(object sender, ExitEventArgs e)
     {
+        SavePreferences();
         await _host.StopAsync();
 
         _host.Dispose();
+    }
+
+    private void SavePreferences()
+    {
+        DashboardViewModel dashboardViewModel = _host.Services.GetService<DashboardViewModel>()!;
+        SettingsViewModel SettingsViewModel = _host.Services.GetService<SettingsViewModel>()!;
+        List<Model.SongImage> songs = _host.Services.GetService<MediaElementService>()!.SongImages;
+        _host.Services.GetService<PreferencesService>()!.Save(SettingsViewModel.IsNotificationEnabled, SettingsViewModel.NotificationCorner, dashboardViewModel.Volume,
+            songs.Where(x=>x.IsFavorite).Select(x=>x.Song.Id), songs.Where(x => x.IsIgnored).Select(x => x.Song.Id));
+    }
+
+    private async Task LoadPreferences()
+    {
+        DashboardViewModel dashboardViewModel = _host.Services.GetService<DashboardViewModel>()!;
+        SettingsViewModel SettingsViewModel = _host.Services.GetService<SettingsViewModel>()!;
+        FavoritesViewModel FavoritesViewModel = _host.Services.GetService<FavoritesViewModel>()!;
+        MediaElementService songs = _host.Services.GetService<MediaElementService>()!;
+
+        (bool NotificationOn, int NotificationCorner, double Volume, List<int> Favorites, List<int> Blocked)
+            = _host.Services.GetService<PreferencesService>()!.Load();
+
+        SettingsViewModel.IsNotificationEnabled = NotificationOn;
+        SettingsViewModel.NotificationCorner = NotificationCorner;
+        dashboardViewModel.Volume = Volume;
+        foreach (int id in Favorites)
+        {
+            songs.SongImages.First(x => x.Song.Id == id).IsFavorite = true;
+            FavoritesViewModel.Add(songs.SongImages.First(x => x.Song.Id == id));
+        }
+        foreach (int id in Blocked)
+        {
+            songs.SongImages.First(x => x.Song.Id == id).IsIgnored = true;
+        }
     }
 
     /// <summary>

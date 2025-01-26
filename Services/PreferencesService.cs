@@ -4,13 +4,18 @@ namespace GamerRadio.Services;
 
 public class PreferencesService
 {
-    private static readonly string AppFolderPath = Path.Combine(
+    public PreferencesService()
+    {
+        AppFolderPath = Path.Combine(
         Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
         "RPGGamerRadio");
+        PreferencesFilePath = Path.Combine(AppFolderPath, "preferences.csv");
+    }
+    private readonly string AppFolderPath;
+    private readonly string PreferencesFilePath;
+    private const char separator = '|';
 
-    private static readonly string PreferencesFilePath = Path.Combine(AppFolderPath, "preferences.csv");
-
-    public static void SavePreferences(string[] preferences)
+    public void SavePreferences(string[] preferences)
     {
         if (!Directory.Exists(AppFolderPath))
         {
@@ -20,13 +25,40 @@ public class PreferencesService
         File.WriteAllLines(PreferencesFilePath, preferences);
     }
 
-    public static string[] LoadPreferences()
-    {
-        if (File.Exists(PreferencesFilePath))
-        {
-            return File.ReadAllLines(PreferencesFilePath);
-        }
+    public string[] LoadPreferences() => File.Exists(PreferencesFilePath) ? File.ReadAllLines(PreferencesFilePath) : [];
 
-        return [];
+    
+    public void Save(bool NotificationOn, int NotificationCorner, double Volume, IEnumerable<int> Favorites, IEnumerable<int> Blocked)
+    {
+        List<string> data = [];
+        data.Add($"NotificationOn{separator}{NotificationOn}");
+        data.Add($"NotificationCorner{separator}{NotificationCorner}");
+        data.Add($"Volume{separator}{Volume}");
+        data.AddRange(Favorites.Select(x => $"Favorites{separator}{x}"));
+        data.AddRange(Blocked.Select(x => $"Blocked{separator}{x}"));
+        SavePreferences([.. data]);
+    }
+    public  (bool NotificationOn, int NotificationCorner, double Volume, List<int> Favorites, List<int> Blocked) Load()
+    {
+        string[] preferences = LoadPreferences();
+        bool NotificationOn = true;
+        int NotificationCorner = 0;
+        double Volume = 0.5;
+        List<int> Favorites = [];
+        List<int> Blocked = [];
+        foreach (string[] line in preferences.Select(x => x.Split(separator)))
+        {
+            if (line[0] == "NotificationOn" && bool.TryParse(line[1], out bool notificationOn))
+                NotificationOn = notificationOn;
+            else if (line[0] == "NotificationCorner" && int.TryParse(line[1], out int notificationCorner))
+                NotificationCorner = notificationCorner;
+            else if (line[0] == "Volume" && double.TryParse(line[1], out double volume))
+                Volume = volume;
+            else if (line[0] == "Favorites" && int.TryParse(line[1], out int favorite))
+                Favorites.Add(favorite);
+            else if (line[0] == "Blocked" && int.TryParse(line[1], out int blocked))
+                Blocked.Add(blocked);
+        }
+        return (NotificationOn, NotificationCorner, Volume, Favorites, Blocked);
     }
 }

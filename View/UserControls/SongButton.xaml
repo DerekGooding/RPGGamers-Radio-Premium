@@ -53,11 +53,10 @@
                 </ui:Button.Content>
             </ui:Button>
 
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top">
-            <ui:Button  Foreground="Yellow"
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="right" VerticalAlignment="Bottom" >
+                <ui:Button  Foreground="Yellow" Background="Transparent"
                        BorderThickness="0"
-                       CornerRadius="20"
-                       Margin="10" FontSize="30"
+                       CornerRadius="15" FontSize="20"
                        Command="{Binding DataContext.ViewModel.FavoriteCommand , ElementName=ParentPage}"
                        CommandParameter="{Binding}">
                 <ui:Button.Icon>
@@ -66,9 +65,8 @@
             </ui:Button>
 
             <ui:Button Foreground="Red"
-                       BorderThickness="0"
-                       CornerRadius="20"
-                       Margin="10" FontSize="30"
+                       BorderThickness="0" Background="Transparent"
+                       CornerRadius="20" FontSize="20"
                        Command="{Binding DataContext.ViewModel.IgnoreCommand , ElementName=ParentPage}"
                        CommandParameter="{Binding}">
                             <ui:Button.Icon>

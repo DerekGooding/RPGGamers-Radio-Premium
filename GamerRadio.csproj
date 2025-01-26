@@ -19,7 +19,6 @@
 	<None Remove="Assets\Backgrounds\Ace Combat 5 The Unsung War.jpg" />
 	<None Remove="Assets\Backgrounds\Ace Combat 6 Fires of Liberation.jpg" />
 	<None Remove="Assets\Backgrounds\Ace Combat Zero The Belkan War.jpg" />
-	<None Remove="Assets\Backgrounds\Act Raiser.jpg" />
 	<None Remove="Assets\Backgrounds\Advance Wars 2 Black Hole Rising.jpg" />
 	<None Remove="Assets\Backgrounds\Afrika.jpg" />
 	<None Remove="Assets\Backgrounds\Age of Empires II.jpg" />
@@ -63,7 +62,6 @@
     <None Remove="Assets\Backgrounds\10000000.jpg" />
     <None Remove="Assets\Backgrounds\3D Dot Game Heroes.jpg" />
     <None Remove="Assets\Backgrounds\7th Dragon.jpg" />
-    <None Remove="Assets\Backgrounds\Actraiser.jpg" />
     <None Remove="Assets\Backgrounds\ADventure Lib.jpg" />
     <None Remove="Assets\Backgrounds\Adventures in the Magic Kingdom.jpg" />
     <None Remove="Assets\Backgrounds\Age of Empires III.jpg" />
@@ -631,7 +629,7 @@
 	<EmbeddedResource Include="Assets\Backgrounds\Ace Combat 5 The Unsung War.jpg" />
 	<EmbeddedResource Include="Assets\Backgrounds\Ace Combat 6 Fires of Liberation.jpg" />
 	<EmbeddedResource Include="Assets\Backgrounds\Ace Combat Zero The Belkan War.jpg" />
-	<EmbeddedResource Include="Assets\Backgrounds\Act Raiser.jpg" />
+	<EmbeddedResource Include="Assets\Backgrounds\Actraiser.jpg" />
 	<EmbeddedResource Include="Assets\Backgrounds\Advance Wars 2 Black Hole Rising.jpg" />
 	<EmbeddedResource Include="Assets\Backgrounds\Afrika.jpg" />
 	<EmbeddedResource Include="Assets\Backgrounds\Age of Empires II.jpg" />
@@ -676,7 +674,6 @@
     <EmbeddedResource Include="Assets\Backgrounds\10000000.jpg" />
     <EmbeddedResource Include="Assets\Backgrounds\3D Dot Game Heroes.jpg" />
     <EmbeddedResource Include="Assets\Backgrounds\7th Dragon.jpg" />
-    <EmbeddedResource Include="Assets\Backgrounds\Actraiser.jpg" />
     <EmbeddedResource Include="Assets\Backgrounds\ADventure Lib.jpg" />
     <EmbeddedResource Include="Assets\Backgrounds\Adventures in the Magic Kingdom.jpg" />
     <EmbeddedResource Include="Assets\Backgrounds\Age of Empires III.jpg" />
