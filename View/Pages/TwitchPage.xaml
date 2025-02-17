@@ -22,7 +22,7 @@
     </Page.Resources>
 
     <Grid>
-
+        <ui:TextBox Text="Coming Soon" FontSize="56"/>
 
     </Grid>
 </Page>
