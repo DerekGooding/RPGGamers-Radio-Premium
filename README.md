@@ -13,6 +13,10 @@
 ![alt text](https://github.com/DerekGooding/RPGGamers-Radio-Premium/blob/main/Screenshot_1.png)
 ![alt text](https://github.com/DerekGooding/RPGGamers-Radio-Premium/blob/main/Screenshot_2.png)
 
+<a style="text-decoration:none" href="https://github.com/DerekGooding/RPGGamers-Radio-Premium/raw/main/bin/publish/setup.exe">
+    <img src="https://github.com/DerekGooding/RPGGamers-Radio-Premium/blob/main/download.png" alt="Download link" width=500/>
+</a>
+
 RPGGamer-Radio.com is nice for listening to your favourite game music but, like a radio, you have limited control over what you can do. 
 
 This stand alone application gives you some extra functionality without downloading a library of songs. It uses known URLs and a simple csv file to target and stream the music. 
