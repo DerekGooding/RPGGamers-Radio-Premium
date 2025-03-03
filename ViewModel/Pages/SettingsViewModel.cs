@@ -1,7 +1,7 @@
 ﻿using GamerRadio.Services;
 using Microsoft.Win32;
+using Wpf.Ui.Abstractions.Controls;
 using Wpf.Ui.Appearance;
-using Wpf.Ui.Controls;
 
 namespace GamerRadio.ViewModel.Pages
 {
@@ -35,13 +35,14 @@ namespace GamerRadio.ViewModel.Pages
 
         public List<string> LocationOptions = [ "Top Right", "Bottom Right", "Bottom Left", "Top Left"];
 
-        public void OnNavigatedTo()
+        public Task OnNavigatedToAsync()
         {
             if (!_isInitialized)
                 InitializeViewModel();
+            return Task.CompletedTask;
         }
 
-        public void OnNavigatedFrom() { }
+        public Task OnNavigatedFromAsync() => Task.CompletedTask;
 
         private void InitializeViewModel()
         {

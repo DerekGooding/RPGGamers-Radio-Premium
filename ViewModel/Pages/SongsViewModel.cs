@@ -1,6 +1,7 @@
 ﻿using GamerRadio.Model;
 using GamerRadio.Services;
 using Wpf.Ui;
+using Wpf.Ui.Abstractions.Controls;
 using Wpf.Ui.Controls;
 
 namespace GamerRadio.ViewModel.Pages
@@ -27,8 +28,13 @@ namespace GamerRadio.ViewModel.Pages
         private bool _isSorted;
         partial void OnIsSortedChanged(bool value) => Query();
 
-        public void OnNavigatedTo() => Query();
-        public void OnNavigatedFrom() { }
+        public Task OnNavigatedToAsync()
+        {
+            Query();
+            return Task.CompletedTask;
+        }
+
+        public Task OnNavigatedFromAsync() => Task.CompletedTask;
 
         [RelayCommand]
         public void PlayByButton(SongImage? songImage)

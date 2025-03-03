@@ -1,5 +1,5 @@
 ﻿using GamerRadio.ViewModel.Pages;
-using Wpf.Ui.Controls;
+using Wpf.Ui.Abstractions.Controls;
 
 namespace GamerRadio.View.Pages;
 

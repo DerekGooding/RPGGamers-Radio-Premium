@@ -2,6 +2,7 @@
 using GamerRadio.ViewModel.Pages;
 using GamerRadio.ViewModel.Windows;
 using Wpf.Ui;
+using Wpf.Ui.Abstractions;
 using Wpf.Ui.Appearance;
 using Wpf.Ui.Controls;
 
@@ -17,7 +18,7 @@ public partial class MainWindow : INavigationWindow
 
     public MainWindow(
         MainWindowViewModel viewModel,
-        IPageService pageService,
+        INavigationViewPageProvider pageService,
         INavigationService navigationService,
         MediaElementService mediaElementService,
         SnackbarService snackbarService,
@@ -55,7 +56,7 @@ public partial class MainWindow : INavigationWindow
 
     public bool Navigate(Type pageType) => RootNavigation.Navigate(pageType);
 
-    public void SetPageService(IPageService pageService) => RootNavigation.SetPageService(pageService);
+    public void SetPageService(INavigationViewPageProvider pageService) => RootNavigation.SetPageProviderService(pageService);
 
     private void ShowWindow()
     {

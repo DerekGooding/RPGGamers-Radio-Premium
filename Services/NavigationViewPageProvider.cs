@@ -1,11 +1,11 @@
-using Wpf.Ui;
+using Wpf.Ui.Abstractions;
 
 namespace GamerRadio.Services;
 
 /// <summary>
 /// Service that provides pages for navigation.
 /// </summary>
-public class PageService : IPageService
+public class NavigationViewPageProvider : INavigationViewPageProvider
 {
     /// <summary>
     /// Service which provides the instances of pages.
@@ -15,7 +15,7 @@ public class PageService : IPageService
     /// <summary>
     /// Creates new instance and attaches the <see cref="IServiceProvider"/>.
     /// </summary>
-    public PageService(IServiceProvider serviceProvider)
+    public NavigationViewPageProvider(IServiceProvider serviceProvider)
     {
         _serviceProvider = serviceProvider;
     }
@@ -38,4 +38,6 @@ public class PageService : IPageService
 
         return _serviceProvider.GetService(pageType) as FrameworkElement;
     }
+
+    object? INavigationViewPageProvider.GetPage(Type pageType) => GetPage(pageType);
 }
