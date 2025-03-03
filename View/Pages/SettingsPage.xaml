@@ -50,8 +50,8 @@
             <ComboBoxItem Content="Bottom Left"/>
         </ComboBox>
 
-        <ui:ToggleSwitch IsChecked="{Binding ViewModel.MinToTray}" Content="Minimize to tray"
-                             ToolTip="When minimizing the app, it will move to the system tray instead of the task bar."/>
+        <ui:ToggleSwitch IsChecked="{Binding ViewModel.MinToTray}" Content="Tray Icon"
+                             ToolTip="The tray icon will remain when the application is minimized."/>
 
         <TextBlock
             Margin="0,24,0,0"

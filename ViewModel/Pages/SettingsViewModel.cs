@@ -13,8 +13,11 @@ namespace GamerRadio.ViewModel.Pages
         internal const string LibraryNamespace = "wpf.ui;";
         internal const string ThemesDictionaryPath = "pack://application:,,,/Wpf.Ui;component/Resources/Theme/";
 
+        public Action<bool>? HandleMinimizeChange;
+
         [ObservableProperty]
         private bool _minToTray;
+        partial void OnMinToTrayChanged(bool value) => HandleMinimizeChange?.Invoke(value);
 
         [ObservableProperty]
         private int _notificationCorner;
@@ -59,6 +62,7 @@ namespace GamerRadio.ViewModel.Pages
 
                     ApplicationThemeManager.Apply(ApplicationTheme.Light);
                     CurrentTheme = ApplicationTheme.Light;
+                    HandleThemeChange?.Invoke(false);
 
                     break;
 
@@ -68,29 +72,32 @@ namespace GamerRadio.ViewModel.Pages
 
                     ApplicationThemeManager.Apply(ApplicationTheme.Dark);
                     CurrentTheme = ApplicationTheme.Dark;
+                    HandleThemeChange?.Invoke(true);
 
                     break;
             }
         }
 
+        public Action<bool>? HandleThemeChange;
+
         public string GetVersion()
         {
             RegistryKey? registryKey = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Uninstall\");
             if (registryKey == null) return "1.0.0.0";
-        
+
             foreach (string keyName in registryKey.GetSubKeyNames())
             {
                 RegistryKey? programKey = registryKey.OpenSubKey(keyName);
-        
+
                 object? displayName = programKey?.GetValue("DisplayName");
                 object? version = programKey?.GetValue("DisplayVersion");
-        
+
                 if (displayName != null && $"{displayName}" == "RPG Radio Premium")
                     return $"{version}";
-        
+
                 programKey?.Close();
             }
-        
+
             registryKey.Close();
             return "1.0.0.0";
         }

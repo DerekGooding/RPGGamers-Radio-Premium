@@ -45,6 +45,8 @@ public partial class MainWindow : INavigationWindow
         navigationService.SetNavigationControl(RootNavigation);
         snackbarService.SetSnackbarPresenter(SnackbarPresenter);
         _settingsViewModel = settingsViewModel;
+        _settingsViewModel.HandleMinimizeChange += MinimizeChange;
+        _notifyIcon.Visible = _settingsViewModel.MinToTray;
     }
 
     #region INavigationWindow methods
@@ -91,13 +93,19 @@ public partial class MainWindow : INavigationWindow
     private void SetupNotifyIcon()
     {
         _notifyIcon.ContextMenuStrip!.Items.Add("Show", null, (s, e) => ShowWindow());
-        _notifyIcon.ContextMenuStrip.Items.Add("Exit", null, (s, e) => ExitApplication());
+        _notifyIcon.ContextMenuStrip.Items.Add("-");
         _notifyIcon.ContextMenuStrip.Items.Add("Next Song", null, (s, e) => _mediaElementService.PlayRandomSong());
+        _notifyIcon.ContextMenuStrip.Items.Add("Puase/Play", null, (s, e) => _mediaElementService.Pause());
+        _notifyIcon.ContextMenuStrip.Items.Add("-");
+        _notifyIcon.ContextMenuStrip.Items.Add("Exit", null, (s, e) => ExitApplication());
 
         _notifyIcon.DoubleClick += (s, e) => ShowWindow();
     }
 
-
+    private void MinimizeChange(bool value)
+    {
+        _notifyIcon.Visible = value;
+    }
 
     private void ExitApplication()
     {
