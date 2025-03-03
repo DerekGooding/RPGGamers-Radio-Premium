@@ -1850,11 +1850,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Derek\\source\\repos\\RPGGamers-Radio-Premium\\GamerRadio.csproj",
+      "projectUniqueName": "D:\\Repos\\RPGGamers-Radio-Premium\\GamerRadio.csproj",
       "projectName": "GamerRadio",
-      "projectPath": "C:\\Users\\Derek\\source\\repos\\RPGGamers-Radio-Premium\\GamerRadio.csproj",
+      "projectPath": "D:\\Repos\\RPGGamers-Radio-Premium\\GamerRadio.csproj",
       "packagesPath": "C:\\Users\\Derek\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Derek\\source\\repos\\RPGGamers-Radio-Premium\\obj\\",
+      "outputPath": "D:\\Repos\\RPGGamers-Radio-Premium\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -1888,7 +1888,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.100"
+      "SdkAnalysisLevel": "9.0.200"
     },
     "frameworks": {
       "net8.0-windows7.0": {
@@ -1922,11 +1922,11 @@
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           },
-          "Microsoft.WindowsDesktop.App.WPF": {
+          "Microsoft.WindowsDesktop.App": {
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

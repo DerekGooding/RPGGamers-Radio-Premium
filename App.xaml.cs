@@ -104,20 +104,21 @@ public partial class App
         DashboardViewModel dashboardViewModel = _host.Services.GetService<DashboardViewModel>()!;
         SettingsViewModel SettingsViewModel = _host.Services.GetService<SettingsViewModel>()!;
         List<Model.SongImage> songs = _host.Services.GetService<MediaElementService>()!.SongImages;
-        _host.Services.GetService<PreferencesService>()!.Save(SettingsViewModel.IsNotificationEnabled, SettingsViewModel.NotificationCorner, dashboardViewModel.Volume,
+        _host.Services.GetService<PreferencesService>()!.Save(SettingsViewModel.MinToTray, SettingsViewModel.IsNotificationEnabled, SettingsViewModel.NotificationCorner, dashboardViewModel.Volume,
             songs.Where(x=>x.IsFavorite).Select(x=>x.Song.Id), songs.Where(x => x.IsIgnored).Select(x => x.Song.Id));
     }
 
-    private async Task LoadPreferences()
+    private static void LoadPreferences()
     {
         DashboardViewModel dashboardViewModel = _host.Services.GetService<DashboardViewModel>()!;
         SettingsViewModel SettingsViewModel = _host.Services.GetService<SettingsViewModel>()!;
         FavoritesViewModel FavoritesViewModel = _host.Services.GetService<FavoritesViewModel>()!;
         MediaElementService songs = _host.Services.GetService<MediaElementService>()!;
 
-        (bool NotificationOn, int NotificationCorner, double Volume, List<int> Favorites, List<int> Blocked)
+        (bool MinToTray, bool NotificationOn, int NotificationCorner, double Volume, List<int> Favorites, List<int> Blocked)
             = _host.Services.GetService<PreferencesService>()!.Load();
 
+        SettingsViewModel.MinToTray = MinToTray;
         SettingsViewModel.IsNotificationEnabled = NotificationOn;
         SettingsViewModel.NotificationCorner = NotificationCorner;
         dashboardViewModel.Volume = Volume;

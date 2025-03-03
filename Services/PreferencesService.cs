@@ -27,10 +27,10 @@ public class PreferencesService
 
     public string[] LoadPreferences() => File.Exists(PreferencesFilePath) ? File.ReadAllLines(PreferencesFilePath) : [];
 
-    
-    public void Save(bool NotificationOn, int NotificationCorner, double Volume, IEnumerable<int> Favorites, IEnumerable<int> Blocked)
+    public void Save(bool MinToTray, bool NotificationOn, int NotificationCorner, double Volume, IEnumerable<int> Favorites, IEnumerable<int> Blocked)
     {
         List<string> data = [];
+        data.Add($"MinToTray{separator}{MinToTray}");
         data.Add($"NotificationOn{separator}{NotificationOn}");
         data.Add($"NotificationCorner{separator}{NotificationCorner}");
         data.Add($"Volume{separator}{Volume}");
@@ -38,9 +38,10 @@ public class PreferencesService
         data.AddRange(Blocked.Select(x => $"Blocked{separator}{x}"));
         SavePreferences([.. data]);
     }
-    public  (bool NotificationOn, int NotificationCorner, double Volume, List<int> Favorites, List<int> Blocked) Load()
+    public  (bool MinToTray, bool NotificationOn, int NotificationCorner, double Volume, List<int> Favorites, List<int> Blocked) Load()
     {
         string[] preferences = LoadPreferences();
+        bool MinToTray = true;
         bool NotificationOn = true;
         int NotificationCorner = 0;
         double Volume = 0.5;
@@ -58,7 +59,9 @@ public class PreferencesService
                 Favorites.Add(favorite);
             else if (line[0] == "Blocked" && int.TryParse(line[1], out int blocked))
                 Blocked.Add(blocked);
+            else if (line[0] == "MinToTray" && bool.TryParse(line[1], out bool minToTray))
+                MinToTray = minToTray;
         }
-        return (NotificationOn, NotificationCorner, Volume, Favorites, Blocked);
+        return (MinToTray, NotificationOn, NotificationCorner, Volume, Favorites, Blocked);
     }
 }

@@ -7,6 +7,7 @@
     <Nullable>enable</Nullable>
 	<ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
+	<UseWindowsForms>true</UseWindowsForms>
     <ApplicationIcon>View\Icons\radio.ico</ApplicationIcon>
 	
   </PropertyGroup>
@@ -614,10 +615,14 @@
     <None Remove="Assets\Backgrounds\Zelda II The Adventure of Link.jpg" />
     <None Remove="Assets\Backgrounds\Zwei!!.jpg" />
     <None Remove="Assets\Links\database.csv" />
+    <None Remove="View\Icons\radio.ico" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Include="Assets\Links\database.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\Icons\radio.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
