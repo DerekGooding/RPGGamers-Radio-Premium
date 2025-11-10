@@ -36,7 +36,7 @@ public partial class SongsViewModel(MediaElementService mediaElementService,
     public async void PlayByButton(SongImage? songImage)
     {
         if (songImage is not SongImage s) return;
-        await _mediaElementService.PlayMedia(s);
+        await _mediaElementService.PlayMediaAsync(s);
     }
 
     [Command(AcceptParameter = true)]

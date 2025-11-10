@@ -14,7 +14,7 @@ public partial class DashboardViewModel
     private readonly DispatcherTimer _timer;
 
     [Bind] private bool _isPlaying;
-    [Bind]  private string _duration = "00:00";
+    [Bind] private string _duration = "00:00";
     [Bind] private string _currentPoint = "00:00";
     [Bind] private double _progress;
     [Bind] private SongImage _currentlyPlaying = new();
@@ -79,13 +79,4 @@ public partial class DashboardViewModel
     public void DashboardPlayRandomSong() => _mediaElementService.PlayRandomSong();
     [Command]
     public void DashboardPrevious() => _mediaElementService.Previous();
-
-    //private async Task<Stream> GetAudioStreamFromUriAsync(string uri)
-    //{
-    //    using HttpClient client = new();
-    //    var response = await client.GetAsync(uri);
-    //    response.EnsureSuccessStatusCode();
-    //    var audioData = await response.Content.ReadAsByteArrayAsync();
-    //    return new MemoryStream(audioData);
-    //}
 }

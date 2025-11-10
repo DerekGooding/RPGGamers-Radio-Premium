@@ -21,7 +21,7 @@ public partial class FavoritesViewModel(MediaElementService mediaElementService,
     public async void FavoritesPlayByButton(SongImage? songImage)
     {
         if (songImage is not SongImage s) return;
-        await _mediaElementService.PlayMedia(s);
+        await _mediaElementService.PlayMediaAsync(s);
     }
 
     [Command(AcceptParameter = true)]

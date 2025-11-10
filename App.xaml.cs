@@ -2,6 +2,7 @@
 using GamerRadio.ViewModel.Pages;
 using GamerRadio.Generated;
 using GamerRadio.View.Windows;
+using GamerRadio.View.Pages;
 
 namespace GamerRadio;
 
@@ -35,13 +36,19 @@ public partial class App
         _host = Host.Initialize();
         LoadPreferences();
 
-        _host.Get<MainWindow>().Show();
+        var main = _host.Get<MainWindow>();
+        main.Show();
+        main.Navigate(typeof(DashboardPage));
     }
 
     /// <summary>
     /// Occurs when the application is closing.
     /// </summary>
-    private void OnExit(object sender, ExitEventArgs e) => SavePreferences();
+    private void OnExit(object sender, ExitEventArgs e)
+    {
+        SavePreferences();
+        Get<MediaElementService>()!.Dispose();
+    }
 
     private void SavePreferences()
     {

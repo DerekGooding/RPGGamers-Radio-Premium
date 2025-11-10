@@ -11,148 +11,233 @@ using NAudio.Wave;
 namespace GamerRadio.Services;
 
 [Singleton]
-public class MediaElementService
+public class MediaElementService : IDisposable
 {
     private readonly DatabaseService _databaseService;
     private readonly NotificationService _notificationService;
     private readonly PreferencesService _preferencesService;
     private readonly Dictionary<string, BitmapImage> _imageCache = [];
-
-    public MediaElementService(DatabaseService databaseService, NotificationService notificationService, PreferencesService preferenceService)
-    {
-        _databaseService = databaseService;
-        _notificationService = notificationService;
-        _preferencesService = preferenceService;
-
-        var assembly = Assembly.GetExecutingAssembly();
-        var _imageSources = assembly.GetManifestResourceNames();
-        HashSet<string> imageSourceSet = [.. _imageSources];
-        var fallbackSource = imageSourceSet.FirstOrDefault(name => name.Contains("ComingSoon.jpg"))!;
-        SongImages = _databaseService.Read()
-                .ConvertAll(song => new SongImage(song, GetCachedImage(song, imageSourceSet, assembly, fallbackSource), false, false));
-    }
-
-    //public MediaElement? MediaElement { get; set; }
-    public IWavePlayer OutputDevice { get; private set; } = new WaveOutEvent();
-    public Mp3FileReader? MP3Reader { get; private set; }
-
-
-    public List<SongImage> SongImages { get; } = [];
+    private readonly HttpClient _httpClient;
 
     private const int SongHistoryMax = 50;
-    private Stack<SongImage> _songHistory = [];
+    private const string BaseUrl = "https://raw.githubusercontent.com";
+    private const string GitHubRepo = "DerekGooding/SongBackup";
+    private const string GitHubBranch = "master";
 
-    private bool isPlaying;
+    private Stack<SongImage> _songHistory = [];
+    private bool _isPlaying;
+    private SongImage _currentlyPlaying = new();
+    private bool _disposed;
+
+    public MediaElementService(
+        DatabaseService databaseService,
+        NotificationService notificationService,
+        PreferencesService preferenceService)
+    {
+        _databaseService = databaseService ?? throw new ArgumentNullException(nameof(databaseService));
+        _notificationService = notificationService ?? throw new ArgumentNullException(nameof(notificationService));
+        _preferencesService = preferenceService ?? throw new ArgumentNullException(nameof(preferenceService));
+
+        // Initialize HttpClient once for reuse
+        _httpClient = new HttpClient();
+        _httpClient.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue("song-player", "1.0"));
+        _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/vnd.github+json"));
+
+        InitializeSongImages();
+    }
+
+    public IWavePlayer OutputDevice { get; private set; } = new WaveOutEvent();
+    public Mp3FileReader? MP3Reader { get; private set; }
+    public List<SongImage> SongImages { get; } = [];
+
     public bool IsPlaying
     {
-        get => isPlaying; set
-        {
-            isPlaying = value;
-            PlayStatusChange?.Invoke(value, EventArgs.Empty);
-        }
-    }
-    public SongImage CurrentlyPlaying
-    {
-        get => currentlyPlaying;
+        get => _isPlaying;
         set
         {
-            currentlyPlaying = value;
-            SongChange?.Invoke(value, EventArgs.Empty);
+            if (_isPlaying != value)
+            {
+                _isPlaying = value;
+                PlayStatusChange?.Invoke(value, EventArgs.Empty);
+            }
         }
     }
 
-    private SongImage currentlyPlaying = new();
-
-    public EventHandler? SongChange;
-
-    public EventHandler? PlayStatusChange;
-
-    public async Task PlayMedia(SongImage songImage, bool isPrevious = false)
+    public SongImage CurrentlyPlaying
     {
-        if (!isPrevious && (_songHistory.Count == 0 || _songHistory.Peek() != CurrentlyPlaying) && CurrentlyPlaying.Song.Game != "None")
+        get => _currentlyPlaying;
+        set
+        {
+            if (_currentlyPlaying != value)
+            {
+                _currentlyPlaying = value;
+                SongChange?.Invoke(value, EventArgs.Empty);
+            }
+        }
+    }
+
+    public event EventHandler? SongChange;
+    public event EventHandler? PlayStatusChange;
+
+    private void InitializeSongImages()
+    {
+        var assembly = Assembly.GetExecutingAssembly();
+        var imageSources = assembly.GetManifestResourceNames();
+        var imageSourceSet = new HashSet<string>(imageSources);
+        var fallbackSource = imageSourceSet.FirstOrDefault(name => name.Contains("ComingSoon.jpg"))
+            ?? throw new InvalidOperationException("Fallback image 'ComingSoon.jpg' not found in resources.");
+
+        SongImages.AddRange(
+            _databaseService.Read()
+                .Select(song => new SongImage(
+                    song,
+                    GetCachedImage(song, imageSourceSet, assembly, fallbackSource),
+                    false,
+                    false))
+        );
+    }
+
+    public async Task PlayMediaAsync(SongImage songImage, bool isPrevious = false)
+    {
+        ArgumentNullException.ThrowIfNull(songImage);
+
+        // Add to history if not navigating backwards
+        if (!isPrevious &&
+            (_songHistory.Count == 0 || _songHistory.Peek() != CurrentlyPlaying) &&
+            !string.Equals(CurrentlyPlaying.Song.Game, "None", StringComparison.OrdinalIgnoreCase))
         {
             _songHistory.Push(CurrentlyPlaying);
+
+            // Trim history if needed
             if (_songHistory.Count > SongHistoryMax)
+            {
                 _songHistory = new Stack<SongImage>(_songHistory.Take(SongHistoryMax));
+            }
         }
 
-        Task.Run(() => _notificationService.ShowNotificationAsync(songImage.Song.Game, songImage.Song.Title));
+        // Show notification without awaiting (fire and forget with proper error handling)
+        _ = Task.Run(async () =>
+        {
+            try
+            {
+                await _notificationService.ShowNotificationAsync(songImage.Song.Game, songImage.Song.Title);
+            }
+            catch (Exception ex)
+            {
+                // Log error but don't block playback
+                System.Diagnostics.Debug.WriteLine($"Notification failed: {ex.Message}");
+            }
+        });
 
-        await BuildURL(songImage);
+        await DownloadAndPlaySongAsync(songImage);
 
         CurrentlyPlaying = songImage;
-
         IsPlaying = true;
     }
 
     private void PlayMp3Bytes(byte[] bytes)
     {
-        // Dispose old playback if it exists
-        OutputDevice.PlaybackStopped -= Element_MediaEnded;
-        OutputDevice?.Stop();
-        OutputDevice?.Dispose();
-        MP3Reader?.Dispose();
+        if (bytes == null || bytes.Length == 0)
+            throw new ArgumentException("Invalid audio data.", nameof(bytes));
 
-        var mem = new MemoryStream(bytes);
+        // Clean up previous playback
+        CleanupPlayback();
 
-        MP3Reader = new Mp3FileReader(mem);
+        var memoryStream = new MemoryStream(bytes);
+        MP3Reader = new Mp3FileReader(memoryStream);
 
         OutputDevice = new WaveOutEvent();
         OutputDevice.Init(MP3Reader);
-        OutputDevice.Play();
         OutputDevice.PlaybackStopped += Element_MediaEnded;
+        OutputDevice.Play();
     }
 
-    private async Task BuildURL(SongImage songImage)
+    private void CleanupPlayback()
+    {
+        if (OutputDevice != null)
+        {
+            OutputDevice.PlaybackStopped -= Element_MediaEnded;
+            OutputDevice.Stop();
+            OutputDevice.Dispose();
+        }
+
+        MP3Reader?.Dispose();
+    }
+
+    private async Task DownloadAndPlaySongAsync(SongImage songImage)
     {
         var id = songImage.Song.Id.ToString().PadLeft(4, '0');
-        var  path = $"SongBackup/Songs/{id[0]}000/{id}.mp3";
+        var path = $"SongBackup/Songs/{id[0]}000/{id}.mp3";
 
         try
         {
-            await DownloadSongTemp(path);
+            await DownloadSongAsync(path);
+        }
+        catch (HttpRequestException ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"Download failed: {ex.Message}");
+            HandleAuthenticationFailure();
         }
         catch (Exception ex)
         {
-            AttemptNewAPIkey();
+            System.Diagnostics.Debug.WriteLine($"Unexpected error: {ex.Message}");
+            throw;
         }
     }
-    private void AttemptNewAPIkey()
+
+    private void HandleAuthenticationFailure()
     {
         var dlg = new InputTextWindow(_preferencesService.LoadAPI());
-        var ok = dlg.ShowDialog() == true;
-        var value = ok ? dlg.Result : string.Empty;
-        _preferencesService.SaveAPI(value);
+        if (dlg.ShowDialog() == true)
+        {
+            _preferencesService.SaveAPI(dlg.Result);
+        }
     }
 
-    private async Task DownloadSongTemp(string path)
+    private async Task DownloadSongAsync(string path)
     {
-        const string BaseUrl = "https://raw.githubusercontent.com";
         var api = _preferencesService.LoadAPI();
 
-        using var client = new HttpClient();
+        // Update authorization header
+        _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", api);
 
-        client.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue("song-player", "1.0"));
-        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", api);
-        client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/vnd.github+json"));
+        var url = $"{BaseUrl}/{GitHubRepo}/{GitHubBranch}/{Uri.EscapeDataString(path)}";
 
-        var url = $"{BaseUrl}/DerekGooding/SongBackup/master/{Uri.EscapeDataString(path)}";
+        using var response = await _httpClient.GetAsync(url);
+        response.EnsureSuccessStatusCode();
 
-        using var res = await client.GetAsync(url);
-        res.EnsureSuccessStatusCode();
-
-        var bytes = await res.Content.ReadAsByteArrayAsync();
-
+        var bytes = await response.Content.ReadAsByteArrayAsync();
         PlayMp3Bytes(bytes);
     }
 
-    private void Element_MediaEnded(object? sender, StoppedEventArgs e) => PlayRandomSong();
-
-    public void PlayRandomSong()
+    private void Element_MediaEnded(object? sender, StoppedEventArgs e)
     {
-        var playable = SongImages.Where(songImage => !songImage.IsIgnored).ToList();
+        // Check if stopped due to end of track (not user action or error)
+        if (e.Exception == null)
+        {
+            PlayRandomSong();
+        }
+    }
 
-        PlayMedia(playable[Random.Shared.Next(playable.Count - 1)]);
+    public async void PlayRandomSong()
+    {
+        try
+        {
+            var playableSongs = SongImages.Where(si => !si.IsIgnored).ToList();
+
+            if (playableSongs.Count == 0)
+            {
+                System.Diagnostics.Debug.WriteLine("No playable songs available.");
+                return;
+            }
+
+            var randomSong = playableSongs[Random.Shared.Next(playableSongs.Count)];
+            await PlayMediaAsync(randomSong);
+        }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"Failed to play random song: {ex.Message}");
+        }
     }
 
     public void Pause()
@@ -164,7 +249,7 @@ public class MediaElementService
         }
         else
         {
-            if (CurrentlyPlaying.Song.Game == "None")
+            if (string.Equals(CurrentlyPlaying.Song.Game, "None", StringComparison.OrdinalIgnoreCase))
             {
                 PlayRandomSong();
             }
@@ -176,39 +261,72 @@ public class MediaElementService
         }
     }
 
-    public void Previous()
+    public async void Previous()
     {
-        if (_songHistory.Count == 0) return;
-        PlayMedia(_songHistory.Pop(), true);
+        if (_songHistory.Count == 0)
+            return;
+
+        try
+        {
+            await PlayMediaAsync(_songHistory.Pop(), isPrevious: true);
+        }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"Failed to play previous song: {ex.Message}");
+        }
     }
 
-    private ImageSource GetCachedImage(Song song, HashSet<string> imageSourceSet, Assembly assembly, string fallbackSource)
+    private BitmapImage GetCachedImage(Song song, HashSet<string> imageSourceSet, Assembly assembly, string fallbackSource)
     {
-        var resourceName = imageSourceSet.FirstOrDefault(name => name.Contains($"{song
-            .Game
-            .Replace(":","")
-            .Replace("/", "")
-            .Replace("<", "")
-            .Replace(">", "")}.jpg"))
-                              ?? fallbackSource;
+        var sanitizedGameName = SanitizeFileName(song.Game);
+        var resourceName = imageSourceSet.FirstOrDefault(name => name.Contains($"{sanitizedGameName}.jpg"))
+                          ?? fallbackSource;
 
         // Return from cache if already loaded
         if (_imageCache.TryGetValue(resourceName, out var cachedImage))
             return cachedImage;
 
-        // Load the image if not in cache
+        // Load and cache the image
         using var stream = assembly.GetManifestResourceStream(resourceName)
-                           ?? throw new FileNotFoundException($"Resource '{resourceName}' not found in assembly.");
+                          ?? throw new FileNotFoundException($"Resource '{resourceName}' not found.");
 
-        BitmapImage bitmap = new();
+        var bitmap = new BitmapImage();
         bitmap.BeginInit();
         bitmap.StreamSource = stream;
         bitmap.CacheOption = BitmapCacheOption.OnLoad;
         bitmap.EndInit();
+        bitmap.Freeze(); // Important for thread safety and performance
 
-        // Cache the loaded image
         _imageCache[resourceName] = bitmap;
-
         return bitmap;
+    }
+
+    private static string SanitizeFileName(string fileName)
+    {
+        var invalidChars = new[] { ':', '/', '<', '>', '"', '\\', '|', '?', '*' };
+        return invalidChars.Aggregate(fileName, (current, c) => current.Replace(c.ToString(), string.Empty));
+    }
+
+    public void Dispose()
+    {
+        Dispose(true);
+        GC.SuppressFinalize(this);
+    }
+
+    protected virtual void Dispose(bool disposing)
+    {
+        if (_disposed)
+            return;
+
+        if (disposing)
+        {
+            CleanupPlayback();
+            _httpClient?.Dispose();
+
+            // Clear image cache
+            _imageCache.Clear();
+        }
+
+        _disposed = true;
     }
 }
