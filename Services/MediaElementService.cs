@@ -4,7 +4,6 @@ using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Reflection;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using NAudio.Wave;
 
@@ -19,10 +18,10 @@ public class MediaElementService : IDisposable
     private readonly Dictionary<string, BitmapImage> _imageCache = [];
     private readonly HttpClient _httpClient;
 
-    private const int SongHistoryMax = 50;
-    private const string BaseUrl = "https://raw.githubusercontent.com";
-    private const string GitHubRepo = "DerekGooding/SongBackup";
-    private const string GitHubBranch = "master";
+    private const int _songHistoryMax = 50;
+    private const string _baseUrl = "https://raw.githubusercontent.com";
+    private const string _gitHubRepo = "DerekGooding/SongBackup";
+    private const string _gitHubBranch = "master";
 
     private Stack<SongImage> _songHistory = [];
     private bool _isPlaying;
@@ -109,9 +108,9 @@ public class MediaElementService : IDisposable
             _songHistory.Push(CurrentlyPlaying);
 
             // Trim history if needed
-            if (_songHistory.Count > SongHistoryMax)
+            if (_songHistory.Count > _songHistoryMax)
             {
-                _songHistory = new Stack<SongImage>(_songHistory.Take(SongHistoryMax));
+                _songHistory = new Stack<SongImage>(_songHistory.Take(_songHistoryMax));
             }
         }
 
@@ -201,7 +200,7 @@ public class MediaElementService : IDisposable
         // Update authorization header
         _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", api);
 
-        var url = $"{BaseUrl}/{GitHubRepo}/{GitHubBranch}/{Uri.EscapeDataString(path)}";
+        var url = $"{_baseUrl}/{_gitHubRepo}/{_gitHubBranch}/{Uri.EscapeDataString(path)}";
 
         using var response = await _httpClient.GetAsync(url);
         response.EnsureSuccessStatusCode();

@@ -6,7 +6,7 @@ namespace GamerRadio.Services;
 [Singleton]
 public class DatabaseService
 {
-    private const char separator = '|';
+    private const char _separator = '|';
 
     private readonly Uri _database = new("Assets\\Links\\database.csv", UriKind.Relative);
 
@@ -23,7 +23,7 @@ public class DatabaseService
 
     private Song LineToSong(string line)
     {
-        var parts = line.Split(separator);
+        var parts = line.Split(_separator);
         return new Song(int.Parse(parts[0]), parts[1], parts[2], parts[3]);
     }
 }

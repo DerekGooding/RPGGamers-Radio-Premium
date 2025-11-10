@@ -13,7 +13,7 @@ namespace GamerRadio.View.Windows;
 [Singleton]
 public partial class MainWindow : INavigationWindow
 {
-    private readonly NotifyIcon _notifyIcon;
+    public readonly NotifyIcon NotifyIcon;
     private readonly MediaElementService _mediaElementService;
     private readonly SettingsViewModel _settingsViewModel;
 
@@ -35,7 +35,7 @@ public partial class MainWindow : INavigationWindow
 
         InitializeComponent();
         var bitmap = new BitmapImage(new Uri("pack://application:,,,/Assets/Icons/radio.png"));
-        _notifyIcon = new NotifyIcon
+        NotifyIcon = new NotifyIcon
         {
             Icon = bitmap,
             ToolTip = "Game Radio Premium",
@@ -51,7 +51,17 @@ public partial class MainWindow : INavigationWindow
         _settingsViewModel = settingsViewModel;
         _settingsViewModel.HandleMinimizeChange += MinimizeChange;
         SetupNotifyIcon();
-        _notifyIcon.IsEnabled = _settingsViewModel.MinToTray;
+        NotifyIcon.IsEnabled = _settingsViewModel.MinToTray;
+
+        Loaded += MainWindow_Loaded;
+    }
+
+    private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+    {
+        if (_settingsViewModel.MinToTray)
+        {
+            NotifyIcon.Register();
+        }
     }
 
     #region INavigationWindow methods
@@ -62,7 +72,7 @@ public partial class MainWindow : INavigationWindow
 
     public void SetPageService(INavigationViewPageProvider pageService) => RootNavigation.SetPageProviderService(pageService);
 
-    private void ShowWindow()
+    public void ShowWindow()
     {
         Show();
         WindowState = WindowState.Normal;
@@ -70,6 +80,7 @@ public partial class MainWindow : INavigationWindow
     }
 
     public void CloseWindow() => Close();
+    void INavigationWindow.ShowWindow() => ShowWindow();
 
     #endregion INavigationWindow methods
 
@@ -78,36 +89,47 @@ public partial class MainWindow : INavigationWindow
     /// </summary>
     protected override void OnClosed(EventArgs e)
     {
-        _notifyIcon.Dispose();
+        NotifyIcon.Dispose();
         base.OnClosed(e);
 
         // Make sure that closing this window will begin the process of closing the application.
         Application.Current.Shutdown();
     }
 
-    INavigationView INavigationWindow.GetNavigation() => throw new NotImplementedException();
-
     public void SetServiceProvider(IServiceProvider serviceProvider) => throw new NotImplementedException();
 
     private void SetupNotifyIcon()
     {
-        _notifyIcon.BeginInit();
-        //_notifyIcon.ContextMenu.Items.Add(new MenuItem { Header = "Show", Command = ShowWindowCommand });
-        //_notifyIcon.ContextMenu.Items.Add(new System.Windows.Controls.Separator());
-        //_notifyIcon.ContextMenu.Items.Add(new MenuItem { Header = "Next Song", Command = new RelayCommand(_mediaElementService.PlayRandomSong) });
-        //_notifyIcon.ContextMenu.Items.Add(new MenuItem { Header = "Puase/Play", Command = new RelayCommand(_mediaElementService.Pause) });
-        //_notifyIcon.ContextMenu.Items.Add(new System.Windows.Controls.Separator());
-        //_notifyIcon.ContextMenu.Items.Add(new MenuItem { Header = "Exit", Command = ExitApplicationCommand });
+        NotifyIcon.BeginInit();
+        NotifyIcon.ContextMenu.Items.Clear();
+        NotifyIcon.ContextMenu.Items.Add(new MenuItem { Header = "Show", Command = new Command_ShowWindow(ViewModel), CommandParameter = this });
+        NotifyIcon.ContextMenu.Items.Add(new System.Windows.Controls.Separator());
+        NotifyIcon.ContextMenu.Items.Add(new MenuItem { Header = "Next Song", Command = new Command_TrayPlayRandom(ViewModel) }); 
+        NotifyIcon.ContextMenu.Items.Add(new MenuItem { Header = "Pause/Play", Command = new Command_TrayPause(ViewModel) });
+        NotifyIcon.ContextMenu.Items.Add(new System.Windows.Controls.Separator());
+        NotifyIcon.ContextMenu.Items.Add(new MenuItem { Header = "Exit", Command = new Command_ExitApplication(ViewModel), CommandParameter = this });
 
-        _notifyIcon.LeftDoubleClick += HandleLeftDoubleClick;
-        _notifyIcon.EndInit();
+        NotifyIcon.LeftDoubleClick += HandleLeftDoubleClick;
+        NotifyIcon.RightClick += NotifyIcon_RightClick;
+        NotifyIcon.EndInit();
     }
 
-    private void HandleLeftDoubleClick(NotifyIcon sender, RoutedEventArgs e) => ShowWindow();
+    private void NotifyIcon_RightClick([System.Diagnostics.CodeAnalysis.NotNull] NotifyIcon sender, RoutedEventArgs e) => NotifyIcon.ContextMenu.IsOpen = true;
+    private void HandleLeftDoubleClick([System.Diagnostics.CodeAnalysis.NotNull] NotifyIcon sender, RoutedEventArgs e) => ShowWindow();
 
-    private void MinimizeChange(bool value) => _notifyIcon.IsEnabled = value;
+    private void MinimizeChange(bool value)
+    {
+        NotifyIcon.IsEnabled = value;
 
-
+        if (value)
+        {
+            NotifyIcon.Register();
+        }
+        else
+        {
+            NotifyIcon.Unregister();
+        }
+    }
 
     protected override void OnStateChanged(EventArgs e)
     {
@@ -117,6 +139,4 @@ public partial class MainWindow : INavigationWindow
             Hide();
         }
     }
-
-    void INavigationWindow.ShowWindow() => ShowWindow();
 }

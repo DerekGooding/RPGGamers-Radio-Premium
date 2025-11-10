@@ -9,7 +9,7 @@ namespace GamerRadio.Services;
 public class NavigationViewPageProvider : INavigationViewPageProvider
 {
     /// <inheritdoc />
-    public T? GetPage<T>() where T : class
+    public static T? GetPage<T>() where T : class
         => !typeof(FrameworkElement).IsAssignableFrom(typeof(T))
             ? throw new InvalidOperationException("The page should be a WPF control.")
             : ((App)Application.Current).Get<T>();

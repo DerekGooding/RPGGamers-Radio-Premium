@@ -10,51 +10,48 @@ internal class NavigationService : INavigationService
 
     public INavigationView GetNavigationControl() => NavigationControl ?? throw new ArgumentNullException("NavigationControl");
 
-    public void SetNavigationControl(INavigationView navigation)
-    {
-        NavigationControl = navigation;
-    }
+    public void SetNavigationControl(INavigationView navigation) => NavigationControl = navigation;
 
     public bool Navigate(Type pageType)
     {
         ThrowIfNavigationControlIsNull();
-        return NavigationControl.Navigate(pageType);
+        return NavigationControl!.Navigate(pageType);
     }
 
     public bool Navigate(Type pageType, object? dataContext)
     {
         ThrowIfNavigationControlIsNull();
-        return NavigationControl.Navigate(pageType, dataContext);
+        return NavigationControl!.Navigate(pageType, dataContext);
     }
 
     public bool Navigate(string pageTag)
     {
         ThrowIfNavigationControlIsNull();
-        return NavigationControl.Navigate(pageTag);
+        return NavigationControl!.Navigate(pageTag);
     }
 
     public bool Navigate(string pageTag, object? dataContext)
     {
         ThrowIfNavigationControlIsNull();
-        return NavigationControl.Navigate(pageTag, dataContext);
+        return NavigationControl!.Navigate(pageTag, dataContext);
     }
 
     public bool GoBack()
     {
         ThrowIfNavigationControlIsNull();
-        return NavigationControl.GoBack();
+        return NavigationControl!.GoBack();
     }
 
     public bool NavigateWithHierarchy(Type pageType)
     {
         ThrowIfNavigationControlIsNull();
-        return NavigationControl.NavigateWithHierarchy(pageType);
+        return NavigationControl!.NavigateWithHierarchy(pageType);
     }
 
     public bool NavigateWithHierarchy(Type pageType, object? dataContext)
     {
         ThrowIfNavigationControlIsNull();
-        return NavigationControl.NavigateWithHierarchy(pageType, dataContext);
+        return NavigationControl!.NavigateWithHierarchy(pageType, dataContext);
     }
 
     protected void ThrowIfNavigationControlIsNull()

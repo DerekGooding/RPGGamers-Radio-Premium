@@ -7,54 +7,54 @@ public class PreferencesService
 {
     public PreferencesService()
     {
-        AppFolderPath = Path.Combine(
+        _appFolderPath = Path.Combine(
         Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
         "RPGGamerRadio");
-        PreferencesFilePath = Path.Combine(AppFolderPath, "preferences.csv");
-        APIKeyFilePath = Path.Combine(AppFolderPath, "apikey.txt");
-        TempMp3 = Path.Combine(AppFolderPath, "temp.mp3");
+        _preferencesFilePath = Path.Combine(_appFolderPath, "preferences.csv");
+        _aPIKeyFilePath = Path.Combine(_appFolderPath, "apikey.txt");
+        TempMp3 = Path.Combine(_appFolderPath, "temp.mp3");
     }
-    private readonly string AppFolderPath;
-    private readonly string PreferencesFilePath;
-    private readonly string APIKeyFilePath;
+    private readonly string _appFolderPath;
+    private readonly string _preferencesFilePath;
+    private readonly string _aPIKeyFilePath;
     public readonly string TempMp3;
-    private const char separator = '|';
+    private const char _separator = '|';
 
-    private string APIKey = string.Empty;
+    private string _aPIKey = string.Empty;
 
     public void SavePreferences(string[] preferences)
     {
-        if (!Directory.Exists(AppFolderPath))
+        if (!Directory.Exists(_appFolderPath))
         {
-            Directory.CreateDirectory(AppFolderPath);
+            Directory.CreateDirectory(_appFolderPath);
         }
 
-        File.WriteAllLines(PreferencesFilePath, preferences);
+        File.WriteAllLines(_preferencesFilePath, preferences);
     }
     public string LoadAPI()
     {
-        if (APIKey.Length == 0 && File.Exists(APIKeyFilePath))
-            APIKey = File.ReadAllText(APIKeyFilePath);
-        return APIKey;
+        if (_aPIKey.Length == 0 && File.Exists(_aPIKeyFilePath))
+            _aPIKey = File.ReadAllText(_aPIKeyFilePath);
+        return _aPIKey;
     }
 
     public void SaveAPI(string apiKey)
     {
-        APIKey = apiKey;
-        File.WriteAllText(APIKeyFilePath, APIKey);
+        _aPIKey = apiKey;
+        File.WriteAllText(_aPIKeyFilePath, _aPIKey);
     }
 
-    public string[] LoadPreferences() => File.Exists(PreferencesFilePath) ? File.ReadAllLines(PreferencesFilePath) : [];
+    public string[] LoadPreferences() => File.Exists(_preferencesFilePath) ? File.ReadAllLines(_preferencesFilePath) : [];
 
     public void Save(bool MinToTray, bool NotificationOn, int NotificationCorner, float Volume, IEnumerable<int> Favorites, IEnumerable<int> Blocked)
     {
         List<string> data = [];
-        data.Add($"MinToTray{separator}{MinToTray}");
-        data.Add($"NotificationOn{separator}{NotificationOn}");
-        data.Add($"NotificationCorner{separator}{NotificationCorner}");
-        data.Add($"Volume{separator}{Volume}");
-        data.AddRange(Favorites.Select(x => $"Favorites{separator}{x}"));
-        data.AddRange(Blocked.Select(x => $"Blocked{separator}{x}"));
+        data.Add($"MinToTray{_separator}{MinToTray}");
+        data.Add($"NotificationOn{_separator}{NotificationOn}");
+        data.Add($"NotificationCorner{_separator}{NotificationCorner}");
+        data.Add($"Volume{_separator}{Volume}");
+        data.AddRange(Favorites.Select(x => $"Favorites{_separator}{x}"));
+        data.AddRange(Blocked.Select(x => $"Blocked{_separator}{x}"));
         SavePreferences([.. data]);
     }
     public  (bool MinToTray, bool NotificationOn, int NotificationCorner, float Volume, List<int> Favorites, List<int> Blocked) Load()
@@ -66,7 +66,7 @@ public class PreferencesService
         var Volume = 0.5f;
         List<int> Favorites = [];
         List<int> Blocked = [];
-        foreach (var line in preferences.Select(x => x.Split(separator)))
+        foreach (var line in preferences.Select(x => x.Split(_separator)))
         {
             if (line[0] == "NotificationOn" && bool.TryParse(line[1], out var notificationOn))
                 NotificationOn = notificationOn;

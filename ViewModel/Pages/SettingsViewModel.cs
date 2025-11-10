@@ -11,8 +11,8 @@ public partial class SettingsViewModel(NotificationService notificationService) 
     private readonly NotificationService _notificationService = notificationService;
     private bool _isInitialized;
 
-    internal const string LibraryNamespace = "wpf.ui;";
-    internal const string ThemesDictionaryPath = "pack://application:,,,/Wpf.Ui;component/Resources/Theme/";
+    internal const string _libraryNamespace = "wpf.ui;";
+    internal const string _themesDictionaryPath = "pack://application:,,,/Wpf.Ui;component/Resources/Theme/";
 
     public Action<bool>? HandleMinimizeChange;
 
@@ -76,7 +76,7 @@ public partial class SettingsViewModel(NotificationService notificationService) 
 
     public Action<bool>? HandleThemeChange;
 
-    public string GetVersion()
+    private static string GetVersion()
     {
         var registryKey = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Uninstall\");
         if (registryKey == null) return "1.0.0.0";

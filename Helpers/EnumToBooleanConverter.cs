@@ -18,7 +18,7 @@ internal class EnumToBooleanConverter : IValueConverter
             throw new ArgumentException("ExceptionEnumToBooleanConverterValueMustBeAnEnum");
         }
 
-        var enumValue = Enum.Parse(typeof(ApplicationTheme), enumString);
+        var enumValue = Enum.Parse<ApplicationTheme>(enumString);
 
         return enumValue.Equals(value);
     }

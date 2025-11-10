@@ -29,7 +29,7 @@ internal class SnackbarService : ISnackbarService
     {
         if (_presenter is null)
         {
-            throw new InvalidOperationException($"The SnackbarPresenter was never set");
+            throw new InvalidOperationException("The SnackbarPresenter was never set");
         }
 
         _snackbar ??= new Snackbar(_presenter);

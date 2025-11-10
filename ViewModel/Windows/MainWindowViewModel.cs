@@ -1,4 +1,6 @@
-﻿using GamerRadio.View.Pages;
+﻿using GamerRadio.Services;
+using GamerRadio.View.Pages;
+using GamerRadio.View.Windows;
 using System.Collections.ObjectModel;
 using Wpf.Ui;
 using Wpf.Ui.Controls;
@@ -55,12 +57,16 @@ public partial class MainWindowViewModel
         new MenuItem { Header = "Home", Tag = "tray_home" }
     ];
 
-    //[Command]
-    //private void ExitApplication()
-    //{
-    //    _notifyIcon.Dispose();
-    //    Application.Current.Shutdown();
-    //}
+    [Command(AcceptParameter = true)]
+    public void ExitApplication(MainWindow mainWindow)
+    {
+        mainWindow.NotifyIcon.Dispose();
+        Application.Current.Shutdown();
+    }
 
-    //[Command] void ShowWindow() => ShowWindow();
+    [Command(AcceptParameter = true)]
+    public void ShowWindow(MainWindow mainWindow) => mainWindow.ShowWindow();
+
+    [Command] public void TrayPause() => ((App)App.Current).Get<MediaElementService>()!.Pause();
+    [Command] public void TrayPlayRandom() => ((App)App.Current).Get<MediaElementService>()!.PlayRandomSong();
 }
