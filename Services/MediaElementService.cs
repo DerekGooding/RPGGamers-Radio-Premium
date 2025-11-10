@@ -87,6 +87,7 @@ public class MediaElementService
     private void PlayMp3Bytes(byte[] bytes)
     {
         // Dispose old playback if it exists
+        OutputDevice.PlaybackStopped -= Element_MediaEnded;
         OutputDevice?.Stop();
         OutputDevice?.Dispose();
         MP3Reader?.Dispose();
