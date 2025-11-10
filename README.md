@@ -26,4 +26,4 @@ Also includes pause and next functions as well as a more reliable volume control
 More features planned to come! Once installed, click once should keep you up to date with most most recent automatically. 
 
 ### Known issue
-If you pin the application while it's running to your taskbar, it'll skip the updater. If you want updates, you'll have to run it from your start menu or the shortcut it generates on your desktop.
+This no longer uses RPGRadio as the base foundation for this application. To use it, you'll require an API key to be issued specifically from me. There is no other option. 
