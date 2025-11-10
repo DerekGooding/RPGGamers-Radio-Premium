@@ -24,12 +24,7 @@ internal class EnumToBooleanConverter : IValueConverter
     }
 
     public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-    {
-        if (parameter is not string enumString)
-        {
-            throw new ArgumentException("ExceptionEnumToBooleanConverterParameterMustBeAnEnumName");
-        }
-
-        return Enum.Parse(typeof(ApplicationTheme), enumString);
-    }
+        => parameter is not string enumString
+            ? throw new ArgumentException("ExceptionEnumToBooleanConverterParameterMustBeAnEnumName")
+            : Enum.Parse<ApplicationTheme>(enumString);
 }

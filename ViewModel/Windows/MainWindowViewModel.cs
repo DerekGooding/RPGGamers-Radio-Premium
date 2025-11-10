@@ -1,16 +1,16 @@
-﻿using System.Collections.ObjectModel;
-using GamerRadio.View.Pages;
+﻿using GamerRadio.View.Pages;
+using System.Collections.ObjectModel;
+using Wpf.Ui;
 using Wpf.Ui.Controls;
 
 namespace GamerRadio.ViewModel.Windows;
 
-public partial class MainWindowViewModel : ObservableObject
+[ViewModel, Singleton]
+public partial class MainWindowViewModel
 {
-    [ObservableProperty]
-    private string _applicationTitle = "RPGGamer Radio";
+    [Bind] private string _applicationTitle = "RPGGamer Radio";
 
-    [ObservableProperty]
-    private ObservableCollection<object> _menuItems =
+    [Bind] private ObservableCollection<object> _menuItems =
     [
         new NavigationViewItem()
         {
@@ -38,7 +38,7 @@ public partial class MainWindowViewModel : ObservableObject
         },
     ];
 
-    [ObservableProperty]
+    [Bind]
     private ObservableCollection<object> _footerMenuItems =
     [
         new NavigationViewItem()
@@ -49,9 +49,18 @@ public partial class MainWindowViewModel : ObservableObject
         }
     ];
 
-    [ObservableProperty]
+    [Bind]
     private ObservableCollection<MenuItem> _trayMenuItems =
     [
         new MenuItem { Header = "Home", Tag = "tray_home" }
     ];
+
+    //[Command]
+    //private void ExitApplication()
+    //{
+    //    _notifyIcon.Dispose();
+    //    Application.Current.Shutdown();
+    //}
+
+    //[Command] void ShowWindow() => ShowWindow();
 }

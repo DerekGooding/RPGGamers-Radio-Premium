@@ -1,7 +1,5 @@
 ﻿using GamerRadio.Model;
 using GamerRadio.Services;
-using System.IO;
-using System.Net.Http;
 using System.Windows.Media;
 using System.Windows.Threading;
 
@@ -21,12 +19,8 @@ public partial class DashboardViewModel
     [Bind] private double _progress;
     [Bind] private SongImage _currentlyPlaying = new();
     [Bind] private ImageSource? _wavRender;
-    [Bind] private float _volume = 1.0f;
-
-    partial void OnVolumeChanged(float value)
-    {
-        _mediaElementService.OutputDevice.Volume = value;
-    }
+    [Bind(OnChangeMethodName = nameof(OnVolumeChanged))] private float _volume = 1.0f;
+    public void OnVolumeChanged() => _mediaElementService.OutputDevice.Volume = _volume;
 
     public DashboardViewModel(MediaElementService mediaElementService)
     {
@@ -55,10 +49,7 @@ public partial class DashboardViewModel
         }
     }
 
-    public void StartSeeking()
-    {
-        _isSeeking = true;
-    }
+    public void StartSeeking() => _isSeeking = true;
 
     public void StopSeeking(double sliderValue)
     {
@@ -82,19 +73,19 @@ public partial class DashboardViewModel
         }
     }
 
-    [RelayCommand]
-    public void Pause() => _mediaElementService.Pause();
-    [RelayCommand]
-    public void PlayRandomSong() => _mediaElementService.PlayRandomSong();
-    [RelayCommand]
-    public void Previous() => _mediaElementService.Previous();
+    [Command]
+    public void DashboardPause() => _mediaElementService.Pause();
+    [Command]
+    public void DashboardPlayRandomSong() => _mediaElementService.PlayRandomSong();
+    [Command]
+    public void DashboardPrevious() => _mediaElementService.Previous();
 
-    private async Task<Stream> GetAudioStreamFromUriAsync(string uri)
-    {
-        using HttpClient client = new();
-        var response = await client.GetAsync(uri);
-        response.EnsureSuccessStatusCode();
-        var audioData = await response.Content.ReadAsByteArrayAsync();
-        return new MemoryStream(audioData);
-    }
+    //private async Task<Stream> GetAudioStreamFromUriAsync(string uri)
+    //{
+    //    using HttpClient client = new();
+    //    var response = await client.GetAsync(uri);
+    //    response.EnsureSuccessStatusCode();
+    //    var audioData = await response.Content.ReadAsByteArrayAsync();
+    //    return new MemoryStream(audioData);
+    //}
 }

@@ -17,13 +17,13 @@ public partial class SettingsViewModel(NotificationService notificationService) 
     public Action<bool>? HandleMinimizeChange;
 
     [Bind(OnChangeMethodName = nameof(OnMinToTrayChanged))] private bool _minToTray;
-    public void OnMinToTrayChanged(bool value) => HandleMinimizeChange?.Invoke(value);
+    public void OnMinToTrayChanged() => HandleMinimizeChange?.Invoke(_minToTray);
 
     [Bind(OnChangeMethodName = nameof(OnNotificationCornerChanged))] private int _notificationCorner;
-    public void OnNotificationCornerChanged(int value) => _notificationService.NotificationCorner = value;
+    public void OnNotificationCornerChanged() => _notificationService.NotificationCorner = _notificationCorner;
 
     [Bind(OnChangeMethodName = nameof(OnIsNotificationEnabledChanged))] private bool _isNotificationEnabled = true;
-    public void OnIsNotificationEnabledChanged(bool value) => _notificationService.IsEnabled = value;
+    public void OnIsNotificationEnabledChanged() => _notificationService.IsEnabled = _isNotificationEnabled;
 
     [Bind]private string _appVersion = string.Empty;
     [Bind] private ApplicationTheme _currentTheme = ApplicationTheme.Dark;
@@ -47,8 +47,8 @@ public partial class SettingsViewModel(NotificationService notificationService) 
         _isInitialized = true;
     }
 
-    [Command]
-    private void OnChangeTheme(string parameter)
+    [Command(AcceptParameter = true)]
+    public void OnChangeTheme(string parameter)
     {
         switch (parameter)
         {

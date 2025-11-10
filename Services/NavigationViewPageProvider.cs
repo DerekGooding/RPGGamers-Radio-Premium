@@ -8,30 +8,18 @@ namespace GamerRadio.Services;
 [Singleton]
 public class NavigationViewPageProvider : INavigationViewPageProvider
 {
-    /// <summary>
-    /// Service which provides the instances of pages.
-    /// </summary>
-    private readonly IServiceProvider _serviceProvider;
+    ///// <inheritdoc />
+    //public T? GetPage<T>() where T : class
+    //    => !typeof(FrameworkElement).IsAssignableFrom(typeof(T))
+    //        ? throw new InvalidOperationException("The page should be a WPF control.")
+    //        : (T?)_serviceProvider.GetService(typeof(T));
 
-    /// <summary>
-    /// Creates new instance and attaches the <see cref="IServiceProvider"/>.
-    /// </summary>
-    public NavigationViewPageProvider(IServiceProvider serviceProvider)
-    {
-        _serviceProvider = serviceProvider;
-    }
+    ///// <inheritdoc />
+    //public FrameworkElement? GetPage(Type pageType)
+    //    => !typeof(FrameworkElement).IsAssignableFrom(pageType)
+    //        ? throw new InvalidOperationException("The page should be a WPF control.")
+    //        : _serviceProvider.GetService(pageType) as FrameworkElement;
 
-    /// <inheritdoc />
-    public T? GetPage<T>() where T : class
-        => !typeof(FrameworkElement).IsAssignableFrom(typeof(T))
-            ? throw new InvalidOperationException("The page should be a WPF control.")
-            : (T?)_serviceProvider.GetService(typeof(T));
-
-    /// <inheritdoc />
-    public FrameworkElement? GetPage(Type pageType)
-        => !typeof(FrameworkElement).IsAssignableFrom(pageType)
-            ? throw new InvalidOperationException("The page should be a WPF control.")
-            : _serviceProvider.GetService(pageType) as FrameworkElement;
-
-    object? INavigationViewPageProvider.GetPage(Type pageType) => GetPage(pageType);
+    //object? INavigationViewPageProvider.GetPage(Type pageType) => GetPage(pageType);
+    public object? GetPage(Type pageType) => throw new NotImplementedException();
 }

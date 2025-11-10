@@ -10,6 +10,7 @@ using Wpf.Ui.Tray.Controls;
 
 namespace GamerRadio.View.Windows;
 
+[Singleton]
 public partial class MainWindow : INavigationWindow
 {
     private readonly NotifyIcon _notifyIcon;
@@ -23,7 +24,7 @@ public partial class MainWindow : INavigationWindow
         INavigationViewPageProvider pageService,
         INavigationService navigationService,
         MediaElementService mediaElementService,
-        SnackbarService snackbarService,
+        ISnackbarService snackbarService,
         SettingsViewModel settingsViewModel
     )
     {
@@ -91,12 +92,12 @@ public partial class MainWindow : INavigationWindow
     private void SetupNotifyIcon()
     {
         _notifyIcon.BeginInit();
-        _notifyIcon.ContextMenu.Items.Add(new MenuItem { Header = "Show", Command = new RelayCommand(ShowWindow) });
-        _notifyIcon.ContextMenu.Items.Add(new System.Windows.Controls.Separator());
-        _notifyIcon.ContextMenu.Items.Add(new MenuItem { Header = "Next Song", Command = new RelayCommand(_mediaElementService.PlayRandomSong) });
-        _notifyIcon.ContextMenu.Items.Add(new MenuItem { Header = "Puase/Play", Command = new RelayCommand(_mediaElementService.Pause) });
-        _notifyIcon.ContextMenu.Items.Add(new System.Windows.Controls.Separator());
-        _notifyIcon.ContextMenu.Items.Add(new MenuItem { Header = "Exit", Command = new RelayCommand(ExitApplication) });
+        //_notifyIcon.ContextMenu.Items.Add(new MenuItem { Header = "Show", Command = ShowWindowCommand });
+        //_notifyIcon.ContextMenu.Items.Add(new System.Windows.Controls.Separator());
+        //_notifyIcon.ContextMenu.Items.Add(new MenuItem { Header = "Next Song", Command = new RelayCommand(_mediaElementService.PlayRandomSong) });
+        //_notifyIcon.ContextMenu.Items.Add(new MenuItem { Header = "Puase/Play", Command = new RelayCommand(_mediaElementService.Pause) });
+        //_notifyIcon.ContextMenu.Items.Add(new System.Windows.Controls.Separator());
+        //_notifyIcon.ContextMenu.Items.Add(new MenuItem { Header = "Exit", Command = ExitApplicationCommand });
 
         _notifyIcon.LeftDoubleClick += HandleLeftDoubleClick;
         _notifyIcon.EndInit();
@@ -104,16 +105,9 @@ public partial class MainWindow : INavigationWindow
 
     private void HandleLeftDoubleClick(object? sender, RoutedEventArgs e) => ShowWindow();
 
-    private void MinimizeChange(bool value)
-    {
-        _notifyIcon.IsEnabled = value;
-    }
+    private void MinimizeChange(bool value) => _notifyIcon.IsEnabled = value;
 
-    private void ExitApplication()
-    {
-        _notifyIcon.Dispose();
-        Application.Current.Shutdown();
-    }
+
 
     protected override void OnStateChanged(EventArgs e)
     {

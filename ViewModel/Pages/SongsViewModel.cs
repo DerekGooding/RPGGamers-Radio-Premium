@@ -6,6 +6,7 @@ using Wpf.Ui.Controls;
 
 namespace GamerRadio.ViewModel.Pages;
 
+[ViewModel, Singleton]
 public partial class SongsViewModel(MediaElementService mediaElementService,
                                     ISnackbarService snackbarService,
                                     FavoritesViewModel favoritesViewModel) : INavigationAware
@@ -15,13 +16,13 @@ public partial class SongsViewModel(MediaElementService mediaElementService,
     private readonly FavoritesViewModel _favoritesViewModel = favoritesViewModel;
 
     [Bind(OnChangeMethodName = nameof(OnSearchChanged))] private string _search = string.Empty;
-    public void OnSearchChanged(string value) => Query();
+    public void OnSearchChanged() => Query();
 
     [Bind] private List<SongImage> _songImages = [];
     [Bind] private List<GroupedSongImage> _groupedSongImages = [];
 
     [Bind(OnChangeMethodName = nameof(OnIsSortedChanged))] private bool _isSorted;
-    public void OnIsSortedChanged(bool value) => Query();
+    public void OnIsSortedChanged() => Query();
 
     public Task OnNavigatedToAsync()
     {
@@ -31,14 +32,14 @@ public partial class SongsViewModel(MediaElementService mediaElementService,
 
     public Task OnNavigatedFromAsync() => Task.CompletedTask;
 
-    [Command]
+    [Command(AcceptParameter = true)]
     public async void PlayByButton(SongImage? songImage)
     {
         if (songImage is not SongImage s) return;
         await _mediaElementService.PlayMedia(s);
     }
 
-    [Command]
+    [Command(AcceptParameter = true)]
     public void Favorite(SongImage? songImage)
     {
         if (songImage is not SongImage s) return;
@@ -55,7 +56,7 @@ public partial class SongsViewModel(MediaElementService mediaElementService,
         }
     }
 
-    [Command]
+    [Command(AcceptParameter = true)]
     public void Ignore(SongImage? songImage)
     {
         if (songImage is not SongImage s) return;

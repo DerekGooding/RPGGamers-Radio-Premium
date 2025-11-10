@@ -17,15 +17,15 @@ public partial class FavoritesViewModel(MediaElementService mediaElementService,
     public void Add(SongImage image) => Favorites.Add(image);
     public void Remove(SongImage image) => Favorites.Remove(image);
 
-    [Command]
-    public async void PlayByButton(SongImage? songImage)
+    [Command(AcceptParameter = true)]
+    public async void FavoritesPlayByButton(SongImage? songImage)
     {
         if (songImage is not SongImage s) return;
         await _mediaElementService.PlayMedia(s);
     }
 
-    [Command]
-    public void Favorite(SongImage? songImage)
+    [Command(AcceptParameter = true)]
+    public void SelectFavorite(SongImage? songImage)
     {
         if (songImage is not SongImage s) return;
         s.IsFavorite = !s.IsFavorite;
@@ -41,8 +41,8 @@ public partial class FavoritesViewModel(MediaElementService mediaElementService,
         }
     }
 
-    [Command]
-    public void Ignore(SongImage? songImage)
+    [Command(AcceptParameter = true)]
+    public void FavoritesIgnore(SongImage? songImage)
     {
         if (songImage is not SongImage s) return;
         s.IsIgnored = !s.IsIgnored;
