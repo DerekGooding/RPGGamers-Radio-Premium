@@ -2,13 +2,17 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net8.0-windows7.0</TargetFramework>
+    <TargetFramework>net9.0-windows</TargetFramework>
     <RootNamespace>GamerRadio</RootNamespace>
     <Nullable>enable</Nullable>
 	<ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
     <ApplicationIcon>Assets\Icons\radio.ico</ApplicationIcon>
-	
+
+	<PlatformTarget>x64</PlatformTarget>
+
+	<PublicAOT>true</PublicAOT>
+	<RuntimeIdentifier>win-x64</RuntimeIdentifier>
   </PropertyGroup>
 
 
@@ -1233,9 +1237,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
-    <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.10" />
     <PackageReference Include="NAudio" Version="2.2.1" />
+    <PackageReference Include="SimpleInjection" Version="0.9.8.4" />
+    <PackageReference Include="SimpleViewModel" Version="0.9.7.4" />
     <PackageReference Include="WPF-UI" Version="4.0.3" />
     <PackageReference Include="WPF-UI.Tray" Version="4.0.3" />
   </ItemGroup>

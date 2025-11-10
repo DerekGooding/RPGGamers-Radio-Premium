@@ -13,7 +13,7 @@ internal class BooleanToVisibilityConverter : IValueConverter
         }
 
         // If the parameter is "Invert", reverse the logic
-        bool invert = parameter?.ToString()?.Equals("Invert", StringComparison.OrdinalIgnoreCase) ?? false;
+        var invert = parameter?.ToString()?.Equals("Invert", StringComparison.OrdinalIgnoreCase) ?? false;
 
         return (boolValue ^ invert) ? Visibility.Visible : Visibility.Collapsed;
     }
@@ -25,7 +25,7 @@ internal class BooleanToVisibilityConverter : IValueConverter
             throw new ArgumentException("Value must be a Visibility.", nameof(value));
         }
 
-        bool invert = parameter?.ToString()?.Equals("Invert", StringComparison.OrdinalIgnoreCase) ?? false;
+        var invert = parameter?.ToString()?.Equals("Invert", StringComparison.OrdinalIgnoreCase) ?? false;
 
         return (visibility == Visibility.Visible) ^ invert;
     }

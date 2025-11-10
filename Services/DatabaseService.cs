@@ -3,6 +3,7 @@ using System.IO;
 
 namespace GamerRadio.Services;
 
+[Singleton]
 public class DatabaseService
 {
     private const char separator = '|';
@@ -11,7 +12,7 @@ public class DatabaseService
 
     public List<Song> Read()
     {
-        using Stream stream = Application.GetContentStream(_database).Stream;
+        using var stream = Application.GetContentStream(_database).Stream;
         using StreamReader reader = new(stream);
         return [.. reader
             .ReadToEnd()
@@ -22,7 +23,7 @@ public class DatabaseService
 
     private Song LineToSong(string line)
     {
-        string[] parts = line.Split(separator);
+        var parts = line.Split(separator);
         return new Song(int.Parse(parts[0]), parts[1], parts[2], parts[3]);
     }
 }

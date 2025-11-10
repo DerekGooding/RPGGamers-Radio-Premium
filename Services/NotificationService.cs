@@ -1,12 +1,13 @@
 ﻿namespace GamerRadio.Services;
 
+[Singleton]
 public class NotificationService
 {
-    private bool isEnabled = true;
+    private bool _isEnabled = true;
     public bool IsEnabled
     {
-        get { return isEnabled; }
-        set { isEnabled = value; HandleChange?.Invoke(); }
+        get => _isEnabled;
+        set { _isEnabled = value; HandleChange?.Invoke(); }
     }
 
     public async Task ShowNotificationAsync(string title, string message, int duration = 3000)

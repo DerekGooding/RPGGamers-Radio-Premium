@@ -3,6 +3,7 @@ using Wpf.Ui.Abstractions.Controls;
 
 namespace GamerRadio.View.Pages;
 
+[Singleton]
 public partial class SettingsPage : INavigableView<SettingsViewModel>
 {
     public SettingsViewModel ViewModel { get; }

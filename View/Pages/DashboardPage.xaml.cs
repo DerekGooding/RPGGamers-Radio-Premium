@@ -7,6 +7,7 @@ using Wpf.Ui.Abstractions.Controls;
 
 namespace GamerRadio.View.Pages;
 
+[Singleton]
 public partial class DashboardPage : INavigableView<DashboardViewModel>
 {
     public DashboardViewModel ViewModel { get; }
@@ -46,16 +47,16 @@ public partial class DashboardPage : INavigableView<DashboardViewModel>
                 return;
             }
 
-            double thumbPosition = thumb.TranslatePoint(new Point(0, 0), track).X;
-            double thumbWidth = thumb.ActualWidth;
-            Point mousePosition = e.GetPosition(track);
+            var thumbPosition = thumb.TranslatePoint(new Point(0, 0), track).X;
+            var thumbWidth = thumb.ActualWidth;
+            var mousePosition = e.GetPosition(track);
 
             if (mousePosition.X >= thumbPosition && mousePosition.X <= thumbPosition + thumbWidth)
             {
                 return;
             }
 
-            double relativePosition = mousePosition.X / track.ActualWidth;
+            var relativePosition = mousePosition.X / track.ActualWidth;
             slider.Value = (double)(slider.Minimum + (relativePosition * (slider.Maximum - slider.Minimum)));
 
             e.Handled = true;
@@ -64,7 +65,7 @@ public partial class DashboardPage : INavigableView<DashboardViewModel>
 
     private T? FindVisualChild<T>(DependencyObject parent) where T : DependencyObject
     {
-        for (int i = 0; i < VisualTreeHelper.GetChildrenCount(parent); i++)
+        for (var i = 0; i < VisualTreeHelper.GetChildrenCount(parent); i++)
         {
             var child = VisualTreeHelper.GetChild(parent, i);
             if (child is T typedChild)

@@ -1,7 +1,4 @@
-﻿namespace GamerRadio.ViewModel.Pages
-{
-    public partial class TwitchViewModel : ObservableObject
-    {
-       
-    }
-}
+﻿namespace GamerRadio.ViewModel.Pages;
+
+[Singleton]
+public partial class TwitchViewModel;

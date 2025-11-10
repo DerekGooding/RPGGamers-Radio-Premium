@@ -10,6 +10,7 @@ using NAudio.Wave;
 
 namespace GamerRadio.Services;
 
+[Singleton]
 public class MediaElementService
 {
     private readonly DatabaseService _databaseService;
@@ -23,10 +24,10 @@ public class MediaElementService
         _notificationService = notificationService;
         _preferencesService = preferenceService;
 
-        Assembly assembly = Assembly.GetExecutingAssembly();
-        string[] _imageSources = assembly.GetManifestResourceNames();
+        var assembly = Assembly.GetExecutingAssembly();
+        var _imageSources = assembly.GetManifestResourceNames();
         HashSet<string> imageSourceSet = [.. _imageSources];
-        string fallbackSource = imageSourceSet.FirstOrDefault(name => name.Contains("ComingSoon.jpg"))!;
+        var fallbackSource = imageSourceSet.FirstOrDefault(name => name.Contains("ComingSoon.jpg"))!;
         SongImages = _databaseService.Read()
                 .ConvertAll(song => new SongImage(song, GetCachedImage(song, imageSourceSet, assembly, fallbackSource), false, false));
     }
@@ -183,7 +184,7 @@ public class MediaElementService
 
     private ImageSource GetCachedImage(Song song, HashSet<string> imageSourceSet, Assembly assembly, string fallbackSource)
     {
-        string resourceName = imageSourceSet.FirstOrDefault(name => name.Contains($"{song
+        var resourceName = imageSourceSet.FirstOrDefault(name => name.Contains($"{song
             .Game
             .Replace(":","")
             .Replace("/", "")
@@ -192,11 +193,11 @@ public class MediaElementService
                               ?? fallbackSource;
 
         // Return from cache if already loaded
-        if (_imageCache.TryGetValue(resourceName, out BitmapImage? cachedImage))
+        if (_imageCache.TryGetValue(resourceName, out var cachedImage))
             return cachedImage;
 
         // Load the image if not in cache
-        using Stream stream = assembly.GetManifestResourceStream(resourceName)
+        using var stream = assembly.GetManifestResourceStream(resourceName)
                            ?? throw new FileNotFoundException($"Resource '{resourceName}' not found in assembly.");
 
         BitmapImage bitmap = new();

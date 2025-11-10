@@ -2,6 +2,7 @@
 
 namespace GamerRadio.Services;
 
+[Singleton]
 public class PreferencesService
 {
     public PreferencesService()
@@ -58,26 +59,26 @@ public class PreferencesService
     }
     public  (bool MinToTray, bool NotificationOn, int NotificationCorner, float Volume, List<int> Favorites, List<int> Blocked) Load()
     {
-        string[] preferences = LoadPreferences();
-        bool MinToTray = true;
-        bool NotificationOn = true;
-        int NotificationCorner = 0;
-        float Volume = 0.5f;
+        var preferences = LoadPreferences();
+        var MinToTray = true;
+        var NotificationOn = true;
+        var NotificationCorner = 0;
+        var Volume = 0.5f;
         List<int> Favorites = [];
         List<int> Blocked = [];
-        foreach (string[] line in preferences.Select(x => x.Split(separator)))
+        foreach (var line in preferences.Select(x => x.Split(separator)))
         {
-            if (line[0] == "NotificationOn" && bool.TryParse(line[1], out bool notificationOn))
+            if (line[0] == "NotificationOn" && bool.TryParse(line[1], out var notificationOn))
                 NotificationOn = notificationOn;
-            else if (line[0] == "NotificationCorner" && int.TryParse(line[1], out int notificationCorner))
+            else if (line[0] == "NotificationCorner" && int.TryParse(line[1], out var notificationCorner))
                 NotificationCorner = notificationCorner;
-            else if (line[0] == "Volume" && float.TryParse(line[1], out float volume))
+            else if (line[0] == "Volume" && float.TryParse(line[1], out var volume))
                 Volume = volume;
-            else if (line[0] == "Favorites" && int.TryParse(line[1], out int favorite))
+            else if (line[0] == "Favorites" && int.TryParse(line[1], out var favorite))
                 Favorites.Add(favorite);
-            else if (line[0] == "Blocked" && int.TryParse(line[1], out int blocked))
+            else if (line[0] == "Blocked" && int.TryParse(line[1], out var blocked))
                 Blocked.Add(blocked);
-            else if (line[0] == "MinToTray" && bool.TryParse(line[1], out bool minToTray))
+            else if (line[0] == "MinToTray" && bool.TryParse(line[1], out var minToTray))
                 MinToTray = minToTray;
         }
         return (MinToTray, NotificationOn, NotificationCorner, Volume, Favorites, Blocked);

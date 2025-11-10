@@ -3,6 +3,7 @@ using Wpf.Ui.Abstractions.Controls;
 
 namespace GamerRadio.View.Pages;
 
+[Singleton]
 public partial class TwitchPage : INavigableView<TwitchViewModel>
 {
     public TwitchViewModel ViewModel { get; }
@@ -14,6 +15,4 @@ public partial class TwitchPage : INavigableView<TwitchViewModel>
 
         InitializeComponent();
     }
-
-   
 }

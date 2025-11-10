@@ -5,6 +5,7 @@ namespace GamerRadio.Services;
 /// <summary>
 /// Service that provides pages for navigation.
 /// </summary>
+[Singleton]
 public class NavigationViewPageProvider : INavigationViewPageProvider
 {
     /// <summary>
@@ -21,23 +22,16 @@ public class NavigationViewPageProvider : INavigationViewPageProvider
     }
 
     /// <inheritdoc />
-    public T? GetPage<T>()
-        where T : class
-    {
-        if (!typeof(FrameworkElement).IsAssignableFrom(typeof(T)))
-            throw new InvalidOperationException("The page should be a WPF control.");
-
-        return (T?)_serviceProvider.GetService(typeof(T));
-    }
+    public T? GetPage<T>() where T : class
+        => !typeof(FrameworkElement).IsAssignableFrom(typeof(T))
+            ? throw new InvalidOperationException("The page should be a WPF control.")
+            : (T?)_serviceProvider.GetService(typeof(T));
 
     /// <inheritdoc />
     public FrameworkElement? GetPage(Type pageType)
-    {
-        if (!typeof(FrameworkElement).IsAssignableFrom(pageType))
-            throw new InvalidOperationException("The page should be a WPF control.");
-
-        return _serviceProvider.GetService(pageType) as FrameworkElement;
-    }
+        => !typeof(FrameworkElement).IsAssignableFrom(pageType)
+            ? throw new InvalidOperationException("The page should be a WPF control.")
+            : _serviceProvider.GetService(pageType) as FrameworkElement;
 
     object? INavigationViewPageProvider.GetPage(Type pageType) => GetPage(pageType);
 }

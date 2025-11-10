@@ -3,6 +3,7 @@ using Wpf.Ui.Abstractions.Controls;
 
 namespace GamerRadio.View.Pages;
 
+[Singleton]
 public partial class FavoritesPage : INavigableView<FavoritesViewModel>
 {
     public FavoritesViewModel ViewModel { get; }

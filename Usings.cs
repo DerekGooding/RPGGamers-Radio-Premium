@@ -1,3 +1,4 @@
-﻿global using CommunityToolkit.Mvvm.ComponentModel;
-global using CommunityToolkit.Mvvm.Input;
+﻿global using SimpleInjection.Injection;
+global using SimpleInjection.Generator;
+global using SimpleViewModel;
 global using System.Windows;
