@@ -3,6 +3,7 @@ using GamerRadio.Services;
 using System.IO;
 using System.Net.Http;
 using System.Windows.Media;
+using System.Windows.Threading;
 
 namespace GamerRadio.ViewModel.Pages
 {
@@ -11,6 +12,7 @@ namespace GamerRadio.ViewModel.Pages
         private readonly MediaElementService _mediaElementService;
 
         private bool _isSeeking;
+        private readonly DispatcherTimer _timer;
 
         [ObservableProperty]
         private bool _isPlaying;
@@ -43,7 +45,12 @@ namespace GamerRadio.ViewModel.Pages
             _mediaElementService.SongChange += HandleSongChange;
             _mediaElementService.PlayStatusChange += HandlePlayStatusChange;
 
-            //StartTimer();
+            _timer = new()
+            {
+                Interval = TimeSpan.FromMilliseconds(20)
+            };
+            _timer.Tick += TimerTick;
+            _timer.Start();
         }
 
         private void HandleSongChange(object? sender, EventArgs e)
@@ -59,42 +66,32 @@ namespace GamerRadio.ViewModel.Pages
             }
         }
 
-        //public void StartSeeking()
-        //{
-        //    _isSeeking = true;
-        //}
+        public void StartSeeking()
+        {
+            _isSeeking = true;
+        }
 
-        //public void StopSeeking(double sliderValue)
-        //{
-        //    _isSeeking = false;
-        //    if (_mediaElementService.OutputDevice.NaturalDuration.HasTimeSpan == true)
-        //    {
-        //        _mediaElementService.OutputDevice.Position =
-        //            TimeSpan.FromSeconds(sliderValue / 100 * _mediaElementService.OutputDevice.NaturalDuration.TimeSpan.TotalSeconds);
-        //    }
-        //}
+        public void StopSeeking(double sliderValue)
+        {
+            _isSeeking = false;
+            if (_mediaElementService.MP3Reader != null)
+            {
+                _mediaElementService.MP3Reader.CurrentTime =
+                    TimeSpan.FromSeconds(sliderValue / 100 * _mediaElementService.MP3Reader.TotalTime.TotalSeconds);
+            }
+        }
 
-        //private void StartTimer()
-        //{
-        //    DispatcherTimer timer = new()
-        //    {
-        //        Interval = TimeSpan.FromMilliseconds(20)
-        //    };
-        //    timer.Tick += TimerTick;
-        //    timer.Start();
-        //}
+        private void TimerTick(object? sender, EventArgs e)
+        {
+            if (_mediaElementService.MP3Reader != null)
+            {
+                Duration = _mediaElementService.MP3Reader.TotalTime.ToString(@"mm\:ss") ?? "00:00";
+                CurrentPoint = _mediaElementService.MP3Reader.CurrentTime.ToString(@"mm\:ss") ?? "00:00";
 
-        //private void TimerTick(object? sender, EventArgs e)
-        //{
-        //    if (_mediaElementService.OutputDevice?.NaturalDuration.HasTimeSpan == true)
-        //    {
-        //        Duration = _mediaElementService.OutputDevice.NaturalDuration.TimeSpan.ToString(@"mm\:ss") ?? "00:00";
-        //        CurrentPoint = _mediaElementService.OutputDevice.Position.ToString(@"mm\:ss") ?? "00:00";
-
-        //        if (_isSeeking) return;
-        //        Progress = 100 * _mediaElementService.OutputDevice.Position.TotalSeconds / _mediaElementService.OutputDevice.NaturalDuration.TimeSpan.TotalSeconds;
-        //    }
-        //}
+                if (_isSeeking) return;
+                Progress = 100 * _mediaElementService.MP3Reader.CurrentTime.TotalSeconds / _mediaElementService.MP3Reader.TotalTime.TotalSeconds;
+            }
+        }
 
         [RelayCommand]
         public void Pause() => _mediaElementService.Pause();

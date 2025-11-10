@@ -32,8 +32,8 @@ public class MediaElementService
     }
 
     //public MediaElement? MediaElement { get; set; }
-    public WaveOutEvent OutputDevice { get; private set; } = new();
-    private Mp3FileReader? mp3Reader;
+    public IWavePlayer OutputDevice { get; private set; } = new WaveOutEvent();
+    public Mp3FileReader? MP3Reader { get; private set; }
 
 
     public List<SongImage> SongImages { get; } = [];
@@ -66,17 +66,8 @@ public class MediaElementService
 
     public EventHandler? PlayStatusChange;
 
-    private bool _subscribed;
-
-
     public async Task PlayMedia(SongImage songImage, bool isPrevious = false)
     {
-        if (!_subscribed)
-        {
-            OutputDevice.PlaybackStopped += Element_MediaEnded;
-            _subscribed = true;
-        }
-
         if (!isPrevious && (_songHistory.Count == 0 || _songHistory.Peek() != CurrentlyPlaying) && CurrentlyPlaying.Song.Game != "None")
         {
             _songHistory.Push(CurrentlyPlaying);
@@ -98,18 +89,19 @@ public class MediaElementService
         // Dispose old playback if it exists
         OutputDevice?.Stop();
         OutputDevice?.Dispose();
-        mp3Reader?.Dispose();
+        MP3Reader?.Dispose();
 
         var mem = new MemoryStream(bytes);
 
-        mp3Reader = new Mp3FileReader(mem);
+        MP3Reader = new Mp3FileReader(mem);
 
         OutputDevice = new WaveOutEvent();
-        OutputDevice.Init(mp3Reader);
+        OutputDevice.Init(MP3Reader);
         OutputDevice.Play();
+        OutputDevice.PlaybackStopped += Element_MediaEnded;
     }
 
-    private async Task<Uri> BuildURL(SongImage songImage)
+    private async Task BuildURL(SongImage songImage)
     {
         var id = songImage.Song.Id.ToString().PadLeft(4, '0');
         var  path = $"SongBackup/Songs/{id[0]}000/{id}.mp3";
@@ -122,8 +114,6 @@ public class MediaElementService
         {
             AttemptNewAPIkey();
         }
-
-        return new Uri(_preferencesService.TempMp3);
     }
     private void AttemptNewAPIkey()
     {
@@ -152,7 +142,6 @@ public class MediaElementService
         var bytes = await res.Content.ReadAsByteArrayAsync();
 
         PlayMp3Bytes(bytes);
-        //await File.WriteAllBytesAsync(_preferencesService.TempMp3, bytes);
     }
 
     private void Element_MediaEnded(object? sender, StoppedEventArgs e) => PlayRandomSong();
