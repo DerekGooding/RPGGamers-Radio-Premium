@@ -103,7 +103,7 @@ public partial class MainWindow : INavigationWindow
         _notifyIcon.EndInit();
     }
 
-    private void HandleLeftDoubleClick(object? sender, RoutedEventArgs e) => ShowWindow();
+    private void HandleLeftDoubleClick(NotifyIcon sender, RoutedEventArgs e) => ShowWindow();
 
     private void MinimizeChange(bool value) => _notifyIcon.IsEnabled = value;
 

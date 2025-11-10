@@ -1,6 +1,7 @@
 ﻿using GamerRadio.Services;
 using GamerRadio.ViewModel.Pages;
 using GamerRadio.Generated;
+using GamerRadio.View.Windows;
 
 namespace GamerRadio;
 
@@ -17,6 +18,15 @@ public partial class App
     /// <returns>Instance of the service or <see langword="null"/>.</returns>
     public T? Get<T>() where T : class => _host?.Get<T>();
 
+    public object? Get(Type type)
+    {
+        var method = typeof(Host)
+            .GetMethod("Get", Type.EmptyTypes)
+            ?.MakeGenericMethod(type);
+
+        return method?.Invoke(_host, null);
+    }
+
     /// <summary>
     /// Occurs when the application is loading.
     /// </summary>
@@ -24,6 +34,8 @@ public partial class App
     {
         _host = Host.Initialize();
         LoadPreferences();
+
+        _host.Get<MainWindow>().Show();
     }
 
     /// <summary>

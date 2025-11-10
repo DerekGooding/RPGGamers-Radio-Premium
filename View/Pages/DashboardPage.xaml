@@ -55,10 +55,10 @@
 
         <!-- Playback Controls -->
         <StackPanel Grid.Row="1" Orientation="Horizontal"  HorizontalAlignment="Center" Margin="10">
-            <ui:Button Content="|◀" Command="{Binding ViewModel.PreviousCommand}" Margin="5"/>
+            <ui:Button Content="|◀" Command="{Binding ViewModel.DashboardPreviousCommand}" Margin="5"/>
             <ui:Button Content="{Binding ViewModel.IsPlaying, Converter={StaticResource PausePlayConverter}}"
-                        Command="{Binding ViewModel.PauseCommand}"  Margin="5" />
-            <ui:Button Content="▶|" Command="{Binding ViewModel.PlayRandomSongCommand}" Margin="5"/>
+                        Command="{Binding ViewModel.DashboardPauseCommand}"  Margin="5" />
+            <ui:Button Content="▶|" Command="{Binding ViewModel.DashboardPlayRandomSongCommand}" Margin="5"/>
             <Slider Minimum="0" Maximum="1.0" Width="100" Value="{Binding ViewModel.Volume}" VerticalAlignment="Center" 
                 IsSnapToTickEnabled="True" TickFrequency="0.005" Loaded="Slider_Loaded"  />
         </StackPanel>

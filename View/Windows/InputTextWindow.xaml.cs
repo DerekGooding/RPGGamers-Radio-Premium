@@ -22,8 +22,5 @@ public partial class InputTextWindow : FluentWindow
         DialogResult = true;
     }
 
-    private void OnCancelClicked(object sender, RoutedEventArgs e)
-    {
-        DialogResult = false;
-    }
+    private void OnCancelClicked(object sender, RoutedEventArgs e) => DialogResult = false;
 }
