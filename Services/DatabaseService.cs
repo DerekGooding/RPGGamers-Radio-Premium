@@ -13,12 +13,11 @@ public class DatabaseService
     {
         using Stream stream = Application.GetContentStream(_database).Stream;
         using StreamReader reader = new(stream);
-        return reader
+        return [.. reader
             .ReadToEnd()
             .Split(Environment.NewLine)
             .Where(line => !string.IsNullOrEmpty(line))
-            .Select(LineToSong)
-            .ToList();
+            .Select(LineToSong)];
     }
 
     private Song LineToSong(string line)

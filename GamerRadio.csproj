@@ -7,8 +7,7 @@
     <Nullable>enable</Nullable>
 	<ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
-	<UseWindowsForms>true</UseWindowsForms>
-    <ApplicationIcon>View\Icons\radio.ico</ApplicationIcon>
+    <ApplicationIcon>Assets\Icons\radio.ico</ApplicationIcon>
 	
   </PropertyGroup>
 
@@ -615,14 +614,14 @@
     <None Remove="Assets\Backgrounds\Zelda II The Adventure of Link.jpg" />
     <None Remove="Assets\Backgrounds\Zwei!!.jpg" />
     <None Remove="Assets\Links\database.csv" />
-    <None Remove="View\Icons\radio.ico" />
+    <None Remove="Assets\Icons\radio.ico" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Include="Assets\Links\database.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="View\Icons\radio.ico">
+    <Content Include="Assets\Icons\radio.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
@@ -1235,9 +1234,10 @@
 
   <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
-    <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.2" />
-    <PackageReference Include="WPF-UI" Version="4.0.2" />
-    <PackageReference Include="WPF-UI.Tray" Version="4.0.2" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.10" />
+    <PackageReference Include="NAudio" Version="2.2.1" />
+    <PackageReference Include="WPF-UI" Version="4.0.3" />
+    <PackageReference Include="WPF-UI.Tray" Version="4.0.3" />
   </ItemGroup>
 
   <ItemGroup>

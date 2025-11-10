@@ -19,9 +19,9 @@ public partial class DashboardPage : INavigableView<DashboardViewModel>
         InitializeComponent();
     }
 
-    private void Slider_PreviewMouseDown(object sender, MouseButtonEventArgs e) => ViewModel.StartSeeking();
+    //private void Slider_PreviewMouseDown(object sender, MouseButtonEventArgs e) => ViewModel.StartSeeking();
 
-    private void Slider_PreviewMouseUp(object sender, MouseButtonEventArgs e) => ViewModel.StopSeeking(MySlider.Value);
+    //private void Slider_PreviewMouseUp(object sender, MouseButtonEventArgs e) => ViewModel.StopSeeking(MySlider.Value);
 
     private void Slider_Loaded(object sender, RoutedEventArgs e)
     {

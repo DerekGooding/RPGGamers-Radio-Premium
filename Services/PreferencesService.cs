@@ -10,10 +10,16 @@ public class PreferencesService
         Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
         "RPGGamerRadio");
         PreferencesFilePath = Path.Combine(AppFolderPath, "preferences.csv");
+        APIKeyFilePath = Path.Combine(AppFolderPath, "apikey.txt");
+        TempMp3 = Path.Combine(AppFolderPath, "temp.mp3");
     }
     private readonly string AppFolderPath;
     private readonly string PreferencesFilePath;
+    private readonly string APIKeyFilePath;
+    public readonly string TempMp3;
     private const char separator = '|';
+
+    private string APIKey = string.Empty;
 
     public void SavePreferences(string[] preferences)
     {
@@ -24,10 +30,22 @@ public class PreferencesService
 
         File.WriteAllLines(PreferencesFilePath, preferences);
     }
+    public string LoadAPI()
+    {
+        if (APIKey.Length == 0 && File.Exists(APIKeyFilePath))
+            APIKey = File.ReadAllText(APIKeyFilePath);
+        return APIKey;
+    }
+
+    public void SaveAPI(string apiKey)
+    {
+        APIKey = apiKey;
+        File.WriteAllText(APIKeyFilePath, APIKey);
+    }
 
     public string[] LoadPreferences() => File.Exists(PreferencesFilePath) ? File.ReadAllLines(PreferencesFilePath) : [];
 
-    public void Save(bool MinToTray, bool NotificationOn, int NotificationCorner, double Volume, IEnumerable<int> Favorites, IEnumerable<int> Blocked)
+    public void Save(bool MinToTray, bool NotificationOn, int NotificationCorner, float Volume, IEnumerable<int> Favorites, IEnumerable<int> Blocked)
     {
         List<string> data = [];
         data.Add($"MinToTray{separator}{MinToTray}");
@@ -38,13 +56,13 @@ public class PreferencesService
         data.AddRange(Blocked.Select(x => $"Blocked{separator}{x}"));
         SavePreferences([.. data]);
     }
-    public  (bool MinToTray, bool NotificationOn, int NotificationCorner, double Volume, List<int> Favorites, List<int> Blocked) Load()
+    public  (bool MinToTray, bool NotificationOn, int NotificationCorner, float Volume, List<int> Favorites, List<int> Blocked) Load()
     {
         string[] preferences = LoadPreferences();
         bool MinToTray = true;
         bool NotificationOn = true;
         int NotificationCorner = 0;
-        double Volume = 0.5;
+        float Volume = 0.5f;
         List<int> Favorites = [];
         List<int> Blocked = [];
         foreach (string[] line in preferences.Select(x => x.Split(separator)))
@@ -53,7 +71,7 @@ public class PreferencesService
                 NotificationOn = notificationOn;
             else if (line[0] == "NotificationCorner" && int.TryParse(line[1], out int notificationCorner))
                 NotificationCorner = notificationCorner;
-            else if (line[0] == "Volume" && double.TryParse(line[1], out double volume))
+            else if (line[0] == "Volume" && float.TryParse(line[1], out float volume))
                 Volume = volume;
             else if (line[0] == "Favorites" && int.TryParse(line[1], out int favorite))
                 Favorites.Add(favorite);

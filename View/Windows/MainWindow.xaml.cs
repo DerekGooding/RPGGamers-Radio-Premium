@@ -1,10 +1,12 @@
 ﻿using GamerRadio.Services;
 using GamerRadio.ViewModel.Pages;
 using GamerRadio.ViewModel.Windows;
+using System.Windows.Media.Imaging;
 using Wpf.Ui;
 using Wpf.Ui.Abstractions;
 using Wpf.Ui.Appearance;
 using Wpf.Ui.Controls;
+using Wpf.Ui.Tray.Controls;
 
 namespace GamerRadio.View.Windows;
 
@@ -31,23 +33,24 @@ public partial class MainWindow : INavigationWindow
         SystemThemeWatcher.Watch(this);
 
         InitializeComponent();
+        var bitmap = new BitmapImage(new Uri("pack://application:,,,/Assets/Icons/radio.png"));
         _notifyIcon = new NotifyIcon
         {
-            Icon = new Icon("View/Icons/radio.ico"),
-            Visible = true,
-            Text = "My WPF App",
-            ContextMenuStrip = new ContextMenuStrip()
+            Icon = bitmap,
+            ToolTip = "Game Radio Premium",
+            ContextMenu = new ()
         };
-        SetupNotifyIcon();
+
 
         SetPageService(pageService);
         _mediaElementService = mediaElementService;
-        _mediaElementService.MediaElement = MyPlayer;
+        //_mediaElementService.MediaElement = MyPlayer;
         navigationService.SetNavigationControl(RootNavigation);
         snackbarService.SetSnackbarPresenter(SnackbarPresenter);
         _settingsViewModel = settingsViewModel;
         _settingsViewModel.HandleMinimizeChange += MinimizeChange;
-        _notifyIcon.Visible = _settingsViewModel.MinToTray;
+        SetupNotifyIcon();
+        _notifyIcon.IsEnabled = _settingsViewModel.MinToTray;
     }
 
     #region INavigationWindow methods
@@ -81,31 +84,29 @@ public partial class MainWindow : INavigationWindow
         Application.Current.Shutdown();
     }
 
-    INavigationView INavigationWindow.GetNavigation()
-    {
-        throw new NotImplementedException();
-    }
+    INavigationView INavigationWindow.GetNavigation() => throw new NotImplementedException();
 
-    public void SetServiceProvider(IServiceProvider serviceProvider)
-    {
-        throw new NotImplementedException();
-    }
+    public void SetServiceProvider(IServiceProvider serviceProvider) => throw new NotImplementedException();
 
     private void SetupNotifyIcon()
     {
-        _notifyIcon.ContextMenuStrip!.Items.Add("Show", null, (s, e) => ShowWindow());
-        _notifyIcon.ContextMenuStrip.Items.Add("-");
-        _notifyIcon.ContextMenuStrip.Items.Add("Next Song", null, (s, e) => _mediaElementService.PlayRandomSong());
-        _notifyIcon.ContextMenuStrip.Items.Add("Puase/Play", null, (s, e) => _mediaElementService.Pause());
-        _notifyIcon.ContextMenuStrip.Items.Add("-");
-        _notifyIcon.ContextMenuStrip.Items.Add("Exit", null, (s, e) => ExitApplication());
+        _notifyIcon.BeginInit();
+        _notifyIcon.ContextMenu.Items.Add(new MenuItem { Header = "Show", Command = new RelayCommand(ShowWindow) });
+        _notifyIcon.ContextMenu.Items.Add(new System.Windows.Controls.Separator());
+        _notifyIcon.ContextMenu.Items.Add(new MenuItem { Header = "Next Song", Command = new RelayCommand(_mediaElementService.PlayRandomSong) });
+        _notifyIcon.ContextMenu.Items.Add(new MenuItem { Header = "Puase/Play", Command = new RelayCommand(_mediaElementService.Pause) });
+        _notifyIcon.ContextMenu.Items.Add(new System.Windows.Controls.Separator());
+        _notifyIcon.ContextMenu.Items.Add(new MenuItem { Header = "Exit", Command = new RelayCommand(ExitApplication) });
 
-        _notifyIcon.DoubleClick += (s, e) => ShowWindow();
+        _notifyIcon.LeftDoubleClick += HandleLeftDoubleClick;
+        _notifyIcon.EndInit();
     }
+
+    private void HandleLeftDoubleClick(object? sender, RoutedEventArgs e) => ShowWindow();
 
     private void MinimizeChange(bool value)
     {
-        _notifyIcon.Visible = value;
+        _notifyIcon.IsEnabled = value;
     }
 
     private void ExitApplication()

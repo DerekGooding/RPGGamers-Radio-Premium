@@ -116,7 +116,7 @@ public partial class App
         FavoritesViewModel FavoritesViewModel = _host.Services.GetService<FavoritesViewModel>()!;
         MediaElementService songs = _host.Services.GetService<MediaElementService>()!;
 
-        (bool MinToTray, bool NotificationOn, int NotificationCorner, double Volume, List<int> Favorites, List<int> Blocked)
+        (bool MinToTray, bool NotificationOn, int NotificationCorner, float Volume, List<int> Favorites, List<int> Blocked)
             = _host.Services.GetService<PreferencesService>()!.Load();
 
         SettingsViewModel.MinToTray = MinToTray;

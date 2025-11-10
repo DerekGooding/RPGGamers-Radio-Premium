@@ -3,7 +3,6 @@ using GamerRadio.Services;
 using System.IO;
 using System.Net.Http;
 using System.Windows.Media;
-using System.Windows.Threading;
 
 namespace GamerRadio.ViewModel.Pages
 {
@@ -32,11 +31,10 @@ namespace GamerRadio.ViewModel.Pages
         private ImageSource? _wavRender;
 
         [ObservableProperty]
-        private double _volume = 1.0;
-        partial void OnVolumeChanged(double value)
+        private float _volume = 1.0f;
+        partial void OnVolumeChanged(float value)
         {
-            if (_mediaElementService.MediaElement == null) return;
-            _mediaElementService.MediaElement.Volume = value;
+            _mediaElementService.OutputDevice.Volume = value;
         }
 
         public DashboardViewModel(MediaElementService mediaElementService)
@@ -45,7 +43,7 @@ namespace GamerRadio.ViewModel.Pages
             _mediaElementService.SongChange += HandleSongChange;
             _mediaElementService.PlayStatusChange += HandlePlayStatusChange;
 
-            StartTimer();
+            //StartTimer();
         }
 
         private void HandleSongChange(object? sender, EventArgs e)
@@ -61,42 +59,42 @@ namespace GamerRadio.ViewModel.Pages
             }
         }
 
-        public void StartSeeking()
-        {
-            _isSeeking = true;
-        }
+        //public void StartSeeking()
+        //{
+        //    _isSeeking = true;
+        //}
 
-        public void StopSeeking(double sliderValue)
-        {
-            _isSeeking = false;
-            if (_mediaElementService.MediaElement?.NaturalDuration.HasTimeSpan == true)
-            {
-                _mediaElementService.MediaElement.Position =
-                    TimeSpan.FromSeconds(sliderValue / 100 * _mediaElementService.MediaElement.NaturalDuration.TimeSpan.TotalSeconds);
-            }
-        }
+        //public void StopSeeking(double sliderValue)
+        //{
+        //    _isSeeking = false;
+        //    if (_mediaElementService.OutputDevice.NaturalDuration.HasTimeSpan == true)
+        //    {
+        //        _mediaElementService.OutputDevice.Position =
+        //            TimeSpan.FromSeconds(sliderValue / 100 * _mediaElementService.OutputDevice.NaturalDuration.TimeSpan.TotalSeconds);
+        //    }
+        //}
 
-        private void StartTimer()
-        {
-            DispatcherTimer timer = new()
-            {
-                Interval = TimeSpan.FromMilliseconds(20)
-            };
-            timer.Tick += TimerTick;
-            timer.Start();
-        }
+        //private void StartTimer()
+        //{
+        //    DispatcherTimer timer = new()
+        //    {
+        //        Interval = TimeSpan.FromMilliseconds(20)
+        //    };
+        //    timer.Tick += TimerTick;
+        //    timer.Start();
+        //}
 
-        private void TimerTick(object? sender, EventArgs e)
-        {
-            if (_mediaElementService.MediaElement?.NaturalDuration.HasTimeSpan == true)
-            {
-                Duration = _mediaElementService.MediaElement.NaturalDuration.TimeSpan.ToString(@"mm\:ss") ?? "00:00";
-                CurrentPoint = _mediaElementService.MediaElement.Position.ToString(@"mm\:ss") ?? "00:00";
+        //private void TimerTick(object? sender, EventArgs e)
+        //{
+        //    if (_mediaElementService.OutputDevice?.NaturalDuration.HasTimeSpan == true)
+        //    {
+        //        Duration = _mediaElementService.OutputDevice.NaturalDuration.TimeSpan.ToString(@"mm\:ss") ?? "00:00";
+        //        CurrentPoint = _mediaElementService.OutputDevice.Position.ToString(@"mm\:ss") ?? "00:00";
 
-                if (_isSeeking) return;
-                Progress = 100 * _mediaElementService.MediaElement.Position.TotalSeconds / _mediaElementService.MediaElement.NaturalDuration.TimeSpan.TotalSeconds;
-            }
-        }
+        //        if (_isSeeking) return;
+        //        Progress = 100 * _mediaElementService.OutputDevice.Position.TotalSeconds / _mediaElementService.OutputDevice.NaturalDuration.TimeSpan.TotalSeconds;
+        //    }
+        //}
 
         [RelayCommand]
         public void Pause() => _mediaElementService.Pause();

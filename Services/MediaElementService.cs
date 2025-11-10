@@ -1,9 +1,12 @@
-﻿using System.IO;
+﻿using GamerRadio.Model;
+using GamerRadio.ViewModel.Windows;
+using System.IO;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Reflection;
-using System.Windows.Controls;
-using System.Windows.Media.Imaging;
 using System.Windows.Media;
-using GamerRadio.Model;
+using System.Windows.Media.Imaging;
+using NAudio.Wave;
 
 namespace GamerRadio.Services;
 
@@ -11,22 +14,27 @@ public class MediaElementService
 {
     private readonly DatabaseService _databaseService;
     private readonly NotificationService _notificationService;
+    private readonly PreferencesService _preferencesService;
     private readonly Dictionary<string, BitmapImage> _imageCache = [];
 
-    public MediaElementService(DatabaseService databaseService, NotificationService notificationService)
+    public MediaElementService(DatabaseService databaseService, NotificationService notificationService, PreferencesService preferenceService)
     {
         _databaseService = databaseService;
         _notificationService = notificationService;
+        _preferencesService = preferenceService;
 
         Assembly assembly = Assembly.GetExecutingAssembly();
         string[] _imageSources = assembly.GetManifestResourceNames();
-        HashSet<string> imageSourceSet = new(_imageSources);
+        HashSet<string> imageSourceSet = [.. _imageSources];
         string fallbackSource = imageSourceSet.FirstOrDefault(name => name.Contains("ComingSoon.jpg"))!;
         SongImages = _databaseService.Read()
                 .ConvertAll(song => new SongImage(song, GetCachedImage(song, imageSourceSet, assembly, fallbackSource), false, false));
     }
 
-    public MediaElement? MediaElement { get; set; }
+    //public MediaElement? MediaElement { get; set; }
+    public WaveOutEvent OutputDevice { get; private set; } = new();
+    private Mp3FileReader? mp3Reader;
+
 
     public List<SongImage> SongImages { get; } = [];
 
@@ -44,7 +52,7 @@ public class MediaElementService
     }
     public SongImage CurrentlyPlaying
     {
-        get { return currentlyPlaying; }
+        get => currentlyPlaying;
         set
         {
             currentlyPlaying = value;
@@ -61,12 +69,11 @@ public class MediaElementService
     private bool _subscribed;
 
 
-    public void PlayMedia(SongImage songImage, bool isPrevious = false)
+    public async Task PlayMedia(SongImage songImage, bool isPrevious = false)
     {
-        if (MediaElement is not MediaElement mediaElement) return;
         if (!_subscribed)
         {
-            mediaElement.MediaEnded += Element_MediaEnded;
+            OutputDevice.PlaybackStopped += Element_MediaEnded;
             _subscribed = true;
         }
 
@@ -77,17 +84,78 @@ public class MediaElementService
                 _songHistory = new Stack<SongImage>(_songHistory.Take(SongHistoryMax));
         }
 
-        new Thread(async () => await _notificationService.ShowNotificationAsync(songImage.Song.Game, songImage.Song.Title)).Start();
+        Task.Run(() => _notificationService.ShowNotificationAsync(songImage.Song.Game, songImage.Song.Title));
 
-        mediaElement.Source = new(songImage.Song.Url);
-        mediaElement.Play();
+        await BuildURL(songImage);
 
         CurrentlyPlaying = songImage;
 
         IsPlaying = true;
     }
 
-    private void Element_MediaEnded(object sender, RoutedEventArgs e) => PlayRandomSong();
+    private void PlayMp3Bytes(byte[] bytes)
+    {
+        // Dispose old playback if it exists
+        OutputDevice?.Stop();
+        OutputDevice?.Dispose();
+        mp3Reader?.Dispose();
+
+        var mem = new MemoryStream(bytes);
+
+        mp3Reader = new Mp3FileReader(mem);
+
+        OutputDevice = new WaveOutEvent();
+        OutputDevice.Init(mp3Reader);
+        OutputDevice.Play();
+    }
+
+    private async Task<Uri> BuildURL(SongImage songImage)
+    {
+        var id = songImage.Song.Id.ToString().PadLeft(4, '0');
+        var  path = $"SongBackup/Songs/{id[0]}000/{id}.mp3";
+
+        try
+        {
+            await DownloadSongTemp(path);
+        }
+        catch (Exception ex)
+        {
+            AttemptNewAPIkey();
+        }
+
+        return new Uri(_preferencesService.TempMp3);
+    }
+    private void AttemptNewAPIkey()
+    {
+        var dlg = new InputTextWindow(_preferencesService.LoadAPI());
+        var ok = dlg.ShowDialog() == true;
+        var value = ok ? dlg.Result : string.Empty;
+        _preferencesService.SaveAPI(value);
+    }
+
+    private async Task DownloadSongTemp(string path)
+    {
+        const string BaseUrl = "https://raw.githubusercontent.com";
+        var api = _preferencesService.LoadAPI();
+
+        using var client = new HttpClient();
+
+        client.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue("song-player", "1.0"));
+        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", api);
+        client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/vnd.github+json"));
+
+        var url = $"{BaseUrl}/DerekGooding/SongBackup/master/{Uri.EscapeDataString(path)}";
+
+        using var res = await client.GetAsync(url);
+        res.EnsureSuccessStatusCode();
+
+        var bytes = await res.Content.ReadAsByteArrayAsync();
+
+        PlayMp3Bytes(bytes);
+        //await File.WriteAllBytesAsync(_preferencesService.TempMp3, bytes);
+    }
+
+    private void Element_MediaEnded(object? sender, StoppedEventArgs e) => PlayRandomSong();
 
     public void PlayRandomSong()
     {
@@ -98,10 +166,9 @@ public class MediaElementService
 
     public void Pause()
     {
-        if (MediaElement is not MediaElement mediaElement) return;
         if (IsPlaying)
         {
-            mediaElement.Pause();
+            OutputDevice.Pause();
             IsPlaying = false;
         }
         else
@@ -112,7 +179,7 @@ public class MediaElementService
             }
             else
             {
-                mediaElement.Play();
+                OutputDevice.Play();
                 IsPlaying = true;
             }
         }

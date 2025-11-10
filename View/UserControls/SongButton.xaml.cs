@@ -1,4 +1,6 @@
-﻿namespace GamerRadio.View.UserControls;
+﻿using System.Windows.Controls;
+
+namespace GamerRadio.View.UserControls;
 
 /// <summary>
 /// Interaction logic for SongButton.xaml

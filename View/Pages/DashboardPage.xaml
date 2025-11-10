@@ -70,9 +70,9 @@
                     Height="10" Width="300" VerticalAlignment="Top" Margin="0 0 30 0"
                     IsMoveToPointEnabled="True"
                     x:Name="MySlider"
-                    Maximum="100"
-                    PreviewMouseDown="Slider_PreviewMouseDown"
-                    PreviewMouseUp="Slider_PreviewMouseUp"/>
+                    Maximum="100"/>
+            <!--PreviewMouseDown="Slider_PreviewMouseDown"
+                    PreviewMouseUp="Slider_PreviewMouseUp"/>-->
             <Label Content="{Binding ViewModel.CurrentPoint}" Width="50" HorizontalAlignment="Left" />
             <Label Content="{Binding ViewModel.Duration}" Width="50" HorizontalAlignment="Right" />
         </DockPanel>
