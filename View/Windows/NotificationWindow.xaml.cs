@@ -7,16 +7,28 @@ namespace GamerRadio.View.Windows;
 /// </summary>
 public partial class NotificationWindow : Window
 {
-    public NotificationWindow(string title, string message)
+    private bool _isClosing;
+    private int _count;
+
+    private readonly DoubleAnimation _fadeOutAnimation = new()
     {
-        InitializeComponent();
+        From = 1,
+        To = 0,
+        Duration = TimeSpan.FromSeconds(0.5),
+    };
+
+
+    public NotificationWindow() => InitializeComponent();
+
+    public async Task ShowNotificationAsync(string title, string message, int cornerIndex, int duration = 3000)
+    {
         TitleTextBlock.Text = title;
         MessageTextBlock.Text = message;
-    }
+        _isClosing = false;
+        BeginAnimation(OpacityProperty, null);
+        Opacity = 1;
 
-    public async Task ShowNotificationAsync(int cornerIndex, int duration = 3000)
-    {
-        switch(cornerIndex)
+        switch (cornerIndex)
         {
             case 0: //Top Right Corner
                 Top = SystemParameters.WorkArea.Top + 10;
@@ -38,28 +50,28 @@ public partial class NotificationWindow : Window
 
         Show();
 
+        _count++;
         await Task.Delay(duration);
-        Close();
+        if(_count == 1)
+            ClosingAnimation();
+        _count--;
     }
 
-    protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
+    protected void ClosingAnimation()
     {
-        e.Cancel = true; // Cancel the default closing action
-
-        // Create fade-out animation
-        var fadeOutAnimation = new DoubleAnimation
+        if (!_isClosing)
         {
-            From = Opacity,
-            To = 0,
-            Duration = TimeSpan.FromSeconds(0.5)
-        };
+            _isClosing = true;
 
-        fadeOutAnimation.Completed += (s, a) =>
-        {
-            e.Cancel = false; // Allow the window to close after the animation
-            Close();
-        };
+            _fadeOutAnimation.Completed += (s, a) =>
+            {
+                if (_isClosing)
+                {
+                    Application.Current.Dispatcher.Invoke(() => Hide());
+                }
+            };
 
-        BeginAnimation(OpacityProperty, fadeOutAnimation);
+            BeginAnimation(OpacityProperty, _fadeOutAnimation);
+        }
     }
 }
